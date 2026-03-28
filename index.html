@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Avinash Tiwari | Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #05020f;
+    --bg2: #0a0520;
+    --text: #e0d7ff;
+    --text2: #b39ddb;
+    --accent: #a855f7;
+    --accent2: #7c3aed;
+    --accent3: #e879f9;
+    --green: #4ade80;
+    --cyan: #22d3ee;
+    --yellow: #fbbf24;
+    --card-bg: rgba(20,10,50,0.85);
+    --card-border: #7c3aed;
+    --nav-bg: rgba(5,2,15,0.92);
+    --pixel-shadow: 4px 4px 0px #3b0764;
+    --glow: 0 0 12px #a855f7, 0 0 30px #7c3aed55;
+  }
+  .light {
+    --bg: #e8f4fd;
+    --bg2: #dbeafe;
+    --text: #1e1b4b;
+    --text2: #4c1d95;
+    --accent: #7c3aed;
+    --accent2: #5b21b6;
+    --accent3: #c026d3;
+    --green: #16a34a;
+    --cyan: #0284c7;
+    --yellow: #d97706;
+    --card-bg: rgba(240,235,255,0.92);
+    --card-border: #7c3aed;
+    --nav-bg: rgba(232,244,253,0.95);
+    --pixel-shadow: 4px 4px 0px #c4b5fd;
+    --glow: 0 0 12px #a855f755, 0 0 30px #7c3aed33;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Press Start 2P', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.5s, color 0.5s;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect x='8' y='0' width='4' height='4' fill='%23a855f7'/%3E%3Crect x='4' y='4' width='12' height='4' fill='%23a855f7'/%3E%3Crect x='0' y='8' width='20' height='4' fill='%23a855f7'/%3E%3Crect x='4' y='12' width='12' height='4' fill='%23a855f7'/%3E%3Crect x='8' y='16' width='4' height='4' fill='%23a855f7'/%3E%3C/svg%3E") 10 10, crosshair;
+  }
+
+  /* ─── CANVAS ─── */
+  #galaxy-canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+
+  /* ─── ALIEN ─── */
+  #alien {
+    position: fixed; bottom: 60px; right: 24px;
+    z-index: 100; cursor: pointer;
+    animation: alienFloat 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px #4ade80);
+    font-size: 0;
+  }
+  #alien svg { width: 90px; height: 90px; }
+  @keyframes alienFloat {
+    0%,100%{transform:translateY(0) rotate(-3deg);}
+    50%{transform:translateY(-14px) rotate(3deg);}
+  }
+  #alien-speech {
+    position: fixed; bottom: 165px; right: 16px;
+    background: var(--card-bg); border: 2px solid var(--green);
+    color: var(--green); font-family: 'Press Start 2P', monospace;
+    font-size: 7px; padding: 10px 12px; border-radius: 4px;
+    max-width: 200px; z-index: 101;
+    display: none; animation: fadeIn 0.3s;
+    image-rendering: pixelated;
+    line-height: 1.8;
+  }
+  #alien-speech::after {
+    content: ''; position: absolute; bottom: -10px; right: 20px;
+    border: 5px solid transparent; border-top-color: var(--green);
+  }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ─── MOON/SUN ─── */
+  #theme-toggle {
+    position: fixed; top: 48px; right: 20px;
+    z-index: 200; cursor: pointer;
+    background: none; border: none;
+    font-size: 0; padding: 0;
+    filter: drop-shadow(0 0 14px var(--yellow));
+    animation: moonGlow 3s ease-in-out infinite;
+    transition: filter 0.4s;
+  }
+  #theme-toggle svg { width: 70px; height: 70px; }
+  @keyframes moonGlow {
+    0%,100%{filter:drop-shadow(0 0 8px #fbbf24);}
+    50%{filter:drop-shadow(0 0 18px #fbbf24) drop-shadow(0 0 30px #f59e0b);}
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%;
+    background: var(--nav-bg);
+    border-bottom: 3px solid var(--accent);
+    z-index: 150; padding: 14px 0;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--glow);
+  }
+  .nav-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+  }
+  .nav-logo {
+    font-size: 10px; color: var(--accent3);
+    text-shadow: var(--pixel-shadow);
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 20px; list-style: none; }
+  .nav-links a {
+    color: var(--text2); font-size: 7px;
+    text-decoration: none; transition: color 0.2s, text-shadow 0.2s;
+    padding: 4px 0;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 0; height: 2px; background: var(--accent3);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ─── SECTIONS ─── */
+  section {
+    position: relative; z-index: 10;
+    max-width: 900px; margin: 0 auto;
+    padding: 100px 24px 60px;
+  }
+  section:first-of-type { padding-top: 140px; }
+
+  /* ─── HERO ─── */
+  #hero { text-align: center; padding-top: 160px; padding-bottom: 80px; }
+  .hero-sprite {
+    display: inline-block; margin-bottom: 28px;
+    animation: heroFloat 3s ease-in-out infinite;
+  }
+  @keyframes heroFloat {
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+  .pixel-avatar {
+    width: 80px; height: 80px;
+    image-rendering: pixelated;
+    border: 4px solid var(--accent);
+    box-shadow: var(--glow), var(--pixel-shadow);
+    border-radius: 2px;
+  }
+  .hero-title {
+    font-size: clamp(14px,3vw,22px);
+    color: var(--accent3);
+    text-shadow: var(--pixel-shadow), 0 0 20px var(--accent3);
+    margin-bottom: 16px;
+    animation: glitch 5s infinite;
+    line-height: 1.6;
+  }
+  @keyframes glitch {
+    0%,94%,100%{text-shadow:var(--pixel-shadow), 0 0 20px var(--accent3);}
+    95%{text-shadow:-3px 0 var(--cyan), 3px 0 var(--accent3), var(--pixel-shadow);}
+    97%{text-shadow:3px 0 var(--accent), -3px 0 var(--cyan), var(--pixel-shadow);}
+  }
+  .hero-role {
+    font-size: 10px; color: var(--green);
+    margin-bottom: 20px; letter-spacing: 2px;
+  }
+  .hero-tagline {
+    font-family: 'VT323', monospace;
+    font-size: 22px; color: var(--text2);
+    margin-bottom: 32px; line-height: 1.5;
+  }
+  .typewriter-wrap {
+    font-size: 9px; color: var(--cyan);
+    min-height: 20px; margin-bottom: 36px;
+  }
+  #typewriter::after {
+    content: '█';
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .pixel-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px; padding: 12px 20px;
+    border: 3px solid var(--accent);
+    background: transparent; color: var(--accent);
+    cursor: pointer; transition: all 0.15s;
+    text-decoration: none; display: inline-block;
+    position: relative;
+    box-shadow: 4px 4px 0 var(--accent2);
+    image-rendering: pixelated;
+  }
+  .pixel-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--accent2);
+  }
+  .pixel-btn:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--accent2); }
+  .pixel-btn.filled {
+    background: var(--accent); color: #fff;
+  }
+  .pixel-btn.filled:hover { background: var(--accent3); border-color: var(--accent3); }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    font-size: 14px; color: var(--accent3);
+    text-shadow: var(--pixel-shadow);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-header::before { content: '▶'; color: var(--accent); font-size: 10px; }
+  .section-line {
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    margin-bottom: 40px;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .about-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    padding: 24px;
+    box-shadow: var(--pixel-shadow);
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .about-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(to right, var(--accent3), var(--cyan));
+  }
+  .about-card:hover { border-color: var(--accent3); transform: translateY(-4px); }
+  .about-card p {
+    font-family: 'VT323', monospace;
+    font-size: 20px; color: var(--text2); line-height: 1.7;
+  }
+  .about-stat { text-align: center; }
+  .about-stat .num {
+    font-size: 28px; color: var(--accent3);
+    display: block; margin-bottom: 8px;
+    text-shadow: var(--glow);
+  }
+  .about-stat .label { font-size: 7px; color: var(--text2); }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px,1fr));
+    gap: 16px;
+  }
+  .skill-chip {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    padding: 16px 10px;
+    text-align: center;
+    font-size: 7px; color: var(--text);
+    transition: all 0.2s;
+    box-shadow: 3px 3px 0 var(--accent2);
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .skill-chip .skill-icon { font-size: 22px; display: block; margin-bottom: 8px; }
+  .skill-chip:hover {
+    border-color: var(--accent3);
+    color: var(--accent3);
+    transform: translate(-2px,-2px);
+    box-shadow: 5px 5px 0 var(--accent2);
+  }
+  .skill-chip .skill-bar {
+    position: absolute; bottom: 0; left: 0;
+    height: 3px; background: var(--accent3);
+    transition: width 1s ease;
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .project-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    padding: 24px;
+    position: relative; overflow: hidden;
+    transition: all 0.25s;
+    box-shadow: 4px 4px 0 var(--accent2);
+  }
+  .project-card::after {
+    content: ''; position: absolute;
+    inset: 0; background: linear-gradient(135deg, transparent 70%, rgba(168,85,247,0.08));
+  }
+  .project-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 7px 7px 0 var(--accent2);
+    border-color: var(--accent3);
+  }
+  .project-badge {
+    display: inline-block; font-size: 6px;
+    padding: 4px 8px; margin-bottom: 12px;
+    border: 1px solid; border-radius: 2px;
+  }
+  .badge-hackathon { color: var(--yellow); border-color: var(--yellow); background: rgba(251,191,36,0.1); }
+  .badge-wip { color: var(--green); border-color: var(--green); background: rgba(74,222,128,0.1); animation: wipPulse 2s infinite; }
+  @keyframes wipPulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  .project-name {
+    font-size: 11px; color: var(--accent3);
+    text-shadow: 2px 2px 0 var(--accent2);
+    margin-bottom: 12px;
+  }
+  .project-desc {
+    font-family: 'VT323', monospace;
+    font-size: 18px; color: var(--text2);
+    line-height: 1.6; margin-bottom: 16px;
+  }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tech-tag {
+    font-size: 6px; padding: 3px 7px;
+    border: 1px solid var(--cyan); color: var(--cyan);
+    background: rgba(34,211,238,0.08);
+  }
+  .project-links { display: flex; gap: 10px; }
+
+  /* ─── EDUCATION ─── */
+  .edu-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    padding: 28px; position: relative;
+    box-shadow: 4px 4px 0 var(--accent2);
+    transition: all 0.25s;
+    display: flex; align-items: flex-start; gap: 20px;
+  }
+  .edu-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 var(--accent2); border-color: var(--accent3); }
+  .edu-icon { font-size: 36px; flex-shrink: 0; }
+  .edu-degree { font-size: 10px; color: var(--accent3); margin-bottom: 10px; line-height: 1.6; }
+  .edu-college { font-family: 'VT323', monospace; font-size: 20px; color: var(--text2); margin-bottom: 8px; }
+  .edu-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .edu-tag {
+    font-size: 7px; padding: 4px 10px;
+    border: 1px solid var(--accent); color: var(--accent);
+    background: rgba(168,85,247,0.1);
+  }
+  .cgpa { border-color: var(--green) !important; color: var(--green) !important; background: rgba(74,222,128,0.1) !important; }
+
+  /* ─── CONTACT ─── */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 16px; }
+  .contact-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    padding: 20px; text-align: center;
+    transition: all 0.2s; text-decoration: none;
+    box-shadow: 3px 3px 0 var(--accent2);
+    display: block;
+    cursor: pointer;
+  }
+  .contact-card:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--accent2); border-color: var(--accent3); }
+  .contact-card .c-icon { font-size: 28px; display: block; margin-bottom: 10px; }
+  .contact-card .c-label { font-size: 7px; color: var(--accent3); margin-bottom: 6px; display: block; }
+  .contact-card .c-val { font-family: 'VT323',monospace; font-size: 16px; color: var(--text2); word-break: break-all; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative; z-index: 10;
+    text-align: center; padding: 30px;
+    font-size: 7px; color: var(--text2);
+    border-top: 2px solid var(--accent2);
+  }
+  .footer-hearts { color: var(--accent3); animation: heartbeat 1.2s infinite; display: inline-block; }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+
+  /* ─── PIXEL DIVIDER ─── */
+  .px-divider {
+    text-align: center; font-size: 9px;
+    color: var(--accent2); letter-spacing: 4px;
+    margin: 10px 0 50px;
+    opacity: 0.6;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent2); border: 2px solid var(--bg); }
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:640px){
+    .about-grid,.projects-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-title { font-size: 14px; }
+    .edu-card { flex-direction: column; }
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── PIXEL SCANLINES overlay ─── */
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+    pointer-events: none; z-index: 9999;
+  }
+  .light body::after { opacity: 0.03; }
+</style>
+</head>
+<body id="body">
+
+<!-- CANVAS for galaxy -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- MOON/SUN TOGGLE -->
+<button id="theme-toggle" title="Toggle Theme" onclick="toggleTheme()">
+  <svg id="moon-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <!-- pixel moon -->
+    <rect x="16" y="4" width="16" height="4" fill="#fbbf24"/>
+    <rect x="8" y="8" width="8" height="4" fill="#fbbf24"/>
+    <rect x="24" y="8" width="12" height="4" fill="#fbbf24"/>
+    <rect x="4" y="12" width="4" height="8" fill="#fbbf24"/>
+    <rect x="32" y="12" width="8" height="4" fill="#fbbf24"/>
+    <rect x="4" y="20" width="4" height="8" fill="#fbbf24"/>
+    <rect x="36" y="16" width="4" height="8" fill="#fbbf24"/>
+    <rect x="8" y="28" width="4" height="4" fill="#fbbf24"/>
+    <rect x="36" y="24" width="4" height="8" fill="#fbbf24"/>
+    <rect x="12" y="32" width="12" height="4" fill="#fbbf24"/>
+    <rect x="28" y="32" width="8" height="4" fill="#fbbf24"/>
+    <rect x="16" y="36" width="8" height="4" fill="#fbbf24"/>
+    <!-- craters -->
+    <rect x="14" y="16" width="4" height="4" fill="#f59e0b"/>
+    <rect x="22" y="22" width="6" height="6" fill="#f59e0b"/>
+    <rect x="18" y="28" width="4" height="4" fill="#f59e0b"/>
+  </svg>
+  <svg id="sun-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- pixel sun -->
+    <rect x="20" y="4" width="8" height="4" fill="#fbbf24"/>
+    <rect x="20" y="40" width="8" height="4" fill="#fbbf24"/>
+    <rect x="4" y="20" width="4" height="8" fill="#fbbf24"/>
+    <rect x="40" y="20" width="4" height="8" fill="#fbbf24"/>
+    <rect x="8" y="8" width="4" height="4" fill="#fbbf24"/>
+    <rect x="36" y="8" width="4" height="4" fill="#fbbf24"/>
+    <rect x="8" y="36" width="4" height="4" fill="#fbbf24"/>
+    <rect x="36" y="36" width="4" height="4" fill="#fbbf24"/>
+    <rect x="16" y="12" width="16" height="24" fill="#fbbf24"/>
+    <rect x="12" y="16" width="24" height="16" fill="#fbbf24"/>
+    <rect x="20" y="16" width="8" height="8" fill="#fff"/>
+    <rect x="18" y="20" width="4" height="4" fill="#fff"/>
+  </svg>
+</button>
+
+<!-- ALIEN -->
+<div id="alien" onclick="alienTalk()" title="Click me!">
+  <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <!-- alien body -->
+    <rect x="16" y="4" width="16" height="4" fill="#4ade80"/>
+    <rect x="12" y="8" width="24" height="4" fill="#4ade80"/>
+    <rect x="8" y="12" width="32" height="16" fill="#4ade80"/>
+    <!-- eyes -->
+    <rect x="12" y="16" width="8" height="8" fill="#000"/>
+    <rect x="28" y="16" width="8" height="8" fill="#000"/>
+    <rect x="14" y="18" width="4" height="4" fill="#22d3ee"/>
+    <rect x="30" y="18" width="4" height="4" fill="#22d3ee"/>
+    <rect x="15" y="19" width="2" height="2" fill="#fff"/>
+    <rect x="31" y="19" width="2" height="2" fill="#fff"/>
+    <!-- mouth -->
+    <rect x="18" y="24" width="4" height="2" fill="#000"/>
+    <rect x="26" y="24" width="4" height="2" fill="#000"/>
+    <rect x="22" y="26" width="4" height="2" fill="#000"/>
+    <!-- body lower -->
+    <rect x="10" y="28" width="28" height="8" fill="#4ade80"/>
+    <rect x="14" y="36" width="6" height="4" fill="#4ade80"/>
+    <rect x="28" y="36" width="6" height="4" fill="#4ade80"/>
+    <!-- antennae -->
+    <rect x="16" y="0" width="4" height="4" fill="#4ade80"/>
+    <rect x="28" y="0" width="4" height="4" fill="#4ade80"/>
+    <rect x="14" y="4" width="4" height="2" fill="#a7f3d0"/>
+    <rect x="30" y="4" width="4" height="2" fill="#a7f3d0"/>
+  </svg>
+</div>
+<div id="alien-speech"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">&lt;AT/&gt;</a>
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#education">EDUCATION</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-sprite">
+    <svg class="pixel-avatar" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <rect width="16" height="16" fill="#0a0520"/>
+      <!-- hair -->
+      <rect x="3" y="1" width="10" height="2" fill="#1a0a3a"/>
+      <rect x="2" y="2" width="12" height="3" fill="#2d1b69"/>
+      <!-- face -->
+      <rect x="3" y="4" width="10" height="7" fill="#f5c5a3"/>
+      <!-- eyes -->
+      <rect x="4" y="6" width="2" height="2" fill="#1e293b"/>
+      <rect x="10" y="6" width="2" height="2" fill="#1e293b"/>
+      <rect x="4" y="6" width="1" height="1" fill="#a855f7"/>
+      <rect x="10" y="6" width="1" height="1" fill="#a855f7"/>
+      <!-- mouth -->
+      <rect x="6" y="9" width="4" height="1" fill="#e07b54"/>
+      <!-- shirt -->
+      <rect x="2" y="11" width="12" height="4" fill="#7c3aed"/>
+      <rect x="0" y="12" width="3" height="4" fill="#7c3aed"/>
+      <rect x="13" y="12" width="3" height="4" fill="#7c3aed"/>
+      <!-- shirt detail -->
+      <rect x="7" y="12" width="2" height="2" fill="#a855f7"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">AVINASH TIWARI</h1>
+  <p class="hero-role">&gt;&gt; FULL STACK DEVELOPER &lt;&lt;</p>
+  <p class="hero-tagline">Crafting code one pixel at a time —<br>from logic to launch, I build it all.</p>
+  <div class="typewriter-wrap"><span id="typewriter"></span></div>
+  <div class="hero-btns">
+    <a href="#projects" class="pixel-btn filled">VIEW PROJECTS</a>
+    <a href="#contact" class="pixel-btn">CONTACT ME</a>
+    <a href="https://github.com/AVINASHTIWARI14" target="_blank" class="pixel-btn">GITHUB</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-header reveal">ABOUT ME</h2>
+  <div class="section-line reveal"></div>
+  <div class="about-grid">
+    <div class="about-card reveal" style="grid-column:1/-1">
+      <p>Hey! I'm Avinash — a 3rd year B.Tech CSE (AI/ML) student who loves turning ideas into real products. I've competed in hackathons, solved hundreds of DSA problems, and I'm currently building ClearHire to make online interviews more fair and honest. When I'm not coding, I'm probably thinking about the next big thing to build. 🚀</p>
+    </div>
+    <div class="about-card about-stat reveal">
+      <span class="num">3rd</span>
+      <span class="label">YEAR B.TECH</span>
+    </div>
+    <div class="about-card about-stat reveal">
+      <span class="num">7.86</span>
+      <span class="label">CGPA</span>
+    </div>
+  </div>
+</section>
+
+<div class="px-divider">★ ★ ★ ★ ★</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-header reveal">SKILLS</h2>
+  <div class="section-line reveal"></div>
+  <div class="skills-grid">
+    <div class="skill-chip reveal"><span class="skill-icon">⚛️</span>REACT<div class="skill-bar" data-w="85"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">🌐</span>HTML<div class="skill-bar" data-w="95"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">🎨</span>CSS<div class="skill-bar" data-w="90"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">🐍</span>PYTHON<div class="skill-bar" data-w="80"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">⚡</span>C++<div class="skill-bar" data-w="85"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">🧩</span>DSA<div class="skill-bar" data-w="80"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">🏗️</span>OOP<div class="skill-bar" data-w="88"></div></div>
+    <div class="skill-chip reveal"><span class="skill-icon">💻</span>LEETCODE<div class="skill-bar" data-w="75"></div></div>
+  </div>
+</section>
+
+<div class="px-divider">★ ★ ★ ★ ★</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-header reveal">PROJECTS</h2>
+  <div class="section-line reveal"></div>
+  <div class="projects-grid">
+    <!-- Anna Suraksha -->
+    <div class="project-card reveal">
+      <span class="project-badge badge-hackathon">🏆 HACK INDIA</span>
+      <h3 class="project-name">ANNA SURAKSHA</h3>
+      <p class="project-desc">A group project built at HackIndia hackathon to combat ration card fraud and scams in the public distribution system. Built to protect the food supply chain with tech.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">HACKATHON</span>
+        <span class="tech-tag">GROUP PROJECT</span>
+        <span class="tech-tag">SOCIAL IMPACT</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/iotalord21/AnnaSuraksha-v4" target="_blank" class="pixel-btn" style="font-size:6px;padding:8px 12px">GITHUB →</a>
+      </div>
+    </div>
+    <!-- ClearHire -->
+    <div class="project-card reveal">
+      <span class="project-badge badge-wip">⚙ IN PROGRESS</span>
+      <h3 class="project-name">CLEARHIRE</h3>
+      <p class="project-desc">My personal project to detect plagiarism in online job interviews and tests. Bringing integrity back to the hiring process — one algorithm at a time.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">REACT</span>
+        <span class="tech-tag">PYTHON</span>
+        <span class="tech-tag">AI/ML</span>
+        <span class="tech-tag">FULL STACK</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/AVINASHTIWARI14/clearhire-v1" target="_blank" class="pixel-btn" style="font-size:6px;padding:8px 12px">GITHUB →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="px-divider">★ ★ ★ ★ ★</div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2 class="section-header reveal">EDUCATION</h2>
+  <div class="section-line reveal"></div>
+  <div class="edu-card reveal">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-degree">B.TECH — COMPUTER SCIENCE & ENGINEERING<br>(ARTIFICIAL INTELLIGENCE & MACHINE LEARNING)</div>
+      <div class="edu-college">KCC Institute of Technology and Management</div>
+      <div class="edu-meta">
+        <span class="edu-tag">3RD YEAR</span>
+        <span class="edu-tag">2022 – 2026</span>
+        <span class="edu-tag cgpa">CGPA: 7.86</span>
+        <span class="edu-tag" style="border-color:var(--cyan);color:var(--cyan)">AI/ML SPECIALIZATION</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="px-divider">★ ★ ★ ★ ★</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-header reveal">CONTACT</h2>
+  <div class="section-line reveal"></div>
+  <div class="contact-grid">
+    <a href="mailto:avinashtiwari2005ws@gmail.com" class="contact-card reveal">
+      <span class="c-icon">📧</span>
+      <span class="c-label">EMAIL</span>
+      <span class="c-val">avinashtiwari2005ws@gmail.com</span>
+    </a>
+    <a href="https://github.com/AVINASHTIWARI14" target="_blank" class="contact-card reveal">
+      <span class="c-icon">🐙</span>
+      <span class="c-label">GITHUB</span>
+      <span class="c-val">AVINASHTIWARI14</span>
+    </a>
+    <a href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6/" target="_blank" class="contact-card reveal">
+      <span class="c-icon">💼</span>
+      <span class="c-label">LINKEDIN</span>
+      <span class="c-val">avinash-tiwari</span>
+    </a>
+    <a href="https://leetcode.com/u/AVINASH-TIWARI/" target="_blank" class="contact-card reveal">
+      <span class="c-icon">🧠</span>
+      <span class="c-label">LEETCODE</span>
+      <span class="c-val">AVINASH-TIWARI</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>MADE WITH <span class="footer-hearts">♥</span> BY AVINASH TIWARI &nbsp;|&nbsp; &copy; 2025</p>
+  <p style="margin-top:10px;opacity:0.5">&lt; PRESS START TO CONNECT /&gt;</p>
+</footer>
+
+<script>
+// ─── GALAXY CANVAS ───
+const canvas = document.getElementById('galaxy-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], meteors = [], isLight = false;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); initStars(); });
+
+function rand(a, b) { return Math.random() * (b - a) + a; }
+
+function initStars() {
+  stars = [];
+  const count = Math.floor((W * H) / 3000);
+  for (let i = 0; i < count; i++) {
+    stars.push({
+      x: rand(0, W), y: rand(0, H),
+      r: rand(0.5, 2.5),
+      alpha: rand(0.3, 1),
+      twinkleSpeed: rand(0.005, 0.025),
+      twinkleDir: Math.random() > 0.5 ? 1 : -1,
+      color: ['#fff','#c4b5fd','#93c5fd','#fde68a','#bbf7d0'][Math.floor(rand(0,5))]
+    });
+  }
+}
+initStars();
+
+function spawnMeteor() {
+  meteors.push({
+    x: rand(W * 0.3, W),
+    y: rand(0, H * 0.4),
+    len: rand(80, 180),
+    speed: rand(8, 18),
+    alpha: 1,
+    angle: rand(0.4, 0.6)
+  });
+}
+
+setInterval(() => { if (!isLight && Math.random() > 0.3) spawnMeteor(); }, 1800);
+
+function drawGalaxy() {
+  ctx.clearRect(0, 0, W, H);
+  if (isLight) return;
+
+  // nebula glow
+  const grad = ctx.createRadialGradient(W*0.5, H*0.4, 0, W*0.5, H*0.4, W*0.5);
+  grad.addColorStop(0, 'rgba(124,58,237,0.07)');
+  grad.addColorStop(0.5, 'rgba(168,85,247,0.03)');
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // second nebula
+  const grad2 = ctx.createRadialGradient(W*0.2, H*0.7, 0, W*0.2, H*0.7, W*0.3);
+  grad2.addColorStop(0, 'rgba(34,211,238,0.05)');
+  grad2.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad2;
+  ctx.fillRect(0, 0, W, H);
+
+  // stars
+  stars.forEach(s => {
+    s.alpha += s.twinkleSpeed * s.twinkleDir;
+    if (s.alpha >= 1) { s.alpha = 1; s.twinkleDir = -1; }
+    if (s.alpha <= 0.15) { s.alpha = 0.15; s.twinkleDir = 1; }
+
+    ctx.save();
+    ctx.globalAlpha = s.alpha;
+    // pixel star (square)
+    ctx.fillStyle = s.color;
+    const pr = Math.max(1, Math.floor(s.r));
+    ctx.fillRect(Math.floor(s.x), Math.floor(s.y), pr, pr);
+    ctx.restore();
+  });
+
+  // meteors
+  meteors = meteors.filter(m => m.alpha > 0.01);
+  meteors.forEach(m => {
+    const dx = Math.cos(m.angle) * m.len;
+    const dy = Math.sin(m.angle) * m.len;
+    const grd = ctx.createLinearGradient(m.x, m.y, m.x - dx, m.y - dy);
+    grd.addColorStop(0, `rgba(255,255,255,${m.alpha})`);
+    grd.addColorStop(0.3, `rgba(196,181,253,${m.alpha * 0.6})`);
+    grd.addColorStop(1, 'transparent');
+
+    ctx.save();
+    ctx.strokeStyle = grd;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(m.x, m.y);
+    ctx.lineTo(m.x - dx, m.y - dy);
+    ctx.stroke();
+    ctx.restore();
+
+    m.x += Math.cos(m.angle) * m.speed;
+    m.y += Math.sin(m.angle) * m.speed;
+    m.alpha -= 0.018;
+  });
+}
+
+function loop() { drawGalaxy(); requestAnimationFrame(loop); }
+loop();
+
+// ─── THEME TOGGLE ───
+function toggleTheme() {
+  isLight = !isLight;
+  document.getElementById('body').classList.toggle('light', isLight);
+  document.getElementById('moon-icon').style.display = isLight ? 'none' : 'block';
+  document.getElementById('sun-icon').style.display = isLight ? 'block' : 'none';
+
+  // re-trigger skill bars
+  animateSkillBars();
+}
+
+// ─── TYPEWRITER ───
+const lines = [
+  'Building the future, one commit at a time...',
+  'ReactJS  |  Python  |  C++  |  AI/ML',
+  'Open to internships & collaborations!',
+  'printf("Hello, World!");'
+];
+let li = 0, ci = 0, typing = true;
+const tw = document.getElementById('typewriter');
+
+function typeLoop() {
+  if (typing) {
+    if (ci < lines[li].length) {
+      tw.textContent = lines[li].slice(0, ++ci);
+      setTimeout(typeLoop, 60);
+    } else {
+      typing = false;
+      setTimeout(typeLoop, 1800);
+    }
+  } else {
+    if (ci > 0) {
+      tw.textContent = lines[li].slice(0, --ci);
+      setTimeout(typeLoop, 30);
+    } else {
+      typing = true;
+      li = (li + 1) % lines.length;
+      setTimeout(typeLoop, 400);
+    }
+  }
+}
+typeLoop();
+
+// auto show alien intro on load
+setTimeout(() => { alienTalk(); }, 1500);
+
+// ─── ALIEN SPEECH ───
+const alienLines = [
+  'HEYY EARTHLING! 👽 THIS IS THE PORTFOLIO OF AVINASH!',
+  'GREETINGS, EARTHLING! 👽',
+  'AVINASH = TOP CODER!',
+  'HIRE HIM. NOW. TRUST ME.',
+  'I FLEW FROM ANDROMEDA...',
+  '...JUST TO SEE HIS CODE!',
+  'CLEARHIRE WILL SAVE US!',
+  'DSA? EASY. BUGS? NEVER.',
+];
+let alienIdx = 0;
+const speech = document.getElementById('alien-speech');
+let speechTimer = null;
+
+function alienTalk() {
+  speech.textContent = alienLines[alienIdx % alienLines.length];
+  speech.style.display = 'block';
+  alienIdx++;
+  clearTimeout(speechTimer);
+  speechTimer = setTimeout(() => { speech.style.display = 'none'; }, 2500);
+}
+
+// ─── SKILL BARS ───
+function animateSkillBars() {
+  document.querySelectorAll('.skill-bar').forEach(bar => {
+    bar.style.width = '0%';
+    setTimeout(() => {
+      bar.style.width = bar.dataset.w + '%';
+    }, 300);
+  });
+}
+
+// ─── SCROLL REVEAL ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      if (e.target.closest('#skills') || e.target.classList.contains('skill-chip')) {
+        animateSkillBars();
+      }
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
