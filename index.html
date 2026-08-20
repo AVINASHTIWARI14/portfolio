@@ -6,7 +6,7 @@
 <title>Avinash Tiwari</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Honk&family=Stalemate&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alkatra:wght@400;500;600;700&family=Archivo+Black&family=Sedgwick+Ave&family=Honk&family=Stalemate&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{height:100%;overflow:hidden;}
@@ -56,6 +56,111 @@
     text-transform:lowercase;
     letter-spacing:0.01em;
     color:#a8a8a8;
+  }
+
+  /* scroll hint popup */
+  .scroll-hint{
+    position:absolute;
+    left:50%;
+    bottom:60px;
+    transform:translate(-50%, 10px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    opacity:0;
+    filter:blur(8px);
+    pointer-events:none;
+    transition:transform 1.4s ease, opacity 1.4s ease, filter 1.4s ease;
+  }
+  .scroll-hint.show{
+    opacity:1;
+    filter:blur(0px);
+    transform:translate(-50%, 0);
+  }
+  .scroll-hint.breathing{
+    animation:hintBreathe 2.4s ease-in-out infinite;
+  }
+  .scroll-hint-text{
+    font-family:'Sedgwick Ave', cursive;
+    font-weight:400;
+    text-transform:lowercase;
+    letter-spacing:0.02em;
+    font-size:clamp(24px,3.2vw,36px);
+    color:#ffffff;
+    text-shadow:0 0 8px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.4);
+  }
+  .scroll-hint-arrows{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+  }
+  .scroll-hint-arrows svg{
+    width:22px;
+    height:12px;
+    display:block;
+  }
+  .scroll-hint-arrows svg:nth-child(2){
+    opacity:0.55;
+    margin-top:-4px;
+  }
+  @keyframes hintBreathe{
+    0%, 100%{
+      opacity:0.55;
+      transform:translate(-50%, 0) scale(0.96);
+      filter:drop-shadow(0 0 3px rgba(255,255,255,0.25));
+    }
+    50%{
+      opacity:1;
+      transform:translate(-50%, 0) scale(1.1);
+      filter:drop-shadow(0 0 16px rgba(255,255,255,0.9));
+    }
+  }
+
+  .about-click-hint{
+    position:absolute;
+    top:-6px;
+    right:-18px;
+    transform:translate(10px, -10px);
+    font-family:'Sedgwick Ave', cursive;
+    font-weight:400;
+    text-transform:lowercase;
+    letter-spacing:0.02em;
+    font-size:clamp(18px,2.2vw,26px);
+    color:#ffffff;
+    text-shadow:0 0 8px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.4);
+    opacity:0;
+    filter:blur(8px);
+    pointer-events:none;
+    white-space:nowrap;
+    transition:transform 1.4s ease, opacity 1.4s ease, filter 1.4s ease;
+  }
+  .about-click-hint.show{
+    opacity:1;
+    filter:blur(0px);
+    transform:translate(0, 0);
+  }
+
+  .hint-arrow{
+    position:absolute;
+    top:24px;
+    left:-40px;
+    width:46px;
+    height:46px;
+    pointer-events:none;
+    overflow:visible;
+  }
+  .scroll-hint.show{
+    opacity:1;
+    transform:translate(-50%, 0);
+  }
+  @keyframes hintBounce{
+    0%, 100%{ transform:translate(-50%, 0); }
+    50%{ transform:translate(-50%, -6px); }
+  }
+  .scroll-hint.show{
+    animation:hintBounce 1.8s ease-in-out infinite;
   }
 
   .card{
@@ -139,40 +244,60 @@
     transform:scale(1.72);
   }
   .about-scroll{
-    max-height:0;
-    overflow:hidden;
-    overflow-y:auto;
+    display:grid;
+    grid-template-rows:0fr;
     text-align:left;
     padding:0 10px;
-    -webkit-overflow-scrolling:touch;
-    transition:max-height 0.5s ease;
+    transition:grid-template-rows 0.7s cubic-bezier(.65,.05,.36,1), margin-top 0.7s cubic-bezier(.65,.05,.36,1);
   }
   .about-scroll.open{
-    max-height:65vh;
+    grid-template-rows:1fr;
     margin-top:16px;
   }
-  #aboutSlide{
-    transition:padding-top .7s cubic-bezier(.65,.05,.36,1);
+  .about-inner{
+    overflow:hidden;
+    min-height:0;
   }
-  #aboutSlide.top-align{
-    align-items:flex-start;
-    padding-top:6vh;
+  .about-scroll.open .about-inner{
+    overflow-y:auto;
+    max-height:58vh;
+    -webkit-overflow-scrolling:touch;
+  }
+  .about-inner-content{
+    opacity:0;
+    transform:translateY(-10px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+    transition-delay:0s;
+  }
+  .about-scroll.open .about-inner-content{
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:0.25s;
+  }
+  #aboutSlide{
+    transition:none;
+  }
+  .about-shift{
+    transition:transform 0.7s cubic-bezier(.65,.05,.36,1);
+  }
+  .about-shift.open{
+    transform:translateY(-6vh);
   }
   #aboutToggle.compact{
     font-size:clamp(45px,7vw,85px) !important;
     color:#a8a8a8 !important;
-    transition:font-size .7s cubic-bezier(.65,.05,.36,1);
+    transition:font-size 0.7s cubic-bezier(.65,.05,.36,1);
   }
   #aboutToggle{
-    transition:font-size .7s cubic-bezier(.65,.05,.36,1);
+    transition:font-size 0.7s cubic-bezier(.65,.05,.36,1);
   }
-  .about-scroll::-webkit-scrollbar{width:6px;}
-  .about-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.25);border-radius:3px;}
+  .about-inner::-webkit-scrollbar{width:6px;}
+  .about-inner::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.25);border-radius:3px;}
   .about-scroll p{
-    font-family:'Inter', sans-serif;
+    font-family:'Alkatra', cursive;
     font-weight:400;
     color:rgba(255,255,255,0.85);
-    font-size:clamp(22px,3.4vw,38px);
+    font-size:clamp(20px,3vw,34px);
     line-height:1.6;
     margin-bottom:28px;
     text-align:justify;
@@ -185,38 +310,40 @@
     font-size:clamp(18px,2.5vw,28px);
   }
 
-  .scroll-hint{
-    margin-top:-40px;
-    text-align:center;
-    color:rgba(255,255,255,0.7);
-    font-family:'Archivo Black', sans-serif;
-    font-weight:900;
-    text-transform:lowercase;
-    font-size:clamp(20px,2.8vw,34px);
-    letter-spacing:0.02em;
-    animation:breathe 3.6s ease-in-out infinite;
+  .tagline-cursor{
+    display:inline-block;
+    margin-left:4px;
+    animation:blink 0.8s step-end infinite;
   }
-  @keyframes breathe{
-    0%, 100%{ opacity:0.4; transform:scale(1); }
-    50%{ opacity:1; transform:scale(1.05); }
+  @keyframes blink{
+    0%, 100%{ opacity:1; }
+    50%{ opacity:0; }
   }
 </style>
 </head>
 <body>
-<img class="bg-gif" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXd6cXYwdzM4bzNjdHk3eDIzdDRvYTNreGJwZnN3dzdzZnl2OTFndSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qblhix67FoknPOmHDP/giphy.gif" alt="">
+<img class="bg-gif" src="https://i.giphy.com/9zExs2Q2h1EHfE4P6G.webp" alt="">
 
 <div class="track" id="track">
   <section class="slide">
     <div style="display:flex;flex-direction:column;align-items:center;transform:translateY(-120px);">
-      <div class="name">avinash tiwari.</div>
-      <div class="scroll-hint">scroll to explore </div>
+      <div class="name" id="nameText"><span id="nameTyped"></span><span class="tagline-cursor">|</span></div>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <span class="scroll-hint-text">scroll to explore!</span>
+      <div class="scroll-hint-arrows">
+        <svg viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L12 10L22 2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L12 10L22 2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
     </div>
   </section>
 
   <section class="slide" id="aboutSlide">
     <div class="card">
-      <h2 id="aboutToggle" style="margin-bottom:0;cursor:pointer;">about me.</h2>
+     <div class="about-shift" id="aboutShift">
+      <h2 id="aboutToggle" style="margin-bottom:0;cursor:pointer;position:relative;">about me.<span class="about-click-hint" id="aboutClickHint">click me!<svg class="hint-arrow" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M48,6 C18,2 6,24 9,44" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M9,44 L2,34 M9,44 L19,40" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h2>
       <div class="about-scroll" id="aboutContent">
+       <div class="about-inner"><div class="about-inner-content">
         <p>Hey, I'm Avinash, a final-year Computer Science student with a focus on AI & ML, and a strong interest in DSA and software development.</p>
         <p>I enjoy solving problems, especially the kind that look simple at first and then somehow turn into a 2 hour debugging session. I primarily work with C++ and spend a good amount of time improving my problem solving and DSA skills.</p>
         <p>I like using AI tools as a part of my workflow, not just to get things done, but to experiment with ideas and create something that feels different, creative, and genuinely functional rather than simply delivering what everyone else is doing.</p>
@@ -226,7 +353,9 @@
         <p>Academically, I've maintained an overall 7.93 GPA through my sixth semester while continuing to explore things beyond the curriculum.</p>
         <p>I'm someone who likes to plan before executing, stay organized, and keep improving along the way. I know there's still a lot I want to learn, and that's what makes the journey exciting.</p>
         <p>Currently, I'm focused on becoming better at what I do, building more interesting things, and pushing myself a little further with every project.</p>
-</div>
+       </div></div>
+      </div>
+     </div>
     </div>
   </section>
 
@@ -241,14 +370,17 @@
     <div class="card">
       <h2 style="margin-top:-14vh;">contact me.</h2>
       <div class="contact-icons" style="margin-top:60px;">
-        <a class="contact-icon" href="mailto:avinashtiwari2005ws@gmail.com" title="Email">
-          <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gmail.width-500.format-webp.webp" alt="Email">
+        <a class="contact-icon" href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6" target="_blank" rel="noopener" title="LinkedIn">
+          <img class="icon-boost" src="https://i0.wp.com/finlink.co.uk/wp-content/uploads/2023/11/LinkedIn-Logo-e1700490108143.png?ssl=1" alt="LinkedIn">
         </a>
         <a class="contact-icon" href="https://github.com/AVINASHTIWARI14" target="_blank" rel="noopener" title="GitHub">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXtR3ZbUep044uvCpnykQBnY4i4rBHHdkmxyDLRISsirW4SXayA_33I90&s=10" alt="GitHub">
         </a>
-        <a class="contact-icon" href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6" target="_blank" rel="noopener" title="LinkedIn">
-          <img class="icon-boost" src="https://i0.wp.com/finlink.co.uk/wp-content/uploads/2023/11/LinkedIn-Logo-e1700490108143.png?ssl=1" alt="LinkedIn">
+        <a class="contact-icon" href="mailto:avinashtiwari2005ws@gmail.com" title="Email">
+          <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gmail.width-500.format-webp.webp" alt="Email">
+        </a>
+        <a class="contact-icon" href="https://instagram.com/vesper.commw" target="_blank" rel="noopener" title="Instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
         </a>
       </div>
     </div>
@@ -256,11 +388,88 @@
 </div>
 
 <script>
+  const nameTyped = document.getElementById('nameTyped');
+  if(nameTyped){
+    const phrases = ['avinash tiwari.', '404: perfection not found. yet!'];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const typeSpeed = 90;
+    const deleteSpeed = 45;
+    const holdTime = 1400;
+
+    function cycle(){
+      const current = phrases[phraseIndex];
+      if(!deleting){
+        charIndex++;
+        nameTyped.textContent = current.slice(0, charIndex);
+        if(charIndex === current.length){
+          deleting = true;
+          setTimeout(cycle, holdTime);
+          return;
+        }
+        setTimeout(cycle, typeSpeed);
+      } else {
+        charIndex--;
+        nameTyped.textContent = current.slice(0, charIndex);
+        if(charIndex === 0){
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(cycle, typeSpeed);
+          return;
+        }
+        setTimeout(cycle, deleteSpeed);
+      }
+    }
+    cycle();
+  }
+
   const track = document.getElementById('track');
   const slides = document.querySelectorAll('.slide');
   const bgGif = document.querySelector('.bg-gif');
+  const scrollHint = document.getElementById('scrollHint');
+  const aboutClickHint = document.getElementById('aboutClickHint');
   let current = 0;
   let locked = false;
+  let scrollHintTimer = null;
+  let aboutHintTimer = null;
+
+  function updateScrollHint(){
+    clearTimeout(scrollHintTimer);
+    if(scrollHint){
+      scrollHint.classList.remove('show');
+      scrollHint.classList.remove('breathing');
+    }
+    if(current === 0){
+      scrollHintTimer = setTimeout(() => {
+        if(current === 0 && scrollHint){
+          scrollHint.classList.add('show');
+          setTimeout(() => {
+            if(current === 0 && scrollHint) scrollHint.classList.add('breathing');
+          }, 1400);
+        }
+      }, 5000);
+    }
+  }
+
+  function updateAboutHint(){
+    clearTimeout(aboutHintTimer);
+    if(aboutClickHint){
+      aboutClickHint.classList.remove('show');
+      aboutClickHint.classList.remove('breathing');
+    }
+    const aboutIsOpen = aboutContent && aboutContent.classList.contains('open');
+    if(current === 1 && !aboutIsOpen){
+      aboutHintTimer = setTimeout(() => {
+        if(current === 1 && aboutClickHint && !aboutContent.classList.contains('open')){
+          aboutClickHint.classList.add('show');
+          setTimeout(() => {
+            if(current === 1 && aboutClickHint && !aboutContent.classList.contains('open')) aboutClickHint.classList.add('breathing');
+          }, 1400);
+        }
+      }, 3000);
+    }
+  }
 
   function goTo(i){
     current = Math.max(0, Math.min(slides.length - 1, i));
@@ -279,16 +488,21 @@
       bgGif.classList.remove('slight-blur');
       bgGif.classList.add('dimmed');
     }
+    updateScrollHint();
+    updateAboutHint();
   }
+
+  updateScrollHint();
 
   const aboutToggle = document.getElementById('aboutToggle');
   const aboutContent = document.getElementById('aboutContent');
-  const aboutSlide = document.getElementById('aboutSlide');
+  const aboutShift = document.getElementById('aboutShift');
   if(aboutToggle){
     aboutToggle.addEventListener('click', () => {
       const isOpen = aboutContent.classList.toggle('open');
       aboutToggle.classList.toggle('compact', isOpen);
-      aboutSlide.classList.toggle('top-align', isOpen);
+      aboutShift.classList.toggle('open', isOpen);
+      updateAboutHint();
     });
   }
 
