@@ -6,7 +6,7 @@
 <title>Avinash Tiwari</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Honk&family=Stalemate&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{height:100%;overflow:hidden;}
@@ -26,17 +26,21 @@
   .bg-gif.dimmed{
     filter: blur(8px) brightness(0.5);
   }
+  .bg-gif.slight-blur{
+    filter: blur(2.5px);
+  }
 
   .track{
     display:flex;
-    width:400vw;
-    height:100%;
+    flex-direction:column;
+    width:100vw;
+    height:400vh;
     transition: transform 0.85s cubic-bezier(.65,.05,.36,1);
     will-change: transform;
   }
   .slide{
     width:100vw;
-    height:100%;
+    height:100vh;
     flex-shrink:0;
     display:flex;
     align-items:center;
@@ -46,12 +50,12 @@
 
   .name{
     text-align:center;
-    font-family:'Abril Fatface', serif;
+    font-family:'Honk', cursive;
     font-weight:700;
-    font-size:clamp(52px, 13vw, 150px);
+    font-size:clamp(80px, 19vw, 220px);
     text-transform:lowercase;
     letter-spacing:0.01em;
-    color:#ffffff;
+    color:#a8a8a8;
   }
 
   .card{
@@ -67,11 +71,11 @@
     transform:translateY(0);
   }
   .card h2{
-    font-family:'Abril Fatface', serif;
+    font-family:'Honk', cursive;
     font-weight:700;
     text-transform:lowercase;
-    font-size:clamp(40px,7vw,80px);
-    color:#ffffff;
+    font-size:clamp(80px, 19vw, 220px);
+    color:#a8a8a8;
     margin-bottom:40px;
   }
   .contact-list{list-style:none;display:inline-block;text-align:left;}
@@ -102,6 +106,38 @@
     word-break:break-word;
   }
   .contact-list a:hover{color:#7fdcff;}
+  .contact-icons{
+    display:flex;
+    justify-content:center;
+    gap:56px;
+    flex-wrap:wrap;
+  }
+  .contact-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:transform .3s ease;
+  }
+  .contact-icon img{
+    width:220px;
+    height:220px;
+    object-fit:contain;
+    mix-blend-mode:multiply;
+    transition:transform .3s ease;
+  }
+  .contact-icon:hover{
+    transform:translateY(-8px);
+  }
+  .contact-icon:hover img{
+    transform:scale(1.12);
+  }
+  .icon-boost{
+    transform:scale(1.6);
+  }
+  .contact-icon:hover .icon-boost{
+    transform:scale(1.72);
+  }
   .about-scroll{
     max-height:0;
     overflow:hidden;
@@ -113,7 +149,22 @@
   }
   .about-scroll.open{
     max-height:65vh;
-    margin-top:24px;
+    margin-top:16px;
+  }
+  #aboutSlide{
+    transition:padding-top .7s cubic-bezier(.65,.05,.36,1);
+  }
+  #aboutSlide.top-align{
+    align-items:flex-start;
+    padding-top:6vh;
+  }
+  #aboutToggle.compact{
+    font-size:clamp(45px,7vw,85px) !important;
+    color:#a8a8a8 !important;
+    transition:font-size .7s cubic-bezier(.65,.05,.36,1);
+  }
+  #aboutToggle{
+    transition:font-size .7s cubic-bezier(.65,.05,.36,1);
   }
   .about-scroll::-webkit-scrollbar{width:6px;}
   .about-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.25);border-radius:3px;}
@@ -162,7 +213,7 @@
     </div>
   </section>
 
-  <section class="slide">
+  <section class="slide" id="aboutSlide">
     <div class="card">
       <h2 id="aboutToggle" style="margin-bottom:0;cursor:pointer;">about me.</h2>
       <div class="about-scroll" id="aboutContent">
@@ -188,21 +239,18 @@
 
   <section class="slide">
     <div class="card">
-      <h2>contact me.</h2>
-      <ul class="contact-list">
-        <li>
-          <span class="contact-label">Email</span>
-          <a href="mailto:avinashtiwari2005ws@gmail.com">avinashtiwari2005ws@gmail.com</a>
-        </li>
-        <li>
-          <span class="contact-label">GitHub</span>
-          <a href="https://github.com/AVINASHTIWARI14" target="_blank" rel="noopener">github.com/AVINASHTIWARI14</a>
-        </li>
-        <li>
-          <span class="contact-label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6" target="_blank" rel="noopener">linkedin.com/in/avinash-tiwari</a>
-        </li>
-      </ul>
+      <h2 style="margin-top:-14vh;">contact me.</h2>
+      <div class="contact-icons" style="margin-top:60px;">
+        <a class="contact-icon" href="mailto:avinashtiwari2005ws@gmail.com" title="Email">
+          <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gmail.width-500.format-webp.webp" alt="Email">
+        </a>
+        <a class="contact-icon" href="https://github.com/AVINASHTIWARI14" target="_blank" rel="noopener" title="GitHub">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXtR3ZbUep044uvCpnykQBnY4i4rBHHdkmxyDLRISsirW4SXayA_33I90&s=10" alt="GitHub">
+        </a>
+        <a class="contact-icon" href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6" target="_blank" rel="noopener" title="LinkedIn">
+          <img class="icon-boost" src="https://i0.wp.com/finlink.co.uk/wp-content/uploads/2023/11/LinkedIn-Logo-e1700490108143.png?ssl=1" alt="LinkedIn">
+        </a>
+      </div>
     </div>
   </section>
 </div>
@@ -216,7 +264,7 @@
 
   function goTo(i){
     current = Math.max(0, Math.min(slides.length - 1, i));
-    track.style.transform = `translateX(-${current * 100}vw)`;
+    track.style.transform = `translateY(-${current * 100}vh)`;
     slides.forEach((s, idx) => {
       const card = s.querySelector('.card');
       if(card){
@@ -226,40 +274,54 @@
     });
     if(current === 0){
       bgGif.classList.remove('dimmed');
+      bgGif.classList.add('slight-blur');
     } else {
+      bgGif.classList.remove('slight-blur');
       bgGif.classList.add('dimmed');
     }
   }
 
   const aboutToggle = document.getElementById('aboutToggle');
   const aboutContent = document.getElementById('aboutContent');
+  const aboutSlide = document.getElementById('aboutSlide');
   if(aboutToggle){
     aboutToggle.addEventListener('click', () => {
-      aboutContent.classList.toggle('open');
+      const isOpen = aboutContent.classList.toggle('open');
+      aboutToggle.classList.toggle('compact', isOpen);
+      aboutSlide.classList.toggle('top-align', isOpen);
     });
   }
 
+  let wheelAccum = 0;
+  let wheelResetTimer = null;
   window.addEventListener('wheel', (e) => {
     if(e.target.closest('.about-scroll')) return;
     e.preventDefault();
     if(locked) return;
-    if(Math.abs(e.deltaY) < 8) return;
+
+    wheelAccum += e.deltaY;
+    clearTimeout(wheelResetTimer);
+    wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 200);
+
+    if(Math.abs(wheelAccum) < 40) return;
+
     locked = true;
-    goTo(current + (e.deltaY > 0 ? 1 : -1));
-    setTimeout(() => locked = false, 850);
+    goTo(current + (wheelAccum > 0 ? 1 : -1));
+    wheelAccum = 0;
+    setTimeout(() => locked = false, 900);
   }, {passive:false});
 
   window.addEventListener('keydown', (e) => {
-    if(e.key === 'ArrowRight') goTo(current + 1);
-    if(e.key === 'ArrowLeft') goTo(current - 1);
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+    if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
   });
 
-  let touchStartX = 0;
+  let touchStartY = 0;
   let touchStartTarget = null;
-  window.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; touchStartTarget = e.target; });
+  window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; touchStartTarget = e.target; });
   window.addEventListener('touchend', (e) => {
     if(touchStartTarget && touchStartTarget.closest('.about-scroll')) return;
-    const diff = touchStartX - e.changedTouches[0].clientX;
+    const diff = touchStartY - e.changedTouches[0].clientY;
     if(Math.abs(diff) > 50){
       goTo(current + (diff > 0 ? 1 : -1));
     }
