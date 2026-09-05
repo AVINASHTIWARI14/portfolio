@@ -10,6 +10,18 @@
   href="https://fonts.googleapis.com/css2?family=Anton+SC&display=swap"
   rel="stylesheet"
 >
+<link
+  href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap"
+  rel="stylesheet"
+>
+<link
+  href="https://fonts.googleapis.com/css2?family=Peralta&display=swap"
+  rel="stylesheet"
+>
+<link
+  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
@@ -26,9 +38,26 @@
 html,
 body{
   width:100%;
-  height:100%;
-  overflow:hidden;
-  background:transparent;
+  min-height:100%;
+  background:#111;
+}
+
+html{
+  scroll-behavior:auto;
+  scroll-snap-type:y proximity;
+}
+
+body{
+  overflow-x:hidden;
+  background:#111 url("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExamZqMm9udm1qeTRoZmtuejlqM2JwaGhhbW9rMGcyaHYxcXVucnIzdSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ohhwhHdgMUUGQ97he/giphy.gif") center/cover fixed no-repeat;
+}
+
+.page{
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  z-index:1;
+  scroll-snap-align:start;
 }
 
 
@@ -36,18 +65,7 @@ body{
    BACKGROUND
 ========================================================= */
 
-.bg-gif{
-  position:fixed;
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  object-position:center 65%;
-
-  z-index:0;
-}
+.bg-gif{display:none;}
 
 
 /* =========================================================
@@ -55,9 +73,9 @@ body{
 ========================================================= */
 
 .name{
-  position:fixed;
+  position:absolute;
   bottom:18px;
-  left:30px;
+  left:24px;
   z-index:10;
   font-family:'Anton SC',sans-serif;
   font-size:clamp(100px,14vw,220px);
@@ -73,7 +91,7 @@ body{
 ========================================================= */
 
 .tag-wrapper{
-  position:fixed;
+  position:absolute;
 
   top:0;
   right:8%;
@@ -269,7 +287,7 @@ body{
 ========================================================= */
 
 .author-title{
-  font-family:'Anton SC',sans-serif;
+  font-family:'Peralta',sans-serif;
 
   font-size:48px;
 
@@ -297,11 +315,11 @@ body{
   left:35px;
   right:35px;
 
-  font-family:Arial,sans-serif;
+  font-family:'Peralta',sans-serif;
 
   font-size:16px;
 
-  font-weight:600;
+  font-weight:400;
 
   line-height:1.45;
 
@@ -433,7 +451,7 @@ body{
 ========================================================= */
 
 .contact-form{position:absolute;left:22px;right:22px;bottom:20px;display:flex;flex-direction:column;gap:8px;}
-.contact-form input,.contact-form textarea{width:100%;box-sizing:border-box;border:1.5px solid #000;border-radius:0;outline:none;background:rgba(255,255,255,.72);color:#173f49;font-family:Arial,sans-serif;font-size:13px;font-weight:600;padding:8px 10px;}
+.contact-form input,.contact-form textarea{width:100%;box-sizing:border-box;border:1.5px solid #000;border-radius:0;outline:none;background:rgba(255,255,255,.72);color:#173f49;font-family:'Anton SC',sans-serif;font-size:13px;font-weight:600;padding:8px 10px;}
 .contact-form input{height:34px;}
 .contact-form textarea{height:62px;resize:none;}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:#555;opacity:1;}
@@ -449,185 +467,429 @@ body{
 ========================================================= */
 
 @keyframes swing{
-  0%{transform:rotate(1.2deg);}
-  25%{transform:rotate(-1.4deg);}
-  50%{transform:rotate(1.5deg);}
-  75%{transform:rotate(-1deg);}
-  100%{transform:rotate(1.2deg);}
+
+  0%{
+    transform:rotate(3deg);
+  }
+
+  25%{
+    transform:rotate(-4deg);
+  }
+
+  50%{
+    transform:rotate(5deg);
+  }
+
+  75%{
+    transform:rotate(-3deg);
+  }
+
+  100%{
+    transform:rotate(3deg);
+  }
+
 }
 
 
 /* =========================================================
-   NAVIGATION TEXT
+   CONTENT SECTIONS — smooth fade-in blur
+   No hard edges, no partitions.
+   opacity driven by JS scroll detection.
 ========================================================= */
-   .nav-buttons{
-  position:fixed;
-  top:145px;
-  left:13px;
-  z-index:12;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:8px;
+
+.content-section{
+  position:relative;
+  min-height:100vh;
+  padding:0;
+  /* NO overflow:hidden — that was causing the hard partition line */
+  z-index:1;
+  background:transparent;
+  scroll-snap-align:start;
 }
 
-.nav-button{
-  display:block;
-  width:max-content;
-  padding:10px 12px 9px;
-  margin:0;
-  border:1px solid rgba(3,20,49,.98);
-  background:#061f4f;
-  box-shadow:none;
+/* Blur overlay — opacity starts at 0, JS brings it to 1 */
+.content-section::before{
+  content:'';
+  position:absolute;
+  /* Extend 120px above and below to kill any gap/partition */
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:0;
+  backdrop-filter:grayscale(1) brightness(0.55);
+  -webkit-backdrop-filter:grayscale(1) brightness(0.55);
+  background:rgba(8,8,14,0.38);
+  opacity: var(--blur-opacity, 0);
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events:none;
+}
+
+/* All children above the blur layer */
+.content-section > *{
+  position:relative;
+  z-index:1;
+}
+
+
+
+.section-title{
+  position:absolute;
+  bottom:18px;
+  left:30px;
+  z-index:1;
   font-family:'Anton SC',sans-serif;
-  font-size:clamp(62px,7vw,110px);
+  font-size:clamp(52px,10vw,120px);
   font-weight:400;
-  color:#fff;
-  line-height:.85;
-  letter-spacing:0;
-  white-space:nowrap;
-  text-decoration:none;
-  cursor:pointer;
-  transition:filter .2s ease, transform .2s ease;
+  line-height:.95;
+  letter-spacing:1px;
+  color:#f4efe6;
+  text-align:left;
 }
 
-.nav-button:hover{
-  background:#fff;
-  color:#061f4f;
-  border-color:#fff;
-  transform:translateX(4px);
+/* Three brutalist cards arranged side by side — Uiverse.io by mayankk234 */
+.projects-books{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(20px,3vw,48px);
+  padding:40px 4vw 180px;
 }
 
-.nav-button:active{
-  transform:translateX(2px);
+/* From Uiverse.io by mayankk234 */
+.brutalist-card {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #000;
+  background-color: #f7c6dc;
+  padding: clamp(1.4rem, 2.5vw, 2.2rem);
+  box-shadow: 10px 10px 0 #000;
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s cubic-bezier(.25,.8,.25,1),
+              box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: default;
 }
 
-
-
-
-
-48.15% {
-    opacity: 0;
-  }
-  48.38% {
-    opacity: 1;
-  }
+.brutalist-card:hover {
+  transform: scale(1.045) translateY(-6px);
+  box-shadow: 16px 16px 0 #000;
 }
 
-
-/* WHOLE NAME SYNCHRONIZED FLICKER */
-.name {
-  position: fixed;
-  isolation: isolate;
+.brutalist-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1rem;
 }
 
-.name::after {
+.brutalist-card__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 0.5rem;
+}
+
+.brutalist-card__icon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: #fff;
+}
+
+.brutalist-card__alert {
+  font-weight: 900;
+  color: #000;
+  font-size: clamp(1.3rem, 2vw, 1.9rem);
+  text-transform: uppercase;
+}
+
+.brutalist-card__message {
+  flex: 1;
+  margin-top: 1rem;
+  color: #000;
+  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+  line-height: 1.5;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1rem;
+  font-weight: 600;
+}
+
+.brutalist-card__actions {
+  margin-top: 1rem;
+}
+
+.brutalist-card__button {
+  display: block;
+  width: 100%;
+  padding: clamp(0.75rem, 1.2vw, 1.1rem);
+  text-align: center;
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 3px solid #000;
+  background-color: #fff;
+  color: #000;
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 5px 5px 0 #000;
+  overflow: hidden;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.brutalist-card__button--read {
+  background-color: #000;
+  color: #fff;
+}
+
+.brutalist-card__button::before {
   content: "";
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: transparent;
-  z-index: 20;
-  animation: wholeNameFlicker 6.2s infinite;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
 }
 
-@keyframes wholeNameFlicker {
-  0%, 31%, 31.2%, 31.45%, 31.7%, 32%, 67%, 67.2%, 67.45%, 67.7%, 68%, 100% {
-    opacity: 0;
-  }
+.brutalist-card__button:hover::before {
+  left: 100%;
+}
 
-  /* one synchronized electrical blink */
-  31.15% {
-    opacity: 1;
-    background: #424242;
-  }
-  31.85% {
-    opacity: 0;
-  }
-  32.55% {
-    opacity: 1;
-    background: #ff1738;
-    filter: drop-shadow(0 0 18px rgba(255,23,56,1));
-  }
-  33.35% {
-    opacity: 0;
-  }
+.brutalist-card__button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #000;
+}
 
-  /* another rare synchronized blink */
-  67.15% {
-    opacity: 1;
-    background: #424242;
-  }
-  67.85% {
-    opacity: 0;
-  }
-  68.55% {
-    opacity: 1;
-    background: #ff1738;
-    filter: drop-shadow(0 0 18px rgba(255,23,56,1));
-  }
-  69.35% {
-    opacity: 0;
-  }
+.brutalist-card__button--mark:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #fff;
+  box-shadow: 7px 7px 0 #000000;
+}
+
+.brutalist-card__button--read:hover {
+  background-color: #ffffff;
+  border-color: #000000;
+  color: #000000;
+  box-shadow: 7px 7px 0 #000000;
+}
+
+.brutalist-card__button:active {
+  transform: translate(5px, 5px);
+  box-shadow: none;
 }
 
 
-/* NAV BUTTON VISIBILITY FIX */
-.nav-buttons{
-  position:fixed !important;
-  top:145px !important;
-  left:13px !important;
-  z-index:100 !important;
-  visibility:visible !important;
-  opacity:1 !important;
-}
+/* =========================================================
+   DSA JOURNEY — LARGE CARD
+========================================================= */
 
-
-/* SMOOTH FAST-SCROLL PAGE TRANSITION */
-body{
-  overflow:hidden !important;
-}
-body::after{
-  content:"";
-  position:fixed;
+.dsa-layout{
+  position:absolute;
   inset:0;
-  z-index:4500;
-  pointer-events:none;
-  background:rgba(6,31,79,0);
-  backdrop-filter:blur(0);
-  opacity:0;
-  transition:opacity .15s ease, backdrop-filter .15s ease;
+  z-index:1;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:125px 4vw 165px;
 }
-body.page-transitioning::after{
-  opacity:1;
-  background:rgba(6,31,79,.08);
-  backdrop-filter:blur(7px);
-}
-/* SIMPLE BLANK PAGES — no transition/effects */
 
-/* SIMPLE PAGE TRANSITION */
-.vertical-page{
-  position:fixed; inset:0; width:100%; height:100%;
-  z-index:5000; background:#4b0000;
-  visibility:hidden; pointer-events:none; opacity:0;
-  transform:translateY(100%);
-  transition:transform .42s cubic-bezier(.2,.8,.25,1), opacity .42s ease, visibility 0s linear .42s;
+.dsa-left{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.vertical-page.active{
-  visibility:visible; pointer-events:auto; opacity:1; transform:translateY(0);
-  transition:transform .42s cubic-bezier(.2,.8,.25,1), opacity .42s ease, visibility 0s;
+
+.dsa-right{
+  display:none;
 }
-.vertical-page .blank-page{position:absolute; inset:0; background:#4b0000; z-index:1;}
-.blank-page-title{position:absolute; top:35px; left:35px; margin:0; color:#fff; z-index:5; font-family:'Anton SC',sans-serif; font-size:clamp(70px,9vw,150px); font-weight:400; line-height:.85; letter-spacing:0;}
+
+.dsa-new-card{
+  width:min(900px,94vw);
+  background:#fefefe;
+  border-radius:1.25rem;
+  padding:.65rem;
+  color:#141417;
+  box-shadow:0 22px 55px rgba(0,0,0,.28);
+  font-family:'Anton SC',sans-serif;
+}
+
+.dsa-new-card__hero{
+  background:#fef4e2;
+  border-radius:.75rem .75rem 0 0;
+  padding:2rem 2.2rem 2.1rem;
+}
+
+.dsa-new-card__job-title{
+  margin:0 0 1.25rem;
+  font-family:'Anton SC',sans-serif;
+  font-size:clamp(38px,4.5vw,62px);
+  line-height:.95;
+  font-weight:400;
+  letter-spacing:1px;
+  color:#141417;
+}
+
+.dsa-new-card__description{
+  margin:0;
+  font-family:'Anton SC',sans-serif;
+  font-size:clamp(16px,1.35vw,20px);
+  color:#333;
+  line-height:1.52;
+  font-weight:400;
+  letter-spacing:.35px;
+}
+
+.dsa-new-card__footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1.5rem;
+  padding:1.15rem 1.25rem;
+  font-family:'Anton SC',sans-serif;
+}
+
+.dsa-new-card__job-summary{
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  min-width:0;
+}
+
+.dsa-new-card__logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  display:block;
+  flex-shrink:0;
+}
+
+.dsa-new-card__platform{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  font-family:'Anton SC',sans-serif;
+}
+
+.dsa-new-card__platform-name{
+  font-size:22px;
+  color:#141417;
+  letter-spacing:.5px;
+}
+
+.dsa-new-card__platform-sub{
+  font-size:13px;
+  color:#777;
+  font-weight:400;
+  letter-spacing:.5px;
+}
+
+.dsa-new-card__btn{
+  width:max-content;
+  border:none;
+  display:block;
+  cursor:pointer;
+  text-align:center;
+  padding:.75rem 1.5rem;
+  border-radius:1rem;
+  background:#141417;
+  color:#fff;
+  font-size:20px;
+  text-decoration:none;
+  font-family:'Anton SC',sans-serif;
+  letter-spacing:1px;
+  transition:transform .2s ease,opacity .2s ease;
+  white-space:nowrap;
+}
+
+.dsa-new-card__btn:hover{
+  transform:translateY(-3px);
+  opacity:.88;
+}
+
+@media (max-width:700px){
+  .dsa-layout{
+    padding:110px 3vw 150px;
+  }
+
+  .dsa-new-card{
+    width:94vw;
+  }
+
+  .dsa-new-card__hero{
+    padding:1.4rem;
+  }
+
+  .dsa-new-card__description{
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  .dsa-new-card__footer{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .dsa-new-card__btn{
+    width:100%;
+  }
+}
+
+.dsa-text p{
+  margin:0;
+}
+
+
+/* Resume button — main screen only */
+.resume-label{
+  position:absolute;
+  top:28px;
+  left:30px;
+  z-index:12;
+  display:inline-block;
+  padding:0;
+  font-family:'Knewave', sans-serif !important;
+  font-size:clamp(42px,4.6vw,68px);
+  font-weight:400;
+  line-height:1;
+  letter-spacing:1px;
+  color:#f2f0e8;
+  -webkit-text-stroke:8px #000;
+  paint-order:stroke fill;
+  border:none;
+  background:transparent;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .2s ease, background .2s ease;
+}
+
+.resume-label:hover{
+  transform:translateY(-2px);
+  background:transparent;
+}
+
 </style>
 
-
-
-
-
-
 <style id="contact-form-final-big">
-/* Bigger contact side — top thread/hole stays in the same place */
 .tag-wrapper{
   height:610px !important;
 }
@@ -650,14 +912,13 @@ body.page-transitioning::after{
   overflow:hidden !important;
 }
 
-/* Large single-line heading */
 .back h2{
   white-space:nowrap !important;
-  font-size:46px !important;
+  max-width:100% !important;
+  font-size:40px !important;
   line-height:1 !important;
 }
 
-/* Bigger logos */
 .contact-icons{
   margin-top:14px !important;
   gap:13px !important;
@@ -675,7 +936,6 @@ body.page-transitioning::after{
   height:62px !important;
 }
 
-/* Large fields, still safely inside 320px tag */
 .contact-form{
   position:absolute !important;
   left:30px !important;
@@ -723,17 +983,13 @@ body.page-transitioning::after{
   font-size:9px !important;
   overflow:hidden !important;
 }
-
-.blank-page{width:100%;height:100%;padding:40px;box-sizing:border-box;position:relative;background:#4b0000;color:#fff;}
-.blank-page .page-back{position:absolute;top:30px;left:30px;color:#fff;text-decoration:none;font-family:'Anton SC',sans-serif;font-size:28px;}
-
 </style>
-
 
 <style id="dark-blue-buttons">
 .nav-button{
   background:#061f4f !important;
   border-color:#031431 !important;
+  color:#fff !important;
 }
 .nav-button:hover{
   background:#fff !important;
@@ -743,44 +999,14 @@ body.page-transitioning::after{
 .contact-form button{
   background:#061f4f !important;
   border-color:#031431 !important;
+  color:#fff !important;
 }
 .contact-form button:hover{
   background:#fff !important;
   color:#061f4f !important;
   border-color:#fff !important;
 }
-
-.blank-page{width:100%;height:100%;padding:40px;box-sizing:border-box;position:relative;background:#4b0000;color:#fff;}
-.blank-page .page-back{position:absolute;top:30px;left:30px;color:#fff;text-decoration:none;font-family:'Anton SC',sans-serif;font-size:28px;}
-
 </style>
-
-
-<style id="darkest-blue-buttons">
-.nav-button{
-  background:#061f4f !important;
-  border-color:#031431 !important;
-}
-.nav-button:hover{
-  background:#fff !important;
-  color:#061f4f !important;
-  border-color:#fff !important;
-}
-.contact-form button{
-  background:#061f4f !important;
-  border-color:#031431 !important;
-}
-.contact-form button:hover{
-  background:#fff !important;
-  color:#061f4f !important;
-  border-color:#fff !important;
-}
-
-.blank-page{width:100%;height:100%;padding:40px;box-sizing:border-box;position:relative;background:#4b0000;color:#fff;}
-.blank-page .page-back{position:absolute;top:30px;left:30px;color:#fff;text-decoration:none;font-family:'Anton SC',sans-serif;font-size:28px;}
-
-</style>
-
 
 <style id="contact-input-font">
 .contact-form input,
@@ -798,297 +1024,295 @@ body.page-transitioning::after{
   color:#555 !important;
   opacity:1 !important;
 }
+</style>
 
-/* BROKEN NEON NAME EFFECT */
-.name{
-  position:fixed;
-  bottom:18px;
-  left:30px;
-  z-index:10;
-  font-family:'Anton SC',sans-serif;
-  font-size:clamp(100px,14vw,220px);
-  font-weight:400;
-  color:#424242;
-  line-height:.85;
-  white-space:nowrap;
-  animation:brokenNeon 3.8s steps(1,end) infinite;
+<style id="project-pastel-colors-final">
+#projects .projects-books .brutalist-card:nth-child(1){
+  background-color:#f7c6dc !important;
+}
+#projects .projects-books .brutalist-card:nth-child(2){
+  background-color:#bfe8ca !important;
+}
+#projects .projects-books .brutalist-card:nth-child(3){
+  background-color:#bdd8f5 !important;
+}
+</style>
+
+<style id="global-barriecito-font">
+html, body, body *{
+  font-family:'Peralta', sans-serif !important;
+}
+</style>
+
+<style id="bold-all-titles">
+h1, h2, h3, h4, h5, h6,
+.title, .section-title, .name,
+.author-title, .brutalist-card__alert,
+.dsa-new-card__job-title,
+.dsa-new-card__platform-name{
+  font-family:'Peralta', sans-serif !important;
+  font-weight:700 !important;
+}
+</style>
+
+<style id="barriecito-contact-form">
+.contact-form input,
+.contact-form textarea{
+  font-family:'Peralta', sans-serif !important;
+  font-weight:400 !important;
 }
 
-@keyframes brokenNeon{
-  0%, 8%, 12%, 19%, 31%, 38%, 47%, 58%, 67%, 76%, 86%, 94%, 100%{
-    color:#424242;
-    text-shadow:none;
-  }
-
-  9%, 11%, 20%, 30%, 39%, 46%, 59%, 66%, 77%, 85%, 95%, 98%{
-    color:#ff1738;
-    text-shadow:
-      0 0 4px rgba(255,23,56,.95),
-      0 0 12px rgba(255,23,56,.85),
-      0 0 26px rgba(255,23,56,.55);
-  }
-
-  10%, 40%, 60%, 78%, 96%{
-    color:#6b3438;
-    text-shadow:
-      0 0 2px rgba(255,23,56,.45);
-  }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  font-family:'Peralta', sans-serif !important;
+  font-weight:400 !important;
 }
+</style>
+<link
+  href="https://fonts.googleapis.com/css2?family=Peralta&display=swap"
+  rel="stylesheet"
+>
 
-
-/* REALISTIC BROKEN-NEON FLICKER */
+<style id="stacked-name">
 .name{
-  animation:none !important;
   display:flex;
-  align-items:flex-end;
+  flex-direction:column;
+  align-items:flex-start;
+  white-space:normal;
+  line-height:.78;
+  gap:0;
 }
-
 .name span{
-  display:inline-block;
-  color:#ff1738;
-  text-shadow:
-    0 0 3px rgba(255,23,56,.95),
-    0 0 9px rgba(255,23,56,.78),
-    0 0 20px rgba(255,23,56,.45);
-  animation:realNeonFlicker 3.7s infinite;
+  display:block;
 }
-
-/* Keep the space untouched. */
-.name .space{
-  width:.28em;
-  animation:none;
-}
-
-/* Staggered but overlapping cycles. */
-.name span:nth-child(1){animation-delay:-.31s}
-.name span:nth-child(2){animation-delay:-1.74s}
-.name span:nth-child(3){animation-delay:-.92s}
-.name span:nth-child(4){animation-delay:-2.48s}
-.name span:nth-child(5){animation-delay:-1.19s}
-.name span:nth-child(6){animation-delay:-3.01s}
-.name span:nth-child(7){animation-delay:-.57s}
-.name span:nth-child(9){animation-delay:-2.17s}
-.name span:nth-child(10){animation-delay:-1.43s}
-.name span:nth-child(11){animation-delay:-3.38s}
-.name span:nth-child(12){animation-delay:-.76s}
-.name span:nth-child(13){animation-delay:-2.71s}
-.name span:nth-child(14){animation-delay:-1.02s}
-.name span:nth-child(15){animation-delay:-2.01s}
-
-/*
-  Real neon doesn't simply alternate every few seconds.
-  It stays lit, has tiny voltage dips, rapid double-flickers,
-  then recovers. Grey is therefore brief and irregular.
-*/
-@keyframes realNeonFlicker{
-  0%, 63%, 100%{
-    color:#ff1738;
-    text-shadow:
-      0 0 3px rgba(255,23,56,.95),
-      0 0 9px rgba(255,23,56,.8),
-      0 0 20px rgba(255,23,56,.45);
-    opacity:1;
-  }
-
-  64%{
-    color:#8d333b;
-    text-shadow:0 0 2px rgba(255,23,56,.5);
-    opacity:.72;
-  }
-
-  64.35%{
-    color:#424242;
-    text-shadow:none;
-    opacity:1;
-  }
-
-  64.7%{
-    color:#ff1738;
-    text-shadow:
-      0 0 3px rgba(255,23,56,.95),
-      0 0 10px rgba(255,23,56,.82),
-      0 0 21px rgba(255,23,56,.48);
-  }
-
-  65.05%{
-    color:#424242;
-    text-shadow:none;
-  }
-
-  65.35%{
-    color:#ff1738;
-    text-shadow:
-      0 0 4px rgba(255,23,56,1),
-      0 0 12px rgba(255,23,56,.85),
-      0 0 24px rgba(255,23,56,.5);
-  }
-
-  65.8%{
-    color:#b83a43;
-    text-shadow:0 0 4px rgba(255,23,56,.6);
-  }
-
-  66.15%{
-    color:#ff1738;
-    text-shadow:
-      0 0 3px rgba(255,23,56,.95),
-      0 0 9px rgba(255,23,56,.8),
-      0 0 20px rgba(255,23,56,.45);
-  }
-
-  88%{
-    color:#ff1738;
-    text-shadow:
-      0 0 3px rgba(255,23,56,.95),
-      0 0 9px rgba(255,23,56,.8),
-      0 0 20px rgba(255,23,56,.45);
-  }
-
-  88.45%{
-    color:#424242;
-    text-shadow:none;
-  }
-
-  88.8%{
-    color:#ff1738;
-    text-shadow:
-      0 0 4px rgba(255,23,56,1),
-      0 0 12px rgba(255,23,56,.85),
-      0 0 24px rgba(255,23,56,.5);
-  }
-
-  89.15%{
-    color:#6e3036;
-    text-shadow:0 0 2px rgba(255,23,56,.4);
-  }
-
-  89.45%{
-    color:#ff1738;
-    text-shadow:
-      0 0 3px rgba(255,23,56,.95),
-      0 0 9px rgba(255,23,56,.8),
-      0 0 20px rgba(255,23,56,.45);
-  }
-}
-
-
-.blank-page{width:100%;height:100%;padding:40px;box-sizing:border-box;position:relative;background:#4b0000;color:#fff;}
-.blank-page .page-back{position:absolute;top:30px;left:30px;color:#fff;text-decoration:none;font-family:'Anton SC',sans-serif;font-size:28px;}
-
 </style>
 
-
-<style id="brief-full-text-blackout">
+<style id="name-bold">
 .name{
-  position:fixed;
-  animation:fullTextPulse 5.8s infinite;
+  font-weight:600 !important;
 }
-@keyframes fullTextPulse{
-  0%, 91%, 100%{opacity:1;}
-  92.0%{opacity:1;}
-  92.08%{opacity:.08;}
-  92.16%{opacity:.82;}
-  92.24%{opacity:.12;}
-  92.34%{opacity:1;}
-}
-
-.blank-page{width:100%;height:100%;padding:40px;box-sizing:border-box;position:relative;background:#4b0000;color:#fff;}
-.blank-page .page-back{position:absolute;top:30px;left:30px;color:#fff;text-decoration:none;font-family:'Anton SC',sans-serif;font-size:28px;}
-
-</style>
-
-<style id="bat-logo-front">
-.front .bat-logo{
-  position:absolute;
-  bottom:18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:150px;
-  height:auto;
-  object-fit:contain;
-  z-index:6;
+.name span{
+  font-weight:600 !important;
 }
 </style>
+
+<style id="dark-pastel-section-titles">
+.section-title,
+.name{
+  color:#474b50 !important;
+}
+
+#projects .brutalist-card__alert,
+#projects .brutalist-card__message{
+  color:inherit;
+}
+</style>
+
+<style id="immersive-scroll-visible">
+.name,
+.section-title,
+.brutalist-card{
+  --scroll-scale:1;
+  --scroll-y:0px;
+  transform:translate3d(0,var(--scroll-y),0) scale(var(--scroll-scale));
+  transform-origin:center center;
+  will-change:transform;
+}
+
+.brutalist-card:hover{
+  transform:
+    translate3d(0,calc(var(--scroll-y) - 6px),0)
+    scale(calc(var(--scroll-scale) * 1.03));
+}
+
+@media (prefers-reduced-motion: reduce){
+  .name,
+  .section-title,
+  .brutalist-card{
+    transform:none !important;
+  }
+}
+</style>
+<link
+  href="https://fonts.googleapis.com/css2?family=Joti+One&display=swap"
+  rel="stylesheet"
+>
+
+<style id="two-line-section-titles-and-tag-outline">
+.section-title{
+  width:max-content;
+  max-width:42vw;
+  line-height:.82 !important;
+  white-space:normal !important;
+}
+
+.section-title br{
+  display:block;
+}
+
+.tag{
+  box-shadow:
+    10px 12px 0 #000,
+    12px 15px 27px rgba(0,0,0,.20) !important;
+}
+
+.tag.front,
+.tag.back{
+  outline:2px solid rgba(0,0,0,.12);
+  outline-offset:-6px;
+}
+</style>
+
+<style id="tag-completely-plain">
+.tag{
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+</style>
+<link
+  href="https://fonts.googleapis.com/css2?family=Knewave&display=swap"
+  rel="stylesheet"
+>
+
+<style id="knewave-absolutely-everything">
+html, body,
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, label,
+button, input, textarea, select, option,
+strong, b, em, i, small,
+.brutalist-card__alert,
+.brutalist-card__message,
+.section-title,
+.name,
+.author-title,
+.about-me,
+.tag h2,
+.contact-form,
+.contact-form input,
+.contact-form textarea,
+.contact-form button,
+.form-status{
+  font-family:'Knewave', sans-serif !important;
+}
+
+input::placeholder,
+textarea::placeholder{
+  font-family:'Knewave', sans-serif !important;
+  font-weight:400 !important;
+  opacity:1 !important;
+}
+
+input,
+textarea{
+  font-family:'Knewave', sans-serif !important;
+}
+</style>
+
+<style id="knewave-placeholder-force">
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+input::placeholder,
+textarea::placeholder,
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+::-ms-input-placeholder{
+  font-family:'Knewave', sans-serif !important;
+  font-weight:400 !important;
+  opacity:1 !important;
+}
+</style>
+
+<style id="name-one-line-final">
+.name{
+  display:block !important;
+  flex-direction:initial !important;
+  align-items:initial !important;
+  white-space:nowrap !important;
+  line-height:.85 !important;
+}
+</style>
+
+<style id="pastel-yellow-titles">
+.section-title{
+  color:#f2f0e8 !important;
+}
+</style>
+
+<style id="pastel-yellow-main-name">
+.name{
+  color:#f2f0e8 !important;
+}
+</style>
+
+<style id="yellow-title-black-outline">
+.name,
+.section-title{
+  color:#f2f0e8 !important;
+  -webkit-text-stroke:3px #000 !important;
+  paint-order:stroke fill !important;
+}
+</style>
+
+<style id="name-shift-up">
+.name{
+  bottom:32px !important;
+}
+</style>
+
+<style id="page-title-thicker-black-boundary">
+.section-title,
+.name{
+  -webkit-text-stroke:13px #000 !important;
+  paint-order:stroke fill !important;
+}
+</style>
+
+<style id="title-line-spacing">
+.section-title{
+  line-height:1.08 !important;
+}
+.section-title br{
+  display:block !important;
+  content:"" !important;
+}
+</style>
+
 </head>
 
 
 <body>
 
+<section class="page hero" id="home">
 
-<!-- =========================================================
-     BACKGROUND
-========================================================= -->
-
-<img
-  class="bg-gif"
-  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHVtdGdreml6NjM4ajQxZTZreXowNXFjdDhqdHdpZmtjb2N4cG5xZCZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/B4jfJqiIxvU08/giphy.gif"
-  alt=""
->
-
-
-<!-- =========================================================
-     NAME
-========================================================= -->
-
-<div class="name" aria-label="AVINASH TIWARI.">
-  <span>A</span><span>V</span><span>I</span><span>N</span><span>A</span><span>S</span><span>H</span>
-  <span class="space"> </span>
-  <span>T</span><span>I</span><span>W</span><span>A</span><span>R</span><span>I</span><span>.</span>
+<div class="name">
+  AVINASH TIWARI.
 </div>
-
-
-<div class="nav-buttons">
-  <a class="nav-button" href="#projects-page">MY PROJECTS</a>
-  <a class="nav-button" href="#dsa-page">MY DSA JOURNEY</a>
-  <a class="nav-button" href="#skills-page">MY SKILLS</a>
-  <a class="nav-button" href="#achievements-page">MY ACHIEVEMENTS</a>
-</div>
-
-
-
-<!-- =========================================================
-     STICKY NOTES
-========================================================= -->
-
-<!-- =========================================================
-     HANGING TAG
-========================================================= -->
 
 <div
   class="tag-wrapper"
   id="tagWrapper"
 >
 
-
-  <!-- THREAD -->
-
   <div class="string"></div>
-
-
-  <!-- TAG CARD -->
 
   <div class="tag-card">
 
     <div class="tag-inner">
 
-
-      <!-- ===================================================
-           FRONT
-      ==================================================== -->
-
       <div class="tag front">
 
         <div class="punch-hole"></div>
-
 
         <div class="author-title">
           THE AUTHOR:
         </div>
 
-
         <p class="about-me">
 
-          Hey! I’m Avinash, A CS student .I enjoy
+          Hey! I'm Avinash, A CS student .I enjoy
           problem solving and am kinda obsessed with
           building pretty stuff . You can get in touch
           using my contact details at the back side of
@@ -1098,96 +1322,35 @@ body.page-transitioning::after{
 
       </div>
 
-
-      <!-- ===================================================
-           BACK
-      ==================================================== -->
-
       <div class="tag back">
 
         <div class="punch-hole"></div>
-
 
         <h2>
           Contact me:
         </h2>
 
-
-        <!-- =================================================
-             CONTACT ICONS
-        ================================================== -->
-
         <div class="contact-icons">
 
-
-          <!-- LINKEDIN -->
-
           <div class="contact-item">
-
-            <a
-              href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="LinkedIn"
-            >
-
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/linkedin-app-icon.png"
-                alt="LinkedIn"
-              >
-
+            <a href="https://www.linkedin.com/in/avinash-tiwari-95b5932a6" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/linkedin-app-icon.png" alt="LinkedIn">
             </a>
-
           </div>
 
-
-          <!-- INSTAGRAM -->
-
           <div class="contact-item">
-
-            <a
-              href="https://www.instagram.com/vesper.commw?igsi=OWR0cDlkNWx0NHhm"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Instagram"
-            >
-
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1280px-Instagram_icon.png"
-                alt="Instagram"
-              >
-
+            <a href="https://www.instagram.com/vesper.commw?igsi=OWR0cDlkNWx0NHhm" target="_blank" rel="noopener noreferrer" title="Instagram">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1280px-Instagram_icon.png" alt="Instagram">
             </a>
-
           </div>
 
-
-          <!-- GITHUB -->
-
           <div class="contact-item">
-
-            <a
-              href="https://github.com/AVINASHTIWARI14"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="GitHub"
-            >
-
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                alt="GitHub"
-              >
-
+            <a href="https://github.com/AVINASHTIWARI14" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
             </a>
-
           </div>
 
         </div>
-
-
-        <!-- =================================================
-             EMAIL
-        ================================================== -->
 
         <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="61363510-a6b8-43bf-8d0d-4cd84781f129">
@@ -1210,15 +1373,80 @@ body.page-transitioning::after{
 </div>
 
 
-<!-- =========================================================
-     SCRIPT
-========================================================= -->
+<!-- Resume label on the main screen -->
+</section>
+
+<section class="content-section" id="projects">
+  <h2 class="section-title">MY<br>PROJECTS.</h2>
+  <div class="projects-books" aria-label="Project cards">
+
+    <div class="brutalist-card">
+      <div class="brutalist-card__header">
+        <div class="brutalist-card__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="brutalist-card__alert">PROJECT 01</span>
+      </div>
+      <p class="brutalist-card__message">Add your project details here.</p>
+      <div class="brutalist-card__actions">
+        <a href="#" class="brutalist-card__button brutalist-card__button--mark">More Info</a>
+        <a href="#" class="brutalist-card__button brutalist-card__button--read">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="brutalist-card">
+      <div class="brutalist-card__header">
+        <div class="brutalist-card__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="brutalist-card__alert">PROJECT 02</span>
+      </div>
+      <p class="brutalist-card__message">Add your project details here.</p>
+      <div class="brutalist-card__actions">
+        <a href="#" class="brutalist-card__button brutalist-card__button--mark">More Info</a>
+        <a href="#" class="brutalist-card__button brutalist-card__button--read">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="brutalist-card">
+      <div class="brutalist-card__header">
+        <div class="brutalist-card__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="brutalist-card__alert">PROJECT 03</span>
+      </div>
+      <p class="brutalist-card__message">Add your project details here.</p>
+      <div class="brutalist-card__actions">
+        <a href="#" class="brutalist-card__button brutalist-card__button--mark">More Info</a>
+        <a href="#" class="brutalist-card__button brutalist-card__button--read">Live Demo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section" id="dsa-journey">
+  <h2 class="section-title">MY<br>DSA JOURNEY.</h2>
+</section>
+
+<section class="content-section" id="skills">
+  <h2 class="section-title">MY<br>SKILLS/TOOLS.</h2>
+</section>
+
+<section class="content-section" id="achievements">
+  <h2 class="section-title">MY<br>ACHIEVEMENTS.</h2>
+</section>
 
 <script>
 
 const tagWrapper =
   document.getElementById("tagWrapper");
-
 
 tagWrapper.addEventListener(
   "click",
@@ -1262,55 +1490,81 @@ contactForm.addEventListener("submit", async function(event){
 
 </script>
 
+<script id="immersive-scroll-visible-script">
+(() => {
+  const motionEls = [
+    ...document.querySelectorAll(
+      ".hero .name, " +
+      ".content-section .section-title, " +
+      ".content-section .brutalist-card"
+    )
+  ];
 
+  const sections = [...document.querySelectorAll(".content-section")];
 
-<section id="projects-page" class="vertical-page"><h1 class="blank-page-title">MY PROJECTS</h1>
-  <div class="blank-page">
-    <!-- ADD YOUR PROJECTS CONTENT HERE -->
-  </div>
-</section>
+  let ticking = false;
 
-<section id="dsa-page" class="vertical-page"><h1 class="blank-page-title">MY DSA JOURNEY</h1>
-  <div class="blank-page">
-    <!-- ADD YOUR DSA CONTENT HERE -->
-  </div>
-</section>
+  function updateMotion(){
+    const vh = window.innerHeight;
+    const center = vh * 0.5;
+    const range = vh * 0.9;
 
-<section id="skills-page" class="vertical-page"><h1 class="blank-page-title">MY SKILLS</h1>
-  <div class="blank-page">
-    <!-- ADD YOUR SKILLS CONTENT HERE -->
-  </div>
-</section>
+    // --- parallax scale/offset (unchanged) ---
+    motionEls.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < -180 || rect.top > vh + 180) return;
 
-<section id="achievements-page" class="vertical-page"><h1 class="blank-page-title">MY ACHIEVEMENTS</h1>
-  <div class="blank-page">
-    <!-- ADD YOUR ACHIEVEMENTS CONTENT HERE -->
-  </div>
-</section>
+      const elCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(elCenter - center);
+      const proximity = Math.max(0, 1 - distance / range);
+      const scale = 0.92 + proximity * 0.14;
+      const offset = ((elCenter - center) / range) * 22;
 
-
-
-
-
-
-
-
-<script>
-(function(){
-  const buttons=document.querySelectorAll('.nav-button');
-  const pages=document.querySelectorAll('.vertical-page');
-
-  buttons.forEach(button=>{
-    button.addEventListener('click',e=>{
-      const href=button.getAttribute('href');
-      if(!href || !href.startsWith('#')) return;
-      const page=document.getElementById(href.slice(1));
-      if(!page) return;
-      e.preventDefault();
-      pages.forEach(p=>p.classList.remove('active'));
-      requestAnimationFrame(()=>page.classList.add('active'));
+      el.style.setProperty("--scroll-scale", scale.toFixed(4));
+      el.style.setProperty("--scroll-y", offset.toFixed(1) + "px");
     });
-  });
+
+    // --- blur fade-in per section ---
+    // Opacity goes 0 → 1 as section enters from bottom,
+    // and stays 1 once it's fully visible.
+    sections.forEach((sec) => {
+      const rect = sec.getBoundingClientRect();
+
+      // How far the section top has crossed into the viewport.
+      // When rect.top == vh  → just entering → 0
+      // When rect.top == 0   → top at viewport top → fully in
+      // We start fading at 80% of vh height before it arrives.
+      const fadeStart = vh * 1.0;  // start fading when 85% away
+      const fadeEnd   = vh * 0.5;  // fully opaque when top is 15% from top
+
+      let opacity;
+      if (rect.top > fadeStart) {
+        opacity = 0;
+      } else if (rect.top < fadeEnd) {
+        opacity = 1;
+      } else {
+        // linear interpolation
+        opacity = 1 - (rect.top - fadeEnd) / (fadeStart - fadeEnd);
+      }
+
+      sec.style.setProperty("--blur-opacity", opacity.toFixed(3));
+    });
+
+    ticking = false;
+  }
+
+  function requestUpdate(){
+    if (!ticking){
+      ticking = true;
+      requestAnimationFrame(updateMotion);
+    }
+  }
+
+  window.addEventListener("scroll", requestUpdate, {passive:true});
+  window.addEventListener("resize", requestUpdate, {passive:true});
+  window.addEventListener("load", requestUpdate);
+
+  requestUpdate();
 })();
 </script>
 
