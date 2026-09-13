@@ -1459,12 +1459,60 @@ textarea::placeholder,
 }
 </style>
 
+
+<style id="author-note-card-style">
+.author-note-card{
+  position:absolute;
+  top:110px;
+  left:48px;
+  width:520px;
+  height:400px;
+  background:#ff66a3;
+  border:3px solid #000;
+  box-shadow:12px 12px 0 #000;
+  overflow:hidden;
+  transition:all .3s ease;
+  z-index:8;
+}
+.author-note-card .author-note-head{
+  width:100%;
+  height:58px;
+  background:#fff;
+  padding:12px 16px;
+  color:#000;
+  border-bottom:3px solid #000;
+  font-size:32px;
+  font-weight:900;
+  line-height:38px;
+  outline:none;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:none;
+}
+.author-note-card .author-note-content{
+  padding:16px 18px;
+  font-size:32px;
+  font-weight:600;
+  color:#000;
+  line-height:1.35;
+  min-height:300px;
+  outline:none;
+}
+</style>
+
 </head>
 
 
 <body>
 
 <section class="page hero" id="home">
+
+
+<div class="author-note-card" id="authorNoteCard">
+  <div class="author-note-head" contenteditable="false" spellcheck="false">AVINASH SAYS -</div>
+  <div class="author-note-content" id="authorNoteContent" contenteditable="true" spellcheck="true">Write anything here...</div>
+</div>
 
 <div class="name">
   AVINASH TIWARI.
@@ -1755,6 +1803,85 @@ contactForm.addEventListener("submit", async function(event){
   window.addEventListener("load", requestUpdate);
 
   requestUpdate();
+})();
+</script>
+
+
+<script id="author-note-drag">
+(() => {
+  const card = document.getElementById("authorNoteCard");
+  const head = card?.querySelector(".author-note-head");
+  const home = document.getElementById("home");
+  if (!card || !head || !home) return;
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  function pointerDown(event) {
+    dragging = true;
+    card.style.transition = "none";
+    head.style.cursor = "grabbing";
+
+    const cardRect = card.getBoundingClientRect();
+    const homeRect = home.getBoundingClientRect();
+
+    // Store the grab point relative to the card.
+    offsetX = event.clientX - cardRect.left;
+    offsetY = event.clientY - cardRect.top;
+
+    head.setPointerCapture?.(event.pointerId);
+    event.preventDefault();
+  }
+
+  function pointerMove(event) {
+    if (!dragging) return;
+
+    const homeRect = home.getBoundingClientRect();
+
+    // Because the card is absolute inside #home, use the page/section
+    // coordinates rather than viewport coordinates.
+    const rawLeft =
+      event.clientX - homeRect.left + home.scrollLeft - offsetX;
+    const rawTop =
+      event.clientY - homeRect.top + home.scrollTop - offsetY;
+
+    const maxX = Math.max(0, home.clientWidth - card.offsetWidth);
+    const maxY = Math.max(0, home.clientHeight - card.offsetHeight);
+
+    card.style.left = `${clamp(rawLeft, 0, maxX)}px`;
+    card.style.top = `${clamp(rawTop, 0, maxY)}px`;
+  }
+
+  function pointerUp(event) {
+    if (!dragging) return;
+    dragging = false;
+    head.style.cursor = "grab";
+    card.style.transition = "all .3s ease";
+    head.releasePointerCapture?.(event.pointerId);
+  }
+
+  head.addEventListener("pointerdown", pointerDown);
+  head.addEventListener("pointermove", pointerMove);
+  head.addEventListener("pointerup", pointerUp);
+  head.addEventListener("pointercancel", pointerUp);
+  head.addEventListener("dragstart", (event) => event.preventDefault());
+})();
+</script>
+
+<script id="author-note-persistence">
+(() => {
+  const note = document.getElementById("authorNoteContent");
+  if (!note) return;
+  const key = "avinash_portfolio_author_note";
+  const saved = localStorage.getItem(key);
+  if (saved !== null) note.innerHTML = saved;
+  const save = () => localStorage.setItem(key, note.innerHTML);
+  note.addEventListener("input", save);
+  note.addEventListener("blur", save);
+  if (saved === null) save();
 })();
 </script>
 
