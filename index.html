@@ -44,7 +44,7 @@ body{
 
 html{
   scroll-behavior:auto;
-  scroll-snap-type:y proximity;
+  scroll-snap-type:y mandatory;
 }
 
 body{
@@ -58,6 +58,7 @@ body{
   min-height:100vh;
   z-index:1;
   scroll-snap-align:start;
+  scroll-snap-stop:always;
 }
 
 
@@ -488,6 +489,7 @@ body{
   z-index:1;
   background:transparent;
   scroll-snap-align:start;
+  scroll-snap-stop:always;
 }
 
 /* Blur overlay — opacity starts at 0, JS brings it to 1 */
@@ -2400,6 +2402,30 @@ textarea::placeholder,
 }
 </style>
 
+
+<style id="dsa-platform-pastel-dark-bright-final">
+/* Requested DSA Journey platform-card colors + hover text */
+#dsa-journey .dsa-vertical-platforms .leetcode{
+  background:#d9c45c !important;
+}
+#dsa-journey .dsa-vertical-platforms .codeforces{
+  background:#8fc986 !important;
+}
+#dsa-journey .dsa-vertical-platforms .codechef{
+  background:#e58f8f !important;
+}
+#dsa-journey .dsa-vertical-platforms .hackerrank{
+  background:#b99be5 !important;
+}
+#dsa-journey .dsa-vertical-platforms .cses{
+  background:#e59fbd !important;
+}
+
+#dsa-journey .dsa-vertical-platforms a:hover{
+  color:#fff !important;
+}
+</style>
+
 </head>
 
 
@@ -2550,7 +2576,9 @@ textarea::placeholder,
         <div class="dsa-blank-face dsa-blank-front">
           <img src="https://media.giphy.com/media/s4ycVAVuJvXRvK0Rap/giphy.gif" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://i.giphy.com/s4ycVAVuJvXRvK0Rap.gif';}">
         </div>
-        <div class="dsa-blank-face dsa-blank-back"></div>
+        <div class="dsa-blank-face dsa-blank-back">
+          <p class="dsa-journey-back-text">My journey with DSA started with a simple goal: getting better at problem solving, and somehow turned into 500+ problems solved across different platforms. I have solved 300+ problems on LeetCode alone and regularly practice on platforms like Codeforces, CodeChef, and HackerRank. Recently, I stepped into competitive programming and have participated in 20+ live contests, which has taught me that solving a problem is one thing, solving it before the clock runs out is a completely different game. I still struggle with problems, get stuck on ideas, and occasionally spend far too long debugging something that turns out to be a tiny mistake, but that is also what I enjoy about it. Every problem gives me something new to learn, and I am continuously working to improve my problem-solving skills, speed, and consistency.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -2778,6 +2806,56 @@ contactForm.addEventListener("submit", async function(event){
 })();
 </script>
 
+
+
+<style id="dsa-back-text-spread-final">
+/* Spread the DSA story across the full back-card area without changing the card itself. */
+#dsa-journey .dsa-blank-back{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:34px 42px !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+}
+
+#dsa-journey .dsa-journey-back-text{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  color:#000 !important;
+  font-family:'Knewave', sans-serif !important;
+  font-size:clamp(18px,1.72vw,25px) !important;
+  font-weight:400 !important;
+  line-height:1.55 !important;
+  letter-spacing:.05px !important;
+  text-align:justify !important;
+  text-align-last:left !important;
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-blank-back{
+    padding:30px 34px !important;
+  }
+  #dsa-journey .dsa-journey-back-text{
+    font-size:clamp(16px,1.75vw,22px) !important;
+    line-height:1.5 !important;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-blank-back{
+    padding:24px 22px !important;
+  }
+  #dsa-journey .dsa-journey-back-text{
+    font-size:14px !important;
+    line-height:1.48 !important;
+    text-align:left !important;
+  }
+}
+</style>
 </body>
 </html>
 <style id="restore-dsa-right-gif-card">
@@ -2844,3 +2922,127 @@ contactForm.addEventListener("submit", async function(event){
   background:#b8b8b8 !important;
 }
 </style>
+
+
+<style id="dsa-journey-back-text-final">
+#dsa-journey .dsa-blank-back{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:44px 50px !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+}
+
+#dsa-journey .dsa-journey-back-text{
+  margin:0 !important;
+  width:100% !important;
+  max-width:none !important;
+  color:#000 !important;
+  font-family:'Anton SC',sans-serif !important;
+  font-size:clamp(17px,1.45vw,23px) !important;
+  font-weight:700 !important;
+  line-height:1.42 !important;
+  letter-spacing:.1px !important;
+  text-align:left !important;
+  overflow-wrap:break-word !important;
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-blank-back{
+    padding:36px 38px !important;
+  }
+  #dsa-journey .dsa-journey-back-text{
+    font-size:clamp(15px,1.5vw,20px) !important;
+    line-height:1.4 !important;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-blank-back{
+    padding:28px 24px !important;
+  }
+  #dsa-journey .dsa-journey-back-text{
+    font-size:14px !important;
+    line-height:1.4 !important;
+  }
+}
+</style>
+
+
+<style id="dsa-back-text-page-title-font-final">
+/* DSA back text — same font as the page title, sized to use the card space cleanly */
+#dsa-journey .dsa-blank-back{
+  padding:30px 32px !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  display:block !important;
+  scrollbar-width:auto !important;
+}
+
+#dsa-journey .dsa-journey-back-text{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  color:#000 !important;
+  font-family:'Knewave', sans-serif !important;
+  font-size:clamp(17px,1.55vw,23px) !important;
+  font-weight:400 !important;
+  line-height:1.32 !important;
+  letter-spacing:.1px !important;
+  text-align:left !important;
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-blank-back{
+    padding:28px 30px !important;
+  }
+  #dsa-journey .dsa-journey-back-text{
+    font-size:clamp(15px,1.55vw,20px) !important;
+    line-height:1.3 !important;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-blank-back{
+    padding:24px 22px !important;
+  }
+  #dsa-journey .dsa-journey-back-text{
+    font-size:13px !important;
+    line-height:1.32 !important;
+  }
+}
+</style>
+
+<style id="dsa-back-text-area-utilization">
+/* DSA back-card text — larger type and more open spacing to use the full card area. */
+#dsa-journey .dsa-journey-back-text{
+  font-size:clamp(21px,2.25vw,32px) !important;
+  line-height:1.5 !important;
+  letter-spacing:.4px !important;
+  word-spacing:1px !important;
+  text-align:left !important;
+  text-align-last:left !important;
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-journey-back-text{
+    font-size:clamp(18px,2.2vw,27px) !important;
+    line-height:1.48 !important;
+    letter-spacing:.3px !important;
+    word-spacing:.8px !important;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-journey-back-text{
+    font-size:15px !important;
+    line-height:1.45 !important;
+    letter-spacing:.2px !important;
+    word-spacing:.4px !important;
+  }
+}
+</style>
+
