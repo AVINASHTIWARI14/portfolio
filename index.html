@@ -872,6 +872,87 @@ body{
 
 </style>
 
+<style id="dsa-blank-card">
+/* DSA JOURNEY — blank flip card on the right */
+#dsa-journey .dsa-blank-area{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:80px 5vw 155px 38vw;
+  box-sizing:border-box;
+  pointer-events:none;
+}
+
+#dsa-journey .dsa-blank-card{
+  width:min(560px,42vw);
+  height:clamp(360px,57vh,550px);
+  min-width:0;
+  flex:0 0 auto;
+  box-sizing:border-box;
+  perspective:1200px;
+  pointer-events:auto;
+}
+
+#dsa-journey .dsa-blank-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .7s cubic-bezier(.2,.75,.2,1);
+}
+
+#dsa-journey .dsa-blank-card:hover .dsa-blank-inner{
+  transform:rotateY(180deg);
+}
+
+#dsa-journey .dsa-blank-face{
+  position:absolute;
+  inset:0;
+  box-sizing:border-box;
+  border:4px solid #000;
+  background:#d99090;
+  box-shadow:10px 10px 0 #000;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  overflow:hidden;
+}
+
+.dsa-blank-front{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+}
+
+.dsa-blank-front img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+}
+
+#dsa-journey .dsa-blank-back{
+  transform:rotateY(180deg);
+  background:#d99090;
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-blank-area{
+    justify-content:center;
+    padding:90px 5vw 180px;
+  }
+
+  #dsa-journey .dsa-blank-card{
+    width:90vw;
+    height:48vh;
+  }
+}
+</style>
+
 <style id="contact-form-final-big">
 .tag-wrapper{
   height:610px !important;
@@ -1506,6 +1587,819 @@ textarea::placeholder,
 }
 </style>
 
+
+<style id="dsa-platform-logos">
+/* DSA JOURNEY — platform cards */
+#dsa-journey .dsa-platforms{
+  position:absolute;
+  top:55px;
+  left:24px;
+  bottom:275px;
+  width:clamp(400px,44vw,650px);
+  z-index:4;
+  pointer-events:none;
+}
+
+#dsa-journey .dsa-platform-link{
+  position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:auto;
+  box-sizing:border-box;
+  padding:18px;
+  line-height:0;
+  border:4px solid #000;
+  border-radius:16px;
+  box-shadow:10px 10px 0 #000;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1), filter .25s ease;
+  overflow:hidden;
+}
+
+#dsa-journey .dsa-platform-link img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(3px 4px 0 rgba(0,0,0,.12));
+}
+
+/* Individual pastel cards */
+#dsa-journey .dsa-platform-link.leetcode{
+  left:22%;
+  top:46%;
+  width:clamp(180px,15vw,225px);
+  height:clamp(180px,15vw,225px);
+  background:#d8c7ee;
+  transform:rotate(-4deg);
+}
+#dsa-journey .dsa-platform-link.leetcode:hover{
+  transform:rotate(-4deg) translateY(-6px) scale(1.04);
+}
+
+#dsa-journey .dsa-platform-link.hackerrank{
+  left:35%;
+  top:21%;
+  width:clamp(150px,12vw,185px);
+  height:clamp(150px,12vw,185px);
+  background:#f2df9a;
+  transform:rotate(5deg);
+}
+#dsa-journey .dsa-platform-link.hackerrank:hover{
+  transform:rotate(5deg) translateY(-6px) scale(1.05);
+}
+
+#dsa-journey .dsa-platform-link.codechef{
+  left:1%;
+  top:1%;
+  width:clamp(160px,13vw,200px);
+  height:clamp(160px,13vw,200px);
+  background:#f2bd8b;
+  transform:rotate(-7deg);
+}
+#dsa-journey .dsa-platform-link.codechef:hover{
+  transform:rotate(-7deg) translateY(-6px) scale(1.05);
+}
+
+/* Codeforces sits in the lower zone, visually beneath the main DSA card. */
+#dsa-journey .dsa-platform-link.codeforces{
+  left:39%;
+  top:72%;
+  width:clamp(230px,21vw,305px);
+  height:clamp(125px,11vw,155px);
+  padding:14px 20px;
+  background:#c9ced5;
+  transform:rotate(3deg);
+}
+#dsa-journey .dsa-platform-link.codeforces:hover{
+  transform:rotate(3deg) translateY(-6px) scale(1.04);
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-platforms{
+    left:12px;
+    width:48vw;
+  }
+
+  #dsa-journey .dsa-platform-link.codechef{
+    left:0;
+    top:2%;
+  }
+
+  #dsa-journey .dsa-platform-link.hackerrank{
+    left:38%;
+    top:25%;
+  }
+
+  #dsa-journey .dsa-platform-link.leetcode{
+    left:22%;
+    top:50%;
+  }
+
+  #dsa-journey .dsa-platform-link.codeforces{
+    left:32%;
+    top:73%;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-platforms{
+    position:relative;
+    top:auto;
+    left:auto;
+    bottom:auto;
+    width:100%;
+    height:520px;
+    margin-top:20px;
+  }
+
+  #dsa-journey .dsa-platform-link{
+    padding:12px;
+    box-shadow:8px 8px 0 #000;
+  }
+
+  #dsa-journey .dsa-platform-link.codechef{
+    left:4%;
+    top:0;
+    width:145px;
+    height:145px;
+  }
+
+  #dsa-journey .dsa-platform-link.hackerrank{
+    left:53%;
+    top:8%;
+    width:135px;
+    height:135px;
+  }
+
+  #dsa-journey .dsa-platform-link.leetcode{
+    left:23%;
+    top:43%;
+    width:165px;
+    height:165px;
+  }
+
+  #dsa-journey .dsa-platform-link.codeforces{
+    left:47%;
+    top:72%;
+    width:205px;
+    height:112px;
+  }
+}
+</style>
+
+
+<style id="dsa-clean-arrangement-final">
+/* DSA JOURNEY — clean composition: main card top-right, platforms in one row below */
+#dsa-journey .dsa-blank-area{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:3 !important;
+  display:block !important;
+  padding:0 !important;
+  pointer-events:none !important;
+}
+
+#dsa-journey .dsa-blank-card{
+  position:absolute !important;
+  top:34px !important;
+  right:32px !important;
+  left:auto !important;
+  width:min(620px, 43vw) !important;
+  height:min(560px, 56vh) !important;
+  pointer-events:auto !important;
+}
+
+#dsa-journey .dsa-platforms{
+  position:absolute !important;
+  top:min(72vh, 625px) !important;
+  right:32px !important;
+  left:auto !important;
+  bottom:auto !important;
+  width:min(620px, 43vw) !important;
+  height:150px !important;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:18px !important;
+  z-index:4 !important;
+  pointer-events:none !important;
+}
+
+#dsa-journey .dsa-platform-link,
+#dsa-journey .dsa-platform-link.leetcode,
+#dsa-journey .dsa-platform-link.hackerrank,
+#dsa-journey .dsa-platform-link.codechef,
+#dsa-journey .dsa-platform-link.codeforces{
+  position:relative !important;
+  inset:auto !important;
+  flex:1 1 0 !important;
+  width:auto !important;
+  height:150px !important;
+  min-width:0 !important;
+  padding:14px !important;
+  margin:0 !important;
+  border-radius:16px !important;
+  transform:none !important;
+  box-sizing:border-box !important;
+  pointer-events:auto !important;
+}
+
+#dsa-journey .dsa-platform-link.leetcode{ background:#d8c7ee !important; }
+#dsa-journey .dsa-platform-link.hackerrank{ background:#f2df9a !important; }
+#dsa-journey .dsa-platform-link.codechef{ background:#f2bd8b !important; }
+#dsa-journey .dsa-platform-link.codeforces{ background:#c9ced5 !important; }
+
+#dsa-journey .dsa-platform-link:hover{
+  transform:translateY(-7px) !important;
+  filter:brightness(1.04) !important;
+}
+
+#dsa-journey .dsa-platform-link img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-blank-card{
+    top:28px !important;
+    right:24px !important;
+    width:min(520px, 46vw) !important;
+    height:min(500px, 54vh) !important;
+  }
+
+  #dsa-journey .dsa-platforms{
+    top:min(70vh, 560px) !important;
+    right:24px !important;
+    width:min(520px, 46vw) !important;
+    height:125px !important;
+    gap:14px !important;
+  }
+
+  #dsa-journey .dsa-platform-link,
+  #dsa-journey .dsa-platform-link.leetcode,
+  #dsa-journey .dsa-platform-link.hackerrank,
+  #dsa-journey .dsa-platform-link.codechef,
+  #dsa-journey .dsa-platform-link.codeforces{
+    height:125px !important;
+    padding:11px !important;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-blank-area{
+    position:relative !important;
+    min-height:100vh !important;
+  }
+
+  #dsa-journey .dsa-blank-card{
+    position:absolute !important;
+    top:38px !important;
+    right:5vw !important;
+    width:90vw !important;
+    height:44vh !important;
+  }
+
+  #dsa-journey .dsa-platforms{
+    top:calc(44vh + 75px) !important;
+    right:5vw !important;
+    width:90vw !important;
+    height:auto !important;
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:14px !important;
+  }
+
+  #dsa-journey .dsa-platform-link,
+  #dsa-journey .dsa-platform-link.leetcode,
+  #dsa-journey .dsa-platform-link.hackerrank,
+  #dsa-journey .dsa-platform-link.codechef,
+  #dsa-journey .dsa-platform-link.codeforces{
+    height:125px !important;
+  }
+}
+</style>
+
+
+
+<style id="dsa-platforms-nonuniform-final">
+/* DSA JOURNEY — non-uniform platform cards, fixed positions/sizes based on each logo */
+#dsa-journey .dsa-platforms{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  z-index:4 !important;
+  pointer-events:none !important;
+}
+
+#dsa-journey .dsa-platform-link,
+#dsa-journey .dsa-platform-link.leetcode,
+#dsa-journey .dsa-platform-link.hackerrank,
+#dsa-journey .dsa-platform-link.codechef,
+#dsa-journey .dsa-platform-link.codeforces{
+  position:absolute !important;
+  flex:none !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:12px !important;
+  border:4px solid #000 !important;
+  border-radius:16px !important;
+  box-shadow:8px 8px 0 #000 !important;
+  transform:none !important;
+  pointer-events:auto !important;
+  overflow:hidden !important;
+}
+
+/* Each card has its own size and position to match its logo */
+#dsa-journey .dsa-platform-link.codechef{
+  top:10vh !important;
+  left:4vw !important;
+  width:205px !important;
+  height:165px !important;
+  background:#f2bd8b !important;
+}
+
+#dsa-journey .dsa-platform-link.hackerrank{
+  top:29vh !important;
+  left:15vw !important;
+  width:190px !important;
+  height:175px !important;
+  background:#f2df9a !important;
+}
+
+#dsa-journey .dsa-platform-link.leetcode{
+  top:49vh !important;
+  left:6vw !important;
+  width:185px !important;
+  height:185px !important;
+  background:#d8c7ee !important;
+}
+
+#dsa-journey .dsa-platform-link.codeforces{
+  top:70vh !important;
+  left:18vw !important;
+  width:255px !important;
+  height:125px !important;
+  background:#c9ced5 !important;
+}
+
+#dsa-journey .dsa-platform-link img{
+  width:auto !important;
+  height:auto !important;
+  max-width:92% !important;
+  max-height:92% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+#dsa-journey .dsa-platform-link:hover{
+  transform:translateY(-6px) !important;
+  filter:brightness(1.04) !important;
+}
+
+@media (max-width:900px){
+  #dsa-journey .dsa-platform-link.codechef{
+    left:3vw !important;
+    top:10vh !important;
+    width:175px !important;
+    height:145px !important;
+  }
+  #dsa-journey .dsa-platform-link.hackerrank{
+    left:15vw !important;
+    top:29vh !important;
+    width:165px !important;
+    height:150px !important;
+  }
+  #dsa-journey .dsa-platform-link.leetcode{
+    left:4vw !important;
+    top:49vh !important;
+    width:165px !important;
+    height:165px !important;
+  }
+  #dsa-journey .dsa-platform-link.codeforces{
+    left:14vw !important;
+    top:70vh !important;
+    width:220px !important;
+    height:110px !important;
+  }
+}
+
+@media (max-width:700px){
+  /* Keep the non-uniform composition on smaller screens, but move everything into a safe left column. */
+  #dsa-journey .dsa-platform-link.codechef{
+    top:11vh !important;
+    left:4vw !important;
+    width:145px !important;
+    height:120px !important;
+  }
+  #dsa-journey .dsa-platform-link.hackerrank{
+    top:28vh !important;
+    left:23vw !important;
+    width:140px !important;
+    height:125px !important;
+  }
+  #dsa-journey .dsa-platform-link.leetcode{
+    top:46vh !important;
+    left:5vw !important;
+    width:135px !important;
+    height:135px !important;
+  }
+  #dsa-journey .dsa-platform-link.codeforces{
+    top:64vh !important;
+    left:25vw !important;
+    width:180px !important;
+    height:92px !important;
+  }
+}
+</style>
+
+
+
+<style id="dsa-platforms-no-overlap-final">
+/* Final DSA composition: keep platform cards separated from each other,
+   and reserve the lower band for the MY DSA JOURNEY title. */
+#dsa-journey .dsa-platforms{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  z-index:4 !important;
+  pointer-events:none !important;
+}
+
+#dsa-journey .dsa-platform-link{
+  position:absolute !important;
+  box-sizing:border-box !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  transform:none !important;
+  z-index:4 !important;
+}
+
+/* Deliberately non-uniform, but with generous clear space between cards. */
+#dsa-journey .dsa-platform-link.codechef{
+  top:55px !important;
+  left:5vw !important;
+  width:205px !important;
+  height:165px !important;
+}
+
+#dsa-journey .dsa-platform-link.hackerrank{
+  top:175px !important;
+  left:23vw !important;
+  width:190px !important;
+  height:175px !important;
+}
+
+#dsa-journey .dsa-platform-link.leetcode{
+  top:360px !important;
+  left:7vw !important;
+  width:185px !important;
+  height:185px !important;
+}
+
+#dsa-journey .dsa-platform-link.codeforces{
+  top:395px !important;
+  left:25vw !important;
+  width:255px !important;
+  height:125px !important;
+}
+
+/* Keep the heading visually above the decorative platform area. */
+#dsa-journey .section-title{
+  z-index:10 !important;
+}
+
+@media (max-width:1100px) and (min-width:701px){
+  #dsa-journey .dsa-platform-link.codechef{
+    top:45px !important;
+    left:4vw !important;
+    width:180px !important;
+    height:145px !important;
+  }
+  #dsa-journey .dsa-platform-link.hackerrank{
+    top:145px !important;
+    left:23vw !important;
+    width:170px !important;
+    height:155px !important;
+  }
+  #dsa-journey .dsa-platform-link.leetcode{
+    top:315px !important;
+    left:6vw !important;
+    width:165px !important;
+    height:165px !important;
+  }
+  #dsa-journey .dsa-platform-link.codeforces{
+    top:350px !important;
+    left:25vw !important;
+    width:225px !important;
+    height:110px !important;
+  }
+}
+
+@media (max-width:700px){
+  /* On phones, keep a clear vertical stack and leave the bottom title band empty. */
+  #dsa-journey .dsa-platform-link.codechef{
+    top:48vh !important;
+    left:5vw !important;
+    width:135px !important;
+    height:108px !important;
+  }
+  #dsa-journey .dsa-platform-link.hackerrank{
+    top:48vh !important;
+    left:53vw !important;
+    width:125px !important;
+    height:112px !important;
+  }
+  #dsa-journey .dsa-platform-link.leetcode{
+    top:61vh !important;
+    left:8vw !important;
+    width:120px !important;
+    height:120px !important;
+  }
+  #dsa-journey .dsa-platform-link.codeforces{
+    top:61vh !important;
+    left:54vw !important;
+    width:145px !important;
+    height:86px !important;
+  }
+}
+</style>
+
+
+<style id="dsa-title-one-line">
+#dsa-journey .section-title{
+  white-space:nowrap !important;
+  width:auto !important;
+  max-width:none !important;
+}
+#dsa-journey .section-title br{
+  display:none !important;
+}
+</style>
+
+
+<style id="dsa-vertical-platform-text-cards">
+#dsa-journey .dsa-vertical-platforms{
+  position:absolute;
+  top:32px;
+  bottom:165px;
+  left:30px;
+  z-index:9;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  pointer-events:auto;
+}
+
+#dsa-journey .dsa-vertical-platforms a{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:74px;
+  margin:0;
+  padding:12px 26px;
+  border:4px solid #000;
+  box-shadow:10px 10px 0 #000;
+  border-radius:0;
+  text-decoration:none;
+  font-family:'Anton SC',sans-serif;
+  font-size:clamp(38px,5.8vw,78px);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:1px;
+  color:#fff !important;
+  transition:transform .25s cubic-bezier(.25,.8,.25,1), box-shadow .25s cubic-bezier(.25,.8,.25,1), filter .2s ease;
+  white-space:nowrap;
+}
+
+#dsa-journey .dsa-vertical-platforms a:hover{
+  transform:translate(5px,-5px);
+  box-shadow:15px 15px 0 #000;
+  filter:brightness(1.05);
+}
+
+/* Individual pastel backgrounds, with intentionally non-uniform widths. */
+#dsa-journey .dsa-vertical-platforms .leetcode{
+  width:clamp(250px,26vw,390px);
+  background:#d8c7ee;
+}
+#dsa-journey .dsa-vertical-platforms .codeforces{
+  width:clamp(285px,31vw,470px);
+  background:#c9ced5;
+}
+#dsa-journey .dsa-vertical-platforms .codechef{
+  width:clamp(225px,23vw,345px);
+  background:#ead7a6;
+}
+#dsa-journey .dsa-vertical-platforms .hackerrank{
+  width:clamp(300px,34vw,510px);
+  background:#f2df9a;
+}
+#dsa-journey .dsa-vertical-platforms .cses{
+  width:clamp(170px,20vw,290px);
+  background:#b8b8b8;
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-vertical-platforms{
+    top:24px;
+    bottom:150px;
+    left:18px;
+    gap:12px;
+  }
+  #dsa-journey .dsa-vertical-platforms a{
+    min-height:60px;
+    padding:10px 18px;
+    font-size:clamp(30px,8.5vw,52px);
+    box-shadow:8px 8px 0 #000;
+  }
+  #dsa-journey .dsa-vertical-platforms .leetcode{ width:72vw; }
+  #dsa-journey .dsa-vertical-platforms .codeforces{ width:78vw; }
+  #dsa-journey .dsa-vertical-platforms .codechef{ width:66vw; }
+  #dsa-journey .dsa-vertical-platforms .hackerrank{ width:82vw; }
+  #dsa-journey .dsa-vertical-platforms .cses{ width:58vw; }
+}
+</style>
+
+
+
+<style id="dsa-bright-pastel-cards-final">
+/* DSA platform cards: bright pastel palette + guaranteed text containment */
+#dsa-journey .dsa-vertical-platforms{
+  top:28px !important;
+  bottom:165px !important;
+  left:30px !important;
+  width:520px !important;
+  max-width:calc(100vw - 60px) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  gap:14px !important;
+}
+
+#dsa-journey .dsa-vertical-platforms a{
+  min-height:78px !important;
+  height:78px !important;
+  padding:8px 24px !important;
+  border:4px solid #000 !important;
+  box-shadow:10px 10px 0 #000 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+  white-space:nowrap !important;
+  font-family:'Knewave',sans-serif !important;
+  font-size:clamp(32px,4.1vw,60px) !important;
+  line-height:1 !important;
+  letter-spacing:.5px !important;
+  font-weight:400 !important;
+  color:#000 !important;
+  text-shadow:none !important;
+}
+
+/* Non-uniform card lengths */
+#dsa-journey .dsa-vertical-platforms .leetcode{
+  width:300px !important;
+  background:#f5e58a !important;
+}
+#dsa-journey .dsa-vertical-platforms .codeforces{
+  width:440px !important;
+  background:#c7edb6 !important;
+}
+#dsa-journey .dsa-vertical-platforms .codechef{
+  width:330px !important;
+  background:#f3a2a2 !important;
+}
+#dsa-journey .dsa-vertical-platforms .hackerrank{
+  width:405px !important;
+  background:#d8c5f2 !important;
+}
+#dsa-journey .dsa-vertical-platforms .cses{
+  width:235px !important;
+  background:#f3c3d8 !important;
+}
+
+#dsa-journey .dsa-vertical-platforms a:hover{
+  transform:translate(5px,-5px) !important;
+  box-shadow:15px 15px 0 #000 !important;
+  filter:brightness(1.04) !important;
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-vertical-platforms{
+    top:24px !important;
+    bottom:150px !important;
+    left:18px !important;
+    width:calc(100vw - 36px) !important;
+    max-width:none !important;
+    gap:10px !important;
+  }
+  #dsa-journey .dsa-vertical-platforms a{
+    height:60px !important;
+    min-height:60px !important;
+    padding:7px 14px !important;
+    font-size:clamp(24px,7vw,40px) !important;
+    box-shadow:8px 8px 0 #000 !important;
+  }
+  #dsa-journey .dsa-vertical-platforms .leetcode{width:68vw !important;}
+  #dsa-journey .dsa-vertical-platforms .codeforces{width:90vw !important;}
+  #dsa-journey .dsa-vertical-platforms .codechef{width:72vw !important;}
+  #dsa-journey .dsa-vertical-platforms .hackerrank{width:86vw !important;}
+  #dsa-journey .dsa-vertical-platforms .cses{width:55vw !important;}
+}
+</style>
+
+<style id="dsa-platform-cards-double-size-final">
+/* Only size changes: double the current DSA platform card dimensions and text. */
+#dsa-journey .dsa-vertical-platforms a{
+  min-height:156px !important;
+  height:156px !important;
+  padding:16px 48px !important;
+  font-size:clamp(64px,8.2vw,120px) !important;
+}
+
+#dsa-journey .dsa-vertical-platforms .leetcode{
+  width:600px !important;
+}
+#dsa-journey .dsa-vertical-platforms .codeforces{
+  width:880px !important;
+}
+#dsa-journey .dsa-vertical-platforms .codechef{
+  width:660px !important;
+}
+#dsa-journey .dsa-vertical-platforms .hackerrank{
+  width:810px !important;
+}
+#dsa-journey .dsa-vertical-platforms .cses{
+  width:470px !important;
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-vertical-platforms a{
+    height:120px !important;
+    min-height:120px !important;
+    padding:14px 28px !important;
+    font-size:clamp(48px,14vw,80px) !important;
+  }
+}
+</style>
+
+
+<style id="dsa-platform-cards-one-point-five-final">
+/* Requested: scale the current 2x DSA platform cards down to 1.5x original size. */
+#dsa-journey .dsa-vertical-platforms a{
+  min-height:117px !important;
+  height:117px !important;
+  padding:12px 36px !important;
+  font-size:clamp(48px,6.15vw,90px) !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+  display:flex !important;
+  align-items:center !important;
+}
+
+#dsa-journey .dsa-vertical-platforms .leetcode{
+  width:450px !important;
+}
+#dsa-journey .dsa-vertical-platforms .codeforces{
+  width:660px !important;
+}
+#dsa-journey .dsa-vertical-platforms .codechef{
+  width:495px !important;
+}
+#dsa-journey .dsa-vertical-platforms .hackerrank{
+  width:608px !important;
+}
+#dsa-journey .dsa-vertical-platforms .cses{
+  width:353px !important;
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-vertical-platforms a{
+    height:90px !important;
+    min-height:90px !important;
+    padding:11px 21px !important;
+    font-size:clamp(36px,10.5vw,60px) !important;
+  }
+}
+</style>
+
 </head>
 
 
@@ -1638,7 +2532,7 @@ textarea::placeholder,
       <div class="brutalist-card__header">
 <span class="brutalist-card__alert">PROJECT 3</span>
       </div>
-      <p class="brutalist-card__message">Add your project details here.</p>
+      <p class="brutalist-card__message">COMING SOON....</p>
       <div class="brutalist-card__actions">
         <a href="https://github.com/AVINASHTIWARI14/suplAI" class="brutalist-card__button brutalist-card__button--mark" target="_blank" rel="noopener noreferrer">Repo</a>
         <a href="#" class="brutalist-card__button brutalist-card__button--read">Live Demo</a>
@@ -1650,7 +2544,26 @@ textarea::placeholder,
 </section>
 
 <section class="content-section" id="dsa-journey">
-  <h2 class="section-title">MY<br>DSA JOURNEY.</h2>
+  <div class="dsa-blank-area" aria-hidden="true">
+    <div class="dsa-blank-card" aria-hidden="true">
+      <div class="dsa-blank-inner">
+        <div class="dsa-blank-face dsa-blank-front">
+          <img src="https://media.giphy.com/media/s4ycVAVuJvXRvK0Rap/giphy.gif" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://i.giphy.com/s4ycVAVuJvXRvK0Rap.gif';}">
+        </div>
+        <div class="dsa-blank-face dsa-blank-back"></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="dsa-vertical-platforms" aria-label="Competitive programming profiles">
+    <a class="leetcode" href="https://leetcode.com/u/AVINASH-TIWARI/" target="_blank" rel="noopener noreferrer">LEETCODE</a>
+    <a class="codeforces" href="https://codeforces.com/profile/avinashtiwari2005ws" target="_blank" rel="noopener noreferrer">CODEFORCES</a>
+    <a class="codechef" href="https://www.codechef.com/users/clutch_gift_89" target="_blank" rel="noopener noreferrer">CODECHEF</a>
+    <a class="hackerrank" href="https://www.hackerrank.com/profile/avinashtiwari202" target="_blank" rel="noopener noreferrer">HACKERRANK</a>
+    <a class="cses" href="https://cses.fi/user/512686" target="_blank" rel="noopener noreferrer">CSES</a>
+  </nav>
+
+  <h2 class="section-title">MY - DSA JOURNEY.</h2>
 </section>
 
 <section class="content-section" id="skills">
@@ -1867,3 +2780,67 @@ contactForm.addEventListener("submit", async function(event){
 
 </body>
 </html>
+<style id="restore-dsa-right-gif-card">
+/* Restore the large DSA GIF card on the right without changing the platform-card structure. */
+#dsa-journey .dsa-blank-area{
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:3 !important;
+  padding:0 !important;
+  pointer-events:none !important;
+}
+
+#dsa-journey .dsa-blank-card{
+  display:block !important;
+  position:absolute !important;
+  top:22px !important;
+  right:20px !important;
+  left:auto !important;
+  width:min(900px,52vw) !important;
+  height:min(760px,76vh) !important;
+  box-sizing:border-box !important;
+  pointer-events:auto !important;
+}
+
+#dsa-journey .dsa-blank-front img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+
+@media (max-width:1100px){
+  #dsa-journey .dsa-blank-card{
+    top:22px !important;
+    right:18px !important;
+    width:min(680px,49vw) !important;
+    height:min(620px,68vh) !important;
+  }
+}
+
+@media (max-width:700px){
+  #dsa-journey .dsa-blank-area{
+    position:relative !important;
+    inset:auto !important;
+    min-height:100vh !important;
+  }
+
+  #dsa-journey .dsa-blank-card{
+    position:absolute !important;
+    top:38px !important;
+    right:5vw !important;
+    left:auto !important;
+    width:90vw !important;
+    height:44vh !important;
+  }
+}
+</style>
+
+<style id="dsa-main-card-grey-final">
+#dsa-journey .dsa-blank-face,
+#dsa-journey .dsa-blank-back{
+  background:#b8b8b8 !important;
+}
+</style>
