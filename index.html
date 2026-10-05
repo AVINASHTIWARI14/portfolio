@@ -4035,3 +4035,118 @@ contactForm.addEventListener("submit", async function(event){
 }
 </style>
 
+
+
+<style id="no-free-page-scroll-final">
+/* =========================================================
+   NO FREE PAGE SCROLL
+   Pages are switched only through internal navigation buttons.
+   ========================================================= */
+html,
+body{
+  overflow:hidden !important;
+  height:100% !important;
+  min-height:100% !important;
+  scroll-behavior:auto !important;
+  scroll-snap-type:none !important;
+}
+
+body{
+  overscroll-behavior:none !important;
+  touch-action:pan-x !important;
+}
+
+.page,
+.content-section{
+  scroll-snap-align:none !important;
+  scroll-snap-stop:normal !important;
+}
+
+/* Only one portfolio page is visible at a time. */
+body.page-view-ready > .page,
+body.page-view-ready > .content-section{
+  display:none !important;
+}
+
+body.page-view-ready > #home,
+body.page-view-ready > #projects,
+body.page-view-ready > #dsa-journey,
+body.page-view-ready > #skills,
+body.page-view-ready > #achievements{
+  display:block !important;
+  width:100% !important;
+  height:100vh !important;
+  height:100svh !important;
+  min-height:100vh !important;
+  min-height:100svh !important;
+  overflow:hidden !important;
+}
+
+@media (max-width:700px){
+  html,
+  body{
+    overflow:hidden !important;
+    height:100svh !important;
+  }
+
+  body{
+    touch-action:pan-x !important;
+  }
+}
+</style>
+
+<script id="no-free-page-scroll-script">
+(() => {
+  const pageIds = [
+    'home',
+    'projects',
+    'dsa-journey',
+    'skills',
+    'achievements'
+  ];
+
+  const pages = pageIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  if (!pages.length) return;
+
+  const showPage = (id, updateHash = true) => {
+    const target = pageIds.includes(id) ? id : 'home';
+
+    document.body.classList.add('page-view-ready');
+
+    pages.forEach(page => {
+      const active = page.id === target;
+      page.style.display = active ? 'block' : 'none';
+      page.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+
+    if (updateHash) {
+      history.replaceState(null, '', '#' + target);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    const target = href ? href.slice(1) : '';
+
+    if (!pageIds.includes(target)) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    showPage(target, true);
+  }, true);
+
+  window.addEventListener('hashchange', () => {
+    showPage(location.hash.slice(1), false);
+  });
+
+  showPage(location.hash.slice(1), false);
+})();
+</script>
