@@ -1167,32 +1167,6 @@ h1, h2, h3, h4, h5, h6,
   color:inherit;
 }
 </style>
-
-<style id="immersive-scroll-visible">
-.name,
-.section-title,
-.brutalist-card{
-  --scroll-scale:1;
-  --scroll-y:0px;
-  transform:translate3d(0,var(--scroll-y),0) scale(var(--scroll-scale));
-  transform-origin:center center;
-  will-change:transform;
-}
-
-.brutalist-card:hover{
-  transform:
-    translate3d(0,calc(var(--scroll-y) - 6px),0)
-    scale(calc(var(--scroll-scale) * 1.03));
-}
-
-@media (prefers-reduced-motion: reduce){
-  .name,
-  .section-title,
-  .brutalist-card{
-    transform:none !important;
-  }
-}
-</style>
 <link
   href="https://fonts.googleapis.com/css2?family=Joti+One&display=swap"
   rel="stylesheet"
@@ -2576,37 +2550,6 @@ textarea::placeholder,
   }
 }
 </style>
-
-
-
-<style id="immersive-all-components-final">
-/* Subtle immersive motion for page components during active scrolling only. */
-:where(.immersive-scroll-root){
-  --immersive-y:0px;
-  --immersive-scale:1;
-  --immersive-rotate:0deg;
-  translate:0 var(--immersive-y);
-  scale:var(--immersive-scale);
-  rotate:var(--immersive-rotate);
-  transition:
-    translate .16s ease-out,
-    scale .16s ease-out,
-    rotate .16s ease-out;
-  will-change:translate,scale,rotate;
-}
-
-@media (prefers-reduced-motion: reduce){
-  :where(.immersive-scroll-root){
-    translate:none !important;
-    scale:1 !important;
-    rotate:none !important;
-    transition:none !important;
-    will-change:auto !important;
-  }
-}
-</style>
-
-
 <style id="phone-responsiveness-v2">
 /* =========================================================
    PHONE RESPONSIVENESS V2
@@ -3321,86 +3264,6 @@ contactForm.addEventListener("submit", async function(event){
 });
 
 </script>
-
-<script id="immersive-scroll-visible-script">
-(() => {
-  const motionEls = [
-    ...document.querySelectorAll(
-      ".hero .name, " +
-      ".content-section .section-title, " +
-      ".content-section .brutalist-card"
-    )
-  ];
-
-  const sections = [...document.querySelectorAll(".content-section")];
-
-  let ticking = false;
-
-  function updateMotion(){
-    const vh = window.innerHeight;
-    const center = vh * 0.5;
-    const range = vh * 0.9;
-
-    // --- parallax scale/offset (unchanged) ---
-    motionEls.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.bottom < -180 || rect.top > vh + 180) return;
-
-      const elCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(elCenter - center);
-      const proximity = Math.max(0, 1 - distance / range);
-      const scale = 0.92 + proximity * 0.14;
-      const offset = ((elCenter - center) / range) * 22;
-
-      el.style.setProperty("--scroll-scale", scale.toFixed(4));
-      el.style.setProperty("--scroll-y", offset.toFixed(1) + "px");
-    });
-
-    // --- blur fade-in per section ---
-    // Opacity goes 0 → 1 as section enters from bottom,
-    // and stays 1 once it's fully visible.
-    sections.forEach((sec) => {
-      const rect = sec.getBoundingClientRect();
-
-      // How far the section top has crossed into the viewport.
-      // When rect.top == vh  → just entering → 0
-      // When rect.top == 0   → top at viewport top → fully in
-      // We start fading at 80% of vh height before it arrives.
-      const fadeStart = vh * 1.0;  // start fading when 85% away
-      const fadeEnd   = vh * 0.5;  // fully opaque when top is 15% from top
-
-      let opacity;
-      if (rect.top > fadeStart) {
-        opacity = 0;
-      } else if (rect.top < fadeEnd) {
-        opacity = 1;
-      } else {
-        // linear interpolation
-        opacity = 1 - (rect.top - fadeEnd) / (fadeStart - fadeEnd);
-      }
-
-      sec.style.setProperty("--blur-opacity", opacity.toFixed(3));
-    });
-
-    ticking = false;
-  }
-
-  function requestUpdate(){
-    if (!ticking){
-      ticking = true;
-      requestAnimationFrame(updateMotion);
-    }
-  }
-
-  window.addEventListener("scroll", requestUpdate, {passive:true});
-  window.addEventListener("resize", requestUpdate, {passive:true});
-  window.addEventListener("load", requestUpdate);
-
-  requestUpdate();
-})();
-</script>
-
-
 <script id="author-note-drag">
 (() => {
   const card = document.getElementById("authorNoteCard");
@@ -3529,112 +3392,6 @@ contactForm.addEventListener("submit", async function(event){
   }
 }
 </style>
-
-
-<script id="immersive-all-components-script">
-(() => {
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const selectors = [
-    '#home .name',
-    '#home .home-navigation a',
-    '#home .tag-wrapper',
-    '#home .contact-icons .social-image-link',
-    '#home .contact-form',
-    '#projects .section-title',
-    '#projects .brutalist-card',
-    '#projects .brutalist-card__header',
-    '#projects .brutalist-card__message',
-    '#projects .brutalist-card__actions',
-    '#dsa-journey .section-title',
-    '#dsa-journey .dsa-blank-card',
-    '#dsa-journey .dsa-platform-link',
-    '#dsa-journey .home-return-button',
-    '#skills .section-title',
-    '#skills .home-return-button',
-    '#achievements .section-title',
-    '#achievements .home-return-button'
-  ].join(',');
-
-  const elements = [...document.querySelectorAll(selectors)];
-  if (!elements.length) return;
-
-  elements.forEach((el) => el.classList.add('immersive-scroll-root'));
-
-  let frame = 0;
-  let stopTimer = 0;
-  let scrolling = false;
-
-  function resetMotion(){
-    document.body.classList.remove('is-immersive-scrolling');
-    elements.forEach((el) => {
-      el.style.setProperty('--immersive-y', '0px');
-      el.style.setProperty('--immersive-scale', '1');
-      el.style.setProperty('--immersive-rotate', '0deg');
-    });
-    scrolling = false;
-  }
-
-  function updateImmersive(){
-    frame = 0;
-    const vh = window.innerHeight;
-    const center = vh * 0.5;
-    const range = vh * 0.95;
-
-    elements.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.bottom < -80 || rect.top > vh + 80) {
-        el.style.setProperty('--immersive-y', '0px');
-        el.style.setProperty('--immersive-scale', '1');
-        el.style.setProperty('--immersive-rotate', '0deg');
-        return;
-      }
-
-      const elCenter = rect.top + rect.height * 0.5;
-      const normalized = Math.max(-1, Math.min(1, (elCenter - center) / range));
-      const proximity = 1 - Math.min(1, Math.abs(normalized));
-
-      const immersiveFocus = el.matches(
-        '#home .home-navigation a, ' +
-        '#home .tag-wrapper, ' +
-        '#dsa-journey .dsa-blank-card, ' +
-        '#dsa-journey .dsa-platform-link, ' +
-        '#dsa-journey .home-return-button'
-      );
-      const intensity = immersiveFocus ? 1.35 : 1;
-
-      const y = normalized * 7 * intensity;
-      const scale = 0.988 + proximity * 0.024 * intensity;
-      const rotate = normalized * 0.5 * intensity;
-
-      el.style.setProperty('--immersive-y', y.toFixed(2) + 'px');
-      el.style.setProperty('--immersive-scale', scale.toFixed(4));
-      el.style.setProperty('--immersive-rotate', rotate.toFixed(2) + 'deg');
-    });
-  }
-
-  function requestUpdate(){
-    if (!frame) frame = requestAnimationFrame(updateImmersive);
-  }
-
-  function onScroll(){
-    if (!scrolling){
-      scrolling = true;
-      document.body.classList.add('is-immersive-scrolling');
-    }
-
-    requestUpdate();
-    window.clearTimeout(stopTimer);
-    stopTimer = window.setTimeout(resetMotion, 120);
-  }
-
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', () => {
-    if (scrolling) requestUpdate();
-  }, {passive:true});
-})();
-</script>
-
 </body>
 
 
