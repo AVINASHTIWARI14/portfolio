@@ -4107,7 +4107,7 @@ body.page-view-ready > #achievements{
 
     pages.forEach(page => {
       const active = page.id === target;
-      page.style.display = active ? 'block' : 'none';
+      page.style.setProperty('display', active ? 'block' : 'none', 'important');
       page.setAttribute('aria-hidden', active ? 'false' : 'true');
     });
 
