@@ -4097,21 +4097,10 @@ body.page-view-ready > #achievements{
 
 <script id="no-free-page-scroll-script">
 (() => {
-  const pageIds = [
-    'home',
-    'projects',
-    'dsa-journey',
-    'skills',
-    'achievements'
-  ];
+  const pageIds = ['home','projects','dsa-journey','skills','achievements'];
+  const pages = pageIds.map(id => document.getElementById(id)).filter(Boolean);
 
-  const pages = pageIds
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  if (!pages.length) return;
-
-  const showPage = (id, updateHash = true) => {
+  function showPage(id, pushHash = true) {
     const target = pageIds.includes(id) ? id : 'home';
 
     document.body.classList.add('page-view-ready');
@@ -4122,26 +4111,30 @@ body.page-view-ready > #achievements{
       page.setAttribute('aria-hidden', active ? 'false' : 'true');
     });
 
-    if (updateHash) {
+    if (pushHash) {
       history.replaceState(null, '', '#' + target);
     }
 
-    window.scrollTo(0, 0);
-  };
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
 
-  document.addEventListener('click', event => {
-    const link = event.target.closest('a[href^="#"]');
-    if (!link) return;
-
-    const href = link.getAttribute('href');
-    const target = href ? href.slice(1) : '';
-
+  // Directly bind every internal page-navigation button.
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const target = link.getAttribute('href').slice(1);
     if (!pageIds.includes(target)) return;
 
-    event.preventDefault();
-    event.stopPropagation();
-    showPage(target, true);
-  }, true);
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      showPage(target, true);
+    });
+  });
+
+  // Back/forward browser navigation still works.
+  window.addEventListener('popstate', () => {
+    showPage(location.hash.slice(1), false);
+  });
 
   window.addEventListener('hashchange', () => {
     showPage(location.hash.slice(1), false);
