@@ -84,32 +84,7 @@
   --glow-lavender: oklch(0.7 0.14 280 / 22%);
 }
 
-.light {
-  --background: oklch(0.97 0.01 90);
-  --foreground: oklch(0.2 0.006 270);
-  --card: oklch(0.995 0.005 90);
-  --card-foreground: oklch(0.2 0.006 270);
-  --popover: oklch(0.995 0.005 90);
-  --popover-foreground: oklch(0.2 0.006 270);
-  --primary: oklch(0.55 0.16 128);
-  --primary-foreground: oklch(0.99 0.01 90);
-  --secondary: oklch(0.93 0.012 90);
-  --secondary-foreground: oklch(0.2 0.006 270);
-  --muted: oklch(0.93 0.012 90);
-  --muted-foreground: oklch(0.42 0.012 270);
-  --accent: oklch(0.92 0.04 285);
-  --accent-foreground: oklch(0.2 0.006 270);
-  --border: oklch(0.2 0 0 / 12%);
-  --input: oklch(0.2 0 0 / 16%);
-  --ring: oklch(0.55 0.16 128);
-  --lime: oklch(0.55 0.16 128);
-  --lavender: oklch(0.5 0.15 285);
-  --paper: oklch(0.99 0.012 90);
-  --glass: oklch(0.97 0.01 90 / 70%);
-  --grid-line: oklch(0 0 0 / 5%);
-  --glow-lime: oklch(0.8 0.2 125 / 25%);
-  --glow-lavender: oklch(0.7 0.14 280 / 22%);
-}
+
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -203,34 +178,7 @@
   --glow-lavender: transparent;
   --paper-line: rgb(0 0 0 / 15%);
 }
-.light {
-  --background: #fafafa;
-  --foreground: #111111;
-  --card: #ffffff;
-  --card-foreground: #111111;
-  --popover: #ffffff;
-  --popover-foreground: #111111;
-  --primary: #111111;
-  --primary-foreground: #ffffff;
-  --secondary: #eeeeee;
-  --secondary-foreground: #111111;
-  --muted: #eeeeee;
-  --muted-foreground: #555555;
-  --accent: #e5e5e5;
-  --accent-foreground: #111111;
-  --ring: #111111;
-  --lime: #111111;
-  --lavender: #555555;
-  --paper: #ffffff;
-  --paper-foreground: #111111;
-  --sticky: #eeeeee;
-  --sticky-foreground: #111111;
-  --glass: rgb(250 250 250 / 78%);
-  --grid-line: rgb(0 0 0 / 6%);
-  --glow-lime: transparent;
-  --glow-lavender: transparent;
-  --paper-line: rgb(0 0 0 / 12%);
-}
+
 .text-gradient {
   background: none !important;
   -webkit-text-fill-color: currentColor !important;
