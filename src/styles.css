@@ -53,35 +53,35 @@
 /* Default: dark ink */
 :root {
   --radius: 0.9rem;
-  --background: oklch(0.17 0.004 270);
-  --foreground: oklch(0.95 0.012 85);
-  --card: oklch(0.205 0.006 270);
-  --card-foreground: oklch(0.95 0.012 85);
-  --popover: oklch(0.205 0.006 270);
-  --popover-foreground: oklch(0.95 0.012 85);
-  --primary: oklch(0.9 0.2 125);
-  --primary-foreground: oklch(0.17 0.004 270);
-  --secondary: oklch(0.25 0.008 270);
-  --secondary-foreground: oklch(0.95 0.012 85);
-  --muted: oklch(0.24 0.006 270);
-  --muted-foreground: oklch(0.72 0.012 85);
-  --accent: oklch(0.28 0.03 285);
-  --accent-foreground: oklch(0.95 0.012 85);
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.96 0 0);
+  --card: oklch(0.17 0 0);
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.17 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.96 0 0);
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.28 0 0);
+  --accent-foreground: oklch(0.96 0 0);
   --destructive: oklch(0.65 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.9 0.2 125);
-  --lime: oklch(0.9 0.2 125);
-  --lavender: oklch(0.74 0.12 285);
-  --paper: oklch(0.93 0.025 90);
-  --paper-foreground: oklch(0.22 0.01 270);
-  --sticky: oklch(0.9 0.16 120);
-  --sticky-foreground: oklch(0.2 0.02 130);
-  --glass: oklch(0.17 0.004 270 / 65%);
-  --grid-line: oklch(1 0 0 / 4%);
-  --glow-lime: oklch(0.9 0.2 125 / 18%);
-  --glow-lavender: oklch(0.7 0.14 280 / 22%);
+  --ring: oklch(0.9 0 0);
+  --lime: oklch(0.96 0 0);
+  --lavender: oklch(0.72 0 0);
+  --paper: oklch(0.93 0 0);
+  --paper-foreground: oklch(0.18 0 0);
+  --sticky: oklch(0.82 0 0);
+  --sticky-foreground: oklch(0.16 0 0);
+  --glass: oklch(0.12 0 0 / 70%);
+  --grid-line: oklch(1 0 0 / 5%);
+  --glow-lime: oklch(0.9 0 0 / 12%);
+  --glow-lavender: oklch(0.7 0 0 / 12%);
 }
 
 
