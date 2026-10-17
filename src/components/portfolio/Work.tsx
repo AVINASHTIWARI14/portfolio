@@ -1,34 +1,13 @@
-import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
-import { projects, type ProjectTag } from "@/data/portfolio";
-import { cn } from "@/lib/utils";
-
-const filters: ("All" | ProjectTag)[] = ["All", "AI", "Full-stack", "Frontend"];
+import { projects } from "@/data/portfolio";
 
 export function Work() {
-  const [filter, setFilter] = useState<(typeof filters)[number]>("All");
-  const list = projects.filter((p) => filter === "All" || p.tags.includes(filter));
+  const list = projects.filter((p) => p.slug === "juribrief" || p.slug === "supplai");
 
   return (
     <section id="work" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <h2 className="mb-12 font-display text-5xl tracking-tight sm:text-6xl md:text-7xl">Things I build.</h2>
-
-      <div role="group" aria-label="Filter projects" className="mb-10 flex flex-wrap gap-2">
-        {filters.map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            aria-pressed={filter === f}
-            className={cn(
-              "h-11 rounded-full border px-5 text-sm transition-colors",
-              filter === f ? "border-lime bg-lime text-primary-foreground" : "border-border text-muted-foreground hover:text-foreground",
-            )}
-          >
-            {f}
-          </button>
-        ))}
-      </div>
 
       <motion.div layout className="grid gap-5 md:grid-cols-2">
         <AnimatePresence mode="popLayout">
@@ -40,13 +19,10 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className={cn(
-                "group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-colors hover:border-lime/50 sm:p-8",
-                p.size === "sm" && "md:col-span-2 md:flex-row md:items-center md:gap-10",
-              )}
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-colors hover:border-lime/50 sm:p-8"
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-              <div className={cn("relative min-w-0", p.size === "sm" && "md:flex-1")}>
+              <div className="relative min-w-0">
                 <div className="mb-6 flex items-center justify-between gap-4">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{p.kicker}</span>
                   <span className="font-mono text-xs text-lime">0{i + 1}</span>
@@ -59,7 +35,7 @@ export function Work() {
                   ))}
                 </ul>
               </div>
-              <div className={cn("relative mt-8 flex flex-col gap-5", p.size === "lg" && "mt-auto pt-8", p.size === "sm" && "md:mt-0 md:w-72")}>
+              <div className="relative mt-auto flex flex-col gap-5 pt-8">
                 <p className="font-mono text-xs text-muted-foreground">{p.stack.join(" · ")}</p>
                 <div className="flex flex-wrap gap-2">
                   {p.demo && (
