@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navItems } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -18,30 +18,6 @@ function useActiveSection() {
     return () => obs.disconnect();
   }, []);
   return active;
-}
-
-function ThemeToggle() {
-  const [light, setLight] = useState(false);
-  useEffect(() => {
-    const saved = localStorage.getItem("theme") === "light";
-    setLight(saved);
-    document.documentElement.classList.toggle("light", saved);
-  }, []);
-  const toggle = () => {
-    const next = !light;
-    setLight(next);
-    document.documentElement.classList.toggle("light", next);
-    localStorage.setItem("theme", next ? "light" : "dark");
-  };
-  return (
-    <button
-      onClick={toggle}
-      aria-label={light ? "Switch to dark theme" : "Switch to light theme"}
-      className="grid h-11 w-11 place-items-center rounded-full border border-border text-foreground transition-colors hover:border-lime hover:text-lime"
-    >
-      {light ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-    </button>
-  );
 }
 
 export function Nav() {
@@ -88,7 +64,6 @@ export function Nav() {
             ))}
           </ul>
           <div className="flex items-center gap-1.5">
-            <ThemeToggle />
             <button
               className="grid h-11 w-11 place-items-center rounded-full border border-border md:hidden"
               onClick={() => setOpen((o) => !o)}
