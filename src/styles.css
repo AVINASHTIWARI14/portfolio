@@ -242,3 +242,52 @@ a:not(.brutalist-button):hover {
   .brutalist-button { height: 60px; }
   .brutalist-button-text { font-size: 12px; }
 }
+
+
+/* Standalone brutalist navigation buttons */
+.nav-brutalist {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 2px solid #080808;
+  background: #fff;
+  color: #080808;
+  box-shadow: 4px 4px 0 #080808;
+  text-decoration: none;
+  transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease, color .22s ease;
+}
+.nav-brutalist::before {
+  content: "";
+  position: absolute;
+  inset: -80% -60%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(45deg, transparent 42%, rgb(255 255 255 / 0%) 46%, rgb(255 255 255 / 95%) 50%, rgb(255 255 255 / 0%) 54%, transparent 58%);
+  transform: translateX(-70%) rotate(12deg);
+  opacity: 0;
+}
+.nav-brutalist:hover::before,
+.nav-brutalist:focus-visible::before {
+  animation: nav-brutalist-glare 1.1s ease-in-out;
+}
+.nav-brutalist:hover,
+.nav-brutalist:focus-visible,
+.nav-brutalist-active {
+  background: #080808;
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #080808;
+}
+.nav-brutalist > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes nav-brutalist-glare {
+  0% { transform: translateX(-70%) rotate(12deg); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateX(70%) rotate(12deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-brutalist:hover::before,
+  .nav-brutalist:focus-visible::before { animation: none; }
+}
