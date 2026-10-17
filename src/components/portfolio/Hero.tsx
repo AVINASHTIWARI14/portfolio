@@ -49,7 +49,7 @@ export function Hero() {
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
         <div className="relative z-10 min-w-0">
-          <h1 className="font-display text-left text-[clamp(3rem,10vw,8rem)] italic leading-[0.9] tracking-tight">
+          <h1 className="font-display text-left text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
             <span className="sr-only">Avinash Tiwari</span>
             <span aria-hidden="true" className="block overflow-hidden pb-[0.12em]">
               <motion.span
@@ -63,12 +63,12 @@ export function Hero() {
             </span>
             <span className="block overflow-hidden pb-[0.12em]">
               <motion.span
-                className="block text-gradient"
+                className="block"
                 initial={reduce ? false : { y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
               >
-                Tiwari
+                <em className="text-gradient">Tiwari</em>
               </motion.span>
             </span>
           </h1>
