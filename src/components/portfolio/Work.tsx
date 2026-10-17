@@ -53,13 +53,13 @@ export function Work() {
                 <>
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -inset-5 -z-20 scale-110 bg-cover bg-center opacity-70 blur-xl"
+                    className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center opacity-55 blur-[2px]"
                     style={{
                       backgroundImage:
                         "url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1800&q=85')",
                     }}
                   />
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-neutral-950/75" />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-neutral-950/45" />
                 </>
               )}
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
