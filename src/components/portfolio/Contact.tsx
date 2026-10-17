@@ -56,7 +56,7 @@ export function Contact() {
           </h2>
         </Reveal>
 
-        <Reveal delay={0.1} className="mt-10 max-w-3xl">
+        <Reveal delay={0.1} className="mx-auto mt-10 max-w-3xl">
           <form
             onSubmit={sendMessage}
             className="space-y-6 border-2 border-foreground bg-card p-6 shadow-[6px_6px_0_var(--foreground)] sm:p-8 md:p-10"
