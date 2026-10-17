@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Github, Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
 
 export function Work() {
@@ -28,30 +28,32 @@ export function Work() {
                 <p className="mt-4 text-muted-foreground">{p.summary}</p>
               </div>
 
-              <div className="relative mt-auto grid grid-cols-1 gap-2 pt-10 sm:grid-cols-3">
+              <div className="relative mt-auto grid grid-cols-1 gap-3 pt-10 sm:grid-cols-3">
                 {p.demo ? (
-                  <a href={p.demo} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-lime px-3 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
-                    Live <ArrowUpRight className="h-4 w-4 shrink-0" />
+                  <a href={p.demo} target="_blank" rel="noreferrer" className="brutalist-button">
+                    <span className="brutalist-button-text">Live</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
-                  <span className="inline-flex h-11 items-center justify-center whitespace-nowrap rounded-full border border-border px-3 text-sm text-muted-foreground">Live</span>
+                  <span aria-disabled="true" className="brutalist-button brutalist-button-disabled">
+                    <span className="brutalist-button-text">Live</span>
+                  </span>
                 )}
                 {p.slug === "supplai" ? (
-                  <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border px-3 text-sm transition-colors hover:border-lime hover:text-lime">
-                    <Play className="h-4 w-4 shrink-0" /> Demo video <ArrowUpRight className="h-4 w-4 shrink-0" />
+                  <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="brutalist-button">
+                    <span className="brutalist-button-text">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
-                  <span aria-disabled="true" title="Demo video link not added yet" className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border px-3 text-sm text-muted-foreground">
-                    <Play className="h-4 w-4 shrink-0" /> Demo video
+                  <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-disabled">
+                    <span className="brutalist-button-text">Demo video</span>
                   </span>
                 )}
                 {p.repo ? (
-                  <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border px-3 text-sm transition-colors hover:border-lime hover:text-lime">
-                    <Github className="h-4 w-4 shrink-0" /> Repo
+                  <a href={p.repo} target="_blank" rel="noreferrer" className="brutalist-button">
+                    <span className="brutalist-button-text">Repo</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
-                  <span aria-disabled="true" title="Repository link not added yet" className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border px-3 text-sm text-muted-foreground">
-                    <Github className="h-4 w-4 shrink-0" /> Repo
+                  <span aria-disabled="true" className="brutalist-button brutalist-button-disabled">
+                    <span className="brutalist-button-text">Repo</span>
                   </span>
                 )}
               </div>
