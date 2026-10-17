@@ -56,18 +56,6 @@ export function Hero() {
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.35fr_1fr]">
         <div className="min-w-0">
-          <motion.a
-            href="#contact"
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-glass px-4 py-2 text-sm backdrop-blur transition-colors hover:border-lime"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
-            </span>
-            Open to opportunities
-          </motion.a>
 
           <h1 className="font-display text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
             <span className="sr-only">I build things that think, and interfaces that feel.</span>
