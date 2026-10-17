@@ -1,4 +1,4 @@
-.social-brutalist {
+ .social-brutalist {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -34,6 +34,7 @@
   transition: filter .22s ease, transform .22s ease;
 }
 
+/* Keep every social mark visible in white over the black hover surface. */
 .social-brutalist:hover > img,
 .social-brutalist:hover > svg {
   filter: grayscale(1) brightness(0) invert(1);
