@@ -20,7 +20,7 @@ const socials = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/",
-    icon: "https://cdn.simpleicons.org/linkedin/0A66C2",
+    icon: null,
   },
   {
     name: "YouTube",
@@ -157,12 +157,19 @@ export function Contact() {
                 title={social.name}
                 className="group inline-flex h-16 w-16 items-center justify-center transition-transform duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4 sm:h-[76px] sm:w-[76px]"
               >
-                <img
-                  src={social.icon}
-                  alt=""
-                  loading="lazy"
-                  className="h-14 w-14 object-contain transition-[filter] duration-200 group-hover:drop-shadow-[0_3px_5px_rgb(0_0_0_/_20%)] sm:h-16 sm:w-16"
-                />
+                {social.name === "LinkedIn" ? (
+                  <svg viewBox="0 0 48 48" aria-hidden="true" className="h-14 w-14 sm:h-16 sm:w-16">
+                    <rect width="48" height="48" rx="4" fill="#0A66C2" />
+                    <path fill="#fff" d="M11 18h6v20h-6zM14 9a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7M21 18h5.8v2.7h.1c.8-1.5 2.8-3.2 5.8-3.2 6.2 0 7.3 4.1 7.3 9.4V38h-6V28c0-2.4 0-5.5-3.4-5.5s-3.9 2.6-3.9 5.3V38h-6z" />
+                  </svg>
+                ) : (
+                  <img
+                    src={social.icon ?? ""}
+                    alt=""
+                    loading="lazy"
+                    className="h-14 w-14 object-contain transition-[filter] duration-200 group-hover:drop-shadow-[0_3px_5px_rgb(0_0_0_/_20%)] sm:h-16 sm:w-16"
+                  />
+                )}
               </a>
             ))}
           </nav>
