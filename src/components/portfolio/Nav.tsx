@@ -36,7 +36,7 @@ export function Nav() {
       <div className="mx-auto mt-3 max-w-6xl px-3 sm:px-6">
         <nav
           aria-label="Primary"
-          className="flex items-center justify-between rounded-full border border-border bg-glass py-1.5 pl-4 pr-1.5 backdrop-blur-xl"
+          className="flex items-center justify-between rounded-full border border-neutral-200 bg-white py-1.5 pl-4 pr-1.5 text-neutral-950 shadow-sm"
         >
           <a href="#top" className="flex items-center gap-2.5" aria-label="Avinash Tiwari — home">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-lime font-display text-sm font-semibold text-primary-foreground">
@@ -52,11 +52,11 @@ export function Nav() {
                   aria-current={active === n.id ? "true" : undefined}
                   className={cn(
                     "relative rounded-full px-4 py-2 text-sm transition-colors",
-                    active === n.id ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                    active === n.id ? "text-neutral-950" : "text-neutral-600 hover:text-neutral-950",
                   )}
                 >
                   {active === n.id && (
-                    <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-secondary" />
+                    <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-neutral-100" />
                   )}
                   {n.label}
                 </a>
@@ -65,7 +65,7 @@ export function Nav() {
           </ul>
           <div className="flex items-center gap-1.5">
             <button
-              className="grid h-11 w-11 place-items-center rounded-full border border-border md:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full border border-neutral-300 text-neutral-950 md:hidden"
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -83,7 +83,7 @@ export function Nav() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="mx-3 mt-2 rounded-3xl border border-border bg-card p-3 md:hidden"
+            className="mx-3 mt-2 rounded-3xl border border-neutral-200 bg-white p-3 text-neutral-950 shadow-md md:hidden"
           >
             <ul>
               {navItems.map((n, i) => (
@@ -93,11 +93,11 @@ export function Nav() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "flex items-center justify-between rounded-2xl px-4 py-4 font-display text-2xl",
-                      active === n.id ? "bg-secondary text-lime" : "text-foreground",
+                      active === n.id ? "bg-neutral-100 text-neutral-950" : "text-neutral-800",
                     )}
                   >
                     {n.label}
-                    <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
+                    <span className="font-mono text-xs text-neutral-500">0{i + 1}</span>
                   </a>
                 </li>
               ))}
