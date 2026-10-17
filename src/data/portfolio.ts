@@ -60,6 +60,7 @@ export const projects: Project[] = [
     stack: ["Python", "Machine learning"],
     tags: ["AI", "Full-stack"],
     demo: "https://supl-ai.vercel.app/",
+    repo: "https://github.com/AVINASHTIWARI14/suplAI",
     size: "lg",
   },
   {
