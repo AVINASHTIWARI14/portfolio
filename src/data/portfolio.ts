@@ -52,7 +52,7 @@ export const projects: Project[] = [
   },
   {
     slug: "supplai",
-    title: "SupplAI",
+    title: "SuplAI",
     kicker: "AI · Supply chain",
     summary:
       "AI-powered supply-chain risk monitoring — surfacing disruptions and weak links before they turn into delays.",
