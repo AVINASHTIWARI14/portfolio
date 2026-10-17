@@ -242,3 +242,55 @@ a:not(.brutalist-button):hover {
   .brutalist-button { height: 60px; }
   .brutalist-button-text { font-size: 12px; }
 }
+
+
+/* Full brutalist navbar treatment */
+.nav-brutalist {
+  display: inline-flex;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 2px solid #080808;
+  background: #fff;
+  color: #080808;
+  box-shadow: 3px 3px 0 #080808;
+  text-decoration: none;
+  transition: transform .3s cubic-bezier(.25,.8,.25,1), box-shadow .3s cubic-bezier(.25,.8,.25,1), background-color .3s, color .3s;
+}
+.nav-brutalist::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 2;
+  background: linear-gradient(45deg, transparent, rgb(255 255 255 / 80%), transparent);
+  transform: rotate(45deg) translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-brutalist:hover::before,
+.nav-brutalist:focus-visible::before {
+  animation: brutalist-glare 1.5s infinite;
+}
+.nav-brutalist:hover,
+.nav-brutalist:focus-visible {
+  transform: translate(-2px, -2px) scale(1.04);
+  background: #080808;
+  color: #fff;
+  box-shadow: 6px 6px 0 #080808;
+}
+.nav-brutalist-active {
+  background: #080808;
+  color: #fff;
+  box-shadow: 3px 3px 0 #080808;
+}
+.nav-brutalist > * {
+  position: relative;
+  z-index: 3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-brutalist:hover::before,
+  .nav-brutalist:focus-visible::before { animation: none; }
+}
