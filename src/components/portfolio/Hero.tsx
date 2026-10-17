@@ -47,9 +47,9 @@ export function Hero() {
       <div className="absolute -left-40 top-10 h-[520px] w-[520px] glow-lavender blur-3xl" aria-hidden="true" />
       <div className="absolute -right-40 bottom-0 h-[520px] w-[520px] glow-lime blur-3xl" aria-hidden="true" />
 
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-4">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
         <div className="relative z-10 min-w-0">
-          <h1 className="font-display text-left text-[clamp(3.25rem,9.2vw,8.5rem)] font-medium uppercase leading-[0.82] tracking-[-0.055em]">
+          <h1 className="font-display text-left text-[clamp(3rem,7.5vw,7rem)] font-normal uppercase leading-[0.88] tracking-tight">
             <span className="sr-only">Avinash Tiwari</span>
             <span aria-hidden="true" className="block overflow-hidden pb-[0.12em]">
               <motion.span
@@ -78,7 +78,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, scale: 0.92, x: 24 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.25 }}
-          className="mx-auto w-full max-w-[480px] lg:max-w-none"
+          className="mx-auto w-full max-w-[460px] lg:max-w-none"
         >
           <Orbit />
         </motion.div>
