@@ -2,7 +2,7 @@
 
 A responsive, immersive developer portfolio built with **React, TypeScript, Vite, Tailwind CSS v4 and Framer Motion**. The design combines expressive editorial typography, ambient motion, a dark/light theme toggle, and a DSA-notebook section.
 
-## Run locally
+## Live preview\n\nThe interactive portfolio is published here: https://avinash-tiwari-portfolio.lovable.app\n\n## Run locally
 
 Requires Node.js 20.19+ (Node 22 recommended).
 
@@ -41,4 +41,4 @@ Before the redesign, the repository held a large single-file `index.html`. A bac
 ## Deploy
 
 - **Vercel:** import this repository and use the default Vite settings.
-- **GitHub Pages:** the included workflow builds and publishes the `dist/` output on pushes to `main`.
+- **GitHub Actions:** every push to `main` runs a production build check and uploads the generated `dist/` artifact. To host on GitHub Pages, enable Pages for the repository in Settings first; Vercel can also import this Vite project directly.
