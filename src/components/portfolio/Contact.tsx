@@ -3,6 +3,7 @@ import type { FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { ArrowUpRight, LoaderCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
+import "./social-brutalist.css";
 
 type FormState = "idle" | "sending" | "success" | "error" | "setup";
 
@@ -54,7 +55,6 @@ export function Contact() {
             Let's <em className="text-gradient">connect.</em>
           </h2>
         </Reveal>
-
         <Reveal delay={0.1} className="mx-auto mt-10 max-w-3xl">
           <form onSubmit={sendMessage} className="space-y-6 border-2 border-foreground bg-card p-6 shadow-[6px_6px_0_var(--foreground)] sm:p-8 md:p-10">
             <div className="grid gap-6 sm:grid-cols-2">
@@ -85,7 +85,6 @@ export function Contact() {
             </div>
           </form>
         </Reveal>
-
         <Reveal delay={0.2} className="mx-auto mt-12 max-w-3xl">
           <nav aria-label="Social links" className="flex items-center justify-center gap-5 sm:gap-7">
             {socials.map((social) => (
