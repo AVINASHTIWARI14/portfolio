@@ -190,15 +190,29 @@
 .brutalist-button:hover::before { animation: brutalist-glare 1.5s infinite; }
 .brutalist-button:hover {
   transform: translate(-3px,-3px);
-  box-shadow: 8px 8px 0 #ff4500;
   background: #000;
   color: #fff;
   outline-color: #000;
 }
 .brutalist-button:active {
   transform: translate(3px,3px);
-  box-shadow: 0 0 0 #ff4500;
+  box-shadow: 0 0 0 currentColor;
   transition-duration: .1s;
+}
+.brutalist-button-live:hover {
+  background: #ffd400;
+  color: #000;
+  box-shadow: 8px 8px 0 #ffd400;
+}
+.brutalist-button-video:hover {
+  background: #e62117;
+  color: #fff;
+  box-shadow: 8px 8px 0 #e62117;
+}
+.brutalist-button-repo:hover {
+  background: #238636;
+  color: #fff;
+  box-shadow: 8px 8px 0 #238636;
 }
 .brutalist-button-text {
   position: relative;
