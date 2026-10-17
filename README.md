@@ -2,7 +2,11 @@
 
 A responsive, immersive developer portfolio built with **React, TypeScript, Vite, Tailwind CSS v4 and Framer Motion**. The design combines expressive editorial typography, ambient motion, a dark/light theme toggle, and a DSA-notebook section.
 
-## Live preview\n\nThe interactive portfolio is published here: https://avinash-tiwari-portfolio.lovable.app\n\n## Run locally
+## Live preview
+
+The interactive portfolio is published here: https://avinash-tiwari.vercel.app
+
+## Run locally
 
 Requires Node.js 20.19+ (Node 22 recommended).
 
@@ -18,11 +22,28 @@ npm run build
 npm run preview
 ```
 
+## Contact form setup (EmailJS)
+
+The contact form uses EmailJS to send messages to the inbox configured in your EmailJS email template. To enable delivery:
+
+1. Create an account at https://www.emailjs.com/ and connect an email service.
+2. Create an email template. Set its **To Email** to the inbox where you want to receive messages. Use these template variables in the email body:
+   - `{{from_name}}` — sender's name
+   - `{{user_email}}` or `{{reply_to}}` — sender's email
+   - `{{message}}` — message text
+   - `{{subject}}` — generated subject
+3. In Vercel, open **Project Settings → Environment Variables** and add:
+   - `VITE_EMAILJS_SERVICE_ID`
+   - `VITE_EMAILJS_TEMPLATE_ID`
+   - `VITE_EMAILJS_PUBLIC_KEY`
+4. Redeploy the project so the variables are included in the build.
+
+Use the same variable names in a local `.env` file if running locally. `.env.example` lists the required keys. Do not put private email-service credentials in frontend code; only use the EmailJS public key here. The form will show a setup message until all three values are configured.
+
 ## Personalising content
 
 Edit `src/data/portfolio.ts` to update profile links, projects, DSA revision topics, skills, and the education/project timeline.
 
-- Add a verified public email to `profile.email` to enable the email form and copy button.
 - Add a verified LinkedIn URL to `profile.linkedin`.
 - Add a resume PDF under `public/` and set `profile.resume` (for example `/resume.pdf`).
 - SupplAI intentionally has no demo URL until a real one is supplied.
