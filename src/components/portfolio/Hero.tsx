@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Github } from "lucide-react";
-import { profile } from "@/data/portfolio";
+import { ArrowDown } from "lucide-react";
 
 const lines = [
   ["I", "build", "things"],
@@ -103,28 +102,6 @@ export function Hero() {
             from the model to the last pixel.
           </motion.p>
 
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
-            className="mt-10 flex flex-wrap gap-3"
-          >
-            <a
-              href="#work"
-              className="group inline-flex h-12 items-center gap-2 rounded-full bg-lime px-6 font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
-            >
-              See selected work
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-12 items-center gap-2 rounded-full border border-border px-6 transition-colors hover:border-lime hover:text-lime"
-            >
-              <Github className="h-4 w-4" /> GitHub
-            </a>
-          </motion.div>
         </div>
 
         <motion.div
