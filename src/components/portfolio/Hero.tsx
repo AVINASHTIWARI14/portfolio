@@ -36,14 +36,8 @@ function Orbit() {
         ))}
       </div>
       <svg viewBox="0 0 200 200" className="absolute inset-[34%] animate-float">
-        <defs>
-          <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--lime)" />
-            <stop offset="100%" stopColor="var(--lavender)" />
-          </linearGradient>
-        </defs>
-        <polygon points="100,10 178,55 178,145 100,190 22,145 22,55" fill="none" stroke="url(#core)" strokeWidth="2" />
-        <polygon points="100,40 152,70 152,130 100,160 48,130 48,70" fill="url(#core)" opacity="0.25" />
+        <polygon points="100,10 178,55 178,145 100,190 22,145 22,55" fill="none" stroke="var(--foreground)" strokeWidth="2" />
+        <polygon points="100,40 152,70 152,130 100,160 48,130 48,70" fill="var(--foreground)" opacity="0.25" />
         <circle cx="100" cy="100" r="14" fill="var(--lime)" />
         <path d="M100 10 L100 190 M22 55 L178 145 M178 55 L22 145" stroke="var(--border)" strokeWidth="1" />
       </svg>
