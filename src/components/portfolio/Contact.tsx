@@ -106,7 +106,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="inline-flex min-h-12 items-center gap-3 border-2 border-foreground bg-foreground px-6 font-mono text-xs font-bold uppercase tracking-widest text-background transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60"
+                className="inline-flex min-h-12 items-center gap-3 border-2 border-foreground bg-yellow-400 px-6 font-mono text-xs font-bold uppercase tracking-widest text-black transition-transform hover:-translate-y-0.5 hover:bg-yellow-300 disabled:cursor-wait disabled:opacity-60"
               >
                 {status === "sending" ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
                 {status === "sending" ? "Sending..." : "Send message"}
