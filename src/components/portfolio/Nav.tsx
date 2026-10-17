@@ -38,7 +38,7 @@ export function Nav() {
           aria-label="Primary"
           className="relative flex items-center justify-center border-0 bg-transparent px-0 py-1.5 text-neutral-950 shadow-none"
         >
-          <ul className="hidden flex-1 items-center justify-center gap-1 md:flex">
+          <ul className="hidden flex-1 items-center justify-center gap-3 md:flex">
             {navItems.map((n) => (
               <li key={n.id}>
                 <a
