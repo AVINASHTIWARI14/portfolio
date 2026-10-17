@@ -59,6 +59,7 @@ export const projects: Project[] = [
     features: ["Risk monitoring", "Signal aggregation", "Alerting"],
     stack: ["Python", "Machine learning"],
     tags: ["AI", "Full-stack"],
+    demo: "https://supl-ai.vercel.app/",
     size: "lg",
   },
   {
