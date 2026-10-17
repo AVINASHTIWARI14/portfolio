@@ -8,22 +8,14 @@ function Orbit() {
     <div className="relative mx-auto aspect-square w-full max-w-[460px] [container-type:inline-size]" aria-hidden="true">
       <div className="absolute inset-[8%] rounded-full border border-dashed border-border animate-orbit">
         {chips.slice(0, 3).map((chip, i) => (
-          <span
-            key={chip}
-            className="absolute left-1/2 top-1/2 -ml-10 -mt-3 rounded-full border border-border bg-card px-3 py-1 font-mono text-xs"
-            style={{ transform: `rotate(${i * 120}deg) translateY(-42cqw)` }}
-          >
+          <span key={chip} className="absolute left-1/2 top-1/2 -ml-10 -mt-3 rounded-full border border-border bg-card px-3 py-1 font-mono text-xs" style={{ transform: `rotate(${i * 120}deg) translateY(-42cqw)` }}>
             {chip}
           </span>
         ))}
       </div>
       <div className="absolute inset-[24%] rounded-full border border-border animate-orbit-rev">
         {chips.slice(3).map((chip, i) => (
-          <span
-            key={chip}
-            className="absolute left-1/2 top-1/2 -ml-10 -mt-3 rounded-full bg-accent px-3 py-1 font-mono text-xs"
-            style={{ transform: `rotate(${i * 120 + 60}deg) translateY(-26cqw)` }}
-          >
+          <span key={chip} className="absolute left-1/2 top-1/2 -ml-10 -mt-3 rounded-full bg-accent px-3 py-1 font-mono text-xs" style={{ transform: `rotate(${i * 120 + 60}deg) translateY(-26cqw)` }}>
             {chip}
           </span>
         ))}
@@ -52,43 +44,24 @@ export function Hero() {
           <h1 className="font-display text-left text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
             <span className="sr-only">Avinash Tiwari</span>
             <span aria-hidden="true" className="block overflow-hidden pb-[0.12em]">
-              <motion.span
-                className="block"
-                initial={reduce ? false : { y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
+              <motion.span className="block" initial={reduce ? false : { y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
                 Avinash
               </motion.span>
             </span>
             <span className="block overflow-hidden pb-[0.12em]">
-              <motion.span
-                className="block"
-                initial={reduce ? false : { y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <em className="text-gradient">Tiwari</em>
+              <motion.span className="block" initial={reduce ? false : { y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}>
+                <em className="text-gradient italic">Tiwari</em>
               </motion.span>
             </span>
           </h1>
         </div>
 
-        <motion.div
-          initial={reduce ? false : { opacity: 0, scale: 0.92, x: 24 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.25 }}
-          className="mx-auto w-full max-w-[460px] lg:max-w-none"
-        >
+        <motion.div initial={reduce ? false : { opacity: 0, scale: 0.92, x: 24 }} animate={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: 1, delay: 0.25 }} className="mx-auto w-full max-w-[460px] lg:max-w-none">
           <Orbit />
         </motion.div>
       </div>
 
-      <a
-        href="#work"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted-foreground md:flex"
-        aria-label="Scroll to projects"
-      >
+      <a href="#work" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted-foreground md:flex" aria-label="Scroll to projects">
         <span className="flex h-9 w-5 justify-center rounded-full border border-border pt-1.5">
           <span className="h-1.5 w-1 rounded-full bg-lime animate-scroll-dot" />
         </span>
