@@ -50,16 +50,7 @@ export function Work() {
               )}
             >
               {p.slug === "supplai" && (
-                <>
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center opacity-55 blur-[2px]"
-                    style={{
-                      backgroundImage: "url('/images/suplai-homepage.png')",
-                    }}
-                  />
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-neutral-950/45" />
-                </>
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-neutral-950" />
               )}
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className={cn("relative min-w-0", p.slug === "supplai" && "text-white", p.size === "sm" && "md:flex-1")}>
