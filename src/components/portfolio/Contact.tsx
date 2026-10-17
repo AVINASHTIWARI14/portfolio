@@ -1,4 +1,5 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { ArrowUpRight, LoaderCircle, Send } from "lucide-react";
 import { Reveal } from "./Reveal";
