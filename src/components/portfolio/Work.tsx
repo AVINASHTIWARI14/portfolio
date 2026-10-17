@@ -45,33 +45,47 @@ export function Work() {
               transition={{ duration: 0.4 }}
               className={cn(
                 "group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-colors hover:border-lime/50 sm:p-8",
+                p.slug === "supplai" && "isolate border-white/20 bg-neutral-950 text-white",
                 p.size === "sm" && "md:col-span-2 md:flex-row md:items-center md:gap-10",
               )}
             >
+              {p.slug === "supplai" && (
+                <>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -inset-5 -z-20 scale-110 bg-cover bg-center opacity-70 blur-xl"
+                    style={{
+                      backgroundImage:
+                        "url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1800&q=85')",
+                    }}
+                  />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-neutral-950/75" />
+                </>
+              )}
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-              <div className={cn("relative min-w-0", p.size === "sm" && "md:flex-1")}>
+              <div className={cn("relative min-w-0", p.slug === "supplai" && "text-white", p.size === "sm" && "md:flex-1")}>
                 <div className="mb-6 flex items-center justify-between gap-4">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{p.kicker}</span>
                   <span className="font-mono text-xs text-lime">0{i + 1}</span>
                 </div>
                 <h3 className="font-display text-4xl tracking-tight md:text-5xl">{p.title}</h3>
-                <p className="mt-4 text-muted-foreground">{p.summary}</p>
+                <p className={cn("mt-4 text-muted-foreground", p.slug === "supplai" && "text-white/80")}>{p.summary}</p>
                 <ul className="mt-6 flex flex-wrap gap-2">
                   {p.features.map((f) => (
-                    <li key={f} className="rounded-full bg-secondary px-3 py-1 text-xs">{f}</li>
+                    <li key={f} className={cn("rounded-full bg-secondary px-3 py-1 text-xs", p.slug === "supplai" && "border border-white/20 bg-white/10 text-white/90 backdrop-blur-sm")}>{f}</li>
                   ))}
                 </ul>
               </div>
               <div className={cn("relative mt-8 flex flex-col gap-5", p.size === "lg" && "mt-auto pt-8", p.size === "sm" && "md:mt-0 md:w-72")}>
-                <p className="font-mono text-xs text-muted-foreground">{p.stack.join(" · ")}</p>
+                <p className={cn("font-mono text-xs text-muted-foreground", p.slug === "supplai" && "text-white/70")}>{p.stack.join(" · ")}</p>
                 <div className="flex flex-wrap gap-2">
                   {p.demo && (
-                    <a href={p.demo} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full bg-lime px-5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
+                    <a href={p.demo} target="_blank" rel="noreferrer" className={cn("inline-flex h-11 items-center gap-2 rounded-full bg-lime px-5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5", p.slug === "supplai" && "bg-white text-black")}>
                       Live demo <ArrowUpRight className="h-4 w-4" />
                     </a>
                   )}
                   {p.repo && (
-                    <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm transition-colors hover:border-lime hover:text-lime">
+                    <a href={p.repo} target="_blank" rel="noreferrer" className={cn("inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm transition-colors hover:border-lime hover:text-lime", p.slug === "supplai" && "border-white/35 text-white hover:border-white hover:text-white")}>
                       <Github className="h-4 w-4" /> Code
                     </a>
                   )}
