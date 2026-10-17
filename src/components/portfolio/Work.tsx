@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
 import { projects, type ProjectTag } from "@/data/portfolio";
-import { SectionHeading } from "./Reveal";
 import { cn } from "@/lib/utils";
 
 const filters: ("All" | ProjectTag)[] = ["All", "AI", "Full-stack", "Frontend"];
@@ -13,9 +12,7 @@ export function Work() {
 
   return (
     <section id="work" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
-      <SectionHeading index="01" eyebrow="Selected work" title={<>Products with a <em className="text-lime">brain</em> and a face.</>}>
-        A few things I've built — where machine learning meets interfaces people actually want to use.
-      </SectionHeading>
+      <h2 className="mb-12 font-display text-5xl tracking-tight sm:text-6xl md:text-7xl">Things I build.</h2>
 
       <div role="group" aria-label="Filter projects" className="mb-10 flex flex-wrap gap-2">
         {filters.map((f) => (
