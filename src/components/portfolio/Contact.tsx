@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import emailjs from "@emailjs/browser";
-import { ArrowUpRight, LoaderCircle, Send } from "lucide-react";
+import { ArrowUpRight, LoaderCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 type FormState = "idle" | "sending" | "success" | "error" | "setup";
