@@ -36,9 +36,15 @@ export function Work() {
                 ) : (
                   <span className="inline-flex h-11 items-center justify-center rounded-full border border-border px-4 text-sm text-muted-foreground">Live</span>
                 )}
-                <span aria-disabled="true" title="Demo video link not added yet" className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-4 text-sm text-muted-foreground">
-                  <Play className="h-4 w-4" /> Demo video
-                </span>
+                {p.slug === "supplai" ? (
+                  <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-4 text-sm transition-colors hover:border-lime hover:text-lime">
+                    <Play className="h-4 w-4" /> Demo video <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <span aria-disabled="true" title="Demo video link not added yet" className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-4 text-sm text-muted-foreground">
+                    <Play className="h-4 w-4" /> Demo video
+                  </span>
+                )}
                 {p.repo ? (
                   <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-4 text-sm transition-colors hover:border-lime hover:text-lime">
                     <Github className="h-4 w-4" /> Repo
