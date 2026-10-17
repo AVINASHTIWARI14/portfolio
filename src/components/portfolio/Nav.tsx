@@ -39,9 +39,6 @@ export function Nav() {
           className="flex items-center justify-between rounded-full border border-neutral-200 bg-white py-1.5 pl-4 pr-1.5 text-neutral-950 shadow-sm"
         >
           <a href="#top" className="flex items-center gap-2.5" aria-label="Avinash Tiwari — home">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-lime font-display text-sm font-semibold text-primary-foreground">
-              AT
-            </span>
             <span className="hidden font-display text-lg sm:inline">Avinash Tiwari</span>
           </a>
           <ul className="hidden items-center gap-1 md:flex">
