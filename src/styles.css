@@ -275,7 +275,7 @@ a:not(.brutalist-button):hover {
 .nav-brutalist-active {
   background: #080808;
   color: #fff;
-  transform: translate(-2px, -2px);
+  transform: translate(-2px, -2px) scale(1.035);
   box-shadow: 6px 6px 0 #080808;
 }
 .nav-brutalist > * {
