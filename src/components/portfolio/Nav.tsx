@@ -36,12 +36,9 @@ export function Nav() {
       <div className="mx-auto mt-3 max-w-6xl px-3 sm:px-6">
         <nav
           aria-label="Primary"
-          className="flex items-center justify-between rounded-full border border-neutral-200 bg-white py-1.5 pl-4 pr-1.5 text-neutral-950 shadow-sm"
+          className="relative flex items-center justify-center rounded-full border border-neutral-200 bg-white px-2 py-1.5 text-neutral-950 shadow-sm"
         >
-          <a href="#top" className="flex items-center gap-2.5" aria-label="Avinash Tiwari — home">
-            <span className="hidden font-display text-lg sm:inline">Avinash Tiwari</span>
-          </a>
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden flex-1 items-center justify-center gap-1 md:flex">
             {navItems.map((n) => (
               <li key={n.id}>
                 <a
@@ -60,7 +57,7 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-1.5">
+          <div className="absolute right-2 flex items-center gap-1.5">
             <button
               className="grid h-11 w-11 place-items-center rounded-full border border-neutral-300 text-neutral-950 md:hidden"
               onClick={() => setOpen((o) => !o)}
