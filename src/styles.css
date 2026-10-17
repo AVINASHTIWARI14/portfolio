@@ -84,8 +84,6 @@
   --glow-lavender: oklch(0.7 0 0 / 12%);
 }
 
-
-
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
@@ -141,9 +139,94 @@
 @keyframes float-y { 50% { transform: translateY(-10px); } }
 @keyframes scroll-dot { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
 @keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes brutalist-glare {
+  0% { transform: rotate(45deg) translateY(-100%); opacity: 0; }
+  50% { transform: rotate(45deg) translateY(100%); opacity: 1; }
+  100% { transform: rotate(45deg) translateY(100%); opacity: 0; }
+}
+@keyframes brutalist-arrow {
+  from { right: -30px; }
+  to { right: 10px; }
+}
 
 @utility animate-orbit { animation: orbit 40s linear infinite; }
 @utility animate-orbit-rev { animation: orbit-rev 28s linear infinite; }
 @utility animate-float { animation: float-y 6s ease-in-out infinite; }
 @utility animate-scroll-dot { animation: scroll-dot 1.8s ease-in-out infinite; }
 @utility animate-marquee { animation: marquee 30s linear infinite; }
+
+.brutalist-button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  height: 64px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 3px solid #000;
+  outline: 2px solid #f7f5f5;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 5px 5px 0 #000;
+  transition: transform .3s cubic-bezier(.25,.8,.25,1), box-shadow .3s cubic-bezier(.25,.8,.25,1), background-color .3s, color .3s, outline-color .3s;
+}
+.brutalist-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,.8), transparent);
+  transform: rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.brutalist-button:hover::before { animation: brutalist-glare 1.5s infinite; }
+.brutalist-button:hover {
+  transform: translate(-3px,-3px);
+  box-shadow: 8px 8px 0 #ff4500;
+  background: #000;
+  color: #fff;
+  outline-color: #000;
+}
+.brutalist-button:active {
+  transform: translate(3px,3px);
+  box-shadow: 0 0 0 #ff4500;
+  transition-duration: .1s;
+}
+.brutalist-button-text {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  white-space: nowrap;
+  font-size: clamp(10px, 1.05vw, 13px);
+  font-weight: 800;
+  letter-spacing: .07em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: transform .3s, color .3s;
+}
+.brutalist-button:hover .brutalist-button-text { transform: skew(-5deg); }
+.brutalist-button-arrow {
+  position: absolute;
+  z-index: 2;
+  right: 8px;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  transition: right .3s cubic-bezier(.25,.8,.25,1);
+}
+.brutalist-button:hover .brutalist-button-arrow { right: 8px; }
+.brutalist-button-disabled { opacity: .45; cursor: not-allowed; }
+.brutalist-button-disabled .brutalist-button-arrow { display: none; }
+
+@media (max-width: 639px) {
+  .brutalist-button { height: 60px; }
+  .brutalist-button-text { font-size: 12px; }
+}
