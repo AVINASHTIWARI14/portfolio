@@ -6,6 +6,29 @@ import { Reveal } from "./Reveal";
 
 type FormState = "idle" | "sending" | "success" | "error" | "setup";
 
+const socials = [
+  {
+    name: "GitHub",
+    href: "https://github.com/AVINASHTIWARI14",
+    icon: "https://cdn.simpleicons.org/github/080808",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/vesper.commw?igsi=OWR0cDlkNWx0NHhm",
+    icon: "https://cdn.simpleicons.org/instagram/E4405F",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/avinash-tiwari-95b5932a6",
+    icon: "https://cdn.simpleicons.org/linkedin/0A66C2",
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@avinash_tiwari14",
+    icon: "https://cdn.simpleicons.org/youtube/FF0000",
+  },
+];
+
 export function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -120,6 +143,29 @@ export function Contact() {
               </p>
             </div>
           </form>
+        </Reveal>
+
+        <Reveal delay={0.2} className="mx-auto mt-12 max-w-3xl">
+          <nav aria-label="Social links" className="flex items-center justify-center gap-8 sm:gap-10">
+            {socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                title={social.name}
+                className="group inline-flex h-12 w-12 items-center justify-center transition-transform duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
+                <img
+                  src={social.icon}
+                  alt=""
+                  loading="lazy"
+                  className="h-10 w-10 object-contain transition-[filter] duration-200 group-hover:drop-shadow-[0_3px_5px_rgb(0_0_0_/_20%)] sm:h-11 sm:w-11"
+                />
+              </a>
+            ))}
+          </nav>
         </Reveal>
       </div>
     </section>
