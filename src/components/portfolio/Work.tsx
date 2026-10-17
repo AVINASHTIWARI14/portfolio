@@ -44,7 +44,7 @@ export function Work() {
                   </a>
                 ) : (
                   <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-video brutalist-button-disabled">
-                    <span className="brutalist-button-text">Demo video</span>
+                    <span className="brutalist-button-text">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
                   </span>
                 )}
                 {p.repo ? (
