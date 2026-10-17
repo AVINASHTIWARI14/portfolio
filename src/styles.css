@@ -176,7 +176,7 @@ a:not(.brutalist-button):hover {
   border-radius: 0 !important;
 }
 
-/* Project action buttons: retain the green, yellow and red project controls */
+/* Project action buttons: requested colors are visible by default, not only on hover. */
 .brutalist-button {
   display: flex;
   position: relative;
@@ -189,16 +189,15 @@ a:not(.brutalist-button):hover {
   padding: 0 10px;
   box-sizing: border-box;
   overflow: hidden;
-  border: 3px solid #000;
+  border: 3px solid currentColor;
   outline: 2px solid #fff;
-  color: #000;
   text-decoration: none;
-  box-shadow: 5px 5px 0 #000;
+  box-shadow: 5px 5px 0 currentColor;
   transition: transform .3s cubic-bezier(.25,.8,.25,1), box-shadow .3s cubic-bezier(.25,.8,.25,1), background-color .3s, color .3s, outline-color .3s;
 }
-.brutalist-button-live { background: #000; color: #fff; }
-.brutalist-button-video { background: #000; color: #fff; }
-.brutalist-button-repo { background: #000; color: #fff; }
+.brutalist-button-live { background: #fde047; color: #080808; }
+.brutalist-button-video { background: #f87171; color: #080808; }
+.brutalist-button-repo { background: #4ade80; color: #080808; }
 .brutalist-button::before {
   content: "";
   position: absolute;
@@ -216,7 +215,7 @@ a:not(.brutalist-button):hover {
   transform: translate(-3px,-3px);
   color: #000;
   outline-color: #000;
-  box-shadow: 8px 8px 0 #000;
+  box-shadow: 8px 8px 0 currentColor;
 }
 .brutalist-button-live:hover { background: #fde047; color: #000; box-shadow: 8px 8px 0 #fde047; }
 .brutalist-button-video:hover { background: #f87171; color: #000; box-shadow: 8px 8px 0 #f87171; }
