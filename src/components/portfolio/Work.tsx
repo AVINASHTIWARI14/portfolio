@@ -30,29 +30,29 @@ export function Work() {
 
               <div className="relative mt-auto grid grid-cols-1 gap-3 pt-10 sm:grid-cols-3">
                 {p.demo ? (
-                  <a href={p.demo} target="_blank" rel="noreferrer" className="brutalist-button">
+                  <a href={p.demo} target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-live">
                     <span className="brutalist-button-text">Live</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
-                  <span aria-disabled="true" className="brutalist-button brutalist-button-disabled">
+                  <span aria-disabled="true" className="brutalist-button brutalist-button-live brutalist-button-disabled">
                     <span className="brutalist-button-text">Live</span>
                   </span>
                 )}
                 {p.slug === "supplai" ? (
-                  <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="brutalist-button">
+                  <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-video">
                     <span className="brutalist-button-text">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
-                  <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-disabled">
+                  <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-video brutalist-button-disabled">
                     <span className="brutalist-button-text">Demo video</span>
                   </span>
                 )}
                 {p.repo ? (
-                  <a href={p.repo} target="_blank" rel="noreferrer" className="brutalist-button">
+                  <a href={p.repo} target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-repo">
                     <span className="brutalist-button-text">Repo</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
-                  <span aria-disabled="true" className="brutalist-button brutalist-button-disabled">
+                  <span aria-disabled="true" className="brutalist-button brutalist-button-repo brutalist-button-disabled">
                     <span className="brutalist-button-text">Repo</span>
                   </span>
                 )}
