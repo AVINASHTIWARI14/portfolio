@@ -19,7 +19,7 @@ const socials = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/avinash-tiwari-95b5932a6",
+    href: "https://www.linkedin.com/",
     icon: "https://cdn.simpleicons.org/linkedin/0A66C2",
   },
   {
@@ -146,7 +146,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={0.2} className="mx-auto mt-12 max-w-3xl">
-          <nav aria-label="Social links" className="flex items-center justify-center gap-8 sm:gap-10">
+          <nav aria-label="Social links" className="flex items-center justify-center gap-8 sm:gap-12">
             {socials.map((social) => (
               <a
                 key={social.name}
@@ -155,13 +155,13 @@ export function Contact() {
                 rel="noopener noreferrer"
                 aria-label={social.name}
                 title={social.name}
-                className="group inline-flex h-12 w-12 items-center justify-center transition-transform duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="group inline-flex h-16 w-16 items-center justify-center transition-transform duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4 sm:h-[76px] sm:w-[76px]"
               >
                 <img
                   src={social.icon}
                   alt=""
                   loading="lazy"
-                  className="h-10 w-10 object-contain transition-[filter] duration-200 group-hover:drop-shadow-[0_3px_5px_rgb(0_0_0_/_20%)] sm:h-11 sm:w-11"
+                  className="h-14 w-14 object-contain transition-[filter] duration-200 group-hover:drop-shadow-[0_3px_5px_rgb(0_0_0_/_20%)] sm:h-16 sm:w-16"
                 />
               </a>
             ))}
