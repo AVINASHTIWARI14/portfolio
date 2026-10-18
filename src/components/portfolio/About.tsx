@@ -47,18 +47,24 @@ export function Skills() {
         <SectionHeading index="04" eyebrow="" title={<>Tools / Skills.</>} titleFontFamily="Lobster, cursive" />
         <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.05} className="group bg-background p-6 transition-colors hover:bg-card sm:p-8">
-              <div className="mb-5 flex items-baseline justify-between">
+            <Reveal key={g.title} delay={i * 0.05} className="group min-w-0 overflow-hidden bg-background p-6 transition-colors hover:bg-card sm:p-8">
+              <div className="mb-5 flex items-baseline justify-between gap-3">
                 <h3 className="font-display text-2xl">{g.title}</h3>
-                <span className="font-mono text-xs text-muted-foreground group-hover:text-lime">/{String(i + 1).padStart(2, "0")}</span>
+                <span className="shrink-0 font-mono text-xs text-muted-foreground group-hover:text-lime">/{String(i + 1).padStart(2, "0")}</span>
               </div>
-              <ul className="flex flex-wrap gap-2">
-                {g.items.map((s) => (
-                  <li key={s} className="rounded-full border border-border px-3 py-1.5 text-sm transition-colors hover:border-lime hover:text-lime">
-                    {s}
-                  </li>
-                ))}
-              </ul>
+              <div className="skills-marquee overflow-hidden" aria-label={`${g.title} skills`}>
+                <div className="skills-marquee-track flex w-max items-center gap-2">
+                  {[0, 1].map((copy) => (
+                    <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center gap-2">
+                      {g.items.map((s) => (
+                        <li key={s} className="shrink-0 whitespace-nowrap border-2 border-border px-3 py-1.5 text-sm transition-colors hover:border-lime hover:text-lime">
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
