@@ -44,7 +44,7 @@ export function Skills() {
     <section id="skills" className="relative overflow-hidden border-t border-border py-24 md:py-32">
       <div className="absolute -right-40 top-20 h-[420px] w-[420px] glow-lavender blur-3xl" aria-hidden />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading index="04" eyebrow="" title={<>Tools / Skills.</>} />
+        <SectionHeading index="04" eyebrow="" title={<>Tools / Skills.</>} titleFontFamily="Lobster, cursive" />
         <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
             <Reveal key={g.title} delay={i * 0.05} className="group bg-background p-6 transition-colors hover:bg-card sm:p-8">
