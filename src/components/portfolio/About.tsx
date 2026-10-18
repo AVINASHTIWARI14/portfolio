@@ -2,14 +2,11 @@ import { skillGroups, timeline } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 
 const skillLogos: Record<string, string> = {
-  "C++": "cplusplus/cplusplus-original", Python: "python/python-original", TypeScript: "typescript/typescript-original",
-  JavaScript: "javascript/javascript-original", SQL: "azuresqldatabase/azuresqldatabase-original",
-  React: "react/react-original", "Tailwind CSS": "tailwindcss/tailwindcss-original", "shadcn/ui": "shadcnui/shadcnui-original",
-  "Framer Motion": "framermotion/framermotion-original", FastAPI: "fastapi/fastapi-original", "Node.js": "nodejs/nodejs-original",
-  Express: "express/express-original", "scikit-learn": "scikitlearn/scikitlearn-original", spaCy: "spacy/spacy-original",
-  "NLP pipelines": "python/python-original", PostgreSQL: "postgresql/postgresql-original", Supabase: "supabase/supabase-original",
-  MongoDB: "mongodb/mongodb-original", Git: "git/git-original", GitHub: "github/github-original", Docker: "docker/docker-original",
-  "VS Code": "vscode/vscode-original",
+  "C++": "cpp", Python: "python", TypeScript: "ts", JavaScript: "js", SQL: "mysql",
+  React: "react", "Tailwind CSS": "tailwind", "shadcn/ui": "shadcn", "Framer Motion": "framer",
+  FastAPI: "fastapi", "Node.js": "nodejs", Express: "express", "scikit-learn": "sklearn",
+  spaCy: "python", "NLP pipelines": "python", PostgreSQL: "postgres", Supabase: "supabase",
+  MongoDB: "mongodb", Git: "git", GitHub: "github", Docker: "docker", "VS Code": "vscode",
 };
 
 export function About() {
@@ -75,10 +72,20 @@ export function Skills() {
                           className="flex h-14 w-14 shrink-0 items-center justify-center border-2 border-border p-2.5 transition-colors hover:border-lime sm:h-16 sm:w-16"
                         >
                           <img
-                            src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skillLogos[s]}.svg`}
+                            src={`https://skillicons.dev/icons?i=${skillLogos[s]}`}
                             alt={s}
                             loading="lazy"
+                            onError={(event) => {
+                              event.currentTarget.style.display = "none";
+                              const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+                              if (fallback) fallback.style.display = "flex";
+                            }}
                             className="h-full w-full object-contain"
+                          />
+                          <span className="hidden h-full w-full items-center justify-center text-center text-xs font-semibold" aria-hidden="true">
+                            {s}
+                          </span>
+                          {/*
                           />
                         </li>
                       ))}
