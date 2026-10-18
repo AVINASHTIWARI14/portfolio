@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import "./dsa-editor.css";
 
@@ -40,9 +41,10 @@ export function Dsa() {
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-xs text-[#cccccc] transition-colors hover:text-white"
+                className="brutalist-button brutalist-button-live"
               >
-                VIEW PROFILE ↗
+                <span className="brutalist-button-text">VIEW PROFILE</span>
+                <ArrowUpRight aria-hidden="true" className="brutalist-button-arrow" />
               </a>
             </div>
             <div className="p-4 sm:p-6">
@@ -52,9 +54,6 @@ export function Dsa() {
                 loading="lazy"
                 className="mx-auto block h-auto w-full"
               />
-              <p className="mt-3 text-center font-mono text-xs text-[#999999]">
-                Submission activity · generated from your public LeetCode profile
-              </p>
             </div>
           </div>
         </Reveal>
