@@ -31,3 +31,16 @@
 .dsa-window-close:hover {
   background-color: #e81123;
 }
+
+.dsa-window-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 9999px;
+  background: #c042ff;
+}
+.dsa-window-dot-close {
+  margin-right: 12px;
+  background: #e81123;
+}
