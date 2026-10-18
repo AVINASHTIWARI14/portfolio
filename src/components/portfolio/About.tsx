@@ -1,6 +1,31 @@
 import { skillGroups, timeline } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 
+const skillColors: Record<string, { bg: string; fg: string }> = {
+  "C++": { bg: "#00599C", fg: "#FFFFFF" },
+  Python: { bg: "#3776AB", fg: "#FFFFFF" },
+  TypeScript: { bg: "#3178C6", fg: "#FFFFFF" },
+  JavaScript: { bg: "#F7DF1E", fg: "#111111" },
+  SQL: { bg: "#4479A1", fg: "#FFFFFF" },
+  React: { bg: "#61DAFB", fg: "#111111" },
+  "Tailwind CSS": { bg: "#06B6D4", fg: "#111111" },
+  "shadcn/ui": { bg: "#111111", fg: "#FFFFFF" },
+  "Framer Motion": { bg: "#0055FF", fg: "#FFFFFF" },
+  FastAPI: { bg: "#009688", fg: "#FFFFFF" },
+  "Node.js": { bg: "#339933", fg: "#FFFFFF" },
+  Express: { bg: "#222222", fg: "#FFFFFF" },
+  "scikit-learn": { bg: "#F7931E", fg: "#111111" },
+  spaCy: { bg: "#09A3D5", fg: "#FFFFFF" },
+  "NLP pipelines": { bg: "#8B5CF6", fg: "#FFFFFF" },
+  PostgreSQL: { bg: "#4169E1", fg: "#FFFFFF" },
+  Supabase: { bg: "#3ECF8E", fg: "#111111" },
+  MongoDB: { bg: "#47A248", fg: "#FFFFFF" },
+  Git: { bg: "#F05032", fg: "#FFFFFF" },
+  GitHub: { bg: "#181717", fg: "#FFFFFF" },
+  Docker: { bg: "#2496ED", fg: "#FFFFFF" },
+  "VS Code": { bg: "#007ACC", fg: "#FFFFFF" },
+};
+
 
 
 export function About() {
@@ -62,7 +87,8 @@ export function Skills() {
                         <li
                           key={s}
                           title={s}
-                          className="shrink-0 whitespace-nowrap border-2 border-border px-3 py-2 text-sm transition-colors hover:border-lime hover:text-lime"
+                          className="shrink-0 whitespace-nowrap border-2 border-black px-3 py-2 text-sm font-semibold shadow-[3px_3px_0_#000] transition-transform hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-[2px_2px_0_#000] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none"
+                          style={{ backgroundColor: skillColors[s]?.bg ?? "#FFFFFF", color: skillColors[s]?.fg ?? "#111111" }}
                         >
                           {s}
                         </li>
