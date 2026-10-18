@@ -142,7 +142,7 @@
 .animate-orbit-rev { animation: orbit-rev 28s linear infinite; }
 .animate-float { animation: float-y 6s ease-in-out infinite; }
 .animate-scroll-dot { animation: scroll-dot 1.8s ease-in-out infinite; }
-.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee { animation: marquee 24s linear infinite; }
 
 /* Global neo-brutalist surfaces */
 :where(.rounded-full, .rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-md) {
