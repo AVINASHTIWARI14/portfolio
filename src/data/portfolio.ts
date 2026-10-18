@@ -167,7 +167,7 @@ export const skillGroups = [
   { title: "Frontend", items: ["React", "Tailwind CSS", "shadcn/ui", "Framer Motion"] },
   { title: "Backend", items: ["FastAPI", "Node.js", "Express"] },
   { title: "AI / ML", items: ["scikit-learn", "spaCy", "NLP pipelines"] },
-  { title: "Data", items: ["PostgreSQL", "Supabase", "MongoDB"] },
+  { title: "Database", items: ["PostgreSQL", "Supabase", "MongoDB"] },
   { title: "Tools", items: ["Git", "GitHub", "Docker", "VS Code"] },
 ];
 
