@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, Minus, Square, X } from "lucide-react";
 import { dsaRepo, dsaTopics, leetcode } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 import { cn } from "@/lib/utils";
 
 export function Dsa() {
   const [activeId, setActiveId] = useState(dsaTopics[0]?.id ?? "");
+  const [minimized, setMinimized] = useState(false);
+  const [maximized, setMaximized] = useState(false);
   const t = dsaTopics.find((d) => d.id === activeId)!;
 
   return (
@@ -69,27 +71,50 @@ export function Dsa() {
               </AnimatePresence>
             </div>
 
-            {/* code card */}
-            <div className="flex min-w-0 flex-col rounded-3xl border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-5 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-sticky/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-lime/70" />
-                <span className="ml-3 font-mono text-xs text-muted-foreground">{t.id}.cpp</span>
+            {/* C++ editor */}
+            <div
+              className={cn(
+                "dsa-code-window flex min-w-0 flex-col overflow-auto border",
+                maximized ? "min-h-[520px]" : "min-h-[300px]",
+              )}
+              style={{ background: "#15001f", borderColor: "#c042ff", fontFamily: "monospace", fontSize: 14 }}
+            >
+              <div className="dsa-code-titlebar flex h-11 shrink-0 items-center justify-end" style={{ background: "#2e0043" }}>
+                <span className="mr-auto truncate px-3 text-xs text-[#bafff8]">{t.id}.cpp</span>
+                <button type="button" aria-label="Minimize editor" title="Minimize" onClick={() => setMinimized((v) => !v)} className="dsa-window-control">
+                  <Minus />
+                </button>
+                <button type="button" aria-label={maximized ? "Restore editor size" : "Maximize editor"} title={maximized ? "Restore" : "Maximize"} onClick={() => setMaximized((v) => !v)} className="dsa-window-control">
+                  <Square />
+                </button>
+                <button type="button" aria-label="Reset editor view" title="Reset view" onClick={() => { setMinimized(false); setMaximized(false); }} className="dsa-window-control dsa-window-close">
+                  <X />
+                </button>
               </div>
-              <AnimatePresence mode="wait">
-                <motion.pre key={t.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1 overflow-x-auto p-5 font-mono text-[13px] leading-6 text-lime sm:p-6">
-                  <code>{t.snippet}</code>
-                </motion.pre>
-              </AnimatePresence>
-              <div className="flex flex-wrap gap-2 border-t border-border p-5">
-                <a href={dsaRepo} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full bg-lime px-5 text-sm font-medium text-primary-foreground">
-                  <Github className="h-4 w-4" /> DSA repository
-                </a>
-                <a href={leetcode} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm hover:border-lime hover:text-lime">
-                  LeetCode <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
+              {!minimized && (
+                <>
+                  <AnimatePresence mode="wait">
+                    <motion.pre
+                      key={t.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className={cn("flex-1 overflow-auto whitespace-pre p-3 text-[#bafff8]", maximized ? "min-h-[420px]" : "max-h-[300px]")}
+                      style={{ scrollbarWidth: "none" }}
+                    >
+                      <code>{t.snippet}</code>
+                    </motion.pre>
+                  </AnimatePresence>
+                  <div className="flex flex-wrap gap-2 border-t border-[#c042ff]/50 p-3">
+                    <a href={dsaRepo} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 border border-[#c042ff] px-4 text-sm text-[#bafff8] transition-colors hover:bg-[#2e0043]">
+                      <Github className="h-4 w-4" /> DSA repository
+                    </a>
+                    <a href={leetcode} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 border border-[#c042ff] px-4 text-sm text-[#bafff8] transition-colors hover:bg-[#2e0043]">
+                      LeetCode <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </Reveal>
