@@ -63,7 +63,7 @@ export function Skills() {
               <div className="overflow-hidden" aria-label={`${g.title} skills`}>
                 <div className="animate-marquee flex w-max items-center gap-2">
                   {[0, 1].map((copy) => (
-                    <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center gap-2 pr-8 sm:pr-12">
+                    <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center gap-2">
                       {g.items.map((s) => (
                         <li
                           key={s}
