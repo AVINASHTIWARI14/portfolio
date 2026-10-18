@@ -41,10 +41,10 @@ export function Dsa() {
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
                 rel="noreferrer"
-                className="brutalist-button brutalist-button-live !inline-flex !w-auto !min-w-0 !min-h-0 !h-auto !gap-1 !px-2 !py-1 !text-[10px] sm:!px-2.5 sm:!py-1 sm:!text-[10px]"
+                className="brutalist-button brutalist-button-live !inline-flex !w-auto !min-w-0 !min-h-0 !h-auto !items-center !justify-center !gap-1.5 !px-2 !py-1 !text-[10px] sm:!px-2.5 sm:!py-1 sm:!text-[10px]"
               >
-                <span className="brutalist-button-text">VIEW PROFILE</span>
-                <ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !h-3 !w-3" />
+                <span className="brutalist-button-text !static !transform-none">VIEW PROFILE</span>
+                <ArrowUpRight aria-hidden="true" className="!static !m-0 !h-3 !w-3 shrink-0" />
               </a>
             </div>
             <div className="p-3 sm:p-4">
