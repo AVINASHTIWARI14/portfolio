@@ -26,10 +26,10 @@
   height: 10px;
 }
 .dsa-window-control:hover {
-  background-color: #c042ff2e;
+  background-color: #ffffff20;
 }
 .dsa-window-close:hover {
-  background-color: #e81123;
+  background-color: #555555;
 }
 
 .dsa-window-dot {
@@ -38,9 +38,9 @@
   height: 10px;
   margin-right: 10px;
   border-radius: 9999px;
-  background: #c042ff;
+  background: #888888;
 }
 .dsa-window-dot-close {
   margin-right: 12px;
-  background: #e81123;
+  background: #cccccc;
 }
