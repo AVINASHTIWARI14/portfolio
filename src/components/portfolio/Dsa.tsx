@@ -8,16 +8,16 @@ export function Dsa() {
         <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} titleFontFamily="Lobster, cursive" />
 
         <Reveal>
-          <article className="dsa-code-window mx-auto flex min-w-0 max-w-4xl flex-col overflow-hidden border" style={{ background: "#15001f", borderColor: "#c042ff", fontFamily: "monospace", fontSize: 14 }}>
-            <div className="dsa-code-titlebar flex h-11 shrink-0 items-center justify-end" style={{ background: "#2e0043" }}>
-              <span className="mr-auto truncate px-3 text-xs text-[#bafff8]">dsa-journey.txt</span>
+          <article className="dsa-code-window mx-auto flex min-w-0 max-w-4xl flex-col overflow-hidden border" style={{ background: "#111111", borderColor: "#555555", fontFamily: "monospace", fontSize: 14 }}>
+            <div className="dsa-code-titlebar flex h-11 shrink-0 items-center justify-end" style={{ background: "#222222" }}>
+              <span className="mr-auto truncate px-3 text-xs text-[#eeeeee]">dsa-journey.txt</span>
               <span className="dsa-window-dot" aria-hidden="true" />
               <span className="dsa-window-dot" aria-hidden="true" />
               <span className="dsa-window-dot dsa-window-dot-close" aria-hidden="true" />
             </div>
 
-            <div className="space-y-5 p-6 leading-7 text-[#bafff8] sm:p-9 sm:leading-8">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#c042ff]">A work in progress</p>
+            <div className="space-y-5 p-6 leading-7 text-[#dddddd] sm:p-9 sm:leading-8">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#999999]">A work in progress</p>
               <p>
                 My DSA journey has been less about collecting solved questions and more about learning how to think through a problem.
               </p>
@@ -27,20 +27,20 @@ export function Dsa() {
               <p>
                 With 300+ problems solved on LeetCode, I’ve learned that progress comes from consistency: getting stuck, finding the gap in my thinking, and coming back to the problem with a better approach.
               </p>
-              <p className="text-[#c042ff]">Still learning. Still solving. Still getting better.</p>
+              <p className="text-[#f5f5f5]">Still learning. Still solving. Still getting better.</p>
             </div>
           </article>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mx-auto mt-8 max-w-4xl overflow-hidden border border-[#c042ff] bg-[#15001f]">
-            <div className="flex items-center justify-between gap-3 border-b border-[#c042ff]/60 bg-[#2e0043] px-4 py-3">
-              <h3 className="font-mono text-sm text-[#bafff8]">leetcode-activity</h3>
+          <div className="mx-auto mt-8 max-w-4xl overflow-hidden border border-[#555555] bg-[#111111]">
+            <div className="flex items-center justify-between gap-3 border-b border-[#444444] bg-[#222222] px-4 py-3">
+              <h3 className="font-mono text-sm text-[#eeeeee]">leetcode-activity</h3>
               <a
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-xs text-[#c042ff] transition-colors hover:text-[#bafff8]"
+                className="font-mono text-xs text-[#cccccc] transition-colors hover:text-white"
               >
                 VIEW PROFILE ↗
               </a>
@@ -52,7 +52,7 @@ export function Dsa() {
                 loading="lazy"
                 className="mx-auto block h-auto w-full"
               />
-              <p className="mt-3 text-center font-mono text-xs text-[#bafff8]/70">
+              <p className="mt-3 text-center font-mono text-xs text-[#999999]">
                 Submission activity · generated from your public LeetCode profile
               </p>
             </div>
