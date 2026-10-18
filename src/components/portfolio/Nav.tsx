@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { navItems } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -22,13 +21,8 @@ function useActiveSection() {
 
 export function Nav() {
   const active = useActiveSection();
-  const [open, setOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-  }, [open]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -38,14 +32,14 @@ export function Nav() {
           aria-label="Primary"
           className="relative flex items-center justify-center border-[3px] border-black bg-white px-2 py-2 text-neutral-950 shadow-[6px_6px_0_#080808]"
         >
-          <ul className="hidden flex-1 items-center justify-center gap-2.5 md:flex">
+          <ul className="flex w-full items-center justify-start gap-1 overflow-x-auto whitespace-nowrap md:justify-center md:gap-2.5">
             {navItems.map((n) => (
-              <li key={n.id}>
+              <li key={n.id} className="shrink-0">
                 <a
                   href={`#${n.id}`}
                   aria-current={active === n.id ? "true" : undefined}
                   className={cn(
-                    "nav-brutalist relative px-4 py-2.5 text-sm font-extrabold uppercase tracking-wide",
+                    "nav-brutalist relative px-2 py-2 text-xs font-extrabold uppercase tracking-wide sm:px-3 md:px-4 md:py-2.5 md:text-sm",
                     active === n.id ? "nav-brutalist-active" : "",
                   )}
                 >
@@ -57,48 +51,8 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <div className="absolute right-2 flex items-center gap-1.5">
-            <button
-              className="nav-brutalist grid h-11 w-11 place-items-center md:hidden"
-              onClick={() => setOpen((o) => !o)}
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
-            >
-              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </button>
-          </div>
         </nav>
       </div>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            className="mx-3 mt-2 border-[3px] border-black bg-white p-3 text-neutral-950 shadow-[6px_6px_0_#080808] md:hidden"
-          >
-            <ul>
-              {navItems.map((n, i) => (
-                <li key={n.id}>
-                  <a
-                    href={`#${n.id}`}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "nav-brutalist flex items-center justify-between px-4 py-4 font-display text-2xl",
-                      active === n.id ? "nav-brutalist-active" : "",
-                    )}
-                  >
-                    {n.label}
-                    <span className="font-mono text-xs text-neutral-500">0{i + 1}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 }
