@@ -1,6 +1,17 @@
 import { skillGroups, timeline } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 
+const skillLogos: Record<string, string> = {
+  "C++": "cplusplus/cplusplus-original", Python: "python/python-original", TypeScript: "typescript/typescript-original",
+  JavaScript: "javascript/javascript-original", SQL: "azuresqldatabase/azuresqldatabase-original",
+  React: "react/react-original", "Tailwind CSS": "tailwindcss/tailwindcss-original", "shadcn/ui": "shadcnui/shadcnui-original",
+  "Framer Motion": "framermotion/framermotion-original", FastAPI: "fastapi/fastapi-original", "Node.js": "nodejs/nodejs-original",
+  Express: "express/express-original", "scikit-learn": "scikitlearn/scikitlearn-original", spaCy: "spacy/spacy-original",
+  "NLP pipelines": "python/python-original", PostgreSQL: "postgresql/postgresql-original", Supabase: "supabase/supabase-original",
+  MongoDB: "mongodb/mongodb-original", Git: "git/git-original", GitHub: "github/github-original", Docker: "docker/docker-original",
+  "VS Code": "vscode/vscode-original",
+};
+
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
@@ -57,8 +68,18 @@ export function Skills() {
                   {[0, 1].map((copy) => (
                     <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center gap-2">
                       {g.items.map((s) => (
-                        <li key={s} className="shrink-0 whitespace-nowrap border-2 border-border px-3 py-1.5 text-sm transition-colors hover:border-lime hover:text-lime">
-                          {s}
+                        <li
+                          key={s}
+                          title={s}
+                          aria-label={s}
+                          className="flex h-14 w-14 shrink-0 items-center justify-center border-2 border-border p-2.5 transition-colors hover:border-lime sm:h-16 sm:w-16"
+                        >
+                          <img
+                            src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skillLogos[s]}.svg`}
+                            alt={s}
+                            loading="lazy"
+                            className="h-full w-full object-contain"
+                          />
                         </li>
                       ))}
                     </ul>
