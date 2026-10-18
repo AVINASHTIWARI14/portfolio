@@ -85,8 +85,6 @@ export function Skills() {
                           <span className="hidden h-full w-full items-center justify-center text-center text-xs font-semibold" aria-hidden="true">
                             {s}
                           </span>
-                          {/*
-                          />
                         </li>
                       ))}
                     </ul>
