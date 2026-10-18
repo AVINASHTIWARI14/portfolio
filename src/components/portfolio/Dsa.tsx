@@ -8,26 +8,26 @@ export function Dsa() {
         <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} titleFontFamily="Lobster, cursive" />
 
         <Reveal>
-          <article className="dsa-code-window mx-auto flex min-w-0 max-w-4xl flex-col overflow-hidden border" style={{ background: "#111111", borderColor: "#555555", fontFamily: "monospace", fontSize: 14 }}>
-            <div className="dsa-code-titlebar flex h-11 shrink-0 items-center justify-end" style={{ background: "#222222" }}>
-              <span className="mr-auto truncate px-3 text-xs text-[#eeeeee]">dsa-journey.txt</span>
+          <article className="dsa-code-window brutalist-card mx-auto flex min-w-0 max-w-4xl flex-col overflow-hidden border-2 border-black bg-white text-black shadow-[6px_6px_0_0_#000]" style={{ background: "#ffffff", borderColor: "#000000", color: "#000000", fontFamily: "monospace", fontSize: 14 }}>
+            <div className="dsa-code-titlebar flex h-11 shrink-0 items-center justify-end border-b-2 border-black" style={{ background: "#ffffff", color: "#000000" }}>
+              <span className="mr-auto truncate px-3 text-xs font-bold text-black">dsa-journey.txt</span>
               <span className="dsa-window-dot" aria-hidden="true" />
               <span className="dsa-window-dot" aria-hidden="true" />
               <span className="dsa-window-dot dsa-window-dot-close" aria-hidden="true" />
             </div>
 
-            <div className="space-y-5 p-6 leading-7 text-[#dddddd] sm:p-9 sm:leading-8">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#999999]">A work in progress</p>
-              <p>
+            <div className="space-y-5 p-6 leading-7 text-black sm:p-9 sm:leading-8">
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-600">A work in progress</p>
+              <p className="text-black">
                 My DSA journey has been less about collecting solved questions and more about learning how to think through a problem.
               </p>
-              <p>
+              <p className="text-black">
                 I practice primarily in C++, working through patterns, revisiting problems, and trying to understand why a solution works—not just how to make it pass.
               </p>
-              <p>
+              <p className="text-black">
                 With 300+ problems solved on LeetCode, I’ve learned that progress comes from consistency: getting stuck, finding the gap in my thinking, and coming back to the problem with a better approach.
               </p>
-              <p className="text-[#f5f5f5]">Still learning. Still solving. Still getting better.</p>
+              <p className="font-bold text-black">Still learning. Still solving. Still getting better.</p>
             </div>
           </article>
         </Reveal>
