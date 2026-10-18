@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { Work } from "@/components/portfolio/Work";
@@ -8,10 +7,6 @@ import { Contact, Footer } from "@/components/portfolio/Contact";
 import { Cursor } from "@/components/portfolio/Cursor";
 
 export function App() {
-  useEffect(() => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "instant" });
-  }, []);
-
   return (
     <div className="bg-noise relative">
       <a
