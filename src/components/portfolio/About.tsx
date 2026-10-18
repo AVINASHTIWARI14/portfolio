@@ -52,8 +52,8 @@ export function Skills() {
                 <h3 className="font-display text-2xl">{g.title}</h3>
                 <span className="shrink-0 font-mono text-xs text-muted-foreground group-hover:text-lime">/{String(i + 1).padStart(2, "0")}</span>
               </div>
-              <div className="skills-marquee overflow-hidden" aria-label={`${g.title} skills`}>
-                <div className="skills-marquee-track flex w-max items-center gap-2">
+              <div className="overflow-hidden" aria-label={`${g.title} skills`}>
+                <div className="animate-marquee flex w-max items-center gap-2">
                   {[0, 1].map((copy) => (
                     <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center gap-2">
                       {g.items.map((s) => (
