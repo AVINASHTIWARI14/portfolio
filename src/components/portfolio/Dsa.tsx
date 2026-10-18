@@ -4,6 +4,7 @@ import { ArrowUpRight, Github, Minus, Square, X } from "lucide-react";
 import { dsaRepo, dsaTopics, leetcode } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 import { cn } from "@/lib/utils";
+import "./dsa-editor.css";
 
 export function Dsa() {
   const [activeId, setActiveId] = useState(dsaTopics[0]?.id ?? "");
