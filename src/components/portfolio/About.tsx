@@ -1,13 +1,7 @@
 import { skillGroups, timeline } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 
-const skillLogos: Record<string, string> = {
-  "C++": "cpp", Python: "python", TypeScript: "ts", JavaScript: "js", SQL: "mysql",
-  React: "react", "Tailwind CSS": "tailwind", "shadcn/ui": "simpleicons/shadcnui", "Framer Motion": "simpleicons/framer",
-  FastAPI: "fastapi", "Node.js": "nodejs", Express: "express", "scikit-learn": "sklearn",
-  spaCy: "python", "NLP pipelines": "python", PostgreSQL: "postgres", Supabase: "supabase",
-  MongoDB: "mongodb", Git: "git", GitHub: "github", Docker: "docker", "VS Code": "vscode",
-};
+
 
 export function About() {
   return (
@@ -68,25 +62,9 @@ export function Skills() {
                         <li
                           key={s}
                           title={s}
-                          aria-label={s}
-                          className="flex h-14 w-14 shrink-0 items-center justify-center border-2 border-border p-2.5 transition-colors hover:border-lime sm:h-16 sm:w-16"
+                          className="shrink-0 whitespace-nowrap border-2 border-border px-3 py-2 text-sm transition-colors hover:border-lime hover:text-lime"
                         >
-                          <img
-                            src={skillLogos[s].startsWith("simpleicons/")
-                              ? `https://cdn.simpleicons.org/${skillLogos[s].replace("simpleicons/", "")}`
-                              : `https://skillicons.dev/icons?i=${skillLogos[s]}`}
-                            alt={s}
-                            loading="lazy"
-                            onError={(event) => {
-                              event.currentTarget.style.display = "none";
-                              const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
-                              if (fallback) fallback.style.display = "flex";
-                            }}
-                            className="h-full w-full object-contain"
-                          />
-                          <span className="hidden h-full w-full items-center justify-center text-center text-xs font-semibold" aria-hidden="true">
-                            {s}
-                          </span>
+                          {s}
                         </li>
                       ))}
                     </ul>
