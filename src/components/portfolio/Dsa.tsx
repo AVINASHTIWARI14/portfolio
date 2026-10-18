@@ -41,7 +41,7 @@ export function Dsa() {
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
                 rel="noreferrer"
-                className="brutalist-button brutalist-button-live !min-h-0 !px-3 !py-1.5 !text-xs"
+                className="brutalist-button brutalist-button-live !min-h-0 !h-auto !px-2 !py-1 !text-[10px] sm:!px-3 sm:!py-1.5 sm:!text-xs"
               >
                 <span className="brutalist-button-text">VIEW PROFILE</span>
                 <ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !h-3 !w-3" />
