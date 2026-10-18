@@ -46,12 +46,12 @@ export function Dsa() {
                 VIEW PROFILE
               </a>
             </div>
-            <div className="bg-white px-2 py-2 sm:px-4 sm:py-3">
+            <div className="overflow-x-auto bg-white px-2 py-2 sm:px-4 sm:py-3">
               <img
                 src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
                 alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
                 loading="lazy"
-                className="mx-auto block h-[120px] w-full object-fill sm:h-[140px]"
+                className="mx-0 block h-[160px] w-[900px] max-w-none sm:h-[180px] sm:w-[1000px]"
               />
             </div>
           </div>
