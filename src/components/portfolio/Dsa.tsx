@@ -33,7 +33,7 @@ export function Dsa() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mx-auto mt-8 max-w-4xl overflow-hidden border border-[#555555] bg-[#111111]">
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden border border-[#555555] bg-[#111111]">
             <div className="flex items-center justify-between gap-3 border-b border-[#444444] bg-[#222222] px-4 py-2">
               <h3 className="font-mono text-sm text-[#eeeeee]">leetcode-activity</h3>
               <a
@@ -46,7 +46,7 @@ export function Dsa() {
                 VIEW PROFILE
               </a>
             </div>
-            <div className="p-3 sm:p-4">
+            <div className="px-2 py-3 sm:px-4 sm:py-4">
               <img
                 src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
                 alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
