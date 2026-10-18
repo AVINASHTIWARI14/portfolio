@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -28,6 +29,12 @@ export function Hero() {
 
       </div>
 
+      <a href="#work" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground md:flex" aria-label="Scroll to projects">
+        <span className="flex h-9 w-5 justify-center rounded-full border border-border pt-1.5">
+          <span className="h-1.5 w-1 rounded-full bg-lime animate-scroll-dot" />
+        </span>
+        <ArrowDown className="h-3 w-3" />
+      </a>
     </section>
   );
 }
