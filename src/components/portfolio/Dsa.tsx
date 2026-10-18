@@ -31,6 +31,33 @@ export function Dsa() {
             </div>
           </article>
         </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="mx-auto mt-8 max-w-4xl overflow-hidden border border-[#c042ff] bg-[#15001f]">
+            <div className="flex items-center justify-between gap-3 border-b border-[#c042ff]/60 bg-[#2e0043] px-4 py-3">
+              <h3 className="font-mono text-sm text-[#bafff8]">leetcode-activity</h3>
+              <a
+                href="https://leetcode.com/u/AVINASH-TIWARI/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-mono text-xs text-[#c042ff] transition-colors hover:text-[#bafff8]"
+              >
+                VIEW PROFILE ↗
+              </a>
+            </div>
+            <div className="p-4 sm:p-6">
+              <img
+                src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
+                alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
+                loading="lazy"
+                className="mx-auto block h-auto w-full"
+              />
+              <p className="mt-3 text-center font-mono text-xs text-[#bafff8]/70">
+                Submission activity · generated from your public LeetCode profile
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
