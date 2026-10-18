@@ -3,7 +3,7 @@ import { Reveal, SectionHeading } from "./Reveal";
 
 const skillLogos: Record<string, string> = {
   "C++": "cpp", Python: "python", TypeScript: "ts", JavaScript: "js", SQL: "mysql",
-  React: "react", "Tailwind CSS": "tailwind", "shadcn/ui": "shadcn", "Framer Motion": "framer",
+  React: "react", "Tailwind CSS": "tailwind", "shadcn/ui": "simpleicons/shadcnui", "Framer Motion": "simpleicons/framer",
   FastAPI: "fastapi", "Node.js": "nodejs", Express: "express", "scikit-learn": "sklearn",
   spaCy: "python", "NLP pipelines": "python", PostgreSQL: "postgres", Supabase: "supabase",
   MongoDB: "mongodb", Git: "git", GitHub: "github", Docker: "docker", "VS Code": "vscode",
@@ -72,7 +72,9 @@ export function Skills() {
                           className="flex h-14 w-14 shrink-0 items-center justify-center border-2 border-border p-2.5 transition-colors hover:border-lime sm:h-16 sm:w-16"
                         >
                           <img
-                            src={`https://skillicons.dev/icons?i=${skillLogos[s]}`}
+                            src={skillLogos[s].startsWith("simpleicons/")
+                              ? `https://cdn.simpleicons.org/${skillLogos[s].replace("simpleicons/", "")}`
+                              : `https://skillicons.dev/icons?i=${skillLogos[s]}`}
                             alt={s}
                             loading="lazy"
                             onError={(event) => {
