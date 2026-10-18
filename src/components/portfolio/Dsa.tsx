@@ -12,9 +12,7 @@ export function Dsa() {
   return (
     <section id="dsa" className="relative border-y border-border bg-secondary/30 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading index="02" eyebrow="DSA journey · field notes" title={<>300+ problems, <em className="text-lavender">one notebook.</em></>}>
-          C++ is where I practice thinking clearly. These are the patterns I keep revisiting — my own revision map, not a scoreboard.
-        </SectionHeading>
+        <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} />
 
         <div role="tablist" aria-label="DSA topics" className="mb-8 flex gap-2 overflow-x-auto pb-2">
           {dsaTopics.map((d) => (
