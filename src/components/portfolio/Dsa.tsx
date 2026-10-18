@@ -51,6 +51,10 @@ export function Dsa() {
                 src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
                 alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
                 loading="lazy"
+                onLoad={(event) => {
+                  const container = event.currentTarget.parentElement;
+                  if (container) container.scrollLeft = container.scrollWidth;
+                }}
                 className="mx-0 block h-[200px] w-[1200px] max-w-none sm:h-[220px] sm:w-[1300px]"
               />
             </div>
