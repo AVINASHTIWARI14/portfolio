@@ -12,7 +12,7 @@ export function Dsa() {
   return (
     <section id="dsa" className="relative border-y border-border bg-secondary/30 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} />
+        <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} titleClassName="font-[Lobster]" />
 
         <div role="tablist" aria-label="DSA topics" className="mb-8 flex gap-2 overflow-x-auto pb-2">
           {dsaTopics.map((d) => (
