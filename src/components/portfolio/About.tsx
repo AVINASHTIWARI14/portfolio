@@ -46,9 +46,9 @@ export function About() {
             For me, a project should be more than functional: it should deliver a thoughtful user experience. I’m always learning, building, and looking for better ways to solve problems.
           </p>
           <div className="pt-2">
-            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 border-2 border-black bg-white px-5 py-3 font-extrabold uppercase tracking-wide text-black shadow-[5px_5px_0_#000] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[3px_3px_0_#000] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none">
-              View Resume
-              <span aria-hidden="true" className="text-lg leading-none">↗</span>
+            <a href="https://drive.google.com/file/d/1XsUQFdBirXJ5MOjodTVcLQ8dild8r8ru/view?usp=drivesdk" target="_blank" rel="noreferrer" className="group relative isolate inline-flex items-center gap-3 overflow-hidden border-2 border-black bg-[#ffe033] px-5 py-3 font-extrabold uppercase tracking-wide text-black shadow-[5px_5px_0_#000] transition-transform before:absolute before:inset-y-[-60%] before:-left-1/2 before:z-[-1] before:w-1/3 before:rotate-[22deg] before:bg-white/70 before:blur-sm before:transition-all before:duration-700 hover:before:left-[140%] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[3px_3px_0_#000] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none">
+              <span className="relative z-10">View Resume</span>
+              <span aria-hidden="true" className="relative z-10 text-lg leading-none">↗</span>
             </a>
           </div>
         </Reveal>
