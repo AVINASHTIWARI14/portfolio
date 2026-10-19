@@ -29,9 +29,7 @@ export function Hero() {
 
       </div>
 
-      <a href="#work" className="group absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center justify-center border-2 border-black bg-white p-3 text-black shadow-[4px_4px_0_#000] transition-transform hover:-translate-y-1 hover:shadow-[5px_5px_0_#000] active:translate-y-1 active:shadow-none md:flex" aria-label="Scroll to projects">
-        <ArrowDown className="h-6 w-6 stroke-[3] transition-transform group-hover:translate-y-1" />
-      </a>
+
     </section>
   );
 }
