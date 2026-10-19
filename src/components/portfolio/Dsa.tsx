@@ -17,17 +17,22 @@ export function Dsa() {
             </div>
 
             <div className="space-y-5 p-6 text-base leading-8 text-black sm:p-9 sm:text-lg sm:leading-9">
-              <p className="text-sm uppercase tracking-[0.2em] text-neutral-600 sm:text-base">A work in progress</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-neutral-600 sm:text-base">MY PROBLEM-SOLVING LOG</p>
               <p className="text-black">
-                My DSA journey has been less about collecting solved questions and more about learning how to think through a problem.
+                This is a record of my problem-solving journey — the patterns I learn, the problems that challenge me, and the ideas that become clearer with practice.
               </p>
               <p className="text-black">
-                I practice primarily in C++, working through patterns, revisiting problems, and trying to understand why a solution works—not just how to make it pass.
+                I work primarily in C++, focusing on data structures, algorithms, logical thinking, and competitive programming. The goal is not just to solve a question, but to understand the reasoning behind the solution and recognise when to use it again.
               </p>
-              <p className="text-black">
-                With 300+ problems solved on LeetCode, I’ve learned that progress comes from consistency: getting stuck, finding the gap in my thinking, and coming back to the problem with a better approach.
-              </p>
-              <p className="font-bold text-black">Still learning. Still solving. Still getting better.</p>
+              <div>
+                <p className="mb-2 font-bold text-black">Topics I’ve been working through</p>
+                <p className="text-black">Arrays · Strings · Hashing · Binary Search · Two Pointers · Sliding Window · Stack & Queue · Linked Lists · Trees · Graphs · DFS/BFS · Greedy · Dynamic Programming · Bit Manipulation</p>
+              </div>
+              <div>
+                <p className="mb-2 font-bold text-black">Currently focusing on</p>
+                <p className="text-black">Graphs, Dynamic Programming, advanced problem-solving patterns, and consistent contest practice.</p>
+              </div>
+              <p className="font-bold text-black">300+ LeetCode problems solved. Still learning, revising, and getting better.</p>
             </div>
           </article>
         </Reveal>
