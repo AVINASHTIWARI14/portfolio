@@ -31,10 +31,10 @@ export function Work() {
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
-                <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
-                <h3 className="mt-5 font-display text-4xl tracking-tight md:text-5xl">{p.title}</h3>
+                <span className="font-mono text-xs text-muted-foreground transition-all duration-300 group-hover:hidden">0{i + 1}</span>
+                <h3 className="mt-5 font-display text-4xl tracking-tight transition-all duration-300 group-hover:mt-0 md:text-5xl">{p.title}</h3>
                 <p className="mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden">{p.summary}</p>
-                <div className="relative mt-5 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64">
+                <div className="relative mt-3 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64">
                   {p.slug === "supplai" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
                       <div className="project-screenshot-track flex h-full w-full">
