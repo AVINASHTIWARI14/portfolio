@@ -16,7 +16,16 @@ export function CursorPet() {
         setPet({ x: x + 72, y: y + 42, facing: -1, visible: true, running: true });
       }
     };
-    const onMouseMove = (event: MouseEvent) => updateTarget(event.clientX, event.clientY);
+    const onMouseMove = (event: MouseEvent) => {
+      updateTarget(event.clientX, event.clientY);
+      const dog = position.current;
+      const hoveringDog =
+        event.clientX >= dog.x - 24 &&
+        event.clientX <= dog.x + 24 &&
+        event.clientY >= dog.y - 30 &&
+        event.clientY <= dog.y + 10;
+      setShowWoof(hoveringDog);
+    };
     const onTouch = (event: TouchEvent) => {
       const touch = event.touches[0];
       if (touch) updateTarget(touch.clientX, touch.clientY);
@@ -60,8 +69,6 @@ export function CursorPet() {
   return (
     <div
       aria-hidden="true"
-      onMouseEnter={() => setShowWoof(true)}
-      onMouseLeave={() => setShowWoof(false)}
       className="pointer-events-none fixed z-[90]"
       style={{
         left: pet.x,
