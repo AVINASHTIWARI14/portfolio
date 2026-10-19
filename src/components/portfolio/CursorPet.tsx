@@ -74,13 +74,18 @@ export function CursorPet() {
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
           .pet-run { animation: pet-bob .16s steps(2,end) infinite alternate; }
           .pet-ear { animation: pet-ear .45s steps(2,end) infinite alternate; }
+          .pet-leg-a { animation: pet-leg-a .16s steps(2,end) infinite alternate; }
+          .pet-leg-b { animation: pet-leg-b .16s steps(2,end) infinite alternate; }
+          .pet-sit-tail { animation: pet-tail-wag .32s steps(2,end) infinite alternate; }
           @keyframes pet-tail-wag { from { transform: rotate(-18deg); } to { transform: rotate(22deg); } }
           @keyframes pet-bob { from { transform: translateY(0); } to { transform: translateY(-2px); } }
           @keyframes pet-ear { from { transform: translateY(0); } to { transform: translateY(1px); } }
-          @media (prefers-reduced-motion: reduce) { .pet-tail, .pet-run, .pet-ear { animation: none; } }
+          @keyframes pet-leg-a { from { transform: translateY(-1px); } to { transform: translateY(1px); } }
+          @keyframes pet-leg-b { from { transform: translateY(1px); } to { transform: translateY(-1px); } }
+          @media (prefers-reduced-motion: reduce) { .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail { animation: none; } }
         `}</style>
         <g className={pet.running ? "pet-run" : ""}>
-          <g className="pet-tail">
+          <g className={pet.running ? "pet-tail" : "pet-sit-tail"}>
             <rect x="3" y="11" width="4" height="4" fill="#9b5d32" />
             <rect x="1" y="9" width="4" height="4" fill="#c88449" />
           </g>
@@ -100,10 +105,14 @@ export function CursorPet() {
           <rect x="25" y="12" width="3" height="1" fill="#9b5d32" />
           {pet.running ? (
             <>
-              <rect x="8" y="18" width="4" height="5" fill="#9b5d32" />
-              <rect x="7" y="22" width="5" height="2" fill="#e7b779" />
-              <rect x="17" y="18" width="4" height="4" fill="#9b5d32" />
-              <rect x="18" y="21" width="5" height="2" fill="#e7b779" />
+              <g className="pet-leg-a">
+                <rect x="8" y="18" width="4" height="5" fill="#9b5d32" />
+                <rect x="7" y="22" width="5" height="2" fill="#e7b779" />
+              </g>
+              <g className="pet-leg-b">
+                <rect x="17" y="18" width="4" height="4" fill="#9b5d32" />
+                <rect x="18" y="21" width="5" height="2" fill="#e7b779" />
+              </g>
             </>
           ) : (
             <>
