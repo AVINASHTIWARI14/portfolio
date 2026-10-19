@@ -5,6 +5,7 @@ type PetState = { x: number; y: number; facing: 1 | -1; visible: boolean; runnin
 export function CursorPet() {
   const target = useRef({ x: -100, y: -100 });
   const position = useRef({ x: -100, y: -100 });
+  const sitSide = useRef<1 | -1>(1);
   const [pet, setPet] = useState<PetState>({ x: -100, y: -100, facing: 1, visible: false, running: false });
   const [showWoof, setShowWoof] = useState(false);
 
@@ -37,12 +38,20 @@ export function CursorPet() {
     const step = window.setInterval(() => {
       const current = position.current;
       const destination = target.current;
-      const dx = destination.x - current.x;
-      const dy = destination.y - current.y;
+      // Preserve the side the dog approaches from and sit beside the cursor.
+      const rawDx = destination.x - current.x;
+      const rawDy = destination.y - current.y;
+      const rawDistance = Math.hypot(rawDx, rawDy);
+      if (rawDistance > 70) sitSide.current = current.x >= destination.x ? 1 : -1;
+      const goal = rawDistance <= 70
+        ? { x: destination.x + sitSide.current * 44, y: destination.y + 28 }
+        : destination;
+      const dx = goal.x - current.x;
+      const dy = goal.y - current.y;
       const distance = Math.hypot(dx, dy);
-      const running = distance > 34;
+      const running = distance > 12;
       const speed = running ? Math.min(8, Math.max(2.4, distance * 0.12)) : 0;
-      const next = distance > 34
+      const next = running
         ? { x: current.x + (dx / distance) * speed, y: current.y + (dy / distance) * speed }
         : current;
       // Snap coordinates to a small grid for a deliberately retro, pixel-step movement.
