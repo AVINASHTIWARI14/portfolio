@@ -6,6 +6,7 @@ export function CursorPet() {
   const target = useRef({ x: -100, y: -100 });
   const position = useRef({ x: -100, y: -100 });
   const sitSide = useRef<1 | -1>(1);
+  const lastMoveX = useRef(0);
   const [pet, setPet] = useState<PetState>({ x: -100, y: -100, facing: 1, visible: false, running: false });
   const [showWoof, setShowWoof] = useState(false);
 
@@ -43,12 +44,14 @@ export function CursorPet() {
       const rawDx = destination.x - current.x;
       const rawDy = destination.y - current.y;
       const rawDistance = Math.hypot(rawDx, rawDy);
+      if (Math.abs(rawDx) > 1.5) lastMoveX.current = rawDx;
       if (rawDistance > 70) {
-        sitSide.current = current.x >= destination.x ? 1 : -1;
+        // Keep the direction the dog was running when it arrives.
+        sitSide.current = lastMoveX.current >= 0 ? -1 : 1;
       }
       const goal = {
-        x: destination.x + sitSide.current * 44,
-        y: destination.y + 28,
+        x: destination.x + sitSide.current * 26,
+        y: destination.y + 22,
       };
       const dx = goal.x - current.x;
       const dy = goal.y - current.y;
@@ -64,7 +67,7 @@ export function CursorPet() {
         ...previous,
         x: position.current.x,
         y: position.current.y,
-        facing: Math.abs(dx) > 2 ? (dx > 0 ? 1 : -1) : previous.facing,
+        facing: running && Math.abs(dx) > 2 ? (dx > 0 ? 1 : -1) : (previous.running ? (lastMoveX.current >= 0 ? 1 : -1) : previous.facing),
         running,
       }));
     }, 40);
@@ -88,11 +91,11 @@ export function CursorPet() {
         top: pet.y,
         width: 48,
         height: 40,
-        transform: `translate(-50%, -75%) scaleX(${pet.running ? pet.facing : 1}) rotateY(${pet.running ? 0 : 180}deg)`,
+        transform: `translate(-50%, -75%) scaleX(${pet.facing})`,
         imageRendering: "pixelated",
       }}
     >
-      {showWoof && <span style={{ position: "absolute", left: 34, top: -18, transform: `scaleX(${pet.running ? pet.facing : 1}) rotateY(${pet.running ? 0 : 180}deg)`, whiteSpace: "nowrap", background: "#fff", color: "#080808", border: "2px solid #080808", boxShadow: "2px 2px 0 #080808", padding: "2px 5px", fontSize: 10, fontWeight: 800, letterSpacing: ".04em", fontFamily: "monospace" }}>woof!</span>}
+      {showWoof && <span style={{ position: "absolute", left: 34, top: -18, transform: `scaleX(${pet.facing})`, whiteSpace: "nowrap", background: "#fff", color: "#080808", border: "2px solid #080808", boxShadow: "2px 2px 0 #080808", padding: "2px 5px", fontSize: 10, fontWeight: 800, letterSpacing: ".04em", fontFamily: "monospace" }}>woof!</span>}
       <svg viewBox="0 0 32 26" width="48" height="40" shapeRendering="crispEdges" className="overflow-visible">
         <style>{`
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
