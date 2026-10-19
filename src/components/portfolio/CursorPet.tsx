@@ -38,14 +38,18 @@ export function CursorPet() {
     const step = window.setInterval(() => {
       const current = position.current;
       const destination = target.current;
-      // Preserve the side the dog approaches from and sit beside the cursor.
+      // Choose a side once the dog gets close, then keep the target beside the cursor
+      // so the dog doesn't oscillate between the cursor and its sitting position.
       const rawDx = destination.x - current.x;
       const rawDy = destination.y - current.y;
       const rawDistance = Math.hypot(rawDx, rawDy);
-      if (rawDistance > 70) sitSide.current = current.x >= destination.x ? 1 : -1;
-      const goal = rawDistance <= 70
-        ? { x: destination.x + sitSide.current * 44, y: destination.y + 28 }
-        : destination;
+      if (rawDistance > 70) {
+        sitSide.current = current.x >= destination.x ? 1 : -1;
+      }
+      const goal = {
+        x: destination.x + sitSide.current * 44,
+        y: destination.y + 28,
+      };
       const dx = goal.x - current.x;
       const dy = goal.y - current.y;
       const distance = Math.hypot(dx, dy);
