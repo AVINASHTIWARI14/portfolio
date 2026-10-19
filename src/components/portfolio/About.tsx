@@ -62,7 +62,6 @@ export function About() {
               <span>Proof of progress</span>
               <span aria-hidden="true" className="text-2xl leading-none">↗</span>
             </div>
-            <span aria-hidden="true" className="absolute -right-2 -top-2 h-4 w-4 border-2 border-black bg-white" />
           </div>
         </Reveal>
       </div>
