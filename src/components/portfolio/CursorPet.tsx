@@ -7,12 +7,14 @@ export function CursorPet() {
   const position = useRef({ x: -100, y: -100 });
   const sitSide = useRef<1 | -1>(1);
   const lastMoveX = useRef(0);
+  const lastCursorMoveAt = useRef(0);
   const [pet, setPet] = useState<PetState>({ x: -100, y: -100, facing: 1, visible: false, running: false });
   const [showWoof, setShowWoof] = useState(false);
 
   useEffect(() => {
     const updateTarget = (x: number, y: number) => {
       target.current = { x, y };
+      lastCursorMoveAt.current = Date.now();
       if (!pet.visible) {
         position.current = { x: x + 72, y: y + 42 };
         setPet({ x: x + 72, y: y + 42, facing: -1, visible: true, running: true });
@@ -56,7 +58,8 @@ export function CursorPet() {
       const dx = goal.x - current.x;
       const dy = goal.y - current.y;
       const distance = Math.hypot(dx, dy);
-      const running = distance > 12;
+      const cursorIsMoving = Date.now() - lastCursorMoveAt.current < 140;
+      const running = cursorIsMoving && distance > 12;
       const speed = running ? Math.min(4.5, Math.max(1.35, distance * 0.075)) : 0;
       const next = running
         ? { x: current.x + (dx / distance) * speed, y: current.y + (dy / distance) * speed }
