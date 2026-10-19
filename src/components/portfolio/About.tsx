@@ -34,7 +34,7 @@ export function About() {
       <div className="[&>div]:mb-0">
         <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Lobster, cursive" />
       </div>
-      <div className="-mt-20 grid items-start gap-10 lg:-mt-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <div className="mt-0 grid items-start gap-10 lg:-mt-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <Reveal className="flex h-full flex-col justify-center space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
           <p>
             Hey, I’m Avinash, a final-year B.Tech student specializing in Computer Science and AI/ML. I enjoy problem-solving, working with data structures and algorithms, and turning ideas into practical, polished applications that are ready to use.
