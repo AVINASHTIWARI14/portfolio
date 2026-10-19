@@ -111,7 +111,6 @@ export function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>© {new Date().getFullYear()} Avinash Tiwari</p>
-        <p className="font-mono text-xs">Built with React, TypeScript & Framer Motion</p>
         <a href="#top" className="hover:text-lime">Back to top ↑</a>
       </div>
     </footer>
