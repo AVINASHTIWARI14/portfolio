@@ -299,27 +299,40 @@ a:not(.brutalist-button):hover {
 /* Seamless infinite screenshot carousels for both projects. */
 .project-screenshot-slideshow {
   overflow: hidden;
+  padding: 0 5px 5px 0;
+  box-sizing: border-box;
 }
 .project-screenshot-track {
   display: flex;
-  gap: 10px;
+  align-items: stretch;
+  gap: 14px;
   height: 100%;
   animation: project-screenshot-marquee 20s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+}
+.project-screenshot-track img {
+  box-sizing: border-box;
+  padding: 5px;
+  border: 2px solid #080808;
+  background: #fff;
+  box-shadow: 4px 4px 0 #080808;
+  object-fit: contain;
+  backface-visibility: hidden;
 }
 .project-screenshot-track--five {
-  width: calc(1000% + 90px);
+  width: calc(1000% + 126px);
 }
 .project-screenshot-track--five img {
-  width: calc((100% - 90px) / 10);
-  flex: 0 0 calc((100% - 90px) / 10);
+  width: calc((100% - 126px) / 10);
+  flex: 0 0 calc((100% - 126px) / 10);
 }
 .project-screenshot-track--four {
-  width: calc(800% + 70px);
+  width: calc(800% + 98px);
 }
 .project-screenshot-track--four img {
-  width: calc((100% - 70px) / 8);
-  flex: 0 0 calc((100% - 70px) / 8);
+  width: calc((100% - 98px) / 8);
+  flex: 0 0 calc((100% - 98px) / 8);
 }
 @keyframes project-screenshot-marquee {
   from { transform: translateX(0); }
