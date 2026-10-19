@@ -294,3 +294,23 @@ a:not(.brutalist-button):hover {
   .nav-brutalist:hover::before,
   .nav-brutalist:focus-visible::before { animation: none; }
 }
+
+
+/* Project screenshot slideshow: each frame holds briefly before the next. */
+.project-screenshot-frame {
+  opacity: 0;
+  animation: project-shot-cycle 10s infinite;
+}
+.project-screenshot-frame:nth-child(1) { animation-delay: 0s !important; }
+.project-screenshot-frame:nth-child(2) { animation-delay: 2s !important; }
+.project-screenshot-frame:nth-child(3) { animation-delay: 4s !important; }
+.project-screenshot-frame:nth-child(4) { animation-delay: 6s !important; }
+.project-screenshot-frame:nth-child(5) { animation-delay: 8s !important; }
+@keyframes project-shot-cycle {
+  0%, 16% { opacity: 1; }
+  20%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-screenshot-frame { animation: none; opacity: 0; }
+  .project-screenshot-frame:first-child { opacity: 1; }
+}
