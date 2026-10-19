@@ -62,8 +62,8 @@ export function CursorPet() {
       const dy = goal.y - current.y;
       const distance = Math.hypot(dx, dy);
       const cursorIsMoving = Date.now() - lastCursorMoveAt.current < 180;
-      // Chase while the cursor moves; after it stops, keep going until close, then sit until it moves again.
-      const running = cursorIsMoving || distance > 14;
+      // Sit as soon as the cursor becomes idle.
+      const running = cursorIsMoving && distance > 14;
       const speed = running ? Math.min(4.5, Math.max(1.35, distance * 0.075)) : 0;
       const next = running
         ? { x: current.x + (dx / distance) * speed, y: current.y + (dy / distance) * speed }
