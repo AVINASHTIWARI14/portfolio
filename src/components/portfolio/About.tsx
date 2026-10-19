@@ -45,6 +45,12 @@ export function About() {
           <p>
             For me, a project should be more than functional: it should deliver a thoughtful user experience. I’m always learning, building, and looking for better ways to solve problems.
           </p>
+          <div className="pt-2">
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 border-2 border-black bg-white px-5 py-3 font-extrabold uppercase tracking-wide text-black shadow-[5px_5px_0_#000] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[3px_3px_0_#000] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none">
+              View Resume
+              <span aria-hidden="true" className="text-lg leading-none">↗</span>
+            </a>
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
