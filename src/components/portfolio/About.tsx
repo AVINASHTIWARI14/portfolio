@@ -49,7 +49,7 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="group relative h-full min-h-[300px] border-2 border-foreground bg-lime p-6 text-black shadow-[8px_8px_0_#000] transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0_#000] sm:p-8">
+          <div className="group relative h-full min-h-[300px] border-2 border-black bg-white p-6 text-black shadow-[8px_8px_0_#000] transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0_#000] sm:p-8">
             <div className="flex items-start justify-between gap-4 border-b-2 border-black pb-4">
               <span className="font-mono text-xs font-bold uppercase tracking-[0.2em]">The proof is in the work</span>
               <span className="border-2 border-black px-2 py-1 font-mono text-xs font-bold">COMING SOON</span>
