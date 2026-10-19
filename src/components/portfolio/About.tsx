@@ -1,4 +1,4 @@
-import { skillGroups, timeline } from "@/data/portfolio";
+import { skillGroups } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "./Reveal";
 
 const skillColors: Record<string, { bg: string; fg: string }> = {
@@ -49,17 +49,21 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <ol className="relative space-y-8 border-l border-border pl-8" aria-label="Education and journey">
-            {timeline.map((t) => (
-              <li key={t.title} className="relative">
-                <span className="absolute -left-[37px] top-1.5 h-3 w-3 rounded-full border-2 border-lime bg-background" />
-                <p className="font-mono text-xs uppercase tracking-widest text-lime">{t.period}</p>
-                <h3 className="mt-1 font-display text-xl">{t.title}</h3>
-                <p className="text-sm text-muted-foreground">{t.place}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{t.body}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="group relative h-full min-h-[300px] border-2 border-foreground bg-lime p-6 text-black shadow-[8px_8px_0_#000] transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0_#000] sm:p-8">
+            <div className="flex items-start justify-between gap-4 border-b-2 border-black pb-4">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.2em]">The proof is in the work</span>
+              <span className="border-2 border-black px-2 py-1 font-mono text-xs font-bold">COMING SOON</span>
+            </div>
+            <div className="flex min-h-[190px] flex-col justify-center py-8">
+              <h3 className="max-w-sm text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-5xl">Certificates<span className="block">&</span>Achievements<span className="text-5xl">.</span></h3>
+              <p className="mt-5 max-w-xs text-sm font-medium leading-relaxed">A place for milestones, certifications, and things worth showing.</p>
+            </div>
+            <div className="flex items-center justify-between border-t-2 border-black pt-4 font-mono text-xs font-bold uppercase tracking-wider">
+              <span>Proof of progress</span>
+              <span aria-hidden="true" className="text-2xl leading-none">↗</span>
+            </div>
+            <span aria-hidden="true" className="absolute -right-2 -top-2 h-4 w-4 border-2 border-black bg-white" />
+          </div>
         </Reveal>
       </div>
     </section>
