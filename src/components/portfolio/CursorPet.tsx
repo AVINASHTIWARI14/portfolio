@@ -83,6 +83,8 @@ export function CursorPet() {
       <svg viewBox="0 0 32 26" width="48" height="40" shapeRendering="crispEdges" className="overflow-visible">
         <style>{`
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
+          .pet-pose { transform-box: fill-box; transform-origin: center bottom; transition: transform .22s ease-out; }
+          .pet-pose--sit { transform: translateY(2px) scaleY(.88); }
           .pet-run { animation: pet-bob .16s steps(2,end) infinite alternate; }
           .pet-ear { animation: pet-ear .45s steps(2,end) infinite alternate; }
           .pet-leg-a { animation: pet-leg-a .16s steps(2,end) infinite alternate; }
@@ -93,8 +95,9 @@ export function CursorPet() {
           @keyframes pet-ear { from { transform: translateY(0); } to { transform: translateY(1px); } }
           @keyframes pet-leg-a { from { transform: translateY(-1px); } to { transform: translateY(1px); } }
           @keyframes pet-leg-b { from { transform: translateY(1px); } to { transform: translateY(-1px); } }
-          @media (prefers-reduced-motion: reduce) { .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail { animation: none; } }
+          @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail { animation: none; } }
         `}</style>
+        <g className={`pet-pose ${pet.running ? "" : "pet-pose--sit"}`}>
         <g className={pet.running ? "pet-run" : ""}>
           <g className={pet.running ? "pet-tail" : "pet-sit-tail"}>
             <rect x="3" y="11" width="4" height="4" fill="#9b5d32" />
@@ -134,6 +137,7 @@ export function CursorPet() {
               <rect x="17" y="21" width="7" height="3" fill="#e7b779" />
             </>
           )}
+        </g>
         </g>
         <ellipse cx="16" cy="25" rx="11" ry="1" fill="#000" opacity=".16" />
       </svg>
