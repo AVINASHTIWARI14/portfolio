@@ -22,6 +22,8 @@ export function CursorPet() {
     };
     const onMouseMove = (event: MouseEvent) => {
       updateTarget(event.clientX, event.clientY);
+    };
+    const onHoverCheck = (event: MouseEvent) => {
       const dog = position.current;
       const hoveringDog =
         event.clientX >= dog.x - 24 &&
@@ -35,6 +37,7 @@ export function CursorPet() {
       if (touch) updateTarget(touch.clientX, touch.clientY);
     };
     window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mousemove", onHoverCheck, { passive: true });
     window.addEventListener("touchstart", onTouch, { passive: true });
     window.addEventListener("touchmove", onTouch, { passive: true });
 
@@ -79,6 +82,7 @@ export function CursorPet() {
     return () => {
       window.clearInterval(step);
       window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousemove", onHoverCheck);
       window.removeEventListener("touchstart", onTouch);
       window.removeEventListener("touchmove", onTouch);
     };
