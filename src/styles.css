@@ -296,28 +296,34 @@ a:not(.brutalist-button):hover {
 }
 
 
-/* Seamless infinite screenshot carousel: two identical sequences, one continuous track. */
+/* Seamless infinite screenshot carousels for both projects. */
 .project-screenshot-slideshow {
   overflow: hidden;
 }
 .project-screenshot-track {
   display: flex;
   gap: 10px;
-  width: calc(1000% + 90px);
   height: 100%;
   animation: project-screenshot-marquee 20s linear infinite;
   will-change: transform;
 }
-.project-screenshot-track img {
-  display: block;
+.project-screenshot-track--five {
+  width: calc(1000% + 90px);
+}
+.project-screenshot-track--five img {
   width: calc((100% - 90px) / 10);
-  height: 100%;
   flex: 0 0 calc((100% - 90px) / 10);
-  object-fit: contain;
+}
+.project-screenshot-track--four {
+  width: calc(800% + 70px);
+}
+.project-screenshot-track--four img {
+  width: calc((100% - 70px) / 8);
+  flex: 0 0 calc((100% - 70px) / 8);
 }
 @keyframes project-screenshot-marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 5px)); }
+  to { transform: translateX(-50%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .project-screenshot-track { animation: none; transform: translateX(0); }
