@@ -75,11 +75,11 @@ export function CursorPet() {
         top: pet.y,
         width: 48,
         height: 40,
-        transform: `translate(-50%, -75%) scaleX(${pet.facing})`,
+        transform: `translate(-50%, -75%) scaleX(${pet.running ? pet.facing : 1})`,
         imageRendering: "pixelated",
       }}
     >
-      {showWoof && <span style={{ position: "absolute", left: 34, top: -18, transform: `scaleX(${pet.facing})`, whiteSpace: "nowrap", background: "#fff", color: "#080808", border: "2px solid #080808", boxShadow: "2px 2px 0 #080808", padding: "2px 5px", fontSize: 10, fontWeight: 800, letterSpacing: ".04em", fontFamily: "monospace" }}>woof!</span>}
+      {showWoof && <span style={{ position: "absolute", left: 34, top: -18, transform: `scaleX(${pet.running ? pet.facing : 1})`, whiteSpace: "nowrap", background: "#fff", color: "#080808", border: "2px solid #080808", boxShadow: "2px 2px 0 #080808", padding: "2px 5px", fontSize: 10, fontWeight: 800, letterSpacing: ".04em", fontFamily: "monospace" }}>woof!</span>}
       <svg viewBox="0 0 32 26" width="48" height="40" shapeRendering="crispEdges" className="overflow-visible">
         <style>{`
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
