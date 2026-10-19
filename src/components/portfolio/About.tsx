@@ -35,16 +35,7 @@ export function About() {
       <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
         <Reveal className="space-y-6 text-lg leading-relaxed text-muted-foreground">
           <p>
-            I'm a Computer Science student specialising in <span className="text-foreground">AI and machine learning</span> at
-            KCC Institute of Technology & Management (AKTU). I like building things that are genuinely useful — and
-            understanding how they work underneath.
-          </p>
-          <p>
-            Most days that means switching between solving algorithm problems in C++, training and wiring up models in
-            Python, and shaping React interfaces until they feel right.
-          </p>
-          <p>
-            I'm happiest at the point where a rough idea turns into a polished product someone can actually use.
+            Hey, I’m Avinash, a final year B.Tech student specializing in Computer Science and AI/ML. I enjoy problem solving, working with data structures and algorithms, and turning ideas into practical, well polished applications that are ready to use. My interests lie at the intersection of software development and artificial intelligence, where I explore how intelligent systems can make applications more useful, efficient, and intuitive. I like understanding how things work under the hood, experimenting with new technologies, and building things that are not just functional but also deliver a great user experience. I’m always learning, building, and looking for better ways to solve problems.
           </p>
         </Reveal>
 
