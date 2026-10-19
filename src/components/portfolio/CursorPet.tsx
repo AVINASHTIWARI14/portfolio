@@ -133,8 +133,8 @@ export function CursorPet() {
               {/* Seated pose: folded hind leg and straight front paw. */}
               <rect x="7" y="16" width="8" height="4" fill="#9b5d32" />
               <rect x="6" y="18" width="8" height="3" fill="#e7b779" />
-              <rect x="18" y="16" width="4" height="6" fill="#9b5d32" />
-              <rect x="17" y="21" width="7" height="3" fill="#e7b779" />
+              <rect x="18" y="15" width="4" height="5" fill="#9b5d32" />
+              <rect x="17" y="19" width="7" height="3" fill="#e7b779" />
             </>
           )}
         </g>
