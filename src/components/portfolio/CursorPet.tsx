@@ -59,7 +59,7 @@ export function CursorPet() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed z-[90] hidden sm:block"
+      className="pointer-events-none fixed z-[90]"
       style={{
         left: pet.x,
         top: pet.y,
