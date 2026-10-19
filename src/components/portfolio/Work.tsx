@@ -10,6 +10,13 @@ const suplaiScreenshots = [
   "/images/suplai-5.png",
 ];
 
+const juribriefScreenshots = [
+  "/images/juribrief-1.png",
+  "/images/juribrief-2.png",
+  "/images/juribrief-3.png",
+  "/images/juribrief-4.png",
+];
+
 export function Work() {
   const list = projects.filter((p) => p.slug === "juribrief" || p.slug === "supplai");
 
@@ -35,24 +42,22 @@ export function Work() {
                 <h3 className="mt-5 font-display text-4xl tracking-tight transition-all duration-300 group-hover:mt-0 group-hover:text-white md:text-5xl">{p.title}</h3>
                 <p className="mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden">{p.summary}</p>
                 <div className="relative mt-3 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64">
-                  {p.slug === "supplai" ? (
+                  {p.slug === "supplai" || p.slug === "juribrief" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
-                      <div className="project-screenshot-track flex h-full w-full">
-                        {[...suplaiScreenshots, ...suplaiScreenshots].map((src, index) => (
+                      <div className={`project-screenshot-track project-screenshot-track--${p.slug === "supplai" ? "five" : "four"} flex h-full`}>
+                        {(p.slug === "supplai" ? suplaiScreenshots : juribriefScreenshots).concat(
+                          p.slug === "supplai" ? suplaiScreenshots : juribriefScreenshots
+                        ).map((src, index, all) => (
                           <img
                             key={`${src}-${index}`}
                             src={src}
-                            alt={`SupplAI project screenshot ${(index % suplaiScreenshots.length) + 1}`}
+                            alt={`${p.title} screenshot ${(index % (all.length / 2)) + 1}`}
                             className="h-full shrink-0 object-contain"
                           />
                         ))}
                       </div>
                     </div>
-                  ) : (
-                    <div className="flex h-full items-center justify-center text-sm text-white/70">
-                      JURIbrief screenshots coming next
-                    </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
 
