@@ -46,7 +46,13 @@ export function Work() {
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <span className={`font-mono text-xs text-muted-foreground transition-all duration-300 group-hover:hidden ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
-                <h3 className={`mt-5 font-[Lobster] text-4xl tracking-tight transition-all duration-300 group-hover:mt-0 group-hover:text-black md:text-5xl ${expandedProject === p.slug ? "!mt-0 !text-black" : ""}`}>{p.title}</h3>
+                <div className={`mt-5 flex h-12 items-center transition-all duration-300 group-hover:mt-0 sm:h-14 ${expandedProject === p.slug ? "!mt-0" : ""}`}>
+                  <img
+                    src={p.slug === "supplai" ? "/images/supplai-logo.png" : "/images/juribrief-logo.png"}
+                    alt={`${p.title} logo`}
+                    className="max-h-full max-w-full object-contain object-left"
+                  />
+                </div>
                 <p className={`mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
                 <div className={`relative mt-3 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64 ${expandedProject === p.slug ? "!h-56 !opacity-100 sm:!h-64" : ""}`}>
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
