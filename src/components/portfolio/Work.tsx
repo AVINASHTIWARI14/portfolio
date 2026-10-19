@@ -27,7 +27,7 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className="group relative flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color] duration-300 hover:scale-[1.015] hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8"
+              className="group relative flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color,background-color] duration-300 hover:scale-[1.015] hover:border-lime/50 hover:bg-zinc-200/50 hover:shadow-[8px_8px_0_#000] sm:p-8 dark:hover:bg-zinc-700/30"
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
