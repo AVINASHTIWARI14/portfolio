@@ -106,9 +106,9 @@ export function CursorPet() {
           .pet-leg-a { animation: pet-leg-a .24s steps(2,end) infinite alternate; }
           .pet-leg-b { animation: pet-leg-b .24s steps(2,end) infinite alternate; }
           .pet-sit-tail { animation: pet-tail-wag .32s steps(2,end) infinite alternate; }
-          .pet-smoke { animation: pet-smoke .42s steps(3,end) forwards; transform-box: fill-box; transform-origin: center; }
+          .pet-smoke { animation: pet-smoke .7s steps(3,end) infinite; transform-box: fill-box; transform-origin: center; }
           .pet-tongue { animation: pet-tongue .8s steps(2,end) infinite alternate; }
-          @keyframes pet-smoke { from { opacity: .48; transform: translate(0, 0) scale(.65); } to { opacity: 0; transform: translate(-5px, -5px) scale(1.3); } }
+          @keyframes pet-smoke { 0% { opacity: .8; transform: translate(0, 0) scale(.7); } 70% { opacity: .35; } 100% { opacity: 0; transform: translate(-7px, -6px) scale(1.4); } }
           @keyframes pet-tongue { from { transform: translateY(0); } to { transform: translateY(1px); } }
           @keyframes pet-tail-wag { from { transform: rotate(-18deg); } to { transform: rotate(22deg); } }
           @keyframes pet-bob { from { transform: translateY(0); } to { transform: translateY(-2px); } }
@@ -119,9 +119,10 @@ export function CursorPet() {
         `}</style>
         {pet.running && (
           <g className="pet-smoke">
-            <rect x="2" y="19" width="2" height="2" fill="#b7b7b7" opacity=".75" />
-            <rect x="4" y="17" width="2" height="2" fill="#d0d0d0" opacity=".55" />
-            <rect x="1" y="16" width="2" height="2" fill="#a8a8a8" opacity=".4" />
+            <rect x="2" y="19" width="3" height="3" fill="#a9a9a9" opacity=".9" />
+            <rect x="5" y="16" width="3" height="3" fill="#c4c4c4" opacity=".8" />
+            <rect x="1" y="15" width="3" height="3" fill="#929292" opacity=".65" />
+            <rect x="6" y="13" width="2" height="2" fill="#d4d4d4" opacity=".5" />
           </g>
         )}
         <g className={`pet-pose ${pet.running ? "" : "pet-pose--sit"}`}>
@@ -146,8 +147,8 @@ export function CursorPet() {
           <rect x="25" y="12" width="3" height="1" fill="#9b5d32" />
           {!pet.running && (
             <g className="pet-tongue">
-              <rect x="27" y="13" width="2" height="3" fill="#e85d75" />
-              <rect x="27" y="15" width="2" height="1" fill="#b93250" />
+              <rect x="26" y="12" width="3" height="4" fill="#ff6680" />
+              <rect x="27" y="15" width="2" height="2" fill="#c92f50" />
             </g>
           )}
           {pet.running ? (
