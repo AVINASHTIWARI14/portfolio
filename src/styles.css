@@ -296,7 +296,7 @@ a:not(.brutalist-button):hover {
 }
 
 
-/* Project screenshot slideshow: each image slides in, pauses, then slides out. */
+/* Continuous project screenshot slider: frames overlap so no black gaps appear. */
 .project-screenshot-frame {
   opacity: 0;
   transform: translateX(100%);
@@ -309,10 +309,11 @@ a:not(.brutalist-button):hover {
 .project-screenshot-frame:nth-child(4) { animation-delay: 6s !important; }
 .project-screenshot-frame:nth-child(5) { animation-delay: 8s !important; }
 @keyframes project-shot-slide {
-  0% { opacity: 0; transform: translateX(100%); }
-  2%, 16% { opacity: 1; transform: translateX(0); }
-  20% { opacity: 0; transform: translateX(-100%); }
-  100% { opacity: 0; transform: translateX(-100%); }
+  0% { opacity: 1; transform: translateX(0); }
+  18% { opacity: 1; transform: translateX(0); }
+  20% { opacity: 1; transform: translateX(-100%); }
+  20.01% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 0; transform: translateX(100%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .project-screenshot-frame { animation: none; opacity: 0; transform: none; }
