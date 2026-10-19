@@ -57,12 +57,12 @@ export function CursorPet() {
       const dy = goal.y - current.y;
       const distance = Math.hypot(dx, dy);
       const running = distance > 12;
-      const speed = running ? Math.min(8, Math.max(2.4, distance * 0.12)) : 0;
+      const speed = running ? Math.min(4.5, Math.max(1.35, distance * 0.075)) : 0;
       const next = running
         ? { x: current.x + (dx / distance) * speed, y: current.y + (dy / distance) * speed }
         : current;
       // Snap coordinates to a small grid for a deliberately retro, pixel-step movement.
-      position.current = { x: Math.round(next.x / 2) * 2, y: Math.round(next.y / 2) * 2 };
+      position.current = { x: Math.round(next.x / 4) * 4, y: Math.round(next.y / 4) * 4 };
       setPet((previous) => ({
         ...previous,
         x: position.current.x,
@@ -70,7 +70,7 @@ export function CursorPet() {
         facing: running && Math.abs(dx) > 2 ? (dx > 0 ? 1 : -1) : (previous.running ? (lastMoveX.current >= 0 ? 1 : -1) : previous.facing),
         running,
       }));
-    }, 40);
+    }, 50);
 
     return () => {
       window.clearInterval(step);
@@ -101,18 +101,29 @@ export function CursorPet() {
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
           .pet-pose { transform-box: fill-box; transform-origin: center bottom; transition: transform .22s ease-out; }
           .pet-pose--sit { transform: translateY(2px) scaleY(.88); }
-          .pet-run { animation: pet-bob .16s steps(2,end) infinite alternate; }
+          .pet-run { animation: pet-bob .24s steps(2,end) infinite alternate; }
           .pet-ear { animation: pet-ear .45s steps(2,end) infinite alternate; }
-          .pet-leg-a { animation: pet-leg-a .16s steps(2,end) infinite alternate; }
-          .pet-leg-b { animation: pet-leg-b .16s steps(2,end) infinite alternate; }
+          .pet-leg-a { animation: pet-leg-a .24s steps(2,end) infinite alternate; }
+          .pet-leg-b { animation: pet-leg-b .24s steps(2,end) infinite alternate; }
           .pet-sit-tail { animation: pet-tail-wag .32s steps(2,end) infinite alternate; }
+          .pet-smoke { animation: pet-smoke .42s steps(3,end) forwards; transform-box: fill-box; transform-origin: center; }
+          .pet-tongue { animation: pet-tongue .8s steps(2,end) infinite alternate; }
+          @keyframes pet-smoke { from { opacity: .48; transform: translate(0, 0) scale(.65); } to { opacity: 0; transform: translate(-5px, -5px) scale(1.3); } }
+          @keyframes pet-tongue { from { transform: translateY(0); } to { transform: translateY(1px); } }
           @keyframes pet-tail-wag { from { transform: rotate(-18deg); } to { transform: rotate(22deg); } }
           @keyframes pet-bob { from { transform: translateY(0); } to { transform: translateY(-2px); } }
           @keyframes pet-ear { from { transform: translateY(0); } to { transform: translateY(1px); } }
           @keyframes pet-leg-a { from { transform: translateY(-1px); } to { transform: translateY(1px); } }
           @keyframes pet-leg-b { from { transform: translateY(1px); } to { transform: translateY(-1px); } }
-          @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail { animation: none; } }
+          @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail, .pet-smoke, .pet-tongue { animation: none; } }
         `}</style>
+        {pet.running && (
+          <g className="pet-smoke">
+            <rect x="2" y="19" width="2" height="2" fill="#b7b7b7" opacity=".75" />
+            <rect x="4" y="17" width="2" height="2" fill="#d0d0d0" opacity=".55" />
+            <rect x="1" y="16" width="2" height="2" fill="#a8a8a8" opacity=".4" />
+          </g>
+        )}
         <g className={`pet-pose ${pet.running ? "" : "pet-pose--sit"}`}>
         <g className={pet.running ? "pet-run" : ""}>
           <g className={pet.running ? "pet-tail" : "pet-sit-tail"}>
@@ -133,6 +144,12 @@ export function CursorPet() {
           <rect x="27" y="9" width="3" height="2" fill="#33251d" />
           <rect x="24" y="6" width="2" height="2" fill="#33251d" />
           <rect x="25" y="12" width="3" height="1" fill="#9b5d32" />
+          {!pet.running && (
+            <g className="pet-tongue">
+              <rect x="27" y="13" width="2" height="3" fill="#e85d75" />
+              <rect x="27" y="15" width="2" height="1" fill="#b93250" />
+            </g>
+          )}
           {pet.running ? (
             <>
               <g className="pet-leg-a">
