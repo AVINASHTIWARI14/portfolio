@@ -43,7 +43,7 @@ export function Work() {
                             key={src}
                             src={src}
                             alt="SupplAI project screenshot"
-                            className="h-full w-full shrink-0 object-cover"
+                            className="h-full w-full shrink-0 object-contain"
                           />
                         ))}
                       </div>
