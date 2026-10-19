@@ -49,6 +49,7 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
+          <h3 className="mb-4 font-display text-2xl text-foreground">My Certifications</h3>
           <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-3 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-4">
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
               <article className="border-2 border-black bg-white">
