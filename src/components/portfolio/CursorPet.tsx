@@ -100,7 +100,7 @@ export function CursorPet() {
         <style>{`
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
           .pet-pose { transform-box: fill-box; transform-origin: center bottom; transition: transform .22s ease-out; }
-          .pet-pose--sit { transform: translateY(2px) scaleY(.88); }
+          .pet-pose--sit { transform: translateY(3px) scaleY(.78); }
           .pet-run { animation: pet-bob .24s steps(2,end) infinite alternate; }
           .pet-ear { animation: pet-ear .45s steps(2,end) infinite alternate; }
           .pet-leg-a { animation: pet-leg-a .24s steps(2,end) infinite alternate; }
@@ -117,14 +117,14 @@ export function CursorPet() {
           @keyframes pet-leg-b { from { transform: translateY(1px); } to { transform: translateY(-1px); } }
           @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail, .pet-smoke, .pet-tongue { animation: none; } }
         `}</style>
-        {pet.running && (
+        {pet.running ? (
           <g className="pet-smoke">
             <rect x="2" y="19" width="3" height="3" fill="#a9a9a9" opacity=".9" />
             <rect x="5" y="16" width="3" height="3" fill="#c4c4c4" opacity=".8" />
             <rect x="1" y="15" width="3" height="3" fill="#929292" opacity=".65" />
             <rect x="6" y="13" width="2" height="2" fill="#d4d4d4" opacity=".5" />
           </g>
-        )}
+        ) : null}
         <g className={`pet-pose ${pet.running ? "" : "pet-pose--sit"}`}>
         <g className={pet.running ? "pet-run" : ""}>
           <g className={pet.running ? "pet-tail" : "pet-sit-tail"}>
