@@ -63,7 +63,7 @@ export function CursorPet() {
       const distance = Math.hypot(dx, dy);
       const cursorIsMoving = Date.now() - lastCursorMoveAt.current < 180;
       // Keep chasing until close enough; once the cursor stops and the dog reaches its side-position, sit.
-      const running = distance > 30 || (cursorIsMoving && distance > 12);
+      const running = distance > 14;
       const speed = running ? Math.min(4.5, Math.max(1.35, distance * 0.075)) : 0;
       const next = running
         ? { x: current.x + (dx / distance) * speed, y: current.y + (dy / distance) * speed }
