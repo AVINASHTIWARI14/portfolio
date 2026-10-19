@@ -36,16 +36,17 @@ export function Work() {
                 <p className="mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden">{p.summary}</p>
                 <div className="relative mt-5 grid h-0 overflow-hidden border-0 border-black bg-black opacity-0 transition-[height,opacity,border-width] duration-500 ease-out group-hover:h-56 group-hover:border-2 group-hover:opacity-100 sm:group-hover:h-64">
                   {p.slug === "supplai" ? (
-                    <div className="project-screenshot-slideshow absolute inset-0">
-                      {suplaiScreenshots.map((src, index) => (
-                        <img
-                          key={src}
-                          src={src}
-                          alt={`SupplAI screenshot ${index + 1}`}
-                          className="project-screenshot-frame absolute inset-0 h-full w-full object-cover"
-                          style={{ animationDelay: `${index * 2}s` }}
-                        />
-                      ))}
+                    <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
+                      <div className="project-screenshot-track flex h-full w-full">
+                        {suplaiScreenshots.map((src) => (
+                          <img
+                            key={src}
+                            src={src}
+                            alt="SupplAI project screenshot"
+                            className="h-full w-full shrink-0 object-cover"
+                          />
+                        ))}
+                      </div>
                     </div>
                   ) : (
                     <div className="flex h-full items-center justify-center text-sm text-white/70">
