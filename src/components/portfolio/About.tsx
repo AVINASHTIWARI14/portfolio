@@ -49,12 +49,12 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-5 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-7">
+          <div className="relative min-w-0 border-2 border-black bg-white p-5 text-black shadow-[8px_8px_0_#000] sm:p-7">
             <div className="mb-4 flex shrink-0 items-center justify-between gap-3 border-b-2 border-black pb-4">
               <h3 className="min-w-0 font-[Lobster] text-2xl leading-tight sm:text-3xl">Certificates & Achievements</h3>
               <span className="shrink-0 font-mono text-[10px] font-bold sm:text-xs">03 ITEMS</span>
             </div>
-            <div className="min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain px-1 pb-2 [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
+            <div className="space-y-6 px-1 pb-2">
               <article className="min-w-0 border-b-2 border-black px-1 pb-6">
                 <img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="mx-auto block max-h-[170px] w-full max-w-full rounded-sm border border-black/15 bg-white object-contain sm:max-h-[190px]" />
                 <p className="mt-4 break-words font-mono text-xs font-bold uppercase leading-relaxed tracking-wide">Adobe University Hackathon</p>
