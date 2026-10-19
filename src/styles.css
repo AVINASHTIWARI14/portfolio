@@ -296,28 +296,25 @@ a:not(.brutalist-button):hover {
 }
 
 
-/* Seamless screenshot loop: duplicate the first frame so the reset is invisible. */
+/* Seamless horizontal screenshot track: each image follows the previous one. */
 .project-screenshot-slideshow {
   overflow: hidden;
 }
 .project-screenshot-track {
   display: flex;
+  width: 500%;
   gap: 10px;
-  width: max-content;
-  height: 100%;
   animation: project-screenshot-marquee 20s linear infinite;
   will-change: transform;
 }
 .project-screenshot-track img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  flex: 0 0 100%;
+  width: calc((100% - 40px) / 5);
+  flex: 0 0 calc((100% - 40px) / 5);
   object-fit: contain;
 }
 @keyframes project-screenshot-marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-500% - 50px)); }
+  to { transform: translateX(calc(-80% - 8px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .project-screenshot-track { animation: none; transform: translateX(0); }
