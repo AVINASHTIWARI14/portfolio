@@ -296,21 +296,25 @@ a:not(.brutalist-button):hover {
 }
 
 
-/* Project screenshot slideshow: each frame holds briefly before the next. */
+/* Project screenshot slideshow: each image slides in, pauses, then slides out. */
 .project-screenshot-frame {
   opacity: 0;
-  animation: project-shot-cycle 10s infinite;
+  transform: translateX(100%);
+  animation: project-shot-slide 10s infinite;
+  will-change: transform, opacity;
 }
 .project-screenshot-frame:nth-child(1) { animation-delay: 0s !important; }
 .project-screenshot-frame:nth-child(2) { animation-delay: 2s !important; }
 .project-screenshot-frame:nth-child(3) { animation-delay: 4s !important; }
 .project-screenshot-frame:nth-child(4) { animation-delay: 6s !important; }
 .project-screenshot-frame:nth-child(5) { animation-delay: 8s !important; }
-@keyframes project-shot-cycle {
-  0%, 16% { opacity: 1; }
-  20%, 100% { opacity: 0; }
+@keyframes project-shot-slide {
+  0% { opacity: 0; transform: translateX(100%); }
+  2%, 16% { opacity: 1; transform: translateX(0); }
+  20% { opacity: 0; transform: translateX(-100%); }
+  100% { opacity: 0; transform: translateX(-100%); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .project-screenshot-frame { animation: none; opacity: 0; }
+  .project-screenshot-frame { animation: none; opacity: 0; transform: none; }
   .project-screenshot-frame:first-child { opacity: 1; }
 }
