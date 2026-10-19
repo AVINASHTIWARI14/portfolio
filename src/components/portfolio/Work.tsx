@@ -34,12 +34,12 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className="group relative flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color,background-color] duration-300 hover:scale-[1.015] hover:border-lime/50 hover:bg-black hover:shadow-[8px_8px_0_#000] sm:p-8 dark:hover:bg-black"
+              className="group relative flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color,background-color] duration-300 hover:scale-[1.015] hover:border-lime/50 hover:bg-white hover:shadow-[8px_8px_0_#000] sm:p-8 dark:hover:bg-white"
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <span className="font-mono text-xs text-muted-foreground transition-all duration-300 group-hover:hidden">0{i + 1}</span>
-                <h3 className="mt-5 font-display text-4xl tracking-tight transition-all duration-300 group-hover:mt-0 group-hover:text-white md:text-5xl">{p.title}</h3>
+                <h3 className="mt-5 font-display text-4xl tracking-tight transition-all duration-300 group-hover:mt-0 group-hover:text-black md:text-5xl">{p.title}</h3>
                 <p className="mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden">{p.summary}</p>
                 <div className="relative mt-3 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64">
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
