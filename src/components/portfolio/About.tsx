@@ -46,9 +46,20 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h3 className="mb-4 text-2xl text-foreground" style={{ fontFamily: "Lobster, cursive" }}>My Certifications</h3>
+          <h3 className="mb-4 text-2xl text-foreground" style={{ fontFamily: "Lobster, cursive" }}>Achievements &amp; Certifications</h3>
           <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-3 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-4">
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-auto [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
+              <article className="border-2 border-black bg-white">
+                <div className="w-full overflow-hidden bg-[#f4f4f0] p-3 sm:p-4">
+                  <img src="/images/tcs-ion-nqt-scorecard.png" alt="TCS iON NQT IT scorecard" loading="lazy" className="block h-auto max-h-[360px] w-full object-contain" />
+                </div>
+                <div className="space-y-3 border-t-2 border-black px-3 py-4">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">IT Assessment · 26 Aug 2026</p>
+                  <h4 className="text-2xl" style={{ fontFamily: "Lobster, cursive" }}>TCS iON NQT</h4>
+                  <p className="text-3xl font-black">80.17% <span className="text-sm font-medium text-neutral-600">overall</span></p>
+                  <p className="text-sm leading-relaxed">Scored 2,405.02 / 3,000, with 84.73% in Advanced Quantitative &amp; Reasoning, 82.23% in Foundation/Cognitive, and 69.41% in Programming (C++).</p>
+                </div>
+              </article>
               <article className="border-2 border-black bg-white">
                 <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
                   <img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="block h-full w-full object-fill" />
