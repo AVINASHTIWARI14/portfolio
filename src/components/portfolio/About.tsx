@@ -42,7 +42,7 @@ export function About() {
         <Reveal delay={0.1}>
           <h3 className="mb-4 text-2xl text-foreground" style={{ fontFamily: "Lobster, cursive" }}>My Certifications</h3>
           <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-3 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-4">
-            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
+            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-auto [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
               <article className="border-2 border-black bg-white">
                 <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
                   <img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="block h-full w-full object-fill" />
