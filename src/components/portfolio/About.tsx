@@ -49,24 +49,24 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative min-w-0 border-2 border-black bg-white p-5 text-black shadow-[8px_8px_0_#000] sm:p-7">
+          <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-5 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-7">
             <div className="mb-4 flex shrink-0 items-center justify-between gap-3 border-b-2 border-black pb-4">
               <h3 className="min-w-0 font-[Lobster] text-2xl leading-tight sm:text-3xl">Certificates & Achievements</h3>
               <span className="shrink-0 font-mono text-[10px] font-bold sm:text-xs">03 ITEMS</span>
             </div>
-            <div className="space-y-6 px-1 pb-2">
-              <article className="min-w-0 border-b-2 border-black px-1 pb-6">
-                <img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="mx-auto block max-h-[170px] w-full max-w-full rounded-sm border border-black/15 bg-white object-contain sm:max-h-[190px]" />
+            <div className="min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain px-1 pb-3 [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
+              <article className="min-w-0 border-b-2 border-black px-2 pb-6">
+                <div className="flex h-[150px] w-full items-center justify-center overflow-hidden border border-black/15 bg-white p-2 sm:h-[175px]"><img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="block h-full w-full object-contain" /></div>
                 <p className="mt-4 break-words font-mono text-xs font-bold uppercase leading-relaxed tracking-wide">Adobe University Hackathon</p>
                 <p className="mt-2 break-words text-sm leading-relaxed">Participated in Adobe’s University Hackathon.</p>
               </article>
-              <article className="border-b-2 border-black pb-5">
-                <img src="/images/hackindia-spark.png" alt="HackIndia Spark 4 certificate" loading="lazy" className="block max-h-[190px] w-full border border-black/15 object-contain sm:max-h-[220px]" />
-                <p className="mt-3 font-mono text-xs font-bold uppercase tracking-wide">HackIndia Spark 4</p>
-                <p className="mt-1 text-sm leading-relaxed">Qualified for the grand finals of HackIndia Spark 4 — East NCR Growth Region.</p>
+              <article className="min-w-0 border-b-2 border-black px-2 pb-6">
+                <div className="flex h-[150px] w-full items-center justify-center overflow-hidden border border-black/15 bg-white p-2 sm:h-[175px]"><img src="/images/hackindia-spark.png" alt="HackIndia Spark 4 certificate" loading="lazy" className="block h-full w-full object-contain" /></div>
+                <p className="mt-4 break-words font-mono text-xs font-bold uppercase leading-relaxed tracking-wide">HackIndia Spark 4</p>
+                <p className="mt-2 break-words text-sm leading-relaxed">Qualified for the grand finals of HackIndia Spark 4 — East NCR Growth Region.</p>
               </article>
-              <article className="min-w-0 px-1 pb-2">
-                <img src="/images/smart-india-hackathon.png" alt="Internal Smart India Hackathon 2024 certificate" loading="lazy" className="block max-h-[190px] w-full border border-black/15 object-contain sm:max-h-[220px]" />
+              <article className="min-w-0 px-2 pb-2">
+                <div className="flex h-[150px] w-full items-center justify-center overflow-hidden border border-black/15 bg-white p-2 sm:h-[175px]"><img src="/images/smart-india-hackathon.png" alt="Internal Smart India Hackathon 2024 certificate" loading="lazy" className="block h-full w-full object-contain" /></div>
                 <p className="mt-3 font-mono text-xs font-bold uppercase tracking-wide">Smart India Hackathon 2024</p>
                 <p className="mt-1 text-sm leading-relaxed">Led my team at the Internal Smart India Hackathon 2024.</p>
               </article>
