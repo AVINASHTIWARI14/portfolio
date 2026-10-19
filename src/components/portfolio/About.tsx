@@ -31,7 +31,7 @@ const skillColors: Record<string, { bg: string; fg: string }> = {
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
-      <SectionHeading index="03" eyebrow="About" title={<>Curious about systems, <em className="text-lime">obsessed</em> with the details.</>} />
+      <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Lobster, cursive" />
       <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
         <Reveal className="space-y-6 text-lg leading-relaxed text-muted-foreground">
           <p>
