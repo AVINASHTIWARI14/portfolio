@@ -75,7 +75,7 @@ export function CursorPet() {
         top: pet.y,
         width: 48,
         height: 40,
-        transform: `translate(-50%, -75%) scaleX(${pet.running ? pet.facing : 1})`,
+        transform: `translate(-50%, -75%) scaleX(${pet.running ? pet.facing : 1}) rotateY(${pet.running ? 0 : 180}deg)`,
         imageRendering: "pixelated",
       }}
     >
