@@ -32,10 +32,16 @@ export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Lobster, cursive" />
-      <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-        <Reveal className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+      <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <Reveal className="flex h-full flex-col justify-center space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
           <p>
-            Hey, I’m Avinash, a final year B.Tech student specializing in Computer Science and AI/ML. I enjoy problem solving, working with data structures and algorithms, and turning ideas into practical, well polished applications that are ready to use. My interests lie at the intersection of software development and artificial intelligence, where I explore how intelligent systems can make applications more useful, efficient, and intuitive. I like understanding how things work under the hood, experimenting with new technologies, and building things that are not just functional but also deliver a great user experience. I’m always learning, building, and looking for better ways to solve problems.
+            Hey, I’m Avinash, a final-year B.Tech student specializing in Computer Science and AI/ML. I enjoy problem-solving, working with data structures and algorithms, and turning ideas into practical, polished applications that are ready to use.
+          </p>
+          <p>
+            My interests lie at the intersection of software development and artificial intelligence, where I explore how intelligent systems can make applications more useful, efficient, and intuitive. I like understanding how things work under the hood and experimenting with new technologies.
+          </p>
+          <p>
+            For me, a project should be more than functional: it should deliver a thoughtful user experience. I’m always learning, building, and looking for better ways to solve problems.
           </p>
         </Reveal>
 
