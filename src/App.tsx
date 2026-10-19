@@ -3,7 +3,6 @@ import { Hero } from "@/components/portfolio/Hero";
 import { Work } from "@/components/portfolio/Work";
 import { Dsa } from "@/components/portfolio/Dsa";
 import { About, Skills } from "@/components/portfolio/About";
-import { Achievements } from "@/components/portfolio/Achievements";
 import { Contact, Footer } from "@/components/portfolio/Contact";
 import { CursorPet } from "@/components/portfolio/CursorPet";
 
@@ -23,7 +22,6 @@ export function App() {
         <Work />
         <Dsa />
         <About />
-        <Achievements />
         <Skills />
         <Contact />
       </main>
