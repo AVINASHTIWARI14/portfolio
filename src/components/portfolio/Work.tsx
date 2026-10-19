@@ -38,7 +38,7 @@ export function Work() {
                 <p className="mt-4 max-h-24 overflow-hidden text-muted-foreground transition-[max-height,opacity,margin] duration-300 ease-out group-hover:mt-0 group-hover:max-h-0 group-hover:opacity-0">{p.summary}</p>
                 <div className="project-preview relative mt-3 grid grid-rows-[0fr] overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[grid-template-rows,opacity,margin] duration-500 ease-out group-hover:mt-3 group-hover:grid-rows-[1fr] group-hover:opacity-100">
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
-                    <div className="project-preview-inner relative min-h-0 overflow-hidden"><div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
+                    <div className="project-preview-inner relative h-56 min-h-0 overflow-hidden sm:h-64"><div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
                       <div className={`project-screenshot-track project-screenshot-track--${p.slug === "supplai" ? "five" : "four"} flex h-full`}>
                         {(p.slug === "supplai" ? suplaiScreenshots : juribriefScreenshots).concat(
                           p.slug === "supplai" ? suplaiScreenshots : juribriefScreenshots
