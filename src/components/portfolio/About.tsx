@@ -61,7 +61,7 @@ export function About() {
                 <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
                   <img src="/images/hackindia-spark.png" alt="HackIndia Spark 4 certificate" loading="lazy" className="block h-full w-full object-fill" />
                 </div>
-                <p className="border-t-2 border-black px-3 py-3 text-sm font-medium leading-relaxed">Qualified for the grand finals of HackIndia Spark 4 — East NCR Growth Region.</p>
+                <p className="border-t-2 border-black px-3 py-3 text-sm font-medium leading-relaxed">Reached the pre-finals of HackIndia Spark 4 — East NCR Growth Region.</p>
               </article>
               <article className="border-2 border-black bg-white">
                 <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
