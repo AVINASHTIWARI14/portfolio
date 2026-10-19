@@ -296,11 +296,11 @@ a:not(.brutalist-button):hover {
 }
 
 
-/* Continuous project screenshot slider: frames overlap so no black gaps appear. */
+/* Continuous screenshot carousel: the next frame enters before the current frame leaves. */
 .project-screenshot-frame {
   opacity: 0;
   transform: translateX(100%);
-  animation: project-shot-slide 10s infinite;
+  animation: project-shot-slide 10s linear infinite;
   will-change: transform, opacity;
 }
 .project-screenshot-frame:nth-child(1) { animation-delay: 0s !important; }
@@ -310,9 +310,9 @@ a:not(.brutalist-button):hover {
 .project-screenshot-frame:nth-child(5) { animation-delay: 8s !important; }
 @keyframes project-shot-slide {
   0% { opacity: 1; transform: translateX(0); }
-  18% { opacity: 1; transform: translateX(0); }
-  20% { opacity: 1; transform: translateX(-100%); }
-  20.01% { opacity: 0; transform: translateX(100%); }
+  16% { opacity: 1; transform: translateX(0); }
+  22% { opacity: 1; transform: translateX(-100%); }
+  22.01% { opacity: 0; transform: translateX(100%); }
   100% { opacity: 0; transform: translateX(100%); }
 }
 @media (prefers-reduced-motion: reduce) {
