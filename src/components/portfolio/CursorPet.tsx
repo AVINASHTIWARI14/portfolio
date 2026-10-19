@@ -64,7 +64,7 @@ export function CursorPet() {
       const cursorIsMoving = Date.now() - lastCursorMoveAt.current < 180;
       // Sit as soon as the cursor becomes idle.
       const running = cursorIsMoving && distance > 14;
-      const speed = running ? Math.min(4.5, Math.max(1.35, distance * 0.075)) : 0;
+      const speed = running ? Math.min(8, Math.max(3, distance * 0.14)) : 0;
       const next = running
         ? { x: current.x + (dx / distance) * speed, y: current.y + (dy / distance) * speed }
         : current;
