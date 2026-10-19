@@ -17,7 +17,7 @@ export function Work() {
     <section id="work" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <h2 className="mb-12 font-[Lobster] text-5xl tracking-tight sm:text-6xl md:text-7xl">Things I build.</h2>
 
-      <motion.div layout className="grid gap-5 md:grid-cols-2">
+      <motion.div layout className="grid items-start gap-5 md:grid-cols-2">
         <AnimatePresence mode="popLayout">
           {list.map((p, i) => (
             <motion.article
@@ -27,14 +27,14 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-500 hover:scale-[1.025] hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8"
+              className="group relative flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color] duration-300 hover:scale-[1.015] hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8"
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
                 <h3 className="mt-5 font-display text-4xl tracking-tight md:text-5xl">{p.title}</h3>
                 <p className="mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden">{p.summary}</p>
-                <div className="relative mt-5 hidden h-48 overflow-hidden border-2 border-black bg-black group-hover:block sm:h-56">
+                <div className="relative mt-5 grid h-0 overflow-hidden border-0 border-black bg-black opacity-0 transition-[height,opacity,border-width] duration-500 ease-out group-hover:h-56 group-hover:border-2 group-hover:opacity-100 sm:group-hover:h-64">
                   {p.slug === "supplai" ? (
                     <div className="project-screenshot-slideshow absolute inset-0">
                       {suplaiScreenshots.map((src, index) => (
