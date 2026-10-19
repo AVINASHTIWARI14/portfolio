@@ -6,6 +6,7 @@ export function CursorPet() {
   const target = useRef({ x: -100, y: -100 });
   const position = useRef({ x: -100, y: -100 });
   const [pet, setPet] = useState<PetState>({ x: -100, y: -100, facing: 1, visible: false, running: false });
+  const [showWoof, setShowWoof] = useState(false);
 
   useEffect(() => {
     const updateTarget = (x: number, y: number) => {
@@ -59,6 +60,8 @@ export function CursorPet() {
   return (
     <div
       aria-hidden="true"
+      onMouseEnter={() => setShowWoof(true)}
+      onMouseLeave={() => setShowWoof(false)}
       className="pointer-events-none fixed z-[90]"
       style={{
         left: pet.x,
@@ -69,6 +72,7 @@ export function CursorPet() {
         imageRendering: "pixelated",
       }}
     >
+      {showWoof && <span style={{ position: "absolute", left: 34, top: -18, transform: `scaleX(${pet.facing})`, whiteSpace: "nowrap", background: "#fff", color: "#080808", border: "2px solid #080808", boxShadow: "2px 2px 0 #080808", padding: "2px 5px", fontSize: 10, fontWeight: 800, letterSpacing: ".04em", fontFamily: "monospace" }}>woof!</span>}
       <svg viewBox="0 0 32 26" width="48" height="40" shapeRendering="crispEdges" className="overflow-visible">
         <style>{`
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
