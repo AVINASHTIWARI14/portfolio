@@ -3,11 +3,11 @@ import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
 
 const suplaiScreenshots = [
-  "/images/projects/suplai-1.jpg",
-  "/images/projects/suplai-2.jpg",
-  "/images/projects/suplai-3.jpg",
-  "/images/projects/suplai-4.jpg",
-  "/images/projects/suplai-5.jpg",
+  "/images/suplai-1.png",
+  "/images/suplai-2.png",
+  "/images/suplai-3.png",
+  "/images/suplai-4.png",
+  "/images/suplai-5.png",
 ];
 
 export function Work() {
