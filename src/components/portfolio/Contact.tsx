@@ -51,7 +51,7 @@ export function Contact() {
     <section id="contact" className="relative overflow-hidden border-t border-border py-24 md:py-36">
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <h2 className="font-[Lobster] text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
+          <h2 className="font-[Allura] text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
             Let's <em className="text-gradient">connect.</em>
           </h2>
         </Reveal>
