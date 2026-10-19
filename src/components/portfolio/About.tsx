@@ -32,7 +32,7 @@ export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <div className="[&>div]:mb-0">
-        <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Lobster, cursive" />
+        <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Allura, cursive" />
       </div>
       <div className="mt-0 grid items-start gap-10 lg:-mt-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <Reveal className="flex h-full flex-col justify-center space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
@@ -54,7 +54,7 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h3 className="mb-4 text-2xl text-foreground" style={{ fontFamily: "Lobster, cursive" }}>Achievements &amp; Certifications</h3>
+          <h3 className="mb-4 text-2xl text-foreground" style={{ fontFamily: "Allura, cursive" }}>Achievements &amp; Certifications</h3>
           <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-3 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-4">
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-auto [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
               <article className="border-2 border-black bg-white">
@@ -93,7 +93,7 @@ export function Skills() {
     <section id="skills" className="relative overflow-hidden border-t border-border py-24 md:py-32">
       <div className="absolute -right-40 top-20 h-[420px] w-[420px] glow-lavender blur-3xl" aria-hidden />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading index="04" eyebrow="" title={<>Tools / Skills.</>} titleFontFamily="Lobster, cursive" />
+        <SectionHeading index="04" eyebrow="" title={<>Tools / Skills.</>} titleFontFamily="Allura, cursive" />
         <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
             <Reveal key={g.title} delay={i * 0.05} className="group min-w-0 overflow-hidden bg-background p-6 transition-colors hover:bg-card sm:p-8">
