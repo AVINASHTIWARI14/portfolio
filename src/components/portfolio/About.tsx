@@ -31,8 +31,10 @@ const skillColors: Record<string, { bg: string; fg: string }> = {
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
-      <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Lobster, cursive" />
-      <div className="-mt-12 grid items-start gap-10 lg:-mt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <div className="[&>div]:mb-0">
+        <SectionHeading index="03" eyebrow="About" title={<>Me.</>} titleFontFamily="Lobster, cursive" />
+      </div>
+      <div className="-mt-20 grid items-start gap-10 lg:-mt-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <Reveal className="flex h-full flex-col justify-center space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
           <p>
             Hey, I’m Avinash, a final-year B.Tech student specializing in Computer Science and AI/ML. I enjoy problem-solving, working with data structures and algorithms, and turning ideas into practical, polished applications that are ready to use.
