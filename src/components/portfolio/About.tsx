@@ -51,15 +51,24 @@ export function About() {
         <Reveal delay={0.1}>
           <div className="relative flex h-[620px] min-w-0 flex-col border-2 border-black bg-white p-3 text-black shadow-[8px_8px_0_#000] sm:h-[680px] sm:p-4">
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-color:#111_#eee] [scrollbar-width:thin]">
-              <div className="h-[250px] w-full overflow-hidden border-2 border-black bg-white sm:h-[275px]">
-                <img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="block h-full w-full object-fill" />
-              </div>
-              <div className="h-[250px] w-full overflow-hidden border-2 border-black bg-white sm:h-[275px]">
-                <img src="/images/hackindia-spark.png" alt="HackIndia Spark 4 certificate" loading="lazy" className="block h-full w-full object-fill" />
-              </div>
-              <div className="h-[250px] w-full overflow-hidden border-2 border-black bg-white sm:h-[275px]">
-                <img src="/images/smart-india-hackathon.png" alt="Internal Smart India Hackathon 2024 certificate" loading="lazy" className="block h-full w-full object-fill" />
-              </div>
+              <article className="border-2 border-black bg-white">
+                <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
+                  <img src="/images/adobe-hackathon.png" alt="Adobe University Hackathon certificate" loading="lazy" className="block h-full w-full object-fill" />
+                </div>
+                <p className="border-t-2 border-black px-3 py-3 text-sm font-medium leading-relaxed">Participated in Adobe’s University Hackathon.</p>
+              </article>
+              <article className="border-2 border-black bg-white">
+                <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
+                  <img src="/images/hackindia-spark.png" alt="HackIndia Spark 4 certificate" loading="lazy" className="block h-full w-full object-fill" />
+                </div>
+                <p className="border-t-2 border-black px-3 py-3 text-sm font-medium leading-relaxed">Qualified for the grand finals of HackIndia Spark 4 — East NCR Growth Region.</p>
+              </article>
+              <article className="border-2 border-black bg-white">
+                <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
+                  <img src="/images/smart-india-hackathon.png" alt="Internal Smart India Hackathon 2024 certificate" loading="lazy" className="block h-full w-full object-fill" />
+                </div>
+                <p className="border-t-2 border-black px-3 py-3 text-sm font-medium leading-relaxed">Led my team at the Internal Smart India Hackathon 2024.</p>
+              </article>
             </div>
           </div>
         </Reveal>
