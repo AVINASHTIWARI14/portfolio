@@ -38,12 +38,12 @@ export function Work() {
                   {p.slug === "supplai" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
                       <div className="project-screenshot-track flex h-full w-full">
-                        {suplaiScreenshots.map((src) => (
+                        {[...suplaiScreenshots, ...suplaiScreenshots].map((src, index) => (
                           <img
-                            key={src}
+                            key={`${src}-${index}`}
                             src={src}
-                            alt="SupplAI project screenshot"
-                            className="h-full w-full shrink-0 object-contain"
+                            alt={`SupplAI project screenshot ${(index % suplaiScreenshots.length) + 1}`}
+                            className="h-full shrink-0 object-contain"
                           />
                         ))}
                       </div>
