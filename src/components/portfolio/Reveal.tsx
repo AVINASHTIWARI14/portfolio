@@ -19,7 +19,7 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
 
 export function SectionHeading({ index, eyebrow, title, children, titleClassName, titleFontFamily }: { index: string; eyebrow: string; title: ReactNode; children?: ReactNode; titleClassName?: string; titleFontFamily?: string }) {
   return (
-    <Reveal className="mb-12 md:mb-16">
+    <Reveal className="mb-4 md:mb-6">
       <h2 style={titleFontFamily ? { fontFamily: titleFontFamily } : undefined} className={cn("font-display text-4xl leading-[1.02] tracking-tight sm:text-5xl md:text-6xl", titleClassName)}>{title}</h2>
       {children && <div className="mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">{children}</div>}
     </Reveal>
