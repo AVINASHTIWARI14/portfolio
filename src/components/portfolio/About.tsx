@@ -74,7 +74,7 @@ export function About() {
                 </div>
                 <p className="border-t-2 border-black px-3 py-3 text-sm font-medium leading-relaxed">Reached the pre-finals of HackIndia Spark 4 — East NCR Growth Region.</p>
               </article>
-              <article className="border-2 border-black bg-white">
+              <article className="border-2 border-black bg-white shadow-[4px_4px_0_#000]">
                 <div className="h-[250px] w-full overflow-hidden bg-white sm:h-[275px]">
                   <img src="/images/smart-india-hackathon.png" alt="Internal Smart India Hackathon 2024 certificate" loading="lazy" className="block h-full w-full object-fill" />
                 </div>
