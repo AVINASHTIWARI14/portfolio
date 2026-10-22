@@ -341,3 +341,33 @@ a:not(.brutalist-button):hover {
 @media (prefers-reduced-motion: reduce) {
   .project-screenshot-track { animation: none; transform: translateX(0); }
 }
+
+
+/* Custom dog-bone cursor on desktop and laptop pointers. */
+@media (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
+  }
+
+  .bone-cursor {
+    position: fixed;
+    z-index: 9999;
+    width: 38px;
+    height: 23px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 100ms ease, transform 90ms ease-out;
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.22));
+    will-change: left, top, transform;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .bone-cursor {
+    display: none;
+  }
+}
