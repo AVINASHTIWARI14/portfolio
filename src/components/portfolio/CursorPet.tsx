@@ -134,7 +134,7 @@ export function CursorPet() {
           </g>
         ) : null}
         <g className={`pet-pose ${pet.running ? "" : "pet-pose--sit"}`}>
-        <g className={pet.running ? "pet-run" : ""} stroke="#080808" strokeWidth="0.65" strokeLinejoin="miter" strokeLinecap="square" paintOrder="stroke fill">
+        <g className={pet.running ? "pet-run" : ""}>
           <g className={pet.running ? "pet-tail" : "pet-sit-tail"}>
             <rect x="3" y="11" width="4" height="4" fill="#9b5d32" />
             <rect x="1" y="9" width="4" height="4" fill="#c88449" />
