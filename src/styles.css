@@ -361,6 +361,7 @@ a:not(.brutalist-button):hover {
     align-items: center;
     justify-content: center;
     transition: opacity 100ms ease, transform 90ms ease-out;
+    image-rendering: pixelated;
     filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.22));
     will-change: left, top, transform;
   }
