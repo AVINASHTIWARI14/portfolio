@@ -5,6 +5,7 @@ import { Dsa } from "@/components/portfolio/Dsa";
 import { About, Skills } from "@/components/portfolio/About";
 import { Contact, Footer } from "@/components/portfolio/Contact";
 import { CursorPet } from "@/components/portfolio/CursorPet";
+import { BoneCursor } from "@/components/portfolio/BoneCursor";
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
         Skip to content
       </a>
       <CursorPet />
+      <BoneCursor />
       <Nav />
       <main>
         <Hero />
