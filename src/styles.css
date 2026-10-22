@@ -354,8 +354,8 @@ a:not(.brutalist-button):hover {
   .bone-cursor {
     position: fixed;
     z-index: 9999;
-    width: 38px;
-    height: 23px;
+    width: 52px;
+    height: 30px;
     pointer-events: none;
     display: flex;
     align-items: center;
