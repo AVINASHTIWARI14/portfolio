@@ -25,9 +25,9 @@ export function BoneCursor() {
   return (
     <div aria-hidden="true" className="bone-cursor" style={{ left: point.x, top: point.y, opacity: point.visible ? 1 : 0, transform: `translate(-50%, -50%) rotate(-35deg) scale(${point.pressed ? 0.82 : 1})` }}>
       <svg viewBox="0 0 48 28" width="52" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8.5 3.5C4.8.8 1.1 4 3.3 7.8C.1 11.2 3 16.1 7.4 14.9L16.1 11.7L32.8 17.9C31.1 22.2 35.4 26 39 23.2C43.7 25.2 47 21.2 44.5 17.8C47.4 14.1 43.8 9.7 39.6 11.1L19.1 3.6C16.8.3 12.2.4 10.3 3.6C9.7 3.5 9.1 3.4 8.5 3.5Z" fill="#FFE033" stroke="#080808" strokeWidth="2.8" strokeLinejoin="round" />
-        <path d="M8 6.1C9.1 5.5 10.3 5.9 11 6.8" stroke="#FFF7C2" strokeWidth="1.8" strokeLinecap="round" />
-        <path d="M19.5 8.5 31.5 13" stroke="#080808" strokeOpacity=".16" strokeWidth="1.6" strokeLinecap="round" />
+        <path d="M10.2 4.6C8.7 1.2 5.1.5 2.8 3.2C.5 5.5 1.3 8.1 3.7 9.7C1.5 12.1 3.1 15.6 6.3 16.1C8.4 16.5 10 15.1 11.1 13.7L17.2 10.8L31.1 17.2L36.7 20.1C35.1 22.8 36.9 26 40.1 25.8C42.2 25.7 43.5 24.1 43.5 21.9C46.7 22.7 49 20.2 47.4 17.3C46.1 14.8 43.7 14.3 41.3 15.8C40.7 12.6 37.3 11.4 35 13.5L32.1 14.9L18.6 8.7L13.1 5.8C12.8 4.2 11.8 3.4 10.2 4.6Z" fill="#F1EBDD" stroke="#171613" strokeWidth="2.4" strokeLinejoin="round" />
+        <path d="M8 6.1C9.1 5.5 10.3 5.9 11 6.8" stroke="#FFFCF5" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M19.5 8.5 31.5 13" stroke="#C9C0B2" strokeOpacity=".85" strokeWidth="1.6" strokeLinecap="round" />
       </svg>
     </div>
   );
