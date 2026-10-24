@@ -53,7 +53,7 @@ export function Work() {
                     className="max-h-full max-w-full object-contain object-left"
                   />
                 </div>
-                <p className={`mt-4 text-muted-foreground transition-all duration-300 group-hover:hidden ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
+                <p className={`mt-4 text-justify text-muted-foreground transition-all duration-300 group-hover:hidden ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
                 <div className={`relative mt-3 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64 ${expandedProject === p.slug ? "!h-56 !opacity-100 sm:!h-64" : ""}`}>
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
