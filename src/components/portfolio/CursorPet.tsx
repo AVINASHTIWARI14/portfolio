@@ -111,8 +111,8 @@ export function CursorPet() {
           .pet-pose--sit { transform: translateY(3px) scaleY(.78); }
           .pet-run { animation: pet-bob .24s steps(2,end) infinite alternate; }
           .pet-ear { animation: pet-ear .45s steps(2,end) infinite alternate; }
-          .pet-leg-a { animation: pet-leg-a .24s steps(2,end) infinite alternate; }
-          .pet-leg-b { animation: pet-leg-b .24s steps(2,end) infinite alternate; }
+          .pet-leg-a { transform-box: fill-box; transform-origin: center top; animation: pet-leg-a .18s steps(2,end) infinite alternate; }
+          .pet-leg-b { transform-box: fill-box; transform-origin: center top; animation: pet-leg-b .18s steps(2,end) infinite alternate; }
           .pet-sit-tail { animation: pet-tail-wag .32s steps(2,end) infinite alternate; }
           .pet-smoke { animation: pet-smoke .7s steps(3,end) infinite; transform-box: fill-box; transform-origin: center; }
           .pet-tongue { animation: pet-tongue .8s steps(2,end) infinite alternate; }
@@ -121,8 +121,8 @@ export function CursorPet() {
           @keyframes pet-tail-wag { from { transform: rotate(-18deg); } to { transform: rotate(22deg); } }
           @keyframes pet-bob { from { transform: translateY(0); } to { transform: translateY(-2px); } }
           @keyframes pet-ear { from { transform: translateY(0); } to { transform: translateY(1px); } }
-          @keyframes pet-leg-a { from { transform: translateY(-1px); } to { transform: translateY(1px); } }
-          @keyframes pet-leg-b { from { transform: translateY(1px); } to { transform: translateY(-1px); } }
+          @keyframes pet-leg-a { from { transform: translateY(-1px) rotate(-22deg); } to { transform: translateY(1px) rotate(22deg); } }
+          @keyframes pet-leg-b { from { transform: translateY(1px) rotate(22deg); } to { transform: translateY(-1px) rotate(-22deg); } }
           @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail, .pet-smoke, .pet-tongue { animation: none; } }
         `}</style>
         {pet.running ? (
