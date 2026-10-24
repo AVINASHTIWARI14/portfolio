@@ -49,6 +49,7 @@ export function Dsa() {
                   if (container) container.scrollLeft = container.scrollWidth;
                 }}
                 className="mx-0 block h-[200px] w-[1200px] max-w-none sm:h-[220px] sm:w-[1300px]"
+                style={{ filter: "grayscale(1) contrast(2.5)" }}
               />
             </div>
           </div>
