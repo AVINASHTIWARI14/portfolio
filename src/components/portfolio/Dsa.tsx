@@ -10,7 +10,7 @@ export function Dsa() {
         <Reveal>
           <div className="mx-auto max-w-4xl px-1 py-2 text-foreground">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-base">MY PROBLEM-SOLVING LOG</p>
-            <p className="text-justify text-base leading-8 sm:text-lg sm:leading-9">
+            <p className="text-justify text-base leading-8 sm:text-lg sm:leading-9" style={{ textAlign: "justify", textJustify: "inter-word" }}>
               My journey with DSA started with a simple goal: getting better at problem solving, and somehow turned into 500+ problems solved across different platforms. I have solved 300+ problems on LeetCode alone and regularly practice on platforms like Codeforces, CodeChef, and HackerRank. Recently, I stepped into competitive programming and have participated in 20+ live contests, which has taught me that solving a problem is one thing, solving it before the clock runs out is a completely different game. I still struggle with problems, get stuck on ideas, and occasionally spend far too long debugging something that turns out to be a tiny mistake, but that is also what I enjoy about it. Every problem gives me something new to learn, and I am continuously working to improve my problem-solving skills, speed, and consistency.
             </p>
           </div>
