@@ -8,21 +8,12 @@ export function Dsa() {
         <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} titleFontFamily="Lobster, cursive" />
 
         <Reveal>
-          <article className="dsa-code-window brutalist-card mx-auto flex min-w-0 max-w-4xl flex-col overflow-hidden border-2 border-black bg-white text-black shadow-[6px_6px_0_0_#000]" style={{ background: "#ffffff", borderColor: "#000000", color: "#000000", fontFamily: "monospace", fontSize: 16 }}>
-            <div className="dsa-code-titlebar flex h-11 shrink-0 items-center justify-end border-b-2 border-black" style={{ background: "#ffffff", color: "#000000" }}>
-              <span className="mr-auto truncate px-3 text-sm font-bold text-black">dsa-journey.txt</span>
-              <span className="dsa-window-dot" aria-hidden="true" />
-              <span className="dsa-window-dot" aria-hidden="true" />
-              <span className="dsa-window-dot dsa-window-dot-close" aria-hidden="true" />
-            </div>
-
-            <div className="space-y-5 p-6 text-base leading-8 text-black sm:p-9 sm:text-lg sm:leading-9">
-              <p className="text-sm uppercase tracking-[0.2em] text-neutral-600 sm:text-base">MY PROBLEM-SOLVING LOG</p>
-              <p className="text-black">
-                My journey with DSA started with a simple goal: getting better at problem solving, and somehow turned into 500+ problems solved across different platforms. I have solved 300+ problems on LeetCode alone and regularly practice on platforms like Codeforces, CodeChef, and HackerRank. Recently, I stepped into competitive programming and have participated in 20+ live contests, which has taught me that solving a problem is one thing, solving it before the clock runs out is a completely different game. I still struggle with problems, get stuck on ideas, and occasionally spend far too long debugging something that turns out to be a tiny mistake, but that is also what I enjoy about it. Every problem gives me something new to learn, and I am continuously working to improve my problem-solving skills, speed, and consistency.
-              </p>
-            </div>
-          </article>
+          <div className="mx-auto max-w-4xl px-1 py-2 text-foreground">
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-base">MY PROBLEM-SOLVING LOG</p>
+            <p className="text-base leading-8 sm:text-lg sm:leading-9">
+              My journey with DSA started with a simple goal: getting better at problem solving, and somehow turned into 500+ problems solved across different platforms. I have solved 300+ problems on LeetCode alone and regularly practice on platforms like Codeforces, CodeChef, and HackerRank. Recently, I stepped into competitive programming and have participated in 20+ live contests, which has taught me that solving a problem is one thing, solving it before the clock runs out is a completely different game. I still struggle with problems, get stuck on ideas, and occasionally spend far too long debugging something that turns out to be a tiny mistake, but that is also what I enjoy about it. Every problem gives me something new to learn, and I am continuously working to improve my problem-solving skills, speed, and consistency.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
