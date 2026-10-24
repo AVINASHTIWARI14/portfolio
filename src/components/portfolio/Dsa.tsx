@@ -26,9 +26,9 @@ export function Dsa() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="brutalist-card mx-auto mt-8 max-w-4xl overflow-hidden border-2 border-black bg-white text-black shadow-[6px_6px_0_0_#000]">
-            <div className="flex items-center justify-between gap-3 border-b-2 border-black bg-white px-4 py-3">
-              <h3 className="font-mono text-sm font-bold uppercase tracking-wide text-black">leetcode-activity</h3>
+          <div className="brutalist-card mx-auto mt-8 max-w-4xl overflow-hidden border-2 border-black bg-black text-white shadow-[6px_6px_0_0_#000]">
+            <div className="flex items-center justify-between gap-3 border-b-2 border-white/20 bg-black px-4 py-3">
+              <h3 className="font-mono text-sm font-bold uppercase tracking-wide text-white">leetcode-activity</h3>
               <a
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
@@ -39,7 +39,7 @@ export function Dsa() {
                 VIEW PROFILE
               </a>
             </div>
-            <div className="overflow-x-auto bg-white px-2 py-2 sm:px-4 sm:py-3">
+            <div className="overflow-x-auto bg-black px-2 py-2 sm:px-4 sm:py-3">
               <img
                 src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
                 alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
@@ -49,7 +49,6 @@ export function Dsa() {
                   if (container) container.scrollLeft = container.scrollWidth;
                 }}
                 className="mx-0 block h-[200px] w-[1200px] max-w-none sm:h-[220px] sm:w-[1300px]"
-                style={{ filter: "grayscale(1) contrast(2.5)" }}
               />
             </div>
           </div>
