@@ -17,9 +17,9 @@ export function Dsa() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="brutalist-card mx-auto mt-8 max-w-4xl overflow-hidden border-2 border-zinc-400 bg-zinc-300 text-zinc-900 shadow-[6px_6px_0_0_#a1a1aa]">
-            <div className="flex items-center justify-between gap-3 border-b-2 border-zinc-400 bg-zinc-300 px-4 py-3">
-              <h3 className="font-mono text-sm font-bold uppercase tracking-wide text-zinc-900">leetcode-activity</h3>
+          <div className="brutalist-card mx-auto mt-8 max-w-4xl overflow-hidden border-2 border-zinc-500 bg-zinc-400 text-zinc-950 shadow-[6px_6px_0_0_#71717a]">
+            <div className="flex items-center justify-between gap-3 border-b-2 border-zinc-500 bg-zinc-400 px-4 py-3">
+              <h3 className="font-mono text-sm font-bold uppercase tracking-wide text-zinc-950">leetcode-activity</h3>
               <a
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
@@ -30,7 +30,7 @@ export function Dsa() {
                 VIEW PROFILE
               </a>
             </div>
-            <div className="overflow-x-auto bg-zinc-300 px-2 py-2 sm:px-4 sm:py-3">
+            <div className="overflow-x-auto bg-zinc-400 px-2 py-2 sm:px-4 sm:py-3">
               <img
                 src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
                 alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
