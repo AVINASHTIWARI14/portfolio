@@ -24,10 +24,10 @@ export function Dsa() {
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
                 rel="noreferrer"
-                className="brutalist-button brutalist-button-live !inline-flex !w-auto !min-w-0 !min-h-0 !h-auto !px-2 !py-1 !text-[10px] sm:!px-2.5 sm:!py-1 sm:!text-[10px]"
+                className="brutalist-button brutalist-button-live !inline-flex !w-auto !min-w-0 !min-h-0 !h-auto !px-3 !py-1.5 !text-sm sm:!px-3.5 sm:!py-1.5 sm:!text-base"
                 style={{ width: "fit-content", minWidth: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 0, whiteSpace: "nowrap" }}
               >
-                VIEW PROFILE
+                PROFILE
               </a>
             </div>
             <div className="overflow-x-auto bg-zinc-900 px-2 py-2 sm:px-4 sm:py-3">
