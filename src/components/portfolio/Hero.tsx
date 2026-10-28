@@ -6,6 +6,18 @@ export function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden px-5 pt-28 pb-16 sm:px-8">
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "linear-gradient(125deg, #e5e5e5 0%, #ffffff 45%, #dcdcdc 100%)",
+          backgroundSize: "200% 200%",
+        }}
+        animate={reduce ? undefined : {
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
       <motion.svg
         className="pointer-events-none absolute inset-0 h-full w-full"
         viewBox="0 0 1440 900"
