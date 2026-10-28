@@ -46,7 +46,7 @@ export function About() {
             For me, a project should be more than functional: it should deliver a thoughtful user experience. I’m always learning, building, and looking for better ways to solve problems.
           </p>
           <div className="pt-2">
-            <a href="https://drive.google.com/file/d/163jq7BqJCNd_NEYph46y0O-3kqTqoc0F/view?usp=drivesdk" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-live brutalist-button-contact shine-on-hover resume-button-shine group relative isolate !h-12 !w-auto items-center gap-2.5 border-[3px] border-black px-4 py-2.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black [text-shadow:none]" style={{ width: "fit-content", height: "48px", outlineColor: "#080808" }}>
+            <a href="https://drive.google.com/file/d/163jq7BqJCNd_NEYph46y0O-3kqTqoc0F/view?usp=drivesdk" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-live brutalist-button-contact group relative isolate !h-12 !w-auto items-center gap-2.5 border-[3px] border-black px-4 py-2.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black [text-shadow:none]" style={{ width: "fit-content", height: "48px", outlineColor: "#080808" }}>
               <span className="brutalist-button-text">View Resume</span>
               <span aria-hidden="true" className="brutalist-button-arrow">↗</span>
             </a>
