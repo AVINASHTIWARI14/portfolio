@@ -476,3 +476,10 @@ body :where(h1, h2, h3, h4, h5, h6) {
   .mute-toggle-shine:hover::before,
   .mute-toggle-shine:focus-visible::before { animation: none; }
 }
+
+
+/* Explicitly force the Tools / Skills grid cards to stay white. */
+#skills .tools-skill-card,
+#skills .tools-skill-card:hover {
+  background-color: #ffffff !important;
+}
