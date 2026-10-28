@@ -33,7 +33,7 @@ export function Nav() {
       <div className="mx-auto mt-3 max-w-6xl px-3 sm:px-6">
         <nav
           aria-label="Primary"
-          className="relative flex items-center justify-center border-[3px] border-black bg-[#999999] px-2 py-2 text-neutral-950 shadow-[6px_6px_0_#080808]"
+          className="relative flex items-center justify-center border-[3px] border-black bg-[#aaaaaa] px-2 py-2 text-neutral-950 shadow-[6px_6px_0_#080808]"
         >
           <ul className="flex w-full items-center justify-start gap-1 overflow-x-auto whitespace-nowrap md:justify-center md:gap-2.5">
             {navItems.map((n) => (
