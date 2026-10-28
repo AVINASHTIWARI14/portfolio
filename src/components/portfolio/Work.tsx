@@ -57,7 +57,10 @@ export function Work() {
                 <div className={`relative mt-3 grid h-56 overflow-hidden border-0 border-transparent bg-transparent opacity-100 transition-[height,opacity] duration-500 ease-out sm:h-64 ${expandedProject === p.slug ? "!h-56 sm:!h-64" : ""}`}>
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
-                      <div className={`project-screenshot-track project-screenshot-track--${p.slug === "supplai" ? "five" : "four"} flex h-full`}>
+                      <div
+                        className={`project-screenshot-track project-screenshot-track--${p.slug === "supplai" ? "five" : "four"} flex h-full`}
+                        style={{ animationDuration: "40s" }}
+                      >
                         {(p.slug === "supplai" ? suplaiScreenshots : juribriefScreenshots).concat(
                           p.slug === "supplai" ? suplaiScreenshots : juribriefScreenshots
                         ).map((src, index, all) => (
@@ -77,29 +80,29 @@ export function Work() {
               <div className="relative mt-auto grid grid-cols-1 gap-3 pt-10 sm:grid-cols-3">
                 {p.demo ? (
                   <a href={p.demo} target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-live">
-                    <span className="brutalist-button-text">Live</span><ArrowUpRight className="brutalist-button-arrow" />
+                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Live</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
                   <span aria-disabled="true" className="brutalist-button brutalist-button-live brutalist-button-disabled">
-                    <span className="brutalist-button-text">Live</span>
+                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Live</span>
                   </span>
                 )}
                 {p.slug === "supplai" ? (
                   <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-video">
-                    <span className="brutalist-button-text">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
+                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
                   <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-video brutalist-button-disabled">
-                    <span className="brutalist-button-text">Demo video</span><ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !static !h-4 !w-4 shrink-0" />
+                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Demo video</span><ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !static !h-4 !w-4 shrink-0" />
                   </span>
                 )}
                 {p.repo ? (
                   <a href={p.repo} target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-repo">
-                    <span className="brutalist-button-text">Repo</span><ArrowUpRight className="brutalist-button-arrow" />
+                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Repo</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
                   <span aria-disabled="true" className="brutalist-button brutalist-button-repo brutalist-button-disabled">
-                    <span className="brutalist-button-text">Repo</span>
+                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Repo</span>
                   </span>
                 )}
               </div>
