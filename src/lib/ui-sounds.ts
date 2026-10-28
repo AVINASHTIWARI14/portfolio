@@ -1,4 +1,5 @@
 let audioContext: AudioContext | null = null;
+let puppyBark: HTMLAudioElement | null = null;
 
 function getAudioContext() {
   if (typeof window === "undefined") return null;
@@ -31,28 +32,18 @@ export function playClickSound() {
 }
 
 export function playWoofSound() {
-  const context = getAudioContext();
-  if (!context) return;
+  if (typeof window === "undefined") return;
 
-  const now = context.currentTime;
-  const oscillator = context.createOscillator();
-  const filter = context.createBiquadFilter();
-  const gain = context.createGain();
+  // Real puppy bark sound by Alexander, Orange Free Sounds (CC BY 4.0).
+  // Source: https://orangefreesounds.com/puppy-bark-sound/
+  if (!puppyBark) {
+    puppyBark = new Audio("https://www.orangefreesounds.com/wp-content/uploads/2015/05/Puppy-bark-sound.mp3");
+    puppyBark.preload = "auto";
+    puppyBark.volume = 0.42;
+  }
 
-  oscillator.type = "sawtooth";
-  oscillator.frequency.setValueAtTime(185, now);
-  oscillator.frequency.exponentialRampToValueAtTime(82, now + 0.13);
-  filter.type = "lowpass";
-  filter.frequency.setValueAtTime(520, now);
-  filter.frequency.exponentialRampToValueAtTime(230, now + 0.14);
-  gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.exponentialRampToValueAtTime(0.12, now + 0.012);
-  gain.gain.setValueAtTime(0.085, now + 0.055);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-
-  oscillator.connect(filter);
-  filter.connect(gain);
-  gain.connect(context.destination);
-  oscillator.start(now);
-  oscillator.stop(now + 0.19);
+  puppyBark.currentTime = 0;
+  void puppyBark.play().catch(() => {
+    // Browsers can block playback until the user has interacted with the page.
+  });
 }
