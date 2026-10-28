@@ -21,18 +21,16 @@ export function Hero() {
             <stop offset="58%" stopColor="white" stopOpacity="0.72" />
             <stop offset="100%" stopColor="white" stopOpacity="0.18" />
           </radialGradient>
-          <linearGradient id="hero-dot-bottom-fade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="white" stopOpacity="1" />
-            <stop offset="38%" stopColor="white" stopOpacity="1" />
-            <stop offset="58%" stopColor="white" stopOpacity="0.88" />
-            <stop offset="72%" stopColor="white" stopOpacity="0.52" />
-            <stop offset="84%" stopColor="white" stopOpacity="0.18" />
-            <stop offset="94%" stopColor="white" stopOpacity="0" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          <linearGradient id="hero-dot-bottom-overlay" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="white" stopOpacity="0" />
+            <stop offset="22%" stopColor="white" stopOpacity="0.03" />
+            <stop offset="42%" stopColor="white" stopOpacity="0.22" />
+            <stop offset="62%" stopColor="white" stopOpacity="0.58" />
+            <stop offset="82%" stopColor="white" stopOpacity="0.88" />
+            <stop offset="100%" stopColor="white" stopOpacity="1" />
           </linearGradient>
           <mask id="hero-dot-mask">
             <rect width="1440" height="900" fill="url(#hero-dot-fade)" />
-            <rect width="1440" height="900" fill="url(#hero-dot-bottom-fade)" />
           </mask>
         </defs>
         <rect width="1440" height="900" fill="url(#hero-dot-matrix)" mask="url(#hero-dot-mask)" />
@@ -49,6 +47,7 @@ export function Hero() {
           }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
         />
+        <rect x="0" y="300" width="1440" height="600" fill="url(#hero-dot-bottom-overlay)" />
       </motion.svg>
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
