@@ -84,6 +84,7 @@ export function CursorPet() {
         : current;
       // Snap coordinates to a small grid for a deliberately retro, pixel-step movement.
       position.current = { x: Math.round(next.x / 4) * 4, y: Math.round(next.y / 4) * 4 };
+      window.dispatchEvent(new CustomEvent("dog-position", { detail: position.current }));
       setPet((previous) => ({
         ...previous,
         x: position.current.x,
