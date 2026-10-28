@@ -36,7 +36,7 @@ export function Hero() {
       <InteractiveDotField variant="hero" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-56"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-56 sm:h-72 md:h-80"
         style={{
           background: "linear-gradient(to bottom, rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 45%) 45%, #ffffff 100%)",
         }}
