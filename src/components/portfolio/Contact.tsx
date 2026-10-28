@@ -62,7 +62,7 @@ export function Contact() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          background: "linear-gradient(125deg, #a0a0a0 0%, #ffffff 32%, #b0b0b0 58%, #ffffff 82%, #a0a0a0 100%)",
+          background: "#ffffff",
           backgroundSize: "300% 300%",
         }}
         animate={{
@@ -81,7 +81,7 @@ export function Contact() {
           </h2>
         </Reveal>
         <Reveal delay={0.1} className="mx-auto mt-10 max-w-3xl">
-          <form onSubmit={sendMessage} className="space-y-6 border-2 border-foreground bg-[#b3b3b3] p-6 shadow-[6px_6px_0_var(--foreground)] sm:p-8 md:p-10">
+          <form onSubmit={sendMessage} className="space-y-6 border-2 border-foreground bg-white p-6 shadow-[6px_6px_0_var(--foreground)] sm:p-8 md:p-10">
             <div className="grid gap-6 sm:grid-cols-2">
               <label className="block">
                 <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">Your name</span>
