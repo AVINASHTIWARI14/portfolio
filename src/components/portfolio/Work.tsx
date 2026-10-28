@@ -45,12 +45,12 @@ export function Work() {
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
-                <div className="flex min-h-14 items-start justify-between gap-4">
+                <div className="flex min-h-16 items-start justify-between gap-4 sm:min-h-20">
                   <span className={`font-display text-2xl leading-none tracking-tight text-foreground transition-all duration-300 sm:text-3xl ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
                   <img
                     src={p.slug === "supplai" ? "/images/supplai-logo.png" : "/images/juribrief-logo.png"}
                     alt={`${p.title} logo`}
-                    className={`ml-auto max-h-12 max-w-[72%] object-contain object-right transition-all duration-300 sm:max-h-14 ${expandedProject === p.slug ? "!max-h-12 sm:!max-h-14" : ""}`}
+                    className={`ml-auto max-h-16 max-w-[78%] object-contain object-right transition-all duration-300 sm:max-h-20 ${expandedProject === p.slug ? "!max-h-16 sm:!max-h-20" : ""}`}
                   />
                 </div>
                 <p className={`mt-4 text-justify text-muted-foreground transition-all duration-300 ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
