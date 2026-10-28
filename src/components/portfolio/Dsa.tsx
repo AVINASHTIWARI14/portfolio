@@ -1,5 +1,103 @@
+import { useEffect, useMemo, useState } from "react";
 import { Reveal, SectionHeading } from "./Reveal";
 import "./dsa-editor.css";
+
+function LeetCodeHeatmap() {
+  const [submissions, setSubmissions] = useState<Record<string, number>>({});
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    fetch("https://leetcode-sub-endpoint.vercel.app/leetcode/AVINASH-TIWARI")
+      .then((response) => {
+        if (!response.ok) throw new Error("Could not load LeetCode activity");
+        return response.json();
+      })
+      .then((data) => {
+        if (!active) return;
+        const calendar = data?.data ?? data?.submissionCalendar ?? data;
+        const parsed: Record<string, number> = {};
+        if (calendar && typeof calendar === "object" && !Array.isArray(calendar)) {
+          Object.entries(calendar).forEach(([date, count]) => {
+            if (typeof count === "number") parsed[date] = count;
+            else if (typeof count === "string" && Number.isFinite(Number(count))) parsed[date] = Number(count);
+          });
+        }
+        setSubmissions(parsed);
+        setLoaded(true);
+      })
+      .catch(() => {
+        if (active) setLoaded(true);
+      });
+    return () => { active = false; };
+  }, []);
+
+  const weeks = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const end = new Date(today);
+    const start = new Date(today);
+    start.setDate(start.getDate() - 363);
+    start.setDate(start.getDate() - start.getDay());
+    const result: { date: string; count: number; future: boolean }[][] = [];
+    const cursor = new Date(start);
+    while (cursor <= end) {
+      const week: { date: string; count: number; future: boolean }[] = [];
+      for (let day = 0; day < 7; day++) {
+        const date = new Date(cursor);
+        const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+        week.push({ date: key, count: submissions[key] ?? 0, future: date > today });
+        cursor.setDate(cursor.getDate() + 1);
+      }
+      result.push(week);
+    }
+    return result;
+  }, [submissions]);
+
+  const monthLabels = useMemo(() => weeks.map((week, index) => {
+    const first = week[0];
+    if (!first) return "";
+    const date = new Date(`${first.date}T12:00:00`);
+    return index === 0 || date.getDate() <= 7 ? date.toLocaleString("en-US", { month: "short" }) : "";
+  }), [weeks]);
+
+  const colorFor = (count: number) => {
+    if (count === 0) return "#d1d5db";
+    if (count <= 2) return "#9be9a8";
+    if (count <= 5) return "#40c463";
+    if (count <= 9) return "#30a14e";
+    return "#216e39";
+  };
+
+  return (
+    <div className="min-w-[760px] text-zinc-700">
+      <div className="mb-2 grid gap-1 text-[10px] text-zinc-500" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }}>
+        {monthLabels.map((month, index) => <span key={index}>{month}</span>)}
+      </div>
+      <div className="flex gap-[3px]" aria-label="LeetCode submission activity over the past year">
+        {weeks.map((week, index) => (
+          <div className="flex flex-col gap-[3px]" key={index}>
+            {week.map((day) => (
+              <span
+                key={day.date}
+                title={day.future ? "" : `${day.date}: ${day.count} submissions`}
+                aria-label={day.future ? undefined : `${day.date}: ${day.count} submissions`}
+                className="block h-[10px] w-[10px] rounded-[2px]"
+                style={{ backgroundColor: day.future ? "transparent" : colorFor(day.count) }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 flex items-center justify-end gap-1.5 text-[10px] text-zinc-500">
+        <span>Less</span>
+        {["#d1d5db", "#9be9a8", "#40c463", "#30a14e", "#216e39"].map((color) => <span key={color} className="h-[10px] w-[10px] rounded-[2px]" style={{ backgroundColor: color }} />)}
+        <span>More</span>
+      </div>
+      {!loaded && <span className="sr-only">Loading LeetCode activity…</span>}
+    </div>
+  );
+}
 
 export function Dsa() {
   return (
@@ -31,16 +129,7 @@ export function Dsa() {
               </a>
             </div>
             <div className="overflow-x-auto bg-white px-2 py-2 sm:px-4 sm:py-3">
-              <img
-                src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
-                alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
-                loading="lazy"
-                onLoad={(event) => {
-                  const container = event.currentTarget.parentElement;
-                  if (container) container.scrollLeft = container.scrollWidth;
-                }}
-                className="mx-0 block h-[200px] w-[1200px] max-w-none sm:h-[220px] sm:w-[1300px]"
-              />
+              <LeetCodeHeatmap />
             </div>
           </div>
         </Reveal>
