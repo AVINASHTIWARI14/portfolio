@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="331" height="170" viewBox="0 0 331 170" shape-rendering="crispEdges">
+<defs><radialGradient id="bg"><stop stop-color="#fff"/><stop offset="1" stop-color="#faf9f8"/></radialGradient></defs>
+<rect width="331" height="170" fill="url(#bg)"/>
+<ellipse cx="163" cy="138" rx="43" ry="3" fill="#d7d7d7"/>
+<!-- back legs and paws -->
+<path fill="#a85e22" d="M149 102h17v14h-6v8h-7v-8h-4z M178 104h16v12h-5v7h-7v-7h-4z"/>
+<path fill="#e8b66e" d="M141 123h12v7h-9v3h-4v-6h1z M178 120h12v6h-5v4h-8v-4h1z"/>
+<!-- tail -->
+<path fill="#b66c2b" d="M205 68h12v6h7v11h-6v7h-12v-7h-5v-9h4z"/>
+<!-- body -->
+<path fill="#c9843f" d="M130 73h64v9h10v22h-15v6h-44v-7h-15z"/>
+<path fill="#e7b779" d="M135 78h22v8h-22z M158 82h29v9h-29z M141 94h49v9h-49z"/>
+<path fill="#9a5727" d="M141 104h60v5h-60z"/>
+<!-- neck and head -->
+<path fill="#d89b52" d="M117 61h19v-7h14v22h-10v12h-15v-8h-8z"/>
+<path fill="#e7b779" d="M119 57h18v-8h10v24h-11v10h-11v-8h-6z"/>
+<path fill="#c88449" d="M113 58h10v-5h8v10h-8v8h-10z"/>
+<!-- ear -->
+<path fill="#9b5d32" d="M143 39h16v25h-16z"/><path fill="#c88449" d="M147 43h8v17h-8z"/><path fill="#e7b779" d="M150 46h3v11h-3z"/>
+<!-- muzzle -->
+<path fill="#f4d5a0" d="M108 61h18v17h-8v7h-9v-7h-5v-9h4z"/>
+<path fill="#33251d" d="M108 69h11v7h-11z M119 62h5v5h-5z"/>
+<path fill="#f4d5a0" d="M125 63h6v11h-6z"/>
+<!-- pixels/highlights -->
+<path fill="#e7b779" d="M120 54h7v4h-7z M125 49h9v5h-9z M128 82h8v4h-8z"/>
+<!-- back paw and white motion pixels -->
+<path fill="#d7d7d7" d="M217 91h9v9h-9z M224 103h7v8h-7z M216 114h9v8h-9z"/>
+</svg>
