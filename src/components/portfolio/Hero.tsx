@@ -60,17 +60,16 @@ export function Hero() {
       </motion.svg>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[1] opacity-50"
+        className="pointer-events-none absolute inset-0 z-[1]"
         style={{
-          background: "linear-gradient(125deg, #c8c8c8 0%, #ffffff 48%, #cfcfcf 100%)",
-          backgroundSize: "200% 200%",
-          mixBlendMode: "multiply",
+          background: "linear-gradient(125deg, #b8b8b8 0%, #ffffff 48%, #b8b8b8 100%)",
+          backgroundSize: "220% 220%",
         }}
-        animate={reduce ? undefined : {
+        animate={reduce ? { opacity: 0.28 } : {
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-          opacity: [0.24, 0.42, 0.24],
+          opacity: [0.28, 0.48, 0.28],
         }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
