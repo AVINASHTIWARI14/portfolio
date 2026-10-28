@@ -13,8 +13,10 @@ export function Hero() {
         aria-hidden="true"
       >
         <defs>
-          <pattern id="hero-dot-matrix" width="24" height="24" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.25" fill="#222222" />
+          <pattern id="hero-motion-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M 14 9 V 19 M 9 14 H 19" stroke="#222222" strokeWidth="1.4" strokeLinecap="square" opacity="0.9" />
+            <rect x="34" y="33" width="5" height="5" fill="none" stroke="#222222" strokeWidth="1.1" opacity="0.62" />
+            <circle cx="36.5" cy="35.5" r="0.8" fill="#222222" />
           </pattern>
           <radialGradient id="hero-dot-fade">
             <stop offset="0%" stopColor="white" stopOpacity="0.95" />
@@ -33,19 +35,27 @@ export function Hero() {
             <rect width="1440" height="900" fill="url(#hero-dot-fade)" />
           </mask>
         </defs>
-        <rect width="1440" height="900" fill="url(#hero-dot-matrix)" mask="url(#hero-dot-mask)" />
+        <rect width="1440" height="900" fill="url(#hero-motion-grid)" mask="url(#hero-dot-mask)" />
         <motion.rect
           width="1440"
           height="900"
-          fill="url(#hero-dot-matrix)"
+          fill="url(#hero-motion-grid)"
           opacity="0.34"
           style={{ transformOrigin: "center" }}
           animate={reduce ? undefined : {
-            x: [0, 0, 0],
-            y: [0, -12, 0],
-            scaleY: [1, 1.025, 1],
+            x: [0, -22, 0],
+            y: [0, -16, 0],
+            scaleY: [1, 1.02, 1],
           }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.rect
+          width="1440"
+          height="900"
+          fill="url(#hero-motion-grid)"
+          opacity="0.2"
+          animate={reduce ? undefined : { x: [0, 18, 0], y: [0, 12, 0] }}
+          transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
         />
         <rect x="0" y="300" width="1440" height="600" fill="url(#hero-dot-bottom-overlay)" />
       </motion.svg>
