@@ -57,8 +57,13 @@ function LeetCodeHeatmap() {
   const monthLabels = useMemo(() => weeks.map((week, index) => {
     const first = week[0];
     if (!first) return "";
-    const date = new Date(`${first.date}T12:00:00`);
-    return index === 0 || date.getDate() <= 7 ? date.toLocaleString("en-US", { month: "short" }) : "";
+    const firstDayOfMonth = week.find((day) => day.date.endsWith("-01"));
+    if (index === 0) {
+      return new Date(`${first.date}T12:00:00`).toLocaleString("en-US", { month: "short" });
+    }
+    return firstDayOfMonth
+      ? new Date(`${firstDayOfMonth.date}T12:00:00`).toLocaleString("en-US", { month: "short" })
+      : "";
   }), [weeks]);
 
   const colorFor = (count: number) => {
@@ -71,7 +76,7 @@ function LeetCodeHeatmap() {
 
   return (
     <div className="min-w-[760px] text-zinc-700">
-      <div className="mb-2 grid gap-1 text-[10px] text-zinc-500" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }}>
+      <div className="mb-2 grid gap-x-[3px] text-[10px] text-zinc-500" style={{ gridTemplateColumns: `repeat(${weeks.length}, 10px)` }}>
         {monthLabels.map((month, index) => <span key={index}>{month}</span>)}
       </div>
       <div className="flex gap-[3px]" aria-label="LeetCode submission activity over the past year">
