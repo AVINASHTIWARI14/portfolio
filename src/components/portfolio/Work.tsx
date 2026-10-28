@@ -41,12 +41,12 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className={`group relative z-0 flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.025] hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8`}
+              className={`group relative z-0 flex flex-col self-start overflow-hidden rounded-3xl border border-border !bg-white p-6 transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.025] hover:!bg-white hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8`}
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <div className="flex min-h-16 items-start justify-between gap-4 sm:min-h-20">
-                  <span className={`font-display text-2xl leading-none tracking-tight text-foreground transition-all duration-300 sm:text-3xl ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
+                  <span className={`font-display text-3xl leading-none tracking-tight text-foreground transition-all duration-300 sm:text-4xl ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
                   <img
                     src={p.slug === "supplai" ? "/images/supplai-logo.png" : "/images/juribrief-logo.png"}
                     alt={`${p.title} logo`}
