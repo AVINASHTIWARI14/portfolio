@@ -61,6 +61,9 @@ export function playWoofSound() {
     puppyBark = new Audio("https://www.orangefreesounds.com/wp-content/uploads/2015/05/Puppy-bark-sound.mp3");
     puppyBark.preload = "auto";
     puppyBark.volume = 0.42;
+    puppyBark.addEventListener("timeupdate", () => {
+      if (puppyBark && puppyBark.currentTime >= 4) stopWoofSound();
+    });
   }
 
   puppyBark.currentTime = 0;
