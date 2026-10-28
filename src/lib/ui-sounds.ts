@@ -35,7 +35,7 @@ export function playHoverSound() {
   oscillator.frequency.setValueAtTime(680, now);
   oscillator.frequency.exponentialRampToValueAtTime(540, now + 0.035);
   gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.exponentialRampToValueAtTime(0.05, now + 0.004);
+  gain.gain.exponentialRampToValueAtTime(0.075, now + 0.004);
   gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
 
   oscillator.connect(gain);
@@ -56,7 +56,7 @@ export function playClickSound() {
   oscillator.frequency.setValueAtTime(880, now);
   oscillator.frequency.exponentialRampToValueAtTime(460, now + 0.06);
   gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.exponentialRampToValueAtTime(0.11, now + 0.006);
+  gain.gain.exponentialRampToValueAtTime(0.165, now + 0.006);
   gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.075);
 
   oscillator.connect(gain);
@@ -73,7 +73,7 @@ export function playWoofSound() {
   if (!puppyBark) {
     puppyBark = new Audio("https://www.orangefreesounds.com/wp-content/uploads/2015/05/Puppy-bark-sound.mp3");
     puppyBark.preload = "auto";
-    puppyBark.volume = 0.14;
+    puppyBark.volume = 0.07;
     puppyBark.addEventListener("timeupdate", () => {
       if (puppyBark && puppyBark.currentTime >= 2) stopWoofSound();
     });
