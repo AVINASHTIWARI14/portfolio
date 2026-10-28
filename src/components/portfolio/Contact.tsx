@@ -85,16 +85,16 @@ export function Contact() {
             <div className="grid gap-6 sm:grid-cols-2">
               <label className="block">
                 <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">Your name</span>
-                <input required autoComplete="name" maxLength={100} value={name} onChange={(event) => { setName(event.target.value); setStatus("idle"); }} placeholder="Name" className="h-12 w-full border-2 border-foreground bg-background px-4 outline-none transition-shadow focus:shadow-[3px_3px_0_var(--foreground)]" />
+                <input required autoComplete="name" maxLength={100} value={name} onChange={(event) => { setName(event.target.value); setStatus("idle"); }} placeholder="Name" className="h-12 w-full border-2 border-foreground bg-white px-4 text-black placeholder:text-neutral-500 outline-none transition-shadow focus:shadow-[3px_3px_0_var(--foreground)]" />
               </label>
               <label className="block">
                 <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">Your email</span>
-                <input required type="email" autoComplete="email" maxLength={254} value={email} onChange={(event) => { setEmail(event.target.value); setStatus("idle"); }} placeholder="you@example.com" className="h-12 w-full border-2 border-foreground bg-background px-4 outline-none transition-shadow focus:shadow-[3px_3px_0_var(--foreground)]" />
+                <input required type="email" autoComplete="email" maxLength={254} value={email} onChange={(event) => { setEmail(event.target.value); setStatus("idle"); }} placeholder="you@example.com" className="h-12 w-full border-2 border-foreground bg-white px-4 text-black placeholder:text-neutral-500 outline-none transition-shadow focus:shadow-[3px_3px_0_var(--foreground)]" />
               </label>
             </div>
             <label className="block">
               <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">Message</span>
-              <textarea required rows={5} maxLength={5000} value={message} onChange={(event) => { setMessage(event.target.value); setStatus("idle"); }} placeholder="Tell me what you have in mind..." className="w-full resize-y border-2 border-foreground bg-background p-4 outline-none transition-shadow focus:shadow-[3px_3px_0_var(--foreground)]" />
+              <textarea required rows={5} maxLength={5000} value={message} onChange={(event) => { setMessage(event.target.value); setStatus("idle"); }} placeholder="Tell me what you have in mind..." className="w-full resize-y border-2 border-foreground bg-white p-4 text-black placeholder:text-neutral-500 outline-none transition-shadow focus:shadow-[3px_3px_0_var(--foreground)]" />
             </label>
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <button type="submit" disabled={status === "sending"} className="brutalist-button brutalist-button-live brutalist-button-contact disabled:cursor-wait disabled:opacity-60">
