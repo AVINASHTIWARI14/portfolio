@@ -46,7 +46,7 @@ export function About() {
             For me, a project should be more than functional: it should deliver a thoughtful user experience. I’m always learning, building, and looking for better ways to solve problems.
           </p>
           <div className="pt-2">
-            <a href="https://drive.google.com/file/d/163jq7BqJCNd_NEYph46y0O-3kqTqoc0F/view?usp=drivesdk" target="_blank" rel="noreferrer" className="group relative isolate inline-flex min-h-12 items-center gap-2.5 overflow-hidden border-2 border-black bg-[#ffe033] px-4 py-2.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black shadow-[3px_3px_0_#080808] [text-shadow:none] transition-transform hover:bg-[#080808] hover:text-white hover:shadow-[5px_5px_0_#080808] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none"">
+            <a href="https://drive.google.com/file/d/163jq7BqJCNd_NEYph46y0O-3kqTqoc0F/view?usp=drivesdk" target="_blank" rel="noreferrer" className="group relative isolate inline-flex min-h-12 items-center gap-2.5 overflow-hidden border-2 border-black bg-[#ffe033] px-4 py-2.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black shadow-[3px_3px_0_#080808] [text-shadow:none] transition-transform hover:bg-[#080808] hover:text-white hover:shadow-[5px_5px_0_#080808] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none">
               <span className="brutalist-button-text">View Resume</span>
               <span aria-hidden="true" className="brutalist-button-arrow">↗</span>
             </a>
