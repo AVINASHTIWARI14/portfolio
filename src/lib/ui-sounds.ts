@@ -1,8 +1,21 @@
 let audioContext: AudioContext | null = null;
 let puppyBark: HTMLAudioElement | null = null;
+let soundsMuted = false;
+
+export function isSoundMuted() {
+  return soundsMuted;
+}
+
+export function setSoundMuted(muted: boolean) {
+  soundsMuted = muted;
+  if (muted) {
+    stopWoofSound();
+    if (audioContext?.state === "running") void audioContext.suspend();
+  }
+}
 
 function getAudioContext() {
-  if (typeof window === "undefined") return null;
+  if (soundsMuted || typeof window === "undefined") return null;
   const AudioContextClass = window.AudioContext;
   if (!AudioContextClass) return null;
   audioContext ??= new AudioContextClass();
@@ -53,7 +66,7 @@ export function playClickSound() {
 }
 
 export function playWoofSound() {
-  if (typeof window === "undefined") return;
+  if (soundsMuted || typeof window === "undefined") return;
 
   // Real puppy bark sound by Alexander, Orange Free Sounds (CC BY 4.0).
   // Source: https://orangefreesounds.com/puppy-bark-sound/
