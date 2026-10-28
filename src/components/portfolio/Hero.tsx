@@ -10,23 +10,23 @@ export function Hero() {
         className="absolute -left-40 top-10 h-[520px] w-[520px] glow-lavender blur-3xl"
         aria-hidden="true"
         animate={reduce ? undefined : {
-          x: [0, 28, -14, 0],
-          y: [0, -20, 18, 0],
-          scale: [1, 1.08, 0.97, 1],
-          opacity: [0.55, 0.8, 0.6, 0.55],
+          x: [0, 90, -55, 0],
+          y: [0, -65, 45, 0],
+          scale: [1, 1.18, 0.92, 1],
+          opacity: [0.7, 1, 0.75, 0.7],
         }}
-        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute -right-40 bottom-0 h-[520px] w-[520px] glow-lime blur-3xl"
         aria-hidden="true"
         animate={reduce ? undefined : {
-          x: [0, -24, 16, 0],
-          y: [0, 22, -16, 0],
-          scale: [1, 0.96, 1.09, 1],
-          opacity: [0.45, 0.7, 0.5, 0.45],
+          x: [0, -85, 50, 0],
+          y: [0, 70, -45, 0],
+          scale: [1, 0.9, 1.2, 1],
+          opacity: [0.6, 0.95, 0.7, 0.6],
         }}
-        transition={{ duration: 32, repeat: Infinity, ease: "easeInOut", delay: -4 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: -4 }}
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
