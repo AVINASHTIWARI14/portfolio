@@ -24,7 +24,7 @@ export function Dsa() {
                 target="_blank"
                 rel="noreferrer"
                 className="nav-brutalist inline-flex min-h-0 w-auto min-w-0 items-center gap-1.5 border-2 border-black bg-[#ffe033] px-3 py-1.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black shadow-[3px_3px_0_#080808] [text-shadow:none] hover:bg-[#ffd400] sm:px-3.5 sm:py-1.5"
-                style={{ width: "fit-content", minWidth: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", whiteSpace: "nowrap" }}
+                style={{ width: "fit-content", minWidth: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", whiteSpace: "nowrap", backgroundColor: "#ffe033" }}
               >
                 <span className="brutalist-button-text">PROFILE</span><span aria-hidden="true" className="brutalist-button-arrow">↗</span>
               </a>
