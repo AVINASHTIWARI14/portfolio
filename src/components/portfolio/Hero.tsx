@@ -39,26 +39,6 @@ export function Hero() {
           }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.path
-          d="M-40 300 C180 220 260 380 470 300 S770 220 980 300 S1270 380 1480 280"
-          stroke="#555555"
-          strokeWidth="1"
-          strokeDasharray="3 8"
-          fill="none"
-          opacity="0.28"
-          animate={reduce ? undefined : { pathLength: [0.72, 1, 0.72], x: [0, 18, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M-40 620 C180 540 260 700 470 620 S770 540 980 620 S1270 700 1480 600"
-          stroke="#555555"
-          strokeWidth="1"
-          strokeDasharray="3 8"
-          fill="none"
-          opacity="0.24"
-          animate={reduce ? undefined : { pathLength: [0.7, 0.95, 0.7], x: [0, -18, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: -3 }}
-        />
       </motion.svg>
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
