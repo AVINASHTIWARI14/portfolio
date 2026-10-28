@@ -23,8 +23,11 @@ export function Hero() {
           </radialGradient>
           <linearGradient id="hero-dot-bottom-fade" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="white" stopOpacity="1" />
-            <stop offset="70%" stopColor="white" stopOpacity="0.95" />
-            <stop offset="88%" stopColor="white" stopOpacity="0.55" />
+            <stop offset="38%" stopColor="white" stopOpacity="1" />
+            <stop offset="58%" stopColor="white" stopOpacity="0.88" />
+            <stop offset="72%" stopColor="white" stopOpacity="0.52" />
+            <stop offset="84%" stopColor="white" stopOpacity="0.18" />
+            <stop offset="94%" stopColor="white" stopOpacity="0" />
             <stop offset="100%" stopColor="white" stopOpacity="0" />
           </linearGradient>
           <mask id="hero-dot-mask">
