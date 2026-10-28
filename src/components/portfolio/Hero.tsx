@@ -58,6 +58,13 @@ export function Hero() {
         />
         <rect x="0" y="300" width="1440" height="600" fill="url(#hero-dot-bottom-overlay)" />
       </motion.svg>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-56"
+        style={{
+          background: "linear-gradient(to bottom, rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 45%) 45%, #ffffff 100%)",
+        }}
+      />
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[1]"
