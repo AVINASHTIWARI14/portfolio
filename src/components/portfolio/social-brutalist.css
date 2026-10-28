@@ -34,11 +34,24 @@
   transition: filter .22s ease, transform .22s ease;
 }
 
-/* Keep every social mark visible in white over the black hover surface. */
-.social-brutalist:hover > img,
-.social-brutalist:hover > svg {
-  filter: grayscale(1) brightness(0) invert(1);
-  transform: scale(1.06);
+/* Desktop hover: switch the marks to white over the black hover surface. */
+@media (hover: hover) and (pointer: fine) {
+  .social-brutalist:hover > img,
+  .social-brutalist:hover > svg {
+    filter: grayscale(1) brightness(0) invert(1);
+    transform: scale(1.06);
+  }
+}
+
+/* Touchscreens can keep a sticky hover state after tapping; preserve original icon colors. */
+@media (hover: none), (pointer: coarse) {
+  .social-brutalist:hover > img,
+  .social-brutalist:hover > svg,
+  .social-brutalist:focus-visible > img,
+  .social-brutalist:focus-visible > svg {
+    filter: none;
+    transform: none;
+  }
 }
 
 @keyframes social-brutalist-glare {
