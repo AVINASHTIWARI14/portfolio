@@ -109,7 +109,7 @@ export function Skills() {
                         <li
                           key={s}
                           title={s}
-                          className="shrink-0 whitespace-nowrap border-2 border-black px-3 py-2 text-sm font-semibold shadow-[3px_3px_0_#000] transition-transform hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-[2px_2px_0_#000] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none"
+                          className="shrink-0 whitespace-nowrap border-2 border-black px-3 py-2 text-sm font-medium shadow-[3px_3px_0_#000] transition-transform hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-[2px_2px_0_#000] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none"
                           style={{ backgroundColor: skillColors[s]?.bg ?? "#FFFFFF", color: skillColors[s]?.fg ?? "#111111" }}
                         >
                           {s}
