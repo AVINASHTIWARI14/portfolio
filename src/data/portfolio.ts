@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: "JURIbrief",
     kicker: "AI · Legal tech",
     summary:
-      "An AI assistant for legal documents — it reads contracts, flags risky clauses, and helps you understand what you're signing.",
+      "An AI assistant for legal documents, it reads contracts, flags risky clauses, and helps you understand what you're signing.",
     features: ["Document analysis", "Risk detection", "Compare documents", "Document generation", "Legal chat"],
     stack: ["React", "TypeScript", "AI / NLP"],
     tags: ["AI", "Full-stack"],
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     title: "SuplAI",
     kicker: "AI · Supply chain",
     summary:
-      "AI-powered supply-chain risk monitoring — surfacing disruptions and weak links before they turn into delays.",
+      "AI-powered supply-chain risk monitoring, surfacing disruptions and weak links before they turn into delays.",
     features: ["Risk monitoring", "Signal aggregation", "Alerting"],
     stack: ["Python", "Machine learning"],
     tags: ["AI", "Full-stack"],
