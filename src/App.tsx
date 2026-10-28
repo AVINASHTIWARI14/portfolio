@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { Work } from "@/components/portfolio/Work";
@@ -6,8 +7,21 @@ import { About, Skills } from "@/components/portfolio/About";
 import { Contact, Footer } from "@/components/portfolio/Contact";
 import { CursorPet } from "@/components/portfolio/CursorPet";
 import { BoneCursor } from "@/components/portfolio/BoneCursor";
+import { playClickSound } from "@/lib/ui-sounds";
 
 export function App() {
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      const control = event.target.closest("button, a, [role='button'], input[type='submit']");
+      if (!control || control.hasAttribute("disabled") || control.getAttribute("aria-disabled") === "true") return;
+      playClickSound();
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   return (
     <div className="bg-noise relative">
       <a
