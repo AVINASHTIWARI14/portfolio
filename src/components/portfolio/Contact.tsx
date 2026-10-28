@@ -52,7 +52,7 @@ export function Contact() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <h2 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
-            Let's <em className="text-gradient">connect.</em>
+            Let's <em className="not-italic text-foreground">connect.</em>
           </h2>
         </Reveal>
         <Reveal delay={0.1} className="mx-auto mt-10 max-w-3xl">
