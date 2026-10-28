@@ -24,7 +24,7 @@ export function Work() {
     <section id="work" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
       <h2 className="mb-12 font-display text-5xl tracking-tight sm:text-6xl md:text-7xl">Things I build.</h2>
 
-      <motion.div layout className="grid items-start gap-5 md:grid-cols-2">
+      <motion.div layout className="grid items-stretch gap-5 md:grid-cols-2">
         <AnimatePresence mode="popLayout">
           {list.map((p, i) => (
             <motion.article
@@ -34,7 +34,7 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className={`group relative z-0 flex flex-col self-start overflow-hidden rounded-3xl border border-border !bg-[#ffffff] p-6 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.025] hover:!bg-[#ffffff] hover:border-border hover:shadow-[8px_8px_0_#000] sm:p-8`}
+              className={`group relative z-0 flex h-full flex-col self-stretch overflow-hidden rounded-3xl border border-border !bg-[#ffffff] p-6 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.025] hover:!bg-[#ffffff] hover:border-border hover:shadow-[8px_8px_0_#000] sm:p-8`}
               style={{ backgroundColor: "#ffffff" }}
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
