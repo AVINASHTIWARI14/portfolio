@@ -62,7 +62,7 @@ export function Contact() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          background: "#ffffff",
+          background: "linear-gradient(125deg, #a0a0a0 0%, #ffffff 32%, #b0b0b0 58%, #ffffff 82%, #a0a0a0 100%)",
           backgroundSize: "300% 300%",
         }}
         animate={{
@@ -71,7 +71,6 @@ export function Contact() {
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
-
 
       <InteractiveDotField variant="contact" />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
