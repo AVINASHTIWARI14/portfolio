@@ -437,3 +437,42 @@ body :where(h1, h2, h3, h4, h5, h6) {
   .shine-on-hover:hover::before,
   .shine-on-hover:focus-visible::before { animation: none; }
 }
+
+
+/* Keep the LeetCode profile label black despite the shared navbar hover styles. */
+.leetcode-profile-button:hover,
+.leetcode-profile-button:focus-visible,
+.leetcode-profile-button:hover .brutalist-button-text,
+.leetcode-profile-button:focus-visible .brutalist-button-text,
+.leetcode-profile-button:hover .brutalist-button-arrow,
+.leetcode-profile-button:focus-visible .brutalist-button-arrow {
+  color: #080808 !important;
+}
+.leetcode-profile-button:hover,
+.leetcode-profile-button:focus-visible {
+  background-color: #ffd400 !important;
+}
+
+/* Shine for the fixed mute toggle without overriding its fixed positioning. */
+.mute-toggle-shine::before {
+  content: "";
+  position: absolute;
+  inset: -50% -70%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 42%, rgb(255 255 255 / 0%) 46%, rgb(255 255 255 / 90%) 50%, rgb(255 255 255 / 0%) 54%, transparent 58%);
+  transform: translateX(-70%) rotate(12deg);
+  opacity: 0;
+}
+.mute-toggle-shine:hover::before,
+.mute-toggle-shine:focus-visible::before {
+  animation: brutalist-glare 1.1s ease-in-out;
+}
+.mute-toggle-shine > * {
+  position: relative;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mute-toggle-shine:hover::before,
+  .mute-toggle-shine:focus-visible::before { animation: none; }
+}
