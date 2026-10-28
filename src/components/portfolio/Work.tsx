@@ -80,29 +80,29 @@ export function Work() {
               <div className="relative mt-auto grid grid-cols-1 gap-3 pt-10 sm:grid-cols-3">
                 {p.demo ? (
                   <a href={p.demo} target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-live">
-                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Live</span><ArrowUpRight className="brutalist-button-arrow" />
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Live</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
                   <span aria-disabled="true" className="brutalist-button brutalist-button-live brutalist-button-disabled">
-                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Live</span>
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Live</span>
                   </span>
                 )}
                 {p.slug === "supplai" ? (
                   <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-video">
-                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
                   <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-video brutalist-button-disabled">
-                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Demo video</span><ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !static !h-4 !w-4 shrink-0" />
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Demo video</span><ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !static !h-4 !w-4 shrink-0" />
                   </span>
                 )}
                 {p.repo ? (
                   <a href={p.repo} target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-repo">
-                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Repo</span><ArrowUpRight className="brutalist-button-arrow" />
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Repo</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
                 ) : (
                   <span aria-disabled="true" className="brutalist-button brutalist-button-repo brutalist-button-disabled">
-                    <span className="brutalist-button-text text-base font-semibold sm:text-lg">Repo</span>
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Repo</span>
                   </span>
                 )}
               </div>
