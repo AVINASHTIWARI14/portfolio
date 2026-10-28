@@ -68,3 +68,9 @@ export function playWoofSound() {
     // Browsers can block playback until the user has interacted with the page.
   });
 }
+
+export function stopWoofSound() {
+  if (!puppyBark) return;
+  puppyBark.pause();
+  puppyBark.currentTime = 0;
+}
