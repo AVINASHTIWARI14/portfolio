@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import type { FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { ArrowUpRight, LoaderCircle } from "lucide-react";
@@ -49,7 +50,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden border-t border-border py-24 md:py-36">
-      <div
+      <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
@@ -59,6 +60,21 @@ export function Contact() {
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
           opacity: 0.7,
         }}
+        animate={{ backgroundPosition: ["0px 0px", "-28px 18px", "0px 0px"] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, #222 1.2px, transparent 1.45px)",
+          backgroundSize: "24px 24px",
+          maskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
+          opacity: 0.2,
+        }}
+        animate={{ backgroundPosition: ["0px 0px", "24px -18px", "0px 0px"] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
