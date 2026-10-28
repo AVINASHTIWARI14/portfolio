@@ -17,7 +17,7 @@ export function Dsa() {
 
         <Reveal delay={0.1}>
           <div className="brutalist-card mx-auto mt-8 max-w-4xl overflow-hidden border-2 border-black bg-white text-zinc-900 shadow-[6px_6px_0_0_#52525b]">
-            <div className="flex items-center justify-between gap-3 border-b-2 border-black bg-white px-4 py-3">
+            <div className="flex items-center justify-between gap-3 border-b-2 border-black bg-[#b3b3b3] px-4 py-3">
               <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-zinc-900 sm:text-3xl">LeetCode</h3>
               <a
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
