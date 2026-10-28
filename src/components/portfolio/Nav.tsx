@@ -65,7 +65,7 @@ export function Nav() {
         }}
         aria-label={muted ? "Unmute interface sounds" : "Mute interface sounds"}
         aria-pressed={muted}
-        className="brutalist-button brutalist-button-contact fixed bottom-5 right-5 z-[70] !h-14 !w-14 !min-w-0 !p-3 text-black sm:bottom-6 sm:right-6 sm:!h-16 sm:!w-16 sm:!p-3.5" style={{ width: "56px", height: "56px", outlineColor: "#080808", backgroundColor: muted ? "#f87171" : "#4ade80" }}
+        className="mute-toggle-button brutalist-button brutalist-button-contact fixed bottom-5 right-5 z-[70] !h-14 !w-14 !min-w-0 !p-3 text-black sm:bottom-6 sm:right-6 sm:!h-16 sm:!w-16 sm:!p-3.5" style={{ width: "56px", height: "56px", outlineColor: "#080808", backgroundColor: muted ? "#f87171" : "#4ade80" }}
       >
         {muted ? <VolumeX size={18} strokeWidth={2.5} /> : <Volume2 size={18} strokeWidth={2.5} />}
       </button>
