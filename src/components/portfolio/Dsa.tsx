@@ -30,7 +30,7 @@ export function Dsa() {
                 VIEW PROFILE
               </a>
             </div>
-            <div className="overflow-x-auto bg-[#d1d5db] px-2 py-2 sm:px-4 sm:py-3">
+            <div className="overflow-x-auto bg-white px-2 py-2 sm:px-4 sm:py-3">
               <img
                 src="https://leetcode-calander-svg.vercel.app/AVINASH-TIWARI"
                 alt="Live LeetCode submission heatmap for AVINASH-TIWARI"
