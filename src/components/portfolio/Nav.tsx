@@ -39,7 +39,7 @@ export function Nav() {
                   href={`#${n.id}`}
                   aria-current={active === n.id ? "true" : undefined}
                   className={cn(
-                    "nav-brutalist relative px-2 py-2 text-xs font-extrabold uppercase tracking-wide sm:px-3 md:px-4 md:py-2.5 md:text-sm",
+                    "nav-brutalist relative px-2 py-2 text-xs font-bold uppercase tracking-wide sm:px-3 md:px-4 md:py-2.5 md:text-sm",
                     active === n.id ? "nav-brutalist-active" : "",
                   )}
                 >
