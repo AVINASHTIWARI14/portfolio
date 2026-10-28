@@ -5,7 +5,7 @@ export function Dsa() {
   return (
     <section id="dsa" className="relative border-y border-border bg-secondary/30 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} titleFontFamily="Lobster, cursive" />
+        <SectionHeading index="" eyebrow="" title={<>DSA Journey</>} />
 
         <Reveal>
           <div className="mx-auto max-w-4xl px-1 py-2 text-foreground">
