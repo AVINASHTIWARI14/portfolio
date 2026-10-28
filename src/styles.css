@@ -374,3 +374,11 @@ a:not(.brutalist-button):hover {
     display: none;
   }
 }
+
+/* Global proportional neo-brutalist type treatment. The em-based hard offset scales with each text size. */
+body :where(h1, h2, h3, h4, h5, h6, p, a, button, li, label, span, strong, b, em, small, blockquote, figcaption, dt, dd, th, td, code) {
+  text-shadow: 0.035em 0.035em 0 #b8b8b8;
+}
+body :where(h1, h2, h3, h4, h5, h6) {
+  text-shadow: 0.045em 0.045em 0 #a3a3a3;
+}
