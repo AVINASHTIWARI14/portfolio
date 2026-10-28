@@ -400,45 +400,6 @@ body :where(h1, h2, h3, h4, h5, h6) {
 }
 
 
-/* Shared glossy hover sweep for small utility/action buttons. */
-.shine-on-hover {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-.shine-on-hover::before {
-  content: "";
-  position: absolute;
-  inset: -50% -70%;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(110deg, transparent 42%, rgb(255 255 255 / 0%) 46%, rgb(255 255 255 / 90%) 50%, rgb(255 255 255 / 0%) 54%, transparent 58%);
-  transform: translateX(-70%) rotate(12deg);
-  opacity: 0;
-}
-.shine-on-hover:hover::before,
-.shine-on-hover:focus-visible::before {
-  animation: brutalist-glare 1.1s ease-in-out;
-}
-.shine-on-hover > * {
-  position: relative;
-  z-index: 2;
-}
-.resume-button-shine:hover,
-.resume-button-shine:focus-visible {
-  background-color: #ffe033 !important;
-  color: #080808 !important;
-}
-.resume-button-shine:hover .brutalist-button-text,
-.resume-button-shine:focus-visible .brutalist-button-text {
-  color: #080808 !important;
-}
-@media (prefers-reduced-motion: reduce) {
-  .shine-on-hover:hover::before,
-  .shine-on-hover:focus-visible::before { animation: none; }
-}
-
-
 /* Keep the LeetCode profile label black despite the shared navbar hover styles. */
 .leetcode-profile-button:hover,
 .leetcode-profile-button:focus-visible,
@@ -452,31 +413,6 @@ body :where(h1, h2, h3, h4, h5, h6) {
 .leetcode-profile-button:focus-visible {
   background-color: #ffd400 !important;
 }
-
-/* Shine for the fixed mute toggle without overriding its fixed positioning. */
-.mute-toggle-shine::before {
-  content: "";
-  position: absolute;
-  inset: -50% -70%;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(110deg, transparent 42%, rgb(255 255 255 / 0%) 46%, rgb(255 255 255 / 90%) 50%, rgb(255 255 255 / 0%) 54%, transparent 58%);
-  transform: translateX(-70%) rotate(12deg);
-  opacity: 0;
-}
-.mute-toggle-shine:hover::before,
-.mute-toggle-shine:focus-visible::before {
-  animation: brutalist-glare 1.1s ease-in-out;
-}
-.mute-toggle-shine > * {
-  position: relative;
-  z-index: 2;
-}
-@media (prefers-reduced-motion: reduce) {
-  .mute-toggle-shine:hover::before,
-  .mute-toggle-shine:focus-visible::before { animation: none; }
-}
-
 
 /* Explicitly force the Tools / Skills grid cards to stay white. */
 #skills .tools-skill-card,
