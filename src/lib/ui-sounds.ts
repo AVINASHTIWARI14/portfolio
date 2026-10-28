@@ -19,15 +19,15 @@ export function playClickSound() {
 
   oscillator.type = "sine";
   oscillator.frequency.setValueAtTime(880, now);
-  oscillator.frequency.exponentialRampToValueAtTime(520, now + 0.045);
+  oscillator.frequency.exponentialRampToValueAtTime(520, now + 0.05);
   gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.exponentialRampToValueAtTime(0.035, now + 0.006);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+  gain.gain.exponentialRampToValueAtTime(0.065, now + 0.006);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.065);
 
   oscillator.connect(gain);
   gain.connect(context.destination);
   oscillator.start(now);
-  oscillator.stop(now + 0.06);
+  oscillator.stop(now + 0.07);
 }
 
 export function playWoofSound() {
