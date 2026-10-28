@@ -7,19 +7,33 @@ import { About, Skills } from "@/components/portfolio/About";
 import { Contact, Footer } from "@/components/portfolio/Contact";
 import { CursorPet } from "@/components/portfolio/CursorPet";
 import { BoneCursor } from "@/components/portfolio/BoneCursor";
-import { playClickSound } from "@/lib/ui-sounds";
+import { playClickSound, playHoverSound } from "@/lib/ui-sounds";
 
 export function App() {
   useEffect(() => {
+    const selector = "button, a, [role='button'], input[type='submit']";
+
+    const handleHover = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      const control = event.target.closest(selector);
+      if (!control || control.hasAttribute("disabled") || control.getAttribute("aria-disabled") === "true") return;
+      if (event.relatedTarget instanceof Node && control.contains(event.relatedTarget)) return;
+      playHoverSound();
+    };
+
     const handleClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
-      const control = event.target.closest("button, a, [role='button'], input[type='submit']");
+      const control = event.target.closest(selector);
       if (!control || control.hasAttribute("disabled") || control.getAttribute("aria-disabled") === "true") return;
       playClickSound();
     };
 
+    document.addEventListener("mouseover", handleHover);
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("mouseover", handleHover);
+      document.removeEventListener("click", handleClick);
+    };
   }, []);
 
   return (
