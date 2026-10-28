@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { ArrowUpRight, LoaderCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { InteractiveDotField } from "./InteractiveDotField";
 import "./social-brutalist.css";
 
 type FormState = "idle" | "sending" | "success" | "error" | "setup";
@@ -70,32 +71,9 @@ export function Contact() {
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, #222 1.2px, transparent 1.45px)",
-          backgroundSize: "24px 24px",
-          maskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
-          opacity: 0.7,
-        }}
-        animate={{ backgroundPosition: ["0px 0px", "-28px 18px", "0px 0px"] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, #222 1.2px, transparent 1.45px)",
-          backgroundSize: "24px 24px",
-          maskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
-          opacity: 0.2,
-        }}
-        animate={{ backgroundPosition: ["0px 0px", "24px -18px", "0px 0px"] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+
+
+      <InteractiveDotField variant="contact" />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <h2 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
