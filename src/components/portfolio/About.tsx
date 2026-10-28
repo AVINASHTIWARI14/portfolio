@@ -96,7 +96,7 @@ export function Skills() {
         <SectionHeading index="04" eyebrow="" title={<>Tools / Skills.</>} />
         <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.05} className="group min-w-0 overflow-hidden bg-white p-6 transition-colors hover:bg-white sm:p-8">
+            <Reveal key={g.title} delay={i * 0.05} className="group min-w-0 overflow-hidden !bg-white p-6 transition-colors hover:!bg-white sm:p-8" style={{ backgroundColor: "#ffffff" }}>
               <div className="mb-5 flex items-baseline justify-between gap-3">
                 <h3 className="font-display text-2xl">{g.title}</h3>
                 <span className="shrink-0 font-mono text-xs text-muted-foreground group-hover:text-lime">/{String(i + 1).padStart(2, "0")}</span>
