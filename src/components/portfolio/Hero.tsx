@@ -6,8 +6,28 @@ export function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden px-5 pt-28 pb-16 sm:px-8">
-      <div className="absolute -left-40 top-10 h-[520px] w-[520px] glow-lavender blur-3xl" aria-hidden="true" />
-      <div className="absolute -right-40 bottom-0 h-[520px] w-[520px] glow-lime blur-3xl" aria-hidden="true" />
+      <motion.div
+        className="absolute -left-40 top-10 h-[520px] w-[520px] glow-lavender blur-3xl"
+        aria-hidden="true"
+        animate={reduce ? undefined : {
+          x: [0, 28, -14, 0],
+          y: [0, -20, 18, 0],
+          scale: [1, 1.08, 0.97, 1],
+          opacity: [0.55, 0.8, 0.6, 0.55],
+        }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -right-40 bottom-0 h-[520px] w-[520px] glow-lime blur-3xl"
+        aria-hidden="true"
+        animate={reduce ? undefined : {
+          x: [0, -24, 16, 0],
+          y: [0, 22, -16, 0],
+          scale: [1, 0.96, 1.09, 1],
+          opacity: [0.45, 0.7, 0.5, 0.45],
+        }}
+        transition={{ duration: 32, repeat: Infinity, ease: "easeInOut", delay: -4 }}
+      />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
         <div className="relative z-10 min-w-0">
