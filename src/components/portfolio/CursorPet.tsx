@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { playWoofSound } from "@/lib/ui-sounds";
+import { playWoofSound, stopWoofSound } from "@/lib/ui-sounds";
 
 type PetState = { x: number; y: number; facing: 1 | -1; visible: boolean; running: boolean };
 
@@ -32,9 +32,18 @@ export function CursorPet() {
         event.clientX <= dog.x + 24 &&
         event.clientY >= dog.y - 30 &&
         event.clientY <= dog.y + 10;
-      if (hoveringDog && !wasHoveringDog) playWoofSound();
+      if (hoveringDog && !wasHoveringDog) {
+        playWoofSound();
+      } else if (!hoveringDog && wasHoveringDog) {
+        stopWoofSound();
+      }
       wasHoveringDog = hoveringDog;
       setShowWoof(hoveringDog);
+    };
+    const onMouseLeaveWindow = () => {
+      wasHoveringDog = false;
+      stopWoofSound();
+      setShowWoof(false);
     };
     const onTouch = (event: TouchEvent) => {
       const touch = event.touches[0];
@@ -42,6 +51,7 @@ export function CursorPet() {
     };
     window.addEventListener("mousemove", onMouseMove, { passive: true });
     window.addEventListener("mousemove", onHoverCheck, { passive: true });
+    window.addEventListener("mouseleave", onMouseLeaveWindow);
     window.addEventListener("touchstart", onTouch, { passive: true });
     window.addEventListener("touchmove", onTouch, { passive: true });
 
@@ -87,8 +97,10 @@ export function CursorPet() {
       window.clearInterval(step);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mousemove", onHoverCheck);
+      window.removeEventListener("mouseleave", onMouseLeaveWindow);
       window.removeEventListener("touchstart", onTouch);
       window.removeEventListener("touchmove", onTouch);
+      stopWoofSound();
     };
   }, [pet.visible]);
 
