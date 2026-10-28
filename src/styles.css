@@ -332,7 +332,7 @@ header button {
   box-sizing: border-box;
   padding: 5px;
   border: 2px solid #080808;
-  background: #fff;
+  background: #b3b3b3;
   box-shadow: 4px 4px 0 #080808;
   object-fit: contain;
   backface-visibility: hidden;
