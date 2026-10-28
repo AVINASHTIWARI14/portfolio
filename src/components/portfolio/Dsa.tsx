@@ -23,8 +23,8 @@ export function Dsa() {
                 href="https://leetcode.com/u/AVINASH-TIWARI/"
                 target="_blank"
                 rel="noreferrer"
-                className="brutalist-button brutalist-button-live !inline-flex !w-auto !min-w-0 !min-h-0 !h-auto !px-3 !py-1.5 !text-sm sm:!px-3.5 sm:!py-1.5 sm:!text-base"
-                style={{ width: "fit-content", minWidth: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 0, whiteSpace: "nowrap" }}
+                className="nav-brutalist inline-flex min-h-0 w-auto min-w-0 items-center gap-1.5 px-3 py-1.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black shadow-[3px_3px_0_#080808] [text-shadow:none] sm:px-3.5 sm:py-1.5"
+                style={{ width: "fit-content", minWidth: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", whiteSpace: "nowrap" }}
               >
                 PROFILE ↗
               </a>
