@@ -8,7 +8,7 @@ function CodeforcesHeatmap() {
 
   useEffect(() => {
     let active = true;
-    fetch("https://codeforces.com/api/user.status?handle=avinashtiwari2005ws&from=1&count=10000")
+    fetch("https://codeforces.com/api/user.status?handle=avinashtiwari2005ws&from=1&count=1000")
       .then((response) => {
         if (!response.ok) throw new Error("Unable to load Codeforces submissions");
         return response.json();
