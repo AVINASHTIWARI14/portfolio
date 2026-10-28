@@ -49,7 +49,18 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden border-t border-border py-24 md:py-36">
-      <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, #222 1.2px, transparent 1.45px)",
+          backgroundSize: "24px 24px",
+          maskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 4%, black 34%, black 100%)",
+          opacity: 0.7,
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <h2 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
             Let's <em className="not-italic text-foreground">connect.</em>
