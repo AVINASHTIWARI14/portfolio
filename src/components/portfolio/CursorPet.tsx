@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { playWoofSound } from "@/lib/ui-sounds";
 
 type PetState = { x: number; y: number; facing: 1 | -1; visible: boolean; running: boolean };
 
@@ -20,6 +21,7 @@ export function CursorPet() {
         setPet({ x: x + 72, y: y + 42, facing: -1, visible: true, running: true });
       }
     };
+    let wasHoveringDog = false;
     const onMouseMove = (event: MouseEvent) => {
       updateTarget(event.clientX, event.clientY);
     };
@@ -30,6 +32,8 @@ export function CursorPet() {
         event.clientX <= dog.x + 24 &&
         event.clientY >= dog.y - 30 &&
         event.clientY <= dog.y + 10;
+      if (hoveringDog && !wasHoveringDog) playWoofSound();
+      wasHoveringDog = hoveringDog;
       setShowWoof(hoveringDog);
     };
     const onTouch = (event: TouchEvent) => {
@@ -123,65 +127,19 @@ export function CursorPet() {
           @keyframes pet-ear { from { transform: translateY(0); } to { transform: translateY(1px); } }
           @keyframes pet-leg-a { from { transform: translateY(-1px) rotate(-22deg); } to { transform: translateY(1px) rotate(22deg); } }
           @keyframes pet-leg-b { from { transform: translateY(1px) rotate(22deg); } to { transform: translateY(-1px) rotate(-22deg); } }
-          @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail, .pet-smoke, .pet-tongue { animation: none; } }
         `}</style>
-        {pet.running ? (
-          <g className="pet-smoke">
-            <rect x="2" y="19" width="3" height="3" fill="#a9a9a9" opacity=".9" />
-            <rect x="5" y="16" width="3" height="3" fill="#c4c4c4" opacity=".8" />
-            <rect x="1" y="15" width="3" height="3" fill="#929292" opacity=".65" />
-            <rect x="6" y="13" width="2" height="2" fill="#d4d4d4" opacity=".5" />
-          </g>
-        ) : null}
-        <g className={`pet-pose ${pet.running ? "" : "pet-pose--sit"}`}>
-        <g className={pet.running ? "pet-run" : ""}>
-          <g className={pet.running ? "pet-tail" : "pet-sit-tail"}>
-            <rect x="3" y="11" width="4" height="4" fill="#9b5d32" />
-            <rect x="1" y="9" width="4" height="4" fill="#c88449" />
-          </g>
-          <rect x="6" y="10" width="16" height="9" fill="#c88449" />
-          <rect x="8" y="8" width="12" height="3" fill="#e7b779" />
-          <rect x="7" y="15" width="14" height="4" fill="#9b5d32" />
-          <rect x="10" y="12" width="7" height="3" fill="#f4d5a0" />
-          <rect x="17" y="4" width="10" height="10" fill="#e7b779" />
-          <rect x="20" y="2" width="5" height="3" fill="#e7b779" />
-          <g className="pet-ear">
-            <rect x="17" y="1" width="4" height="6" fill="#9b5d32" />
-            <rect x="18" y="2" width="2" height="3" fill="#c88449" />
-          </g>
-          <rect x="25" y="7" width="4" height="5" fill="#f4d5a0" />
-          <rect x="27" y="9" width="3" height="2" fill="#33251d" />
-          <rect x="24" y="6" width="2" height="2" fill="#33251d" />
-          <rect x="25" y="12" width="3" height="1" fill="#9b5d32" />
-          {!pet.running && (
-            <g className="pet-tongue">
-              <rect x="26" y="12" width="3" height="4" fill="#ff6680" />
-              <rect x="27" y="15" width="2" height="2" fill="#c92f50" />
-            </g>
-          )}
-          {pet.running ? (
-            <>
-              <g className="pet-leg-a">
-                <rect x="8" y="18" width="4" height="5" fill="#9b5d32" />
-                <rect x="7" y="22" width="5" height="2" fill="#e7b779" />
-              </g>
-              <g className="pet-leg-b">
-                <rect x="17" y="18" width="4" height="4" fill="#9b5d32" />
-                <rect x="18" y="21" width="5" height="2" fill="#e7b779" />
-              </g>
-            </>
-          ) : (
-            <>
-              {/* Seated pose: folded hind leg and straight front paw. */}
-              <rect x="7" y="16" width="8" height="4" fill="#9b5d32" />
-              <rect x="6" y="18" width="8" height="3" fill="#e7b779" />
-              <rect x="18" y="15" width="4" height="5" fill="#9b5d32" />
-              <rect x="17" y="19" width="7" height="3" fill="#e7b779" />
-            </>
-          )}
+        <g className={pet.running ? "pet-run" : "pet-pose pet-pose--sit"}>
+          <rect x="5" y="10" width="17" height="10" fill="#C58B55" />
+          <rect x="8" y="7" width="13" height="8" fill="#D9A36A" />
+          <rect x="20" y="10" width="7" height="6" fill="#D9A36A" />
+          <rect x="25" y="12" width="3" height="3" fill="#29251F" />
+          <rect x="21" y="9" width="2" height="2" fill="#29251F" />
+          <rect x="7" y="18" width="4" height="5" fill="#8C5A35" className="pet-leg-a" />
+          <rect x="17" y="18" width="4" height="5" fill="#8C5A35" className="pet-leg-b" />
+          <rect x="3" y="9" width="4" height="4" fill="#8C5A35" className="pet-tail" />
+          <rect x="10" y="5" width="4" height="4" fill="#8C5A35" className="pet-ear" />
+          <rect x="24" y="15" width="2" height="2" fill="#F28C8C" className="pet-tongue" />
         </g>
-        </g>
-        <ellipse cx="16" cy="25" rx="11" ry="1" fill="#000" opacity=".16" />
       </svg>
     </div>
   );
