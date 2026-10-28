@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
-import { useState } from "react";
 
 const suplaiScreenshots = [
   "/images/suplai-1.png",
@@ -19,7 +18,6 @@ const juribriefScreenshots = [
 ];
 
 export function Work() {
-  const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const list = projects.filter((p) => p.slug === "juribrief" || p.slug === "supplai");
 
   return (
@@ -32,11 +30,6 @@ export function Work() {
             <motion.article
               layout
               key={p.slug}
-              onClick={() => {
-                if (window.matchMedia("(hover: none)").matches) {
-                  setExpandedProject((current) => current === p.slug ? null : p.slug);
-                }
-              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
@@ -47,15 +40,15 @@ export function Work() {
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
                 <div className="flex min-h-16 items-start justify-between gap-4 sm:min-h-20">
-                  <span className={`font-display text-3xl leading-none tracking-tight text-foreground transition-all duration-300 sm:text-4xl ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
+                  <span className="font-display text-3xl leading-none tracking-tight text-foreground sm:text-4xl">0{i + 1}</span>
                   <img
                     src={p.slug === "supplai" ? "/images/supplai-logo.png" : "/images/juribrief-logo.png"}
                     alt={`${p.title} logo`}
-                    className={`ml-auto max-h-16 max-w-[78%] object-contain object-right mix-blend-multiply transition-all duration-300 sm:max-h-20 ${expandedProject === p.slug ? "!max-h-16 sm:!max-h-20" : ""}`}
+                    className="ml-auto max-h-16 max-w-[78%] object-contain object-right mix-blend-multiply transition-all duration-300 sm:max-h-20"
                   />
                 </div>
-                <p className={`mt-4 text-justify text-muted-foreground transition-all duration-300 ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
-                <div className={`relative mt-3 grid h-56 overflow-hidden border-0 border-transparent bg-transparent opacity-100 transition-[height,opacity] duration-500 ease-out sm:h-64 ${expandedProject === p.slug ? "!h-56 sm:!h-64" : ""}`}>
+                <p className="mt-4 text-justify text-muted-foreground">{p.summary}</p>
+                <div className="relative mt-3 grid h-56 overflow-hidden border-0 border-transparent bg-transparent opacity-100 transition-[height,opacity] duration-500 ease-out sm:h-64">
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
                       <div
