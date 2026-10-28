@@ -228,11 +228,13 @@ a:not(.brutalist-button):hover {
   z-index: 2;
   min-width: 0;
   white-space: nowrap;
-  font-size: clamp(10px, 1.05vw, 13px);
-  font-weight: 800;
-  letter-spacing: .07em;
-  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 600;
+  letter-spacing: .025em;
+  line-height: 1.2;
   text-transform: uppercase;
+  text-shadow: none;
   transition: transform .3s, color .3s;
 }
 .brutalist-button:hover .brutalist-button-text { transform: skew(-5deg); }
@@ -242,7 +244,7 @@ a:not(.brutalist-button):hover {
 
 @media (max-width: 639px) {
   .brutalist-button { height: 60px; }
-  .brutalist-button-text { font-size: 12px; }
+  .brutalist-button-text { font-size: 14px; letter-spacing: .02em; }
 }
 
 
