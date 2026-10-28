@@ -26,7 +26,7 @@ export function Dsa() {
                 className="nav-brutalist inline-flex min-h-0 w-auto min-w-0 items-center gap-1.5 px-3 py-1.5 font-sans text-sm font-medium normal-case tracking-[0.015em] text-black shadow-[3px_3px_0_#080808] [text-shadow:none] sm:px-3.5 sm:py-1.5"
                 style={{ width: "fit-content", minWidth: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", whiteSpace: "nowrap" }}
               >
-                <span className="brutalist-button-text">PROFILE ↗</span>
+                <span className="brutalist-button-text">PROFILE</span><span aria-hidden="true" className="brutalist-button-arrow">↗</span>
               </a>
             </div>
             <div className="overflow-x-auto bg-zinc-900 px-2 py-2 sm:px-4 sm:py-3">
