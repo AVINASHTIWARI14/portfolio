@@ -41,20 +41,20 @@ export function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
-              className={`group relative z-0 flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.025] hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8 dark:${expandedProject === p.slug ? "border-lime/50 shadow-[8px_8px_0_#000]" : ""}` }
+              className={`group relative z-0 flex flex-col self-start overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.025] hover:border-lime/50 hover:shadow-[8px_8px_0_#000] sm:p-8`}
             >
               <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 glow-lime opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative">
-                <span className={`font-mono text-xs text-muted-foreground transition-all duration-300 group-hover:hidden ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
-                <div className={`mt-5 flex h-12 items-center transition-all duration-300 group-hover:mt-0 sm:h-14 ${expandedProject === p.slug ? "!mt-0" : ""}`}>
+                <span className={`font-mono text-xs text-muted-foreground transition-all duration-300 ${expandedProject === p.slug ? "hidden" : ""}`}>0{i + 1}</span>
+                <div className={`mt-5 flex h-12 items-center transition-all duration-300 sm:h-14 ${expandedProject === p.slug ? "!mt-0" : ""}`}>
                   <img
                     src={p.slug === "supplai" ? "/images/supplai-logo.png" : "/images/juribrief-logo.png"}
                     alt={`${p.title} logo`}
                     className="max-h-full max-w-full object-contain object-left"
                   />
                 </div>
-                <p className={`mt-4 text-justify text-muted-foreground transition-all duration-300 group-hover:hidden ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
-                <div className={`relative mt-3 grid h-0 overflow-hidden border-0 border-transparent bg-transparent opacity-0 transition-[height,opacity] duration-500 ease-out group-hover:h-56 group-hover:opacity-100 sm:group-hover:h-64 ${expandedProject === p.slug ? "!h-56 !opacity-100 sm:!h-64" : ""}`}>
+                <p className={`mt-4 text-justify text-muted-foreground transition-all duration-300 ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
+                <div className={`relative mt-3 grid h-56 overflow-hidden border-0 border-transparent bg-transparent opacity-100 transition-[height,opacity] duration-500 ease-out sm:h-64 ${expandedProject === p.slug ? "!h-56 sm:!h-64" : ""}`}>
                   {p.slug === "supplai" || p.slug === "juribrief" ? (
                     <div className="project-screenshot-slideshow absolute inset-0 overflow-hidden">
                       <div className={`project-screenshot-track project-screenshot-track--${p.slug === "supplai" ? "five" : "four"} flex h-full`}>
