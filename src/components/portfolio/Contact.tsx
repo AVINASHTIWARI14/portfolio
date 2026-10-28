@@ -50,12 +50,18 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden border-t border-border py-24 md:py-36">
-      <div
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-56"
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
-          background: "linear-gradient(to bottom, #ffffff 0%, rgb(255 255 255 / 82%) 22%, rgb(255 255 255 / 38%) 62%, rgb(255 255 255 / 0%) 100%)",
+          background: "linear-gradient(125deg, #a0a0a0 0%, #ffffff 32%, #b0b0b0 58%, #ffffff 82%, #a0a0a0 100%)",
+          backgroundSize: "300% 300%",
         }}
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          opacity: [0.62, 0.88, 0.62],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden="true"
