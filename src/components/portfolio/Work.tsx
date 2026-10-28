@@ -85,6 +85,10 @@ export function Work() {
                   <a href="https://youtu.be/9WQxe0l1aWE" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-video">
                     <span className="brutalist-button-text text-lg font-medium sm:text-xl">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
                   </a>
+                ) : p.slug === "juribrief" ? (
+                  <a href="https://youtu.be/mgFznzZRvkA?si=L4Q4J4BXljPqWwUh" target="_blank" rel="noreferrer" className="brutalist-button brutalist-button-video">
+                    <span className="brutalist-button-text text-lg font-medium sm:text-xl">Demo video</span><ArrowUpRight className="brutalist-button-arrow" />
+                  </a>
                 ) : (
                   <span aria-disabled="true" title="Demo video link not added yet" className="brutalist-button brutalist-button-video brutalist-button-disabled">
                     <span className="brutalist-button-text text-lg font-medium sm:text-xl">Demo video</span><ArrowUpRight aria-hidden="true" className="brutalist-button-arrow !static !h-4 !w-4 shrink-0" />
