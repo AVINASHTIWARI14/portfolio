@@ -50,6 +50,13 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden border-t border-border py-24 md:py-36">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-56"
+        style={{
+          background: "linear-gradient(to bottom, #ffffff 0%, rgb(255 255 255 / 82%) 22%, rgb(255 255 255 / 38%) 62%, rgb(255 255 255 / 0%) 100%)",
+        }}
+      />
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
