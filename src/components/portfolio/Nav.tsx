@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
+import { isSoundMuted, setSoundMuted } from "@/lib/ui-sounds";
 import { navItems } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +23,7 @@ function useActiveSection() {
 
 export function Nav() {
   const active = useActiveSection();
+  const [muted, setMuted] = useState(() => isSoundMuted());
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
@@ -53,6 +56,20 @@ export function Nav() {
           </ul>
         </nav>
       </div>
+      <button
+        type="button"
+        onClick={() => {
+          const nextMuted = !muted;
+          setMuted(nextMuted);
+          setSoundMuted(nextMuted);
+        }}
+        aria-label={muted ? "Unmute interface sounds" : "Mute interface sounds"}
+        aria-pressed={muted}
+        className="fixed bottom-5 right-5 z-[70] inline-flex items-center gap-2 border-[3px] border-black bg-white px-3 py-2.5 text-xs font-extrabold uppercase tracking-wide text-black shadow-[5px_5px_0_#080808] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_#080808] active:translate-x-1 active:translate-y-1 active:shadow-none sm:bottom-6 sm:right-6 sm:px-4 sm:py-3 sm:text-sm"
+      >
+        {muted ? <VolumeX size={18} strokeWidth={2.5} /> : <Volume2 size={18} strokeWidth={2.5} />}
+        <span>{muted ? "Sound Off" : "Sound On"}</span>
+      </button>
     </header>
   );
 }
