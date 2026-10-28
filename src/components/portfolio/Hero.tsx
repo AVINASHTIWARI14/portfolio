@@ -6,18 +6,6 @@ export function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden px-5 pt-28 pb-16 sm:px-8">
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: "linear-gradient(125deg, #e5e5e5 0%, #ffffff 45%, #dcdcdc 100%)",
-          backgroundSize: "200% 200%",
-        }}
-        animate={reduce ? undefined : {
-          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-        }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
       <motion.svg
         className="pointer-events-none absolute inset-0 h-full w-full"
         viewBox="0 0 1440 900"
@@ -70,6 +58,20 @@ export function Hero() {
         />
         <rect x="0" y="300" width="1440" height="600" fill="url(#hero-dot-bottom-overlay)" />
       </motion.svg>
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-50"
+        style={{
+          background: "linear-gradient(125deg, #c8c8c8 0%, #ffffff 48%, #cfcfcf 100%)",
+          backgroundSize: "200% 200%",
+          mixBlendMode: "multiply",
+        }}
+        animate={reduce ? undefined : {
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          opacity: [0.24, 0.42, 0.24],
+        }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
         <div className="relative z-10 min-w-0">
