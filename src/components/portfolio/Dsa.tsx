@@ -55,13 +55,10 @@ function LeetCodeHeatmap() {
   }, [submissions]);
 
   const monthLabels = useMemo(() => weeks.map((week, index) => {
-    const firstOfMonth = week.find((day) => day.date.endsWith("-01"));
-    if (index === 0) {
-      const firstDate = new Date(`${week[0].date}T12:00:00`);
-      return firstDate.toLocaleString("en-US", { month: "short" });
-    }
-    if (!firstOfMonth) return "";
-    return new Date(`${firstOfMonth.date}T12:00:00`).toLocaleString("en-US", { month: "short" });
+    const first = week[0];
+    if (!first) return "";
+    const date = new Date(`${first.date}T12:00:00`);
+    return index === 0 || date.getDate() <= 7 ? date.toLocaleString("en-US", { month: "short" }) : "";
   }), [weeks]);
 
   const colorFor = (count: number) => {
@@ -74,12 +71,12 @@ function LeetCodeHeatmap() {
 
   return (
     <div className="min-w-[760px] text-zinc-700">
-      <div className="mb-2 flex gap-[3px] text-[10px] text-zinc-500">
-        {monthLabels.map((month, index) => <span key={index} className="w-[10px] shrink-0 overflow-visible whitespace-nowrap">{month}</span>)}
+      <div className="mb-2 grid gap-1 text-[10px] text-zinc-500" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }}>
+        {monthLabels.map((month, index) => <span key={index}>{month}</span>)}
       </div>
-      <div className="flex items-start gap-[3px]" aria-label="LeetCode submission activity over the past year">
+      <div className="flex gap-[3px]" aria-label="LeetCode submission activity over the past year">
         {weeks.map((week, index) => (
-          <div className={`flex flex-col gap-[3px] ${monthLabels[index] && index > 0 ? "ml-1 border-l border-zinc-300 pl-1" : ""}`} key={index}>
+          <div className="flex flex-col gap-[3px]" key={index}>
             {week.map((day) => (
               <span
                 key={day.date}
