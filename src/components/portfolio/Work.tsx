@@ -51,7 +51,7 @@ export function Work() {
                   <img
                     src={p.slug === "supplai" ? "/images/supplai-logo.png" : "/images/juribrief-logo.png"}
                     alt={`${p.title} logo`}
-                    className={`ml-auto max-h-16 max-w-[78%] object-contain object-right transition-all duration-300 sm:max-h-20 ${expandedProject === p.slug ? "!max-h-16 sm:!max-h-20" : ""}`}
+                    className={`ml-auto max-h-16 max-w-[78%] object-contain object-right mix-blend-multiply transition-all duration-300 sm:max-h-20 ${expandedProject === p.slug ? "!max-h-16 sm:!max-h-20" : ""}`}
                   />
                 </div>
                 <p className={`mt-4 text-justify text-muted-foreground transition-all duration-300 ${expandedProject === p.slug ? "hidden" : ""}`}>{p.summary}</p>
