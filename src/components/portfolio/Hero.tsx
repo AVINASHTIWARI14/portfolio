@@ -21,8 +21,15 @@ export function Hero() {
             <stop offset="58%" stopColor="white" stopOpacity="0.72" />
             <stop offset="100%" stopColor="white" stopOpacity="0.18" />
           </radialGradient>
+          <linearGradient id="hero-dot-bottom-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="white" stopOpacity="1" />
+            <stop offset="70%" stopColor="white" stopOpacity="0.95" />
+            <stop offset="88%" stopColor="white" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
           <mask id="hero-dot-mask">
             <rect width="1440" height="900" fill="url(#hero-dot-fade)" />
+            <rect width="1440" height="900" fill="url(#hero-dot-bottom-fade)" />
           </mask>
         </defs>
         <rect width="1440" height="900" fill="url(#hero-dot-matrix)" mask="url(#hero-dot-mask)" />
