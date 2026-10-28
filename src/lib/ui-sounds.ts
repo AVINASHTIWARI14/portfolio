@@ -10,6 +10,27 @@ function getAudioContext() {
   return audioContext;
 }
 
+export function playHoverSound() {
+  const context = getAudioContext();
+  if (!context) return;
+
+  const now = context.currentTime;
+  const oscillator = context.createOscillator();
+  const gain = context.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(680, now);
+  oscillator.frequency.exponentialRampToValueAtTime(540, now + 0.035);
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.018, now + 0.004);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+
+  oscillator.connect(gain);
+  gain.connect(context.destination);
+  oscillator.start(now);
+  oscillator.stop(now + 0.05);
+}
+
 export function playClickSound() {
   const context = getAudioContext();
   if (!context) return;
@@ -20,15 +41,15 @@ export function playClickSound() {
 
   oscillator.type = "sine";
   oscillator.frequency.setValueAtTime(880, now);
-  oscillator.frequency.exponentialRampToValueAtTime(520, now + 0.05);
+  oscillator.frequency.exponentialRampToValueAtTime(460, now + 0.06);
   gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.exponentialRampToValueAtTime(0.065, now + 0.006);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.065);
+  gain.gain.exponentialRampToValueAtTime(0.038, now + 0.006);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.075);
 
   oscillator.connect(gain);
   gain.connect(context.destination);
   oscillator.start(now);
-  oscillator.stop(now + 0.07);
+  oscillator.stop(now + 0.08);
 }
 
 export function playWoofSound() {
