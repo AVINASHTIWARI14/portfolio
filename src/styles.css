@@ -420,3 +420,24 @@ body :where(h1, h2, h3, h4, h5, h6) {
   background: #ffffff !important;
   background-color: #ffffff !important;
 }
+
+
+/* Keep the floating sound toggle anchored to the viewport; the shared button base sets position: relative. */
+.mute-toggle-button {
+  position: fixed !important;
+  right: 1.25rem !important;
+  bottom: 1.25rem !important;
+  left: auto !important;
+  top: auto !important;
+  width: 56px !important;
+  height: 56px !important;
+  z-index: 70 !important;
+}
+@media (min-width: 640px) {
+  .mute-toggle-button {
+    right: 1.5rem !important;
+    bottom: 1.5rem !important;
+    width: 64px !important;
+    height: 64px !important;
+  }
+}
