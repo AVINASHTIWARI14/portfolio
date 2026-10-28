@@ -62,14 +62,14 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
-          background: "linear-gradient(125deg, #b8b8b8 0%, #ffffff 48%, #b8b8b8 100%)",
-          backgroundSize: "220% 220%",
+          background: "linear-gradient(125deg, #a0a0a0 0%, #ffffff 32%, #b0b0b0 58%, #ffffff 82%, #a0a0a0 100%)",
+          backgroundSize: "300% 300%",
         }}
-        animate={reduce ? { opacity: 0.28 } : {
+        animate={reduce ? { opacity: 0.72 } : {
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-          opacity: [0.28, 0.48, 0.28],
+          opacity: [0.62, 0.88, 0.62],
         }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
