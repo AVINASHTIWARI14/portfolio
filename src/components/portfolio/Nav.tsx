@@ -29,7 +29,7 @@ export function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <motion.div style={{ scaleX, backgroundColor: "#FFD400" }} className="h-0.5 origin-left" aria-hidden />
+      <motion.div style={{ scaleX, backgroundColor: "#080808" }} className="h-1 origin-left" aria-hidden />
       <div className="mx-auto mt-3 max-w-6xl px-3 sm:px-6">
         <nav
           aria-label="Primary"
