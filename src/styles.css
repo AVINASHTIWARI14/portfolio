@@ -178,7 +178,7 @@ a:not(.brutalist-button):hover {
   border-radius: 0 !important;
 }
 
-/* Project action buttons: requested colors are visible by default, not only on hover. */
+/* Project action buttons share the Send Message button's bold, high-contrast layout while retaining each action's original color. */
 .brutalist-button {
   display: flex;
   position: relative;
@@ -191,10 +191,11 @@ a:not(.brutalist-button):hover {
   padding: 0 12px;
   box-sizing: border-box;
   overflow: hidden;
-  border: 3px solid currentColor;
+  border: 3px solid #080808;
   outline: 2px solid #fff;
   text-decoration: none;
-  box-shadow: 5px 5px 0 currentColor;
+  box-shadow: 5px 5px 0 #080808;
+  font-weight: 700;
   transition: transform .3s cubic-bezier(.25,.8,.25,1), box-shadow .3s cubic-bezier(.25,.8,.25,1), background-color .3s, color .3s, outline-color .3s;
 }
 .brutalist-button-live { background: #fde047; color: #080808; }
@@ -216,33 +217,37 @@ a:not(.brutalist-button):hover {
 .brutalist-button:hover::before { animation: brutalist-glare 1.5s infinite; }
 .brutalist-button:hover {
   transform: translate(-3px,-3px);
-  color: #000;
-  outline-color: #000;
-  box-shadow: 8px 8px 0 currentColor;
+  color: #080808;
+  outline-color: #080808;
+  box-shadow: 8px 8px 0 #080808;
 }
-.brutalist-button-live:hover { background: #fde047; color: #000; box-shadow: 8px 8px 0 #fde047; }
-.brutalist-button-video:hover { background: #f87171; color: #000; box-shadow: 8px 8px 0 #f87171; }
-.brutalist-button-repo:hover { background: #4ade80; color: #000; box-shadow: 8px 8px 0 #4ade80; }
-.brutalist-button:active { transform: translate(3px,3px); box-shadow: 0 0 0 currentColor; transition-duration: .1s; }
+.brutalist-button-live:hover { background: #fde047; }
+.brutalist-button-video:hover { background: #f87171; }
+.brutalist-button-repo:hover { background: #4ade80; }
+.brutalist-button:active { transform: translate(3px,3px); box-shadow: 0 0 0 #080808; transition-duration: .1s; }
 .brutalist-button-text {
   position: relative;
   z-index: 2;
   min-width: 0;
   white-space: nowrap;
   font-family: Arial, Helvetica, sans-serif;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(12px, .95vw, 14px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: .01em;
   line-height: 1.15;
   text-transform: none;
   text-shadow: none;
   transition: color .3s;
 }
- .brutalist-button:hover .brutalist-button-text { transform: none; }
+.brutalist-button:hover .brutalist-button-text { transform: none; }
 .brutalist-button-arrow { position: relative; z-index: 2; right: auto; width: 15px; height: 15px; flex-shrink: 0; }
 .brutalist-button-disabled { opacity: .45; cursor: not-allowed; }
 .brutalist-button-disabled .brutalist-button-arrow { display: none; }
+
+@media (max-width: 639px) {
+  .brutalist-button { height: 56px; padding: 0 8px; gap: 5px; }
+  .brutalist-button-text { font-size: 13px; letter-spacing: 0; }
+}
 
 @media (max-width: 639px) {
   .brutalist-button { height: 56px; padding: 0 8px; gap: 5px; }
