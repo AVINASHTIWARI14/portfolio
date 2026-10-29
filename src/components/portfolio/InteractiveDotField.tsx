@@ -37,7 +37,7 @@ export function InteractiveDotField({ variant }: InteractiveDotFieldProps) {
       if (customEvent.detail) dogRef.current = customEvent.detail;
     };
 
-    const draw = () => {
+    const draw = (timestamp = 0) => {
       context.clearRect(0, 0, width, height);
       const bounds = canvas.getBoundingClientRect();
       const dogX = dogRef.current.x - bounds.left;
@@ -49,13 +49,15 @@ export function InteractiveDotField({ variant }: InteractiveDotFieldProps) {
           const dx = x - dogX;
           const dy = y - dogY;
           const distance = Math.hypot(dx, dy);
-          let offsetX = 0;
-          let offsetY = 0;
+          // Give the dot field a gentle, continuous wave even when the cursor is idle.
+          // Cursor interaction is layered on top of this ambient motion.
+          let offsetX = reducedMotion ? 0 : Math.sin(timestamp * 0.0011 + x * 0.035 + y * 0.018) * 2.2;
+          let offsetY = reducedMotion ? 0 : Math.cos(timestamp * 0.0009 + x * 0.022 - y * 0.031) * 1.8;
 
           if (!reducedMotion && distance < influenceRadius && distance > 0.1) {
             const strength = (1 - distance / influenceRadius) * 7;
-            offsetX = (dx / distance) * strength;
-            offsetY = (dy / distance) * strength;
+            offsetX += (dx / distance) * strength;
+            offsetY += (dy / distance) * strength;
           }
 
           const fade = variant === "hero"
