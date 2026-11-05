@@ -126,21 +126,21 @@ export function CursorPet() {
           .pet-tail { transform-box: fill-box; transform-origin: 2px 2px; animation: pet-tail-wag .22s steps(2,end) infinite alternate; }
           .pet-pose { transform-box: fill-box; transform-origin: center bottom; transition: transform .22s ease-out; }
           .pet-pose--sit { transform: translateY(3px) scaleY(.78); }
-          .pet-run { animation: pet-bob .24s steps(2,end) infinite alternate; }
-          .pet-ear { animation: pet-ear .45s steps(2,end) infinite alternate; }
-          .pet-leg-a { transform-box: fill-box; transform-origin: center top; animation: pet-leg-a .18s steps(2,end) infinite alternate; }
-          .pet-leg-b { transform-box: fill-box; transform-origin: center top; animation: pet-leg-b .18s steps(2,end) infinite alternate; }
+          .pet-run { transform-box: fill-box; transform-origin: center bottom; animation: pet-body-run .2s steps(2,end) infinite alternate; }
+          .pet-ear { animation: pet-ear .3s steps(2,end) infinite alternate; }
+          .pet-leg-a, .pet-leg-c { transform-box: fill-box; transform-origin: center top; animation: pet-leg-a .2s steps(2,end) infinite alternate; }
+          .pet-leg-b, .pet-leg-d { transform-box: fill-box; transform-origin: center top; animation: pet-leg-b .2s steps(2,end) infinite alternate; }
           .pet-sit-tail { animation: pet-tail-wag .32s steps(2,end) infinite alternate; }
           .pet-smoke { animation: pet-smoke .7s steps(3,end) infinite; transform-box: fill-box; transform-origin: center; }
           .pet-tongue { animation: pet-tongue .8s steps(2,end) infinite alternate; }
           @keyframes pet-smoke { 0% { opacity: .8; transform: translate(0, 0) scale(.7); } 70% { opacity: .35; } 100% { opacity: 0; transform: translate(-7px, -6px) scale(1.4); } }
           @keyframes pet-tongue { from { transform: translateY(0); } to { transform: translateY(1px); } }
           @keyframes pet-tail-wag { from { transform: rotate(-18deg); } to { transform: rotate(22deg); } }
-          @keyframes pet-bob { from { transform: translateY(0); } to { transform: translateY(-2px); } }
-          @keyframes pet-ear { from { transform: translateY(0); } to { transform: translateY(1px); } }
-          @keyframes pet-leg-a { from { transform: translateY(-1px) rotate(-22deg); } to { transform: translateY(1px) rotate(22deg); } }
-          @keyframes pet-leg-b { from { transform: translateY(1px) rotate(22deg); } to { transform: translateY(-1px) rotate(-22deg); } }
-          @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-sit-tail, .pet-smoke, .pet-tongue { animation: none; } }
+          @keyframes pet-body-run { from { transform: translateY(1px) rotate(-2deg) scaleY(.94) scaleX(1.02); } to { transform: translateY(-2px) rotate(2deg) scaleY(1.08) scaleX(.96); } }
+          @keyframes pet-ear { from { transform: translateY(-1px) rotate(-5deg); } to { transform: translateY(2px) rotate(7deg); } }
+          @keyframes pet-leg-a { from { transform: translateY(-2px) rotate(-34deg) scaleY(.88); } to { transform: translateY(2px) rotate(30deg) scaleY(1.08); } }
+          @keyframes pet-leg-b { from { transform: translateY(2px) rotate(30deg) scaleY(1.08); } to { transform: translateY(-2px) rotate(-34deg) scaleY(.88); } }
+          @media (prefers-reduced-motion: reduce) { .pet-pose { transition: none; } .pet-tail, .pet-run, .pet-ear, .pet-leg-a, .pet-leg-b, .pet-leg-c, .pet-leg-d, .pet-sit-tail, .pet-smoke, .pet-tongue { animation: none; } }
         `}</style>
         {pet.running ? (
           <g className="pet-smoke">
@@ -178,13 +178,22 @@ export function CursorPet() {
           )}
           {pet.running ? (
             <>
+              {/* Four alternating legs give the run a clearer, more energetic stride. */}
+              <g className="pet-leg-c" opacity=".78">
+                <rect x="11" y="18" width="3" height="5" fill="#9b5d32" />
+                <rect x="10" y="22" width="5" height="2" fill="#c88449" />
+              </g>
               <g className="pet-leg-a">
-                <rect x="8" y="18" width="4" height="5" fill="#9b5d32" />
-                <rect x="7" y="22" width="5" height="2" fill="#e7b779" />
+                <rect x="7" y="18" width="4" height="5" fill="#9b5d32" />
+                <rect x="6" y="22" width="5" height="2" fill="#e7b779" />
+              </g>
+              <g className="pet-leg-d" opacity=".78">
+                <rect x="18" y="18" width="3" height="4" fill="#9b5d32" />
+                <rect x="18" y="21" width="5" height="2" fill="#c88449" />
               </g>
               <g className="pet-leg-b">
-                <rect x="17" y="18" width="4" height="4" fill="#9b5d32" />
-                <rect x="18" y="21" width="5" height="2" fill="#e7b779" />
+                <rect x="16" y="18" width="4" height="5" fill="#9b5d32" />
+                <rect x="17" y="22" width="5" height="2" fill="#e7b779" />
               </g>
             </>
           ) : (
