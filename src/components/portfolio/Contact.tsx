@@ -88,8 +88,6 @@ export function Contact() {
               ))}
             </div>
             <h2 className="relative z-10 font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
-      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal>
               Let's <em className="not-italic text-foreground">connect.</em>
             </h2>
           </div>
