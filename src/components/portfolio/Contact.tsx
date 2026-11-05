@@ -74,8 +74,8 @@ export function Contact() {
 
       <InteractiveDotField variant="contact" />
       <style>{`
-        .contact-bubble-cluster { position: absolute; z-index: 1; left: 3%; bottom: 7%; top: auto; width: 190px; height: 200px; transform: scale(2.5); transform-origin: left bottom; pointer-events: none; filter: saturate(1.08); }
-        @media (max-width: 640px) { .contact-bubble-cluster { left: -35px; bottom: 5%; transform: scale(1.35); opacity: .9; } }
+        .contact-bubble-cluster { position: absolute; z-index: 1; left: 3%; bottom: 7%; top: auto; width: 190px; height: 200px; transform: scale(2.5); transform-origin: left bottom; pointer-events: none; filter: saturate(.72); opacity: .38; }
+        @media (max-width: 640px) { .contact-bubble-cluster { left: -35px; bottom: 5%; transform: scale(1.35); opacity: .32; } }
       `}</style>
       <div className="contact-bubble-cluster" aria-hidden="true">
         {Array.from({ length: 5 }, (_, index) => (
