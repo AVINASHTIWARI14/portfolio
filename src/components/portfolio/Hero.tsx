@@ -34,6 +34,64 @@ export function Hero() {
         <rect x="0" y="300" width="1440" height="600" fill="url(#hero-dot-bottom-overlay)" />
       </motion.svg>
       <InteractiveDotField variant="hero" />
+      <div className="hero-bubble-cluster" aria-hidden="true">
+        {Array.from({ length: 5 }, (_, index) => (
+          <div className={`hero-bubble hero-bubble-${index + 1}`} key={index}>
+            <span /><span /><span /><span /><span />
+          </div>
+        ))}
+      </div>
+      <style>{`
+        .hero-bubble-cluster {
+          position: absolute;
+          z-index: 8;
+          right: clamp(0px, 3vw, 42px);
+          top: 34%;
+          width: 200px;
+          height: 200px;
+          pointer-events: none;
+          filter: saturate(1.08);
+        }
+        .hero-bubble {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          box-shadow: inset 0 0 25px rgba(255,255,255,.25);
+          animation: hero-bubble-float 8s ease-in-out infinite;
+        }
+        .hero-bubble-2 { transform: scale(.45); left: -105px; top: -100px; animation-delay: -4s; }
+        .hero-bubble-3 { transform: scale(.45); left: 80px; top: -115px; animation-delay: -6s; }
+        .hero-bubble-4 { transform: scale(.35); left: -125px; top: 95px; animation-delay: -3s; }
+        .hero-bubble-5 { transform: scale(.5); left: 5px; top: 105px; animation-delay: -5s; }
+        .hero-bubble::before, .hero-bubble::after {
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          background: #fff;
+          z-index: 10;
+          filter: blur(2px);
+        }
+        .hero-bubble::before { top: 50px; left: 45px; width: 30px; height: 30px; }
+        .hero-bubble::after { top: 80px; left: 80px; width: 20px; height: 20px; }
+        .hero-bubble span { position: absolute; inset: 10px; border-radius: 50%; }
+        .hero-bubble span:nth-child(1) { border-left: 15px solid #0fb4ff; filter: blur(8px); }
+        .hero-bubble span:nth-child(2) { border-right: 15px solid #ff4484; filter: blur(8px); }
+        .hero-bubble span:nth-child(3) { border-top: 15px solid #ffeb3b; filter: blur(8px); }
+        .hero-bubble span:nth-child(4) { inset: 30px; border-left: 15px solid #ff4484; filter: blur(12px); }
+        .hero-bubble span:nth-child(5) { border-bottom: 10px solid #fff; filter: blur(8px); transform: rotate(330deg); }
+        @keyframes hero-bubble-float {
+          0%, 100% { translate: 0 -20px; }
+          50% { translate: 0 20px; }
+        }
+        @media (max-width: 640px) {
+          .hero-bubble-cluster { right: -24px; top: 27%; transform: scale(.55); transform-origin: top right; opacity: .9; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-bubble, .hero-bubble span { animation: none !important; }
+        }
+      `}</style>
+
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-56 sm:h-72 md:h-80"
