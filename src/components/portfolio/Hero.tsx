@@ -37,10 +37,13 @@ export function Hero() {
       <style>{`
         .hero-bubble-cluster {
           position: relative;
+          z-index: 0;
           flex: 0 0 190px;
           width: 190px;
           height: 200px;
           margin-left: 240px;
+          transform: scale(5);
+          transform-origin: left center;
           pointer-events: none;
           filter: saturate(1.08);
         }
@@ -82,7 +85,7 @@ export function Hero() {
             width: 92px;
             height: 110px;
             margin-left: -42px;
-            transform: scale(.48);
+            transform: scale(2.4);
             transform-origin: left center;
             opacity: .95;
           }
@@ -114,8 +117,8 @@ export function Hero() {
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
-        <div className="relative z-10 flex min-w-0 items-center">
-          <h1 className="font-[Anton_SC] text-left text-[clamp(4.5rem,13.5vw,10.5rem)] leading-[0.95] tracking-tight">
+        <div className="relative flex min-w-0 items-center">
+          <h1 className="relative z-10 font-[Anton_SC] text-left text-[clamp(4.5rem,13.5vw,10.5rem)] leading-[0.95] tracking-tight">
             <span className="sr-only">Avinash Tiwari</span>
             <span aria-hidden="true" className="block overflow-hidden pb-[0.12em]">
               <motion.span className="block" initial={reduce ? false : { y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
