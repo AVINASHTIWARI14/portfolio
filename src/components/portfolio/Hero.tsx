@@ -42,7 +42,7 @@ export function Hero() {
           width: 190px;
           height: 200px;
           margin-left: 240px;
-          transform: scale(5);
+          transform: scale(3);
           transform-origin: left center;
           pointer-events: none;
           filter: saturate(1.08);
@@ -85,7 +85,7 @@ export function Hero() {
             width: 92px;
             height: 110px;
             margin-left: -42px;
-            transform: scale(2.4);
+            transform: scale(1.44);
             transform-origin: left center;
             opacity: .95;
           }
