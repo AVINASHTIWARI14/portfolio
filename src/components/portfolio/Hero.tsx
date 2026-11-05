@@ -34,21 +34,13 @@ export function Hero() {
         <rect x="0" y="300" width="1440" height="600" fill="url(#hero-dot-bottom-overlay)" />
       </motion.svg>
       <InteractiveDotField variant="hero" />
-      <div className="hero-bubble-cluster" aria-hidden="true">
-        {Array.from({ length: 5 }, (_, index) => (
-          <div className={`hero-bubble hero-bubble-${index + 1}`} key={index}>
-            <span /><span /><span /><span /><span />
-          </div>
-        ))}
-      </div>
       <style>{`
         .hero-bubble-cluster {
-          position: absolute;
-          z-index: 8;
-          right: clamp(0px, 3vw, 42px);
-          top: 34%;
-          width: 200px;
+          position: relative;
+          flex: 0 0 190px;
+          width: 190px;
           height: 200px;
+          margin-left: 14px;
           pointer-events: none;
           filter: saturate(1.08);
         }
@@ -85,7 +77,15 @@ export function Hero() {
           50% { translate: 0 20px; }
         }
         @media (max-width: 640px) {
-          .hero-bubble-cluster { right: -24px; top: 27%; transform: scale(.55); transform-origin: top right; opacity: .9; }
+          .hero-bubble-cluster {
+            flex-basis: 92px;
+            width: 92px;
+            height: 110px;
+            margin-left: -42px;
+            transform: scale(.48);
+            transform-origin: left center;
+            opacity: .95;
+          }
         }
         @media (prefers-reduced-motion: reduce) {
           .hero-bubble, .hero-bubble span { animation: none !important; }
@@ -114,7 +114,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
-        <div className="relative z-10 min-w-0">
+        <div className="relative z-10 flex min-w-0 items-center">
           <h1 className="font-[Anton_SC] text-left text-[clamp(4.5rem,13.5vw,10.5rem)] leading-[0.95] tracking-tight">
             <span className="sr-only">Avinash Tiwari</span>
             <span aria-hidden="true" className="block overflow-hidden pb-[0.12em]">
@@ -128,6 +128,13 @@ export function Hero() {
               </motion.span>
             </span>
           </h1>
+      <div className="hero-bubble-cluster" aria-hidden="true">
+        {Array.from({ length: 5 }, (_, index) => (
+          <div className={`hero-bubble hero-bubble-${index + 1}`} key={index}>
+            <span /><span /><span /><span /><span />
+          </div>
+        ))}
+      </div>
         </div>
 
       </div>
