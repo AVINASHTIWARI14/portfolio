@@ -40,7 +40,7 @@ export function Hero() {
           flex: 0 0 190px;
           width: 190px;
           height: 200px;
-          margin-left: 28px;
+          margin-left: 48px;
           pointer-events: none;
           filter: saturate(1.08);
         }
