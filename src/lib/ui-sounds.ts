@@ -1,6 +1,6 @@
 let audioContext: AudioContext | null = null;
 let puppyBark: HTMLAudioElement | null = null;
-let soundsMuted = false;
+let soundsMuted = true;
 
 export function isSoundMuted() {
   return soundsMuted;
