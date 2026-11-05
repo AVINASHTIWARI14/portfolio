@@ -74,23 +74,21 @@ export function Contact() {
 
       <InteractiveDotField variant="contact" />
       <style>{`
-        .contact-bubble-cluster { position: absolute; z-index: 0; left: -150px; top: 50%; width: 190px; height: 200px; transform: translateY(-50%) scale(2.5); transform-origin: center; pointer-events: none; filter: saturate(1.08); }
-        @media (max-width: 640px) { .contact-bubble-cluster { left: -85px; transform: translateY(-50%) scale(1.35); opacity: .9; } }
+        .contact-bubble-cluster { position: absolute; z-index: 1; left: 3%; bottom: 7%; top: auto; width: 190px; height: 200px; transform: scale(2.5); transform-origin: left bottom; pointer-events: none; filter: saturate(1.08); }
+        @media (max-width: 640px) { .contact-bubble-cluster { left: -35px; bottom: 5%; transform: scale(1.35); opacity: .9; } }
       `}</style>
+      <div className="contact-bubble-cluster" aria-hidden="true">
+        {Array.from({ length: 5 }, (_, index) => (
+          <div className={`hero-bubble hero-bubble-${index + 1}`} key={index}>
+            <span /><span /><span /><span /><span />
+          </div>
+        ))}
+      </div>
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="relative">
-            <div className="contact-bubble-cluster" aria-hidden="true">
-              {Array.from({ length: 5 }, (_, index) => (
-                <div className={`hero-bubble hero-bubble-${index + 1}`} key={index}>
-                  <span /><span /><span /><span /><span />
-                </div>
-              ))}
-            </div>
-            <h2 className="relative z-10 font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
-              Let's <em className="not-italic text-foreground">connect.</em>
-            </h2>
-          </div>
+          <h2 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
+            Let's <em className="not-italic text-foreground">connect.</em>
+          </h2>
         </Reveal>
         <Reveal delay={0.1} className="mx-auto mt-10 max-w-3xl">
           <form onSubmit={sendMessage} className="space-y-6 border-2 border-foreground bg-white p-6 shadow-[6px_6px_0_var(--foreground)] sm:p-8 md:p-10">
