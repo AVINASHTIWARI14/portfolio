@@ -73,6 +73,17 @@ export function Contact() {
       />
 
       <InteractiveDotField variant="contact" />
+      <style>{`
+        .contact-bubble-cluster { position: absolute; z-index: 1; left: 3%; bottom: 7%; width: 190px; height: 200px; transform: scale(2.5); transform-origin: left bottom; pointer-events: none; filter: saturate(.72); opacity: .38; }
+        @media (max-width: 640px) { .contact-bubble-cluster { left: -35px; bottom: 5%; transform: scale(1.35); opacity: .32; } }
+      `}</style>
+      <div className="contact-bubble-cluster" aria-hidden="true">
+        {Array.from({ length: 5 }, (_, index) => (
+          <div className={`hero-bubble hero-bubble-${index + 1}`} key={index}>
+            <span /><span /><span /><span /><span />
+          </div>
+        ))}
+      </div>
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <h2 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight">
