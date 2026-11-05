@@ -7,6 +7,7 @@ import { About, Skills } from "@/components/portfolio/About";
 import { Contact, Footer } from "@/components/portfolio/Contact";
 import { CursorPet } from "@/components/portfolio/CursorPet";
 import { BoneCursor } from "@/components/portfolio/BoneCursor";
+import { ScrollScene } from "@/components/portfolio/ScrollScene";
 import { playClickSound, playHoverSound } from "@/lib/ui-sounds";
 
 export function App() {
@@ -48,12 +49,12 @@ export function App() {
       <BoneCursor />
       <Nav />
       <main>
-        <Hero />
-        <Work />
-        <Dsa />
-        <About />
-        <Skills />
-        <Contact />
+        <ScrollScene><Hero /></ScrollScene>
+        <ScrollScene><Work /></ScrollScene>
+        <ScrollScene><Dsa /></ScrollScene>
+        <ScrollScene><About /></ScrollScene>
+        <ScrollScene><Skills /></ScrollScene>
+        <ScrollScene><Contact /></ScrollScene>
       </main>
       <Footer />
     </div>
