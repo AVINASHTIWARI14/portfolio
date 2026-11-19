@@ -50,9 +50,9 @@ export function App() {
       <main>
         <Hero />
         <About />
-        <Skills />
         <Work />
         <Dsa />
+        <Skills />
         <Contact />
       </main>
       <Footer />
