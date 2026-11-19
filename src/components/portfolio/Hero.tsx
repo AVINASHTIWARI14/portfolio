@@ -45,7 +45,7 @@ export function Hero() {
           transform: scale(4);
           transform-origin: left center;
           pointer-events: none;
-          filter: saturate(1.08);
+          filter: brightness(.82) saturate(1.08);
         }
         .hero-bubble {
           position: absolute;
