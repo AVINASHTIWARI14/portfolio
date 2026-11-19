@@ -49,10 +49,10 @@ export function App() {
       <Nav />
       <main>
         <Hero />
-        <Work />
-        <Dsa />
         <About />
         <Skills />
+        <Work />
+        <Dsa />
         <Contact />
       </main>
       <Footer />
