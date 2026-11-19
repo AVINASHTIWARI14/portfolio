@@ -16,7 +16,7 @@ export const profile = {
 export const navItems = [
   { id: "about", label: "About" },
   { id: "work", label: "Projects" },
-  { id: "dsa", label: "DSA Journey." },
+  { id: "dsa", label: "DSA Journey" },
   { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
 ] as const;
