@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 import { isSoundMuted, setSoundMuted } from "@/lib/ui-sounds";
 import { navItems } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
 
 function useActiveSection() {
   const [active, setActive] = useState<string>("");
@@ -40,9 +41,17 @@ export function Nav() {
                 <a
                   href={`#${n.id}`}
                   aria-current={active === n.id ? "true" : undefined}
-                  className="brutalist-button brutalist-button-live brutalist-button-contact group relative isolate !h-12 !w-auto items-center gap-2 border-[3px] border-black px-3 py-2 font-sans text-xs font-bold uppercase tracking-wide text-black [text-shadow:none] sm:px-3 md:px-4 md:text-sm"
-                  style={{ width: "fit-content", height: "48px", outlineColor: "#080808" }}
+                  className={cn(
+                    n.id === "about"
+                      ? "brutalist-button brutalist-button-live brutalist-button-contact group relative isolate !h-12 !w-auto items-center gap-2 border-[3px] border-black px-3 py-2 font-sans text-xs font-bold uppercase tracking-wide text-black [text-shadow:none] sm:px-3 md:px-4 md:text-sm"
+                      : "nav-brutalist relative px-2 py-2 text-xs font-bold uppercase tracking-wide sm:px-3 md:px-4 md:py-2.5 md:text-sm",
+                    n.id !== "about" && active === n.id ? "nav-brutalist-active" : "",
+                  )}
+                  style={n.id === "about" ? { width: "fit-content", height: "48px", outlineColor: "#080808" } : undefined}
                 >
+                  {n.id !== "about" && active === n.id && (
+                    <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 bg-black" />
+                  )}
                   {n.label}
                 </a>
               </li>
