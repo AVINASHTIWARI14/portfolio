@@ -60,9 +60,14 @@ export function InteractiveDotField({ variant }: InteractiveDotFieldProps) {
             offsetY += (dy / distance) * strength;
           }
 
+          const normalizedY = y / Math.max(height, 1);
+          const heroBaseFade = Math.max(0.12, Math.min(0.88, 0.88 - normalizedY * 0.68));
+          // Smoothly dissolve the hero dots into the page background near the bottom.
+          const bottomFadeProgress = Math.max(0, Math.min(1, (normalizedY - 0.58) / 0.42));
+          const bottomFade = 1 - bottomFadeProgress * bottomFadeProgress * (3 - 2 * bottomFadeProgress);
           const fade = variant === "hero"
-            ? Math.max(0.12, Math.min(0.88, 0.88 - (y / Math.max(height, 1)) * 0.68))
-            : Math.max(0, Math.min(0.7, (y / Math.max(height, 1) - 0.04) * 0.76));
+            ? heroBaseFade * bottomFade
+            : Math.max(0, Math.min(0.7, (normalizedY - 0.04) * 0.76));
 
           context.beginPath();
           context.arc(x + offsetX, y + offsetY, dotRadius, 0, Math.PI * 2);
