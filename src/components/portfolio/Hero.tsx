@@ -116,32 +116,8 @@ export function Hero() {
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative z-[3] mx-auto grid w-full max-w-6xl items-center gap-8">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-1/2 z-0 -translate-y-1/2 select-none overflow-hidden"
-        >
-          <div className="max-w-5xl space-y-3 text-left">
-            <p className="translate-x-2 font-mono text-[10px] font-semibold uppercase tracking-[0.42em] text-black/35 sm:text-xs">
-              Computer Science · Artificial Intelligence · Machine Learning
-            </p>
-            <p className="font-[Anton_SC] text-[clamp(2.8rem,8vw,7rem)] leading-[0.88] tracking-wide text-black/[0.075] blur-[0.35px]">
-              PROBLEM SOLVER
-            </p>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 pl-1 text-[clamp(0.72rem,1.5vw,1rem)] font-medium uppercase tracking-[0.22em] text-black/35">
-              <span>Building practical applications</span>
-              <span className="hidden sm:inline">✳</span>
-              <span>Exploring intelligent systems</span>
-            </div>
-            <p className="translate-x-8 font-[Anton_SC] text-[clamp(2.2rem,6.5vw,5.5rem)] leading-none tracking-wide text-black/[0.065] blur-[0.5px] sm:translate-x-16">
-              DEVELOPER / CREATOR
-            </p>
-            <p className="pl-2 font-mono text-[10px] uppercase tracking-[0.35em] text-black/30 sm:text-xs">
-              Data Structures & Algorithms · Software Development
-            </p>
-          </div>
-        </div>
-        <div className="relative z-[2] flex min-w-0 items-center">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8">
+        <div className="relative flex min-w-0 items-center">
           <h1 className="relative z-10 font-[Anton_SC] text-left text-[clamp(4.5rem,13.5vw,10.5rem)] leading-[0.95] tracking-tight">
             <span className="sr-only">Avinash Tiwari</span>
             <span aria-hidden="true" className="block overflow-hidden pb-[0.12em]">
