@@ -21,7 +21,7 @@ export function Work() {
   const list = projects.filter((p) => p.slug === "juribrief" || p.slug === "supplai");
 
   return (
-    <section id="work" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
+    <section id="work" className="mx-auto max-w-6xl border-t border-border px-5 py-24 sm:px-8 md:py-32">
       <h2 className="mb-12 font-display text-5xl tracking-tight sm:text-6xl md:text-7xl">Things I build.</h2>
 
       <motion.div layout className="grid items-stretch gap-5 md:grid-cols-2">
