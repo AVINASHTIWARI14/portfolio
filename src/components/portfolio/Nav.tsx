@@ -37,7 +37,7 @@ export function Nav() {
         >
           <ul className="flex w-full items-center justify-start gap-1 overflow-x-auto whitespace-nowrap md:justify-center md:gap-2.5">
             {navItems.map((n) => (
-              <li key={n.id} className="shrink-0">
+              <li key={n.id} className="flex shrink-0 items-center gap-2">
                 <a
                   href={`#${n.id}`}
                   aria-current={active === n.id ? "true" : undefined}
@@ -51,6 +51,7 @@ export function Nav() {
                   )}
                   {n.label}
                 </a>
+                {n.id === "about" && <span aria-hidden="true" className="h-6 w-px bg-black/70" /> }
               </li>
             ))}
           </ul>
